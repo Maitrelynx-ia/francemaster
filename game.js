@@ -520,11 +520,11 @@ function renderDuelSetup() {
     const startBtn = document.getElementById('start-duel-btn');
     grid.innerHTML = '';
     selectedContainer.innerHTML = '';
-    GameState.duel.playerCards = [];
+    // NB : ne pas réinitialiser GameState.duel.playerCards ici, la sélection doit persister entre les rendus
     
     const playerCards = getAllCards().filter(card => GameState.collection[card.id] && GameState.collection[card.id].count > 0);
     if (playerCards.length < 3) {
-        grid.innerHTML = '<p style="color: var(--text-secondary); text-align: center; grid-column: 1 / -1;">Besoin de 3 cartes différentes</p>';
+        grid.innerHTML = '<p style="color: var(--text-secondary); text-align: center; grid-column: 1 / -1;">Vous possédez ' + playerCards.length + ' carte(s) sur les 3 nécessaires. Ouvrez des packs pour collectionner au moins 3 cartes !</p>';
         startBtn.disabled = true;
         return;
     }

@@ -2100,6 +2100,8 @@ body {
 .duel-hp-fill.low { background: linear-gradient(90deg, #e53935, #ef5350); }
 .duel-hp-text { font-size: 0.65rem; color: var(--text-secondary); text-align: center; font-weight: 700; margin-top: 2px; }
 .card.active { outline: 3px solid var(--secondary); outline-offset: 2px; box-shadow: 0 0 16px rgba(255, 111, 0, 0.45); }
+.card.selected { outline: 3px solid var(--secondary); outline-offset: 2px; transform: translateY(-6px); box-shadow: 0 0 18px rgba(255, 111, 0, 0.55); }
+.card.selected::before { content: '✓'; position: absolute; top: -8px; left: -8px; width: 24px; height: 24px; background: var(--secondary); color: var(--text-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 900; z-index: 10; }
 .duel-float-dmg { position: absolute; top: 30%; left: 50%; font-weight: 900; font-size: 1.3rem; color: #f44336; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); z-index: 10; pointer-events: none; animation: floatDmg 1.1s ease-out forwards; }
 .duel-float-dmg.crit { color: #ffd700; font-size: 1.6rem; }
 .duel-answer.correct { animation: answerPop 0.3s ease; }
