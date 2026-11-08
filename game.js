@@ -140,6 +140,7 @@ function switchTab(tabId) {
     else if (tabId === 'duel') renderDuelSetup();
     else if (tabId === 'packs') renderPacksTab();
     else if (tabId === 'market') renderMarket();
+    else if (tabId === 'friends' && typeof renderFriends === 'function') renderFriends();
 }
 
 // ========== PACKS ==========

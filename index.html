@@ -43,6 +43,7 @@
             <button class="nav-tab" data-tab="market">Marché</button>
             <button class="nav-tab" data-tab="collection">Collection</button>
             <button class="nav-tab" data-tab="duel">Duel</button>
+            <button class="nav-tab" data-tab="friends">Amis</button>
             <button class="nav-tab" data-tab="settings">Paramètres</button>
             <a href="idees.html" class="nav-tab" style="text-decoration: none;">Idées</a>
         </nav>
@@ -321,6 +322,19 @@
                 </div>
             </section>
 
+            <!-- Friends Tab -->
+            <section id="friends" class="tab-content">
+                <div class="friends-header">
+                    <h2>🤝 Mes Amis</h2>
+                    <p>Ajoutez des joueurs inscrits et défiez-les en duel sur le même appareil !</p>
+                </div>
+                <div class="friends-add" id="friends-add">
+                    <input type="text" id="friend-input" placeholder="Pseudo de l'ami à ajouter" maxlength="20" onkeydown="if(event.key==='Enter')addFriend()">
+                    <button class="btn btn-primary" onclick="addFriend()">➕ Ajouter</button>
+                </div>
+                <div class="friends-grid" id="friends-grid"></div>
+            </section>
+
             <!-- Settings Tab -->
             <section id="settings" class="tab-content">
                 <div class="settings-header">
@@ -515,11 +529,20 @@
         </div>
     </div>
 
+    <!-- Friend Duel Modal -->
+    <div class="modal" id="friend-duel-modal" style="display: none;">
+        <div class="modal-content friend-duel-modal-content">
+            <div class="modal-close" onclick="closeFriendDuel()">&times;</div>
+            <div id="friend-duel-content"></div>
+        </div>
+    </div>
+
     <script src="data.js"></script>
     <script src="custom.js"></script>
     <script src="auth.js"></script>
     <script src="game.js"></script>
     <script src="market.js"></script>
     <script src="admin.js"></script>
+    <script src="friends.js"></script>
 </body>
 </html>
