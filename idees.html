@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>France Masters - Propositions d'Idées</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Specific styles for ideas page */
+        .ideas-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-lg);
+        }
+        
+        .ideas-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .ideas-header h1 {
+            color: var(--primary);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .ideas-form {
+            background: var(--surface);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .ideas-form h2 {
+            color: var(--primary);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .form-group {
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+            color: var(--text-primary);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 1px solid #e0e0e0;
+            border-radius: var(--radius-sm);
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .idea-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: var(--spacing-lg);
+        }
+        
+        .idea-card {
+            background: var(--surface);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .idea-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .idea-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .idea-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .idea-meta {
+            display: flex;
+            gap: var(--spacing-md);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .idea-description {
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-md);
+            line-height: 1.5;
+        }
+        
+        .idea-category {
+            display: inline-block;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .idea-category.Histoire {
+            background: var(--category-histoire);
+            color: white;
+        }
+        
+        .idea-category.Monuments {
+            background: var(--category-monuments);
+            color: white;
+        }
+        
+        .idea-category.Gastronomie {
+            background: var(--category-gastronomie);
+            color: white;
+        }
+        
+        .idea-category.Geographie {
+            background: var(--category-geographie);
+            color: white;
+        }
+        
+        .idea-category.Sciences {
+            background: var(--category-sciences);
+            color: white;
+        }
+        
+        .idea-category.Sport {
+            background: var(--category-sport);
+            color: white;
+        }
+        
+        .idea-category.Autre {
+            background: #808080;
+            color: white;
+        }
+        
+        .idea-actions {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-sm);
+        }
+        
+        .vote-btn {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+        
+        .vote-btn.like {
+            background: #e6f7e6;
+            color: #2e7d32;
+        }
+        
+        .vote-btn.like:hover {
+            background: #c8e6c9;
+        }
+        
+        .vote-btn.like.voted {
+            background: #4caf50;
+            color: white;
+        }
+        
+        .vote-btn.dislike {
+            background: #ffebee;
+            color: #c62828;
+        }
+        
+        .vote-btn.dislike:hover {
+            background: #ffcdd2;
+        }
+        
+        .vote-btn.dislike.voted {
+            background: #f44336;
+            color: white;
+        }
+        
+        .vote-count {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        .nav-back {
+            display: inline-block;
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            margin-bottom: var(--spacing-lg);
+            transition: background 0.2s ease;
+        }
+        
+        .nav-back:hover {
+            background: var(--primary-dark);
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: var(--spacing-xl);
+            color: var(--text-secondary);
+        }
+        
+        .filter-bar {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 1px solid #e0e0e0;
+            background: white;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .filter-btn:hover {
+            background: #f5f5f5;
+        }
+        
+        .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <div class="ideas-container">
+        <a href="index.html" class="nav-back">← Retour au Jeu</a>
+        
+        <header class="ideas-header">
+            <h1>💡 Propositions d'Idées</h1>
+            <p>Partagez vos idées pour améliorer France Masters !</p>
+        </header>
+        
+        <section class="ideas-form">
+            <h2>Soumettre une nouvelle idée</h2>
+            <form id="idea-form" onsubmit="submitIdea(event)">
+                <div class="form-group">
+                    <label for="idea-title">Titre *</label>
+                    <input type="text" id="idea-title" required placeholder="Ex: Ajouter des cartes de régions">
+                </div>
+                
+                <div class="form-group">
+                    <label for="idea-description">Description *</label>
+                    <textarea id="idea-description" required placeholder="Décrivez votre idée en détail..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="idea-category">Catégorie</label>
+                    <select id="idea-category">
+                        <option value="Autre">Autre</option>
+                        <option value="Histoire">Histoire & Personnages</option>
+                        <option value="Monuments">Monuments & Lieux</option>
+                        <option value="Gastronomie">Gastronomie</option>
+                        <option value="Geographie">Géographie & Régions</option>
+                        <option value="Sciences">Sciences & Arts</option>
+                        <option value="Sport">Sport & Culture</option>
+                        <option value="Gameplay">Gameplay</option>
+                        <option value="Design">Design</option>
+                        <option value="Technique">Technique</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="idea-author">Votre pseudo (optionnel)</label>
+                    <input type="text" id="idea-author" placeholder="Votre nom ou pseudo">
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-large">
+                    ✅ Soumettre l'idée
+                </button>
+            </form>
+        </section>
+        
+        <section>
+            <div class="filter-bar">
+                <button class="filter-btn active" data-filter="all" onclick="filterIdeas('all')">Toutes</button>
+                <button class="filter-btn" data-filter="recent" onclick="filterIdeas('recent')">Récentes</button>
+                <button class="filter-btn" data-filter="popular" onclick="filterIdeas('popular')">Populaires</button>
+                <button class="filter-btn" data-filter="Gameplay" onclick="filterIdeas('Gameplay')">Gameplay</button>
+                <button class="filter-btn" data-filter="Design" onclick="filterIdeas('Design')">Design</button>
+                <button class="filter-btn" data-filter="Technique" onclick="filterIdeas('Technique')">Technique</button>
+            </div>
+            
+            <div id="idea-list" class="idea-list">
+                <!-- Les idées seront affichées ici -->
+            </div>
+        </section>
+    </div>
+    
+    <script>
+        // Local storage key
+        const IDEAS_KEY = 'franceMastersIdeas';
+        
+        // Load ideas from localStorage
+        function loadIdeas() {
+            const ideasData = localStorage.getItem(IDEAS_KEY);
+            if (ideasData) {
+                try {
+                    return JSON.parse(ideasData);
+                } catch (e) {
+                    console.error('Erreur chargement idées:', e);
+                    return [];
+                }
+            }
+            return [];
+        }
+        
+        // Save ideas to localStorage
+        function saveIdeas(ideas) {
+            localStorage.setItem(IDEAS_KEY, JSON.stringify(ideas));
+        }
+        
+        // Add a new idea
+        function addIdea(idea) {
+            const ideas = loadIdeas();
+            idea.id = Date.now();
+            idea.date = new Date().toISOString();
+            idea.likes = 0;
+            idea.dislikes = 0;
+            idea.votedBy = {}; // Track who voted (by username)
+            ideas.unshift(idea);
+            saveIdeas(ideas);
+            return ideas;
+        }
+        
+        // Vote on an idea
+        function voteIdea(ideaId, voteType, username) {
+            const ideas = loadIdeas();
+            const ideaIndex = ideas.findIndex(i => i.id === ideaId);
+            
+            if (ideaIndex === -1) return false;
+            
+            const idea = ideas[ideaIndex];
+            
+            // Prevent multiple votes from same user
+            if (!idea.votedBy) idea.votedBy = {};
+            
+            if (idea.votedBy[username]) {
+                // Already voted, remove vote
+                if (idea.votedBy[username] === voteType) {
+                    if (voteType === 'like') idea.likes--;
+                    else idea.dislikes--;
+                    delete idea.votedBy[username];
+                } else {
+                    // Change vote
+                    if (idea.votedBy[username] === 'like') idea.likes--;
+                    else idea.dislikes--;
+                    
+                    if (voteType === 'like') idea.likes++;
+                    else idea.dislikes++;
+                    
+                    idea.votedBy[username] = voteType;
+                }
+            } else {
+                // New vote
+                if (voteType === 'like') idea.likes++;
+                else idea.dislikes++;
+                idea.votedBy[username] = voteType;
+            }
+            
+            saveIdeas(ideas);
+            return true;
+        }
+        
+        // Submit a new idea
+        function submitIdea(event) {
+            event.preventDefault();
+            
+            const title = document.getElementById('idea-title').value.trim();
+            const description = document.getElementById('idea-description').value.trim();
+            const category = document.getElementById('idea-category').value;
+            const author = document.getElementById('idea-author').value.trim() || 'Anonyme';
+            
+            if (!title || !description) {
+                showToast('Erreur', 'Veuillez remplir tous les champs obligatoires', 'error');
+                return;
+            }
+            
+            const newIdea = {
+                title: title,
+                description: description,
+                category: category,
+                author: author
+            };
+            
+            addIdea(newIdea);
+            
+            // Reset form
+            event.target.reset();
+            
+            // Refresh list
+            renderIdeas();
+            
+            showToast('Succès', 'Votre idée a été soumise !', 'success');
+        }
+        
+        // Render all ideas
+        function renderIdeas() {
+            const ideas = loadIdeas();
+            const listElement = document.getElementById('idea-list');
+            
+            if (ideas.length === 0) {
+                listElement.innerHTML = '<div class="empty-state">Aucune idée soumise pour le moment. Soyez le premier !</div>';
+                return;
+            }
+            
+            listElement.innerHTML = ideas.map(idea => {
+                const date = new Date(idea.date);
+                const dateStr = date.toLocaleDateString('fr-FR', {
+                    day: 'numeric',
+                    month: 'short',
+                    year: 'numeric'
+                });
+                
+                const getVoteButtonClass = (type) => {
+                    const username = document.getElementById('idea-author')?.value?.trim() || 'Anonyme';
+                    if (idea.votedBy && idea.votedBy[username] === type) {
+                        return `vote-btn ${type} voted`;
+                    }
+                    return `vote-btn ${type}`;
+                };
+                
+                return `
+                    <div class="idea-card">
+                        <div class="idea-header">
+                            <span class="idea-title">${escapeHtml(idea.title)}</span>
+                            <span class="idea-category ${idea.category}">${escapeHtml(idea.category)}</span>
+                        </div>
+                        <div class="idea-meta">
+                            <span>👤 ${escapeHtml(idea.author)}</span>
+                            <span>📅 ${dateStr}</span>
+                        </div>
+                        <div class="idea-description">${escapeHtml(idea.description)}</div>
+                        <div class="idea-actions">
+                            <button class="${getVoteButtonClass('like')}" onclick="vote('${idea.id}', 'like', '${idea.author}')">
+                                👍 ${idea.likes || 0}
+                            </button>
+                            <button class="${getVoteButtonClass('dislike')}" onclick="vote('${idea.id}', 'dislike', '${idea.author}')">
+                                👎 ${idea.dislikes || 0}
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        // Vote function (called from button onclick)
+        function vote(ideaId, voteType, author) {
+            const username = document.getElementById('idea-author')?.value?.trim() || 'Anonyme';
+            voteIdea(parseInt(ideaId), voteType, username);
+            renderIdeas();
+        }
+        
+        // Filter ideas
+        function filterIdeas(filter) {
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            const ideas = loadIdeas();
+            let filteredIdeas = [...ideas];
+            
+            switch (filter) {
+                case 'recent':
+                    filteredIdeas.sort((a, b) => new Date(b.date) - new Date(a.date));
+                    break;
+                case 'popular':
+                    filteredIdeas.sort((a, b) => (b.likes || 0) - (a.likes || 0));
+                    break;
+                default:
+                    filteredIdeas = filteredIdeas.filter(i => i.category === filter);
+                    filteredIdeas.sort((a, b) => new Date(b.date) - new Date(a.date));
+            }
+            
+            // Re-render with filtered ideas
+            const listElement = document.getElementById('idea-list');
+            if (filteredIdeas.length === 0) {
+                listElement.innerHTML = '<div class="empty-state">Aucune idée trouvée.</div>';
+                return;
+            }
+            
+            listElement.innerHTML = filteredIdeas.map(idea => {
+                const date = new Date(idea.date);
+                const dateStr = date.toLocaleDateString('fr-FR', {
+                    day: 'numeric',
+                    month: 'short',
+                    year: 'numeric'
+                });
+                
+                return `
+                    <div class="idea-card">
+                        <div class="idea-header">
+                            <span class="idea-title">${escapeHtml(idea.title)}</span>
+                            <span class="idea-category ${idea.category}">${escapeHtml(idea.category)}</span>
+                        </div>
+                        <div class="idea-meta">
+                            <span>👤 ${escapeHtml(idea.author)}</span>
+                            <span>📅 ${dateStr}</span>
+                        </div>
+                        <div class="idea-description">${escapeHtml(idea.description)}</div>
+                        <div class="idea-actions">
+                            <button class="vote-btn like" onclick="vote('${idea.id}', 'like', '${idea.author}')">
+                                👍 ${idea.likes || 0}
+                            </button>
+                            <button class="vote-btn dislike" onclick="vote('${idea.id}', 'dislike', '${idea.author}')">
+                                👎 ${idea.dislikes || 0}
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        // Escape HTML to prevent XSS
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        // Simple toast notification
+        function showToast(title, message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+            toast.innerHTML = `<strong>${title}</strong>: ${message}`;
+            toast.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 20px;
+                background: ${type === 'error' ? '#f44336' : type === 'success' ? '#4caf50' : '#2196f3'};
+                color: white;
+                border-radius: 4px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+                z-index: 10000;
+                animation: slideIn 0.3s ease;
+            `;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderIdeas();
+        });
+    </script>
+</body>
+</html>
