@@ -468,7 +468,7 @@ function renderDuelSetup() {
     
     playerCards.forEach(card => {
         const cardElement = document.createElement('div');
-        cardElement.className = 'card';
+        cardElement.className = 'card ' + card.rarity;
         cardElement.dataset.cardId = card.id;
         cardElement.innerHTML = createCardHTML(card, true);
         const isSelected = GameState.duel.playerCards.some(c => c.id === card.id);
@@ -553,7 +553,7 @@ function renderDuelOngoing() {
     playerCardsContainer.innerHTML = '';
     GameState.duel.playerCards.forEach((card, index) => {
         const cardElement = document.createElement('div');
-        cardElement.className = 'card';
+        cardElement.className = 'card ' + card.rarity;
         cardElement.innerHTML = createCardHTML(card, true);
         const hpBar = document.createElement('div');
         hpBar.className = 'duel-hp-bar';
@@ -573,7 +573,7 @@ function renderDuelOngoing() {
     opponentCardsContainer.innerHTML = '';
     GameState.duel.opponentCards.forEach((card, index) => {
         const cardElement = document.createElement('div');
-        cardElement.className = 'card';
+        cardElement.className = 'card locked';
         cardElement.innerHTML = createCardHTML(card, false);
         const hpBar = document.createElement('div');
         hpBar.className = 'duel-hp-bar';
@@ -601,7 +601,7 @@ function renderDuelOngoing() {
     
     const playerActive = GameState.duel.playerCards[GameState.duel.playerActiveIndex];
     document.getElementById('duel-player-active').innerHTML = `
-        <div class="card" style="width: 100px; height: 140px;">${createCardHTML(playerActive, true)}</div>
+        <div class="card ${playerActive.rarity}" style="width: 100px; height: 140px;">${createCardHTML(playerActive, true)}</div>
     `;
     
     renderDuelLog();
@@ -962,7 +962,7 @@ function renderRecentCards() {
     }
     GameState.recentCards.slice(0, 5).forEach(card => {
         const el = document.createElement('div');
-        el.className = 'card';
+        el.className = 'card ' + card.rarity;
         el.style.width = 'var(--card-width-xs)';
         el.style.height = 'var(--card-height-xs)';
         el.innerHTML = createCardHTML(card, true);
