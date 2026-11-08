@@ -1914,3 +1914,25 @@ body {
     object-fit: cover;
     object-position: center;
 }
+
+/* ========== RÉSERVE DE PACKS ========== */
+.pack-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-lg);
+}
+
+.pack-storage-info {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-top: var(--spacing-md);
+}
+
+.home-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-md);
+}

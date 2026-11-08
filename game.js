@@ -150,13 +150,9 @@ function openPack() {
         return;
     }
     
-    // Check if user has packs to open
-    if (window.AuthState && window.AuthState.packs && window.AuthState.packs.count > 0) {
-        window.AuthState.packs.count--;
-        if (window.saveUserPacks) window.saveUserPacks();
-    }
+    // Le décompte de la réserve de packs est géré par openStoredPack() (auth.js)
     
-    GameState.stats.packsOpened += 1;
+        GameState.stats.packsOpened += 1;
     const packCards = generatePack();
     addCardsToCollection(packCards);
     showPackOpeningAnimation(packCards);

@@ -88,8 +88,11 @@
                 </div>
 
                 <div class="home-actions">
-                    <button class="btn btn-primary btn-large" onclick="openPackWithAuth()" id="open-pack-button">
-                        <span>📦 Ouvrir un Pack Gratuit</span>
+                    <button class="btn btn-primary btn-large claim-pack-btn" onclick="claimPack()">
+                        <span>🎁 Récolter un Pack</span>
+                    </button>
+                    <button class="btn btn-secondary btn-large open-stored-pack-btn" onclick="openStoredPack()">
+                        <span>📦 Ouvrir un Pack stocké (<span class="stored-pack-count">0</span>/10)</span>
                     </button>
                 </div>
 
@@ -107,20 +110,29 @@
             <!-- Packs Tab -->
             <section id="packs" class="tab-content">
                 <div class="packs-header">
-                    <h2>Ouvrir un Pack</h2>
+                    <h2>Packs</h2>
                     <p>Chaque pack contient 5 cartes avec au moins 1 carte Rare ou mieux !</p>
+                    <p>Récoltez un pack gratuit toutes les 15 minutes et stockez-en jusqu'à 10 : ouvrez-les quand vous voulez !</p>
                 </div>
                 
                 <div class="pack-preview">
                     <div class="pack-container" id="pack-container">
-                        <div class="pack-closed" onclick="openPackWithAuth()" id="open-pack-button">
+                        <div class="pack-closed claim-pack-btn" onclick="claimPack()" id="packs-claim-btn">
+                            <div class="pack-closed-inner">
+                                <span class="pack-closed-icon">🎁</span>
+                                <span class="pack-closed-text">Récolter un Pack</span>
+                                <span class="pack-closed-cost">Gratuit · toutes les 15 min</span>
+                            </div>
+                        </div>
+                        <div class="pack-closed open-stored-pack-btn" onclick="openStoredPack()" id="packs-open-stored-btn">
                             <div class="pack-closed-inner">
                                 <span class="pack-closed-icon">📦</span>
-                                <span class="pack-closed-text">Pack de Cartes</span>
-                                <span class="pack-closed-cost">Gratuit</span>
+                                <span class="pack-closed-text">Ouvrir un Pack stocké</span>
+                                <span class="pack-closed-cost">Réserve : <span class="stored-pack-count">0</span>/10</span>
                             </div>
                         </div>
                     </div>
+                    <p class="pack-storage-info">Packs non ouverts en réserve : <strong><span class="stored-pack-count">0</span>/10</strong></p>
                 </div>
 
                 <div class="pack-opening" id="pack-opening" style="display: none;">
@@ -430,7 +442,7 @@
                     <span class="profile-value" id="profile-username"></span>
                 </div>
                 <div class="profile-stat">
-                    <span class="profile-label">Packs disponibles :</span>
+                    <span class="profile-label">Packs stockés (non ouverts) :</span>
                     <span class="profile-value" id="profile-packs">0/10</span>
                 </div>
                 <div class="profile-stat">

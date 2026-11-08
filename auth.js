@@ -195,69 +195,80 @@ function isLoggedIn() {
     return AuthState.currentUser !== null;
 }
 
-// Ouvrir un pack (avec vérification du timer et de la limite)
-function openPackWithAuth() {
+// Récolter un pack : l'ajoute à la réserve de packs non ouverts (max 10)
+function claimPack() {
     if (!isLoggedIn()) {
         showAuthModal();
         return false;
     }
     
-    // Vérifier si on a atteint la limite de packs
+    // Vérifier si la réserve est pleine
     if (AuthState.packs.count >= AuthState.packs.max) {
-        showToast('Erreur', 'Vous avez déjà 10 packs en attente !', 'error');
+        showToast('Info', "Réserve pleine (" + AuthState.packs.count + "/" + AuthState.packs.max + ") ! Ouvrez vos packs stockés avant d'en récolter d'autres.", 'info');
         return false;
     }
     
-    // Vérifier le timer
+    // Vérifier le timer de récolte
     const now = Date.now();
     const timeSinceLastOpen = now - AuthState.packs.lastOpenTime;
     
     if (timeSinceLastOpen < AuthState.packs.cooldown) {
         const remainingTime = Math.ceil((AuthState.packs.cooldown - timeSinceLastOpen) / 1000 / 60);
-        showToast('Erreur', `Attendez ${remainingTime} minute(s) avant d'ouvrir un nouveau pack !`, 'error');
+        showToast('Info', "Prochain pack récoltable dans " + remainingTime + " minute(s) !", 'info');
         return false;
     }
     
-    // Mettre à jour le timer
+    // Stocker le pack dans la réserve
     AuthState.packs.lastOpenTime = now;
     AuthState.packs.count++;
     saveUserPacks();
+    updateAuthUI();
     
-    // Ouvrir le pack (appeler la fonction existante)
+    showToast('Succès', "Pack récolté et stocké ! Réserve : " + AuthState.packs.count + "/" + AuthState.packs.max, 'success');
+    return true;
+}
+
+// Ouvrir un pack stocké (aucun délai, dans la limite de la réserve)
+function openStoredPack() {
+    if (!isLoggedIn()) {
+        showAuthModal();
+        return false;
+    }
+    
+    if (!AuthState.packs || AuthState.packs.count <= 0) {
+        showToast('Info', "Aucun pack stocké ! Récoltez-en un avec le bouton 🎁.", 'info');
+        return false;
+    }
+    
+    AuthState.packs.count--;
+    saveUserPacks();
+    
+    // Ouvrir le pack (fonction du jeu)
     openPack();
     
+    updateAuthUI();
     return true;
 }
 
 // Mettre à jour l'interface d'authentification
 function updateAuthUI() {
     const userInfoContainer = document.getElementById('user-info-container');
-    const loginButton = document.getElementById('open-pack-button');
     
     if (isLoggedIn()) {
         // Utilisateur connecté
         userInfoContainer.style.display = 'flex';
         document.getElementById('user-name').textContent = AuthState.currentUser.username;
-        if (window.GameState) {
-            document.getElementById('user-coins').textContent = GameState.coins;
+        const coinsEl = document.getElementById('user-coins');
+        if (coinsEl && window.GameState) {
+            coinsEl.textContent = GameState.coins;
         }
         
-        // Mettre à jour le bouton de pack
-        if (loginButton) {
-            loginButton.onclick = openPackWithAuth;
-        }
-        
-        // Mettre à jour le compteur de packs
+        // Mettre à jour le compteur et le timer de packs
         updatePackCounter();
         updatePackTimer();
     } else {
         // Utilisateur déconnecté
         userInfoContainer.style.display = 'none';
-        
-        // Désactiver l'ouverture de pack
-        if (loginButton) {
-            loginButton.onclick = () => showAuthModal();
-        }
     }
     
     // Mettre à jour le header
@@ -266,14 +277,14 @@ function updateAuthUI() {
 
 // Mettre à jour le compteur de packs
 function updatePackCounter() {
-    const packCounter = document.getElementById('pack-counter');
-    if (packCounter) {
-        packCounter.textContent = AuthState.packs.count;
-    }
+    // Compteur de packs stockés, affiché partout via la classe .stored-pack-count
+    document.querySelectorAll('.stored-pack-count').forEach(el => {
+        el.textContent = AuthState.packs.count;
+    });
     
     const profilePacks = document.getElementById('profile-packs');
     if (profilePacks) {
-        profilePacks.textContent = `${AuthState.packs.count}/${AuthState.packs.max}`;
+        profilePacks.textContent = AuthState.packs.count + '/' + AuthState.packs.max;
     }
 }
 
@@ -301,7 +312,7 @@ function updatePackTimer() {
             packTimer.style.display = 'none';
         } else {
             const remainingTime = Math.ceil((AuthState.packs.cooldown - timeSinceLastOpen) / 1000 / 60);
-            packTimer.innerHTML = `Attendez <span class="timer-value">${remainingTime} min</span>`;
+            packTimer.innerHTML = `Prochain pack récoltable dans <span class="timer-value">${remainingTime} min</span>`;
             packTimer.style.display = 'block';
         }
     }
@@ -357,8 +368,9 @@ function closeProfileModal() {
 function updateHeader() {
     if (isLoggedIn()) {
         document.getElementById('user-name').textContent = AuthState.currentUser.username;
-        if (window.GameState) {
-            document.getElementById('user-coins').textContent = GameState.coins;
+        const coinsEl = document.getElementById('user-coins');
+        if (coinsEl && window.GameState) {
+            coinsEl.textContent = GameState.coins;
         }
     }
 }
@@ -378,15 +390,16 @@ function initAuth() {
     updateAuthUI();
     startPackTimer();
     
-    // Modifier le bouton d'ouverture de pack
-    const packButtons = document.querySelectorAll('[onclick="openPack()"]');
-    packButtons.forEach(button => {
-        button.onclick = openPackWithAuth;
-        button.id = 'open-pack-button';
+    // Brancher les boutons de récolte et d'ouverture de packs stockés
+    document.querySelectorAll('.claim-pack-btn').forEach(button => {
+        button.onclick = claimPack;
+    });
+    document.querySelectorAll('.open-stored-pack-btn').forEach(button => {
+        button.onclick = openStoredPack;
     });
     
-    // Ajouter le timer au bouton
-    const packButton = document.getElementById('open-pack-button');
+    // Ajouter le timer sous le bouton de récolte (onglet Packs)
+    const packButton = document.getElementById('packs-claim-btn');
     if (packButton) {
         const timerDiv = document.createElement('div');
         timerDiv.id = 'pack-timer';
@@ -410,7 +423,9 @@ window.showProfileModal = showProfileModal;
 window.closeProfileModal = closeProfileModal;
 window.updateAuthUI = updateAuthUI;
 window.initAuth = initAuth;
-window.openPackWithAuth = openPackWithAuth;
+window.claimPack = claimPack;
+window.openStoredPack = openStoredPack;
+window.openPackWithAuth = claimPack; // alias (ancien nom)
 
 // Initialiser au chargement
 document.addEventListener('DOMContentLoaded', initAuth);

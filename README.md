@@ -16,12 +16,13 @@
 
 2. **Premiers pas** :
    - Vous commencez avec **300 pièces**
-   - Ouvrez des **packs** (100 pièces chacun) pour obtenir des cartes
+   - Récoltez un **pack gratuit toutes les 15 minutes** (jusqu'à **10 packs non ouverts** stockés) et ouvrez-les quand vous voulez
    - Chaque pack contient **5 cartes** avec au moins 1 carte Rare ou mieux
    - Collectionnez les 200 cartes disponibles
 
 3. **Mécaniques de jeu** :
    - **Ouverture de packs** : Animation de retournement carte par carte
+   - **Réserve de packs** : Stockez jusqu'à 10 packs non ouverts, à ouvrir quand vous voulez
    - **Collection** : Grille de toutes les cartes avec filtres et tri
    - **Duel Quiz** : Affrontez l'IA avec 3 cartes, répondez à des questions QCM
    - **Économie** : Gagnez des pièces en gagnant des duels
