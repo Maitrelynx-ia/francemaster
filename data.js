@@ -32,7 +32,7 @@ const CARDS = [
         defense: 95,
         views: 12500000,
         emoji: "👑"
-        image: null
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Napoleon_Bonaparte_1812.jpg/320px-Napoleon_Bonaparte_1812.jpg"
     },
     {
         id: 2,
@@ -44,7 +44,7 @@ const CARDS = [
         defense: 88,
         views: 11200000,
         emoji: "⚔️"
-        image: null
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Tour_Eiffel_Wikimedia_Commons.jpg/320px-Tour_Eiffel_Wikimedia_Commons.jpg"
     },
     
     // Ultra Rares
@@ -58,7 +58,7 @@ const CARDS = [
         defense: 90,
         views: 9800000,
         emoji: "👑"
-        image: null
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Baguette_de_tradition.jpg/320px-Baguette_de_tradition.jpg"
     },
     {
         id: 4,
