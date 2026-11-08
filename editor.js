@@ -51,8 +51,8 @@ function loadCustomCards() {
     if (customCards) {
         try {
             const parsedCards = JSON.parse(customCards);
-            // Remplacer les cartes par défaut par les cartes personnalisées
-            EditorState.cards = parsedCards;
+            // Ajouter les cartes personnalisées aux cartes par défaut
+            EditorState.cards = [...CARDS, ...parsedCards];
             EditorState.filteredCards = [...EditorState.cards];
             renderEditorCards();
             showEditorToast('Succès', 'Cartes personnalisées chargées', 'success');
@@ -185,7 +185,8 @@ function addNewCard(event) {
         attack: attack,
         defense: defense,
         views: views,
-        emoji: emoji
+        emoji: emoji,
+        isCustom: true
     };
     
     // Ajouter la carte
@@ -251,6 +252,7 @@ function saveEditCard(event) {
     const emoji = document.getElementById('edit-emoji').value;
     
     // Mettre à jour la carte
+    const originalCard = EditorState.cards[index];
     EditorState.cards[index] = {
         id: id,
         name: name,
@@ -260,7 +262,8 @@ function saveEditCard(event) {
         attack: attack,
         defense: defense,
         views: views,
-        emoji: emoji
+        emoji: emoji,
+        isCustom: originalCard.isCustom || false
     };
     
     // Mettre à jour la liste filtrée
@@ -369,13 +372,16 @@ function resetCards() {
 
 // Sauvegarder les cartes
 function saveCards() {
-    // Sauvegarder dans localStorage
-    localStorage.setItem('franceMastersCustomCards', JSON.stringify(EditorState.cards));
+    // Séparer les cartes personnalisées des cartes par défaut
+    const customCards = EditorState.cards.filter(card => card.isCustom);
     
-    // Mettre à jour le fichier data.js
+    // Sauvegarder uniquement les cartes personnalisées dans localStorage
+    localStorage.setItem('franceMastersCustomCards', JSON.stringify(customCards));
+    
+    // Mettre à jour le fichier data.js (uniquement les cartes personnalisées)
     updateDataJs();
     
-    showEditorToast('Succès', 'Cartes sauvegardées !', 'success');
+    showEditorToast('Succès', 'Cartes personnalisées sauvegardées !', 'success');
 }
 
 // Mettre à jour le fichier data.js

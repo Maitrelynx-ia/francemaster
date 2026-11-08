@@ -4,6 +4,7 @@
 // ========== ÉTAT DU JEU ==========
 const GameState = {
     collection: {},
+    customCards: [],
     coins: 300,
     stats: {
         packsOpened: 0,
@@ -55,6 +56,7 @@ function loadGame() {
         try {
             const parsedState = JSON.parse(savedState);
             GameState.collection = parsedState.collection || {};
+            GameState.customCards = parsedState.customCards || [];
             GameState.coins = parsedState.coins !== undefined ? parsedState.coins : 300;
             GameState.stats = parsedState.stats || GameState.stats;
             GameState.achievements = parsedState.achievements || {};
@@ -63,17 +65,50 @@ function loadGame() {
             console.error('Erreur chargement sauvegarde:', e);
         }
     }
+    loadCustomCards();
+}
+
+function loadCustomCards() {
+    const customCardsData = localStorage.getItem('franceMastersCustomCards');
+    if (customCardsData) {
+        try {
+            GameState.customCards = JSON.parse(customCardsData);
+        } catch (e) {
+            console.error('Erreur chargement cartes personnalisées:', e);
+        }
+    }
 }
 
 function saveGame() {
     const saveData = {
         collection: GameState.collection,
+        customCards: GameState.customCards,
         coins: GameState.coins,
         stats: GameState.stats,
         achievements: GameState.achievements,
         recentCards: GameState.recentCards
     };
     localStorage.setItem('franceMastersSave', JSON.stringify(saveData));
+}
+
+function saveCustomCards() {
+    localStorage.setItem('franceMastersCustomCards', JSON.stringify(GameState.customCards));
+}
+
+function getAllCards() {
+    return [...CARDS, ...GameState.customCards];
+}
+
+function addCustomCard(card) {
+    GameState.customCards.push(card);
+    saveCustomCards();
+    showToast('Succès', `Carte personnalisée "${card.name}" ajoutée !`, 'success');
+}
+
+function removeCustomCard(cardId) {
+    GameState.customCards = GameState.customCards.filter(card => card.id !== cardId);
+    saveCustomCards();
+    showToast('Succès', 'Carte personnalisée supprimée', 'success');
 }
 
 function resetGame() {
@@ -158,7 +193,7 @@ function generatePack() {
 }
 
 function getRandomCardByRarity(rarity) {
-    const cardsByRarity = CARDS.filter(card => card.rarity === rarity);
+    const cardsByRarity = getAllCards().filter(card => card.rarity === rarity);
     return cardsByRarity[Math.floor(Math.random() * cardsByRarity.length)];
 }
 
@@ -223,7 +258,7 @@ function finishPackOpening() {
 function renderPacksTab() {
     const rarityCounts = { C: 0, R: 0, SR: 0, UR: 0, L: 0 };
     Object.keys(GameState.collection).forEach(cardId => {
-        const card = CARDS.find(c => c.id === parseInt(cardId));
+        const card = getAllCards().find(c => c.id === parseInt(cardId));
         if (card) {
             const cardData = GameState.collection[cardId];
             rarityCounts[card.rarity] += cardData.count;
@@ -245,7 +280,7 @@ function renderCollection() {
     const rarityFilter = document.getElementById('rarity-filter').value;
     const sortFilter = document.getElementById('sort-filter').value;
     
-    let filteredCards = CARDS.filter(card => {
+    let filteredCards = getAllCards().filter(card => {
         if (categoryFilter !== 'all' && card.category !== categoryFilter) return false;
         if (rarityFilter !== 'all' && card.rarity !== rarityFilter) return false;
         return true;
@@ -353,7 +388,7 @@ function renderDuplicates() {
     Object.keys(GameState.collection).forEach(cardId => {
         const cardData = GameState.collection[cardId];
         if (cardData.duplicates > 0) {
-            const card = CARDS.find(c => c.id === parseInt(cardId));
+            const card = getAllCards().find(c => c.id === parseInt(cardId));
             if (card) duplicates.push({ card, count: cardData.duplicates });
         }
     });
@@ -413,7 +448,7 @@ function renderDuelSetup() {
     selectedContainer.innerHTML = '';
     GameState.duel.playerCards = [];
     
-    const playerCards = CARDS.filter(card => GameState.collection[card.id] && GameState.collection[card.id].count > 0);
+    const playerCards = getAllCards().filter(card => GameState.collection[card.id] && GameState.collection[card.id].count > 0);
     if (playerCards.length < 3) {
         grid.innerHTML = '<p style="color: var(--text-secondary); text-align: center; grid-column: 1 / -1;">Besoin de 3 cartes différentes</p>';
         startBtn.disabled = true;
@@ -578,7 +613,7 @@ function generateCategoryQuestion() {
     const allCards = [...GameState.duel.playerCards, ...GameState.duel.opponentCards];
     const randomCard = allCards[Math.floor(Math.random() * allCards.length)];
     GameState.duel.currentQuestion = `À quelle catégorie appartient ${randomCard.emoji} ?`;
-    const categories = [...new Set(CARDS.map(card => card.category))];
+    const categories = [...new Set(getAllCards().map(card => card.category))];
     const correctAnswer = randomCard.category;
     const shuffledCategories = shuffleArray([...categories]);
     let correctIndex = shuffledCategories.findIndex(cat => cat === correctAnswer);
@@ -592,7 +627,7 @@ function generateCategoryQuestion() {
 function generateDescriptionQuestion() {
     const randomCard = GameState.duel.playerCards[Math.floor(Math.random() * GameState.duel.playerCards.length)];
     GameState.duel.currentQuestion = `Description de ${randomCard.name} ?`;
-    const allDescriptions = CARDS.map(card => card.description);
+    const allDescriptions = getAllCards().map(card => card.description);
     const correctAnswer = randomCard.description;
     const shuffled = shuffleArray([...allDescriptions]);
     let correctIndex = shuffled.findIndex(d => d === correctAnswer);
@@ -637,7 +672,7 @@ function generateCardNameQuestion() {
     const allCards = [...GameState.duel.playerCards, ...GameState.duel.opponentCards];
     const randomCard = allCards[Math.floor(Math.random() * allCards.length)];
     GameState.duel.currentQuestion = `Nom de la carte ${randomCard.emoji} ?`;
-    const names = CARDS.map(card => card.name);
+    const names = getAllCards().map(card => card.name);
     const correctAnswer = randomCard.name;
     const shuffled = shuffleArray([...names]);
     let correctIndex = shuffled.findIndex(n => n === correctAnswer);
@@ -828,9 +863,9 @@ function checkAchievements() {
         showToast('Succès !', '50 Cartes', 'success');
     }
     if (!GameState.achievements.complete_category) {
-        const categories = [...new Set(CARDS.map(card => card.category))];
+        const categories = [...new Set(getAllCards().map(card => card.category))];
         for (const category of categories) {
-            const catCards = CARDS.filter(card => card.category === category);
+            const catCards = getAllCards().filter(card => card.category === category);
             const owned = catCards.filter(card => GameState.collection[card.id] && GameState.collection[card.id].count > 0).length;
             if (owned === catCards.length) {
                 GameState.achievements.complete_category = true; changed = true;
@@ -838,7 +873,7 @@ function checkAchievements() {
             }
         }
     }
-    if (uniqueCards === CARDS.length && !GameState.achievements.full_collection) {
+    if (uniqueCards === getAllCards().length && !GameState.achievements.full_collection) {
         GameState.achievements.full_collection = true; changed = true;
         showToast('Succès !', 'Collection Complète !', 'success');
     }
@@ -891,7 +926,7 @@ function updateUI() {
     const winRate = GameState.stats.duelsPlayed > 0 ? Math.round((GameState.stats.duelsWon / GameState.stats.duelsPlayed) * 100) : 0;
     document.getElementById('win-rate').textContent = `${winRate}%`;
     const legendaryCount = Object.keys(GameState.collection).filter(cardId => {
-        const card = CARDS.find(c => c.id === parseInt(cardId));
+        const card = getAllCards().find(c => c.id === parseInt(cardId));
         return card && card.rarity === 'L' && GameState.collection[cardId].count > 0;
     }).length;
     document.getElementById('legendary-count').textContent = legendaryCount;

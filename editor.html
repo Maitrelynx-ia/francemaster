@@ -47,6 +47,7 @@
                     <input type="text" id="search-input" placeholder="Rechercher une carte..." oninput="filterCards()">
                     <select id="filter-category" onchange="filterCards()">
                         <option value="all">Toutes les catégories</option>
+                        <option value="Personnalisée">Personnalisée</option>
                         <option value="Histoire & Personnages">Histoire & Personnages</option>
                         <option value="Monuments & Lieux">Monuments & Lieux</option>
                         <option value="Gastronomie">Gastronomie</option>
@@ -98,6 +99,7 @@
                         <div class="editor-form-group">
                             <label for="new-category">Catégorie *</label>
                             <select id="new-category" required>
+                                <option value="Personnalisée" selected>Personnalisée</option>
                                 <option value="Histoire & Personnages">Histoire & Personnages</option>
                                 <option value="Monuments & Lieux">Monuments & Lieux</option>
                                 <option value="Gastronomie">Gastronomie</option>
@@ -200,6 +202,7 @@
                         <div class="editor-form-group">
                             <label for="edit-category">Catégorie *</label>
                             <select id="edit-category" required>
+                                <option value="Personnalisée">Personnalisée</option>
                                 <option value="Histoire & Personnages">Histoire & Personnages</option>
                                 <option value="Monuments & Lieux">Monuments & Lieux</option>
                                 <option value="Gastronomie">Gastronomie</option>
