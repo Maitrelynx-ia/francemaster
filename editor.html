@@ -22,8 +22,15 @@
                 <button class="btn btn-secondary" onclick="importCards()">
                     📤 Importer JSON
                 </button>
-                <button class="btn btn-primary" onclick="saveCards()">
-                    💾 Sauvegarder
+                </button>
+                <button class="btn btn-secondary" onclick="loadFromGithub()" title="Charger data.js depuis GitHub">
+                    🔄 Recharger
+                </button>
+                <button class="btn btn-primary" onclick="confirmPublishToGithub()" title="Publier data.js et les images sur GitHub">
+                    ☁️ Publier sur GitHub
+                </button>
+                <button class="btn btn-secondary" onclick="openGithubModal()" title="Configurer le token GitHub">
+                    🔑 Token
                 </button>
                 <button class="btn btn-danger" onclick="confirmResetCards()">
                     ⚠️ Réinitialiser
@@ -310,11 +317,38 @@
             </div>
         </div>
 
+        <!-- GitHub Token Modal -->
+        <div class="modal" id="github-modal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-close" onclick="closeGithubModal()">&times;</div>
+                <h2>Connexion GitHub</h2>
+                <p>Pour publier les cartes directement sur le dépôt, collez un <b>Personal Access Token</b> (fine-grained) avec la permission <b>Contents : Read and Write</b> limitée au dépôt <b>Maitrelynx-ia/francemaster</b>.</p>
+                <p class="github-help">Création : GitHub → Settings → Developer settings → Fine-grained personal access tokens → Generate new token. Sélectionnez uniquement le dépôt <b>francemaster</b> et la permission <b>Contents : Read and Write</b>. Le token reste stocké dans votre navigateur (localStorage) et n'est envoyé qu'à api.github.com.</p>
+                <div class="editor-form-group">
+                    <label for="github-token-input">Personal Access Token</label>
+                    <input type="password" id="github-token-input" placeholder="github_pat_..." autocomplete="off">
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="closeGithubModal()">
+                        Annuler
+                    </button>
+                    <button type="button" class="btn btn-secondary" onclick="testGithubConnection()">
+                        🔎 Tester
+                    </button>
+                    <button type="button" class="btn btn-primary" onclick="saveGithubToken()">
+                        💾 Enregistrer
+                    </button>
+                </div>
+                <p id="github-status"> </p>
+            </div>
+        </div>
+
         <!-- Toast Container -->
         <div class="toast-container" id="editor-toast-container"></div>
     </div>
 
     <script src="data.js"></script>
+    <script src="github-sync.js"></script>
     <script src="editor.js"></script>
 </body>
 </html>

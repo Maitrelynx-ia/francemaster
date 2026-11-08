@@ -353,6 +353,8 @@ function confirmAction() {
         deleteCard();
     } else if (EditorState.pendingAction === 'reset') {
         resetCards();
+    } else if (EditorState.pendingAction === 'publish') {
+        doPublishToGithub();
     }
     closeConfirmModal();
 }
@@ -401,57 +403,75 @@ function saveCards() {
 }
 
 // Mettre à jour le fichier data.js
+// Mettre à jour le fichier data.js : génère la version complète (toutes les cartes)
+// et la télécharge. Utilisé aussi par la publication GitHub.
 function updateDataJs() {
-    // Créer le contenu du fichier data.js
-    const dataJsContent = `// France Masters - Données des cartes
-// Basées sur de vrais articles Wikipédia France
-// Généré automatiquement par l'éditeur
-
-const CATEGORIES = {
-    HISTOIRE: "Histoire & Personnages",
-    MONUMENTS: "Monuments & Lieux",
-    GASTRONOMIE: "Gastronomie",
-    GEOGRAPHIE: "Géographie & Régions",
-    SCIENCES: "Sciences & Arts",
-    SPORT: "Sport & Culture"
-};
-
-const RARITIES = {
-    COMMON: { code: "C", name: "Commune", weight: 45, color: "#808080", bgColor: "#f0f0f0" },
-    RARE: { code: "R", name: "Rare", weight: 30, color: "#4169E1", bgColor: "#e6f0ff" },
-    SUPER_RARE: { code: "SR", name: "Super Rare", weight: 15, color: "#8A2BE2", bgColor: "#f0e6ff" },
-    ULTRA_RARE: { code: "UR", name: "Ultra Rare", weight: 7, color: "#FFD700", bgColor: "#fff8e6" },
-    LEGENDARY: { code: "L", name: "Légendaire", weight: 3, color: "#FF69B4", bgColor: "linear-gradient(135deg, #ff69b4, #ffd700, #4169e1, #8a2be2, #00ff7f)" }
-};
-
-// Achievements
-const ACHIEVEMENTS = {
-    FIRST_PACK: { id: "first_pack", name: "Premier Pack", description: "Ouvrir votre premier pack de cartes", completed: false },
-    FIRST_LEGENDARY: { id: "first_legendary", name: "Première Légendaire", description: "Obtenir votre première carte Légendaire", completed: false },
-    FIRST_DUEL: { id: "first_duel", name: "Premier Duel", description: "Jouer votre premier duel", completed: false },
-    FIRST_DUEL_WIN: { id: "first_duel_win", name: "Première Victoire", description: "Gagner votre premier duel", completed: false },
-    COMPLETE_CATEGORY: { id: "complete_category", name: "Catégorie Complète", description: "Compléter toutes les cartes d'une catégorie", completed: false },
-    TEN_DUELS_WON: { id: "ten_duels_won", name: "10 Victoires", description: "Gagner 10 duels", completed: false },
-    FIFTY_CARDS: { id: "fifty_cards", name: "50 Cartes", description: "Posséder 50 cartes uniques différentes", completed: false },
-    FULL_COLLECTION: { id: "full_collection", name: "Collection Complète", description: "Posséder toutes les cartes du jeu", completed: false }
-};
-
-// Export pour game.js
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { CARDS, CATEGORIES, RARITIES, ACHIEVEMENTS };
-}
-`;
-    
-    // Écrire le fichier
+    const dataJsContent = generateDataJsContent(EditorState.cards);
     const blob = new Blob([dataJsContent], { type: 'text/javascript' });
     const url = URL.createObjectURL(blob);
-    
-    // Télécharger le fichier
     const a = document.createElement('a');
     a.href = url;
     a.download = 'data.js';
     a.click();
     URL.revokeObjectURL(url);
+}
+
+// Générer le contenu complet de data.js à partir d'une liste de cartes
+function generateDataJsContent(cards) {
+    const catKeys = {};
+    Object.keys(CATEGORIES).forEach(function (key) {
+        catKeys[CATEGORIES[key]] = 'CATEGORIES.' + key;
+    });
+    const lines = [];
+    lines.push('// France Masters - Données des cartes');
+    lines.push('// Basées sur de vrais articles Wikipédia France');
+    lines.push('// Généré automatiquement par l\'éditeur de cartes');
+    lines.push('');
+    lines.push('const CATEGORIES = {');
+    Object.keys(CATEGORIES).forEach(function (key, i, arr) {
+        lines.push('    ' + key + ': ' + JSON.stringify(CATEGORIES[key]) + (i < arr.length - 1 ? ',' : ''));
+    });
+    lines.push('});');
+    lines.push('');
+    lines.push('const RARITIES = {');
+    Object.keys(RARITIES).forEach(function (key, i, arr) {
+        const r = RARITIES[key];
+        lines.push('    ' + key + ': { code: ' + JSON.stringify(r.code) + ', name: ' + JSON.stringify(r.name) + ', weight: ' + r.weight + ', color: ' + JSON.stringify(r.color) + ', bgColor: ' + JSON.stringify(r.bgColor) + ' }' + (i < arr.length - 1 ? ',' : ''));
+    });
+    lines.push('});');
+    lines.push('');
+    lines.push('// Tableau de toutes les cartes');
+    lines.push('const CARDS = [');
+    cards.forEach(function (card, idx) {
+        lines.push('    {');
+        lines.push('        id: ' + card.id + ',');
+        lines.push('        name: ' + JSON.stringify(card.name) + ',');
+        lines.push('        description: ' + JSON.stringify(card.description) + ',');
+        lines.push('        category: ' + (catKeys[card.category] || JSON.stringify(card.category)) + ',');
+        lines.push('        rarity: ' + JSON.stringify(card.rarity) + ',');
+        lines.push('        attack: ' + card.attack + ',');
+        lines.push('        defense: ' + card.defense + ',');
+        lines.push('        views: ' + card.views + ',');
+        lines.push('        emoji: ' + JSON.stringify(card.emoji) + ',');
+        if (card.isCustom) lines.push('        isCustom: true,');
+        lines.push('        image: ' + (card.image ? JSON.stringify(card.image) : 'null'));
+        lines.push('    }' + (idx < cards.length - 1 ? ',' : ''));
+    });
+    lines.push('];');
+    lines.push('');
+    lines.push('// Achievements');
+    lines.push('const ACHIEVEMENTS = {');
+    Object.keys(ACHIEVEMENTS).forEach(function (key, i, arr) {
+        const a = ACHIEVEMENTS[key];
+        lines.push('    ' + key + ': { id: ' + JSON.stringify(a.id) + ', name: ' + JSON.stringify(a.name) + ', description: ' + JSON.stringify(a.description) + ', completed: false }' + (i < arr.length - 1 ? ',' : ''));
+    });
+    lines.push('});');
+    lines.push('');
+    lines.push('// Export pour game.js');
+    lines.push("if (typeof module !== 'undefined' && module.exports) {");
+    lines.push('    module.exports = { CARDS, CATEGORIES, RARITIES, ACHIEVEMENTS };');
+    lines.push('});');
+    return lines.join('\n') + '\n';
 }
 
 // Obtenir la clé de catégorie
@@ -802,3 +822,114 @@ function loadImagePreview(imageUrl, previewId, hiddenInputId) {
         preview.innerHTML = '<span>📷 Aucune image</span>';
     }
 }
+
+// ========== SYSTÈME D'UPLOAD GITHUB ==========
+
+// Ouvrir le modal de configuration GitHub
+function openGithubModal() {
+    const input = document.getElementById('github-token-input');
+    input.value = GitHubSync.getToken();
+    updateGithubTokenStatus('');
+    document.getElementById('github-modal').style.display = 'flex';
+}
+
+function closeGithubModal() {
+    document.getElementById('github-modal').style.display = 'none';
+}
+
+function saveGithubToken() {
+    const token = document.getElementById('github-token-input').value.trim();
+    if (!token) {
+        GitHubSync.clearToken();
+        updateGithubTokenStatus('Token supprimé du navigateur.');
+        return;
+    }
+    GitHubSync.setToken(token);
+    updateGithubTokenStatus('Token enregistré dans le navigateur. Cliquez sur « Tester » pour vérifier la connexion.');
+}
+
+async function testGithubConnection() {
+    updateGithubTokenStatus('Test de connexion en cours...');
+    const token = document.getElementById('github-token-input').value.trim();
+    if (token) GitHubSync.setToken(token);
+    try {
+        const info = await GitHubSync.testConnection();
+        updateGithubTokenStatus('✅ Connecté en tant que ' + info.login + ' — dépôt ' + info.repo + ' accessible.', 'ok');
+    } catch (e) {
+        updateGithubTokenStatus('❌ ' + e.message, 'error');
+    }
+}
+
+function updateGithubTokenStatus(msg, type) {
+    const el = document.getElementById('github-status');
+    el.textContent = msg || ' ';
+    el.className = type || '';
+}
+
+// Confirmer la publication sur GitHub
+function confirmPublishToGithub() {
+    if (!GitHubSync.hasToken()) {
+        openGithubModal();
+        showEditorToast('Info', 'Configurez votre token GitHub (bouton 🔑 Token) pour publier.', 'info');
+        return;
+    }
+    const pendingImages = EditorState.cards.filter(function (c) { return c.image && c.image.indexOf('data:') === 0; }).length;
+    document.getElementById('confirm-title').textContent = 'Publier sur GitHub';
+    document.getElementById('confirm-message').textContent = EditorState.cards.length + ' cartes seront publiées dans data.js' + (pendingImages > 0 ? ', dont ' + pendingImages + ' image(s) à uploader dans images/' : '') + '. Continuer ?';
+    EditorState.pendingAction = 'publish';
+    document.getElementById('confirm-modal').style.display = 'flex';
+}
+
+// Publication effective sur GitHub
+async function doPublishToGithub() {
+    showEditorToast('Info', 'Publication en cours sur GitHub...', 'info');
+    try {
+        let uploaded = 0;
+        for (const card of EditorState.cards) {
+            if (card.image && card.image.indexOf('data:') === 0) {
+                card.image = await GitHubSync.uploadImage(card.id, card.image);
+                uploaded++;
+            }
+        }
+        const content = generateDataJsContent(EditorState.cards);
+        await GitHubSync.putFile(GitHubSync.config.dataPath, content, 'Mise à jour des cartes depuis l\'éditeur (' + EditorState.cards.length + ' cartes)');
+        localStorage.setItem('franceMastersCustomCards', JSON.stringify(EditorState.cards.filter(function (c) { return c.isCustom; })));
+        showEditorToast('Succès', 'Publication réussie !' + (uploaded > 0 ? ' ' + uploaded + ' image(s) uploadée(s) dans images/.' : ''), 'success');
+        renderEditorCards();
+    } catch (e) {
+        showEditorToast('Erreur', 'Publication impossible : ' + e.message, 'error');
+    }
+}
+
+// Recharger data.js depuis GitHub
+async function loadFromGithub() {
+    if (!GitHubSync.hasToken()) {
+        openGithubModal();
+        showEditorToast('Info', 'Configurez votre token GitHub (bouton 🔑 Token) pour recharger.', 'info');
+        return;
+    }
+    showEditorToast('Info', 'Chargement de data.js depuis GitHub...', 'info');
+    try {
+        const file = await GitHubSync.getFile(GitHubSync.config.dataPath);
+        const loadedCards = GitHubSync.parseCards(file.content);
+        if (!Array.isArray(loadedCards) || loadedCards.length === 0) throw new Error('Aucune carte trouvée dans data.js');
+        EditorState.cards = loadedCards;
+        EditorState.filteredCards = [...loadedCards];
+        renderEditorCards();
+        renderCategoriesStats();
+        renderRaritiesStats();
+        renderOverviewStats();
+        renderCharts();
+        showEditorToast('Succès', loadedCards.length + ' cartes chargées depuis GitHub.', 'success');
+    } catch (e) {
+        showEditorToast('Erreur', 'Chargement impossible : ' + e.message, 'error');
+    }
+}
+
+// Exposer les nouvelles fonctions
+window.confirmPublishToGithub = confirmPublishToGithub;
+window.openGithubModal = openGithubModal;
+window.closeGithubModal = closeGithubModal;
+window.saveGithubToken = saveGithubToken;
+window.testGithubConnection = testGithubConnection;
+window.loadFromGithub = loadFromGithub;

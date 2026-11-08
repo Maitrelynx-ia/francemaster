@@ -18,7 +18,7 @@
    - Vous commencez avec **300 pièces**
    - Ouvrez des **packs** (100 pièces chacun) pour obtenir des cartes
    - Chaque pack contient **5 cartes** avec au moins 1 carte Rare ou mieux
-   - Collectionnez les 88 cartes disponibles
+   - Collectionnez les 200 cartes disponibles
 
 3. **Mécaniques de jeu** :
    - **Ouverture de packs** : Animation de retournement carte par carte
@@ -34,7 +34,9 @@ francemaster/
 ├── index.html          # Page principale du jeu
 ├── style.css           # Styles CSS du jeu
 ├── game.js             # Logique principale du jeu
-├── data.js             # Données des 88 cartes
+├── data.js             # Données des 200 cartes
+├── github-sync.js       # Système d'upload GitHub (cartes + images)
+├── images/              # Images de cartes uploadées via l'éditeur
 ├── editor.html         # Interface d'édition des cartes
 ├── editor.js           # Logique de l'éditeur
 ├── admin.css           # Styles CSS de l'éditeur
@@ -43,21 +45,21 @@ francemaster/
 
 ## 👑 Catégories de cartes
 
-Le jeu comprend **88 cartes** réparties en 6 catégories :
+Le jeu comprend **200 cartes** réparties en 6 catégories :
 
-1. **Histoire & Personnages** (21 cartes)
+1. **Histoire & Personnages** (43 cartes)
    - Napoléon Bonaparte, Jeanne d'Arc, Louis XIV, Charles de Gaulle, Marie Curie, etc.
 
-2. **Monuments & Lieux** (16 cartes)
+2. **Monuments & Lieux** (21 cartes)
    - Tour Eiffel, Louvre, Château de Versailles, Mont-Saint-Michel, etc.
 
-3. **Gastronomie** (14 cartes)
+3. **Gastronomie** (30 cartes)
    - Baguette, Croissant, Bœuf bourguignon, Camembert, Bouillabaisse, etc.
 
-4. **Géographie & Régions** (12 cartes)
+4. **Géographie & Régions** (52 cartes)
    - Mont Blanc, La Seine, La Loire, Bretagne, Provence, Côte d'Azur, etc.
 
-5. **Sciences & Arts** (13 cartes)
+5. **Sciences & Arts** (42 cartes)
    - Louis Pasteur, Gustave Eiffel, Victor Hugo, Molière, Cézanne, Debussy, etc.
 
 6. **Sport & Culture** (12 cartes)
@@ -127,9 +129,40 @@ Pour appliquer les modifications au jeu :
 3. Remplacez l'ancien fichier `data.js` par le nouveau
 4. Rafraîchissez la page du jeu
 
+## ☁️ Système d'Upload GitHub
+
+L'éditeur peut publier directement les cartes et les images sur le dépôt GitHub (pas besoin de git en ligne de commande) :
+
+### Configuration (une seule fois)
+
+1. Créez un **Personal Access Token** sur GitHub : *Settings → Developer settings → Fine-grained personal access tokens → Generate new token*
+2. Limitez le token au dépôt **francemaster** et donnez uniquement la permission **Contents : Read and Write**
+3. Ouvrez `editor.html`, cliquez sur **🔑 Token** et collez le token (stocké uniquement dans le localStorage de votre navigateur, envoyé uniquement à api.github.com)
+
+### Publication des cartes
+
+1. Modifiez ou ajoutez des cartes dans l'éditeur
+2. Cliquez sur **☁️ Publier sur GitHub** : `data.js` est mis à jour sur la branche `main` en un seul commit
+3. Les images ajoutées via le bouton d'upload sont poussées dans le dossier `images/` et la carte reçoit automatiquement l'URL relative `images/card-<id>.<ext>`
+4. **🔄 Recharger** récupère la dernière version de `data.js` depuis GitHub
+
+### Images
+
+Les 200 cartes existantes utilisent les miniatures **Wikimedia Commons** (taille standard 250px). Pour une nouvelle carte, vous pouvez :
+
+- coller l'URL d'une image (ex. une miniature Wikimedia Commons, en utilisant une taille standard : 250px, 330px, 500px...),
+- ou uploader un fichier local : il sera poussé dans `images/` lors de la publication.
+
+### ⚠️ Sécurité
+
+- Le token reste dans votre navigateur : ne le partagez jamais
+- Utilisez un token *fine-grained* limité au seul dépôt `francemaster`
+- Révoquez le token quand vous ne l'utilisez plus
+
+
 ## 📊 Statistiques du Jeu
 
-- **Total cartes** : 88
+- **Total cartes** : 200
 - **Catégories** : 6
 - **Raretés** : 5
 - **Pièces de départ** : 300
