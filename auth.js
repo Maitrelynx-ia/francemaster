@@ -107,7 +107,8 @@ function register(event) {
     const newUser = {
         username: username,
         password: hashPassword(password),
-        createdAt: Date.now()
+        createdAt: Date.now(),
+        role: AuthState.users.length === 0 ? 'admin' : 'joueur'
     };
     
     AuthState.users.push(newUser);
@@ -357,6 +358,17 @@ function showProfileModal() {
     document.getElementById('profile-username').textContent = AuthState.currentUser.username;
     updatePackCounter();
     updatePackTimer();
+    
+    const roleEl = document.getElementById('profile-role');
+    if (roleEl) {
+        const fullUser = AuthState.users.find(u => u.username === AuthState.currentUser.username);
+        const role = (fullUser && fullUser.role) || 'joueur';
+        roleEl.textContent = role === 'admin' ? '🛡️ Administrateur' : (role === 'moderateur' ? '⭐ Modérateur' : '🎮 Joueur');
+    }
+    const adminBtn = document.getElementById('admin-panel-btn');
+    if (adminBtn) {
+        adminBtn.style.display = (window.isAdmin && window.isAdmin()) ? 'inline-block' : 'none';
+    }
 }
 
 // Fermer le modal de profil
