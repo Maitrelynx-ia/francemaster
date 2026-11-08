@@ -1797,3 +1797,14 @@ body {
         box-shadow: none;
     }
 }
+
+/* Admin Section */
+.admin-section {
+    border-top: 2px dashed var(--primary);
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-lg);
+}
+
+.admin-section h3 {
+    color: var(--secondary);
+}
