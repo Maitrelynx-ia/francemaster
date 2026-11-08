@@ -541,6 +541,10 @@ function renderDuelSetup() {
     });
     renderSelectedSlots();
     startBtn.disabled = GameState.duel.playerCards.length < 3;
+    const currentDifficulty = GameState.duel.difficulty || 'normal';
+    document.querySelectorAll('.difficulty-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.difficulty === currentDifficulty);
+    });
 }
 
 function selectCardForDuel(card) {
@@ -577,11 +581,35 @@ function renderSelectedSlots() {
     }
 }
 
+function setDuelDifficulty(difficulty) {
+    GameState.duel.difficulty = difficulty;
+    const descs = {
+        easy: 'Adversaire plus faible, 20s par question, récompenses x1',
+        normal: 'Adversaire équilibré, 15s par question, récompenses x1.5',
+        hard: 'Adversaire redoutable, 10s par question, IA +25% de dégâts, récompenses x2.5'
+    };
+    document.querySelectorAll('.difficulty-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.difficulty === difficulty);
+    });
+    const desc = document.getElementById('duel-difficulty-desc');
+    if (desc) desc.textContent = descs[difficulty] || descs.normal;
+}
+
+function getDuelConfig() {
+    const configs = {
+        easy: { label: 'Facile', power: 0.75, oppoMult: 0.8, timer: 20, rewardMult: 1, penalty: 15, rewardText: '≈ 60-110 pièces' },
+        normal: { label: 'Normal', power: 1, oppoMult: 1, timer: 15, rewardMult: 1.5, penalty: 25, rewardText: '≈ 90-170 pièces' },
+        hard: { label: 'Difficile', power: 1.3, oppoMult: 1.25, timer: 10, rewardMult: 2.5, penalty: 40, rewardText: '≈ 150-280 pièces' }
+    };
+    return configs[GameState.duel.difficulty] || configs.normal;
+}
+
 function startDuel() {
     if (GameState.duel.playerCards.length < 3) {
         showToast('Erreur', 'Sélectionnez 3 cartes !', 'error');
         return;
     }
+    const config = getDuelConfig();
     GameState.duel.opponentCards = generateOpponentCards();
     GameState.duel.playerHP = GameState.duel.playerCards.map(card => card.defense * 10);
     GameState.duel.opponentHP = GameState.duel.opponentCards.map(card => card.defense * 10);
@@ -589,7 +617,13 @@ function startDuel() {
     GameState.duel.opponentActiveIndex = 0;
     GameState.duel.turn = 1;
     GameState.duel.log = [];
+    GameState.duel.streak = 0;
+    GameState.duel.maxStreak = 0;
+    GameState.duel.correctCount = 0;
+    GameState.duel.answerCount = 0;
     GameState.duel.isOngoing = true;
+    const rewardEl = document.getElementById('duel-reward');
+    if (rewardEl) rewardEl.textContent = config.rewardText;
     document.getElementById('duel-setup').style.display = 'none';
     document.getElementById('duel-ongoing').style.display = 'block';
     renderDuelOngoing();
@@ -598,74 +632,61 @@ function startDuel() {
 }
 
 function generateOpponentCards() {
-    const opponentCards = [];
-    const playerAverageAttack = GameState.duel.playerCards.reduce((sum, card) => sum + card.attack, 0) / GameState.duel.playerCards.length;
-    const playerAverageDefense = GameState.duel.playerCards.reduce((sum, card) => sum + card.defense, 0) / GameState.duel.playerCards.length;
+    const config = getDuelConfig();
+    const playerPower = GameState.duel.playerCards.reduce((sum, card) => sum + card.attack + card.defense, 0) / GameState.duel.playerCards.length;
+    const targetPower = playerPower * config.power;
     const availableCards = [...CARDS];
     availableCards.sort((a, b) => {
-        const aDiff = Math.abs(a.attack + a.defense - (playerAverageAttack + playerAverageDefense));
-        const bDiff = Math.abs(b.attack + b.defense - (playerAverageAttack + playerAverageDefense));
+        const aDiff = Math.abs((a.attack + a.defense) - targetPower);
+        const bDiff = Math.abs((b.attack + b.defense) - targetPower);
         return aDiff - bDiff;
     });
-    for (let i = 0; i < 3; i++) opponentCards.push(availableCards[i]);
-    return opponentCards;
+    const picks = [];
+    for (let i = 0; i < 3; i++) {
+        const windowSize = Math.min(10, availableCards.length);
+        picks.push(availableCards.splice(Math.floor(Math.random() * windowSize), 1)[0]);
+    }
+    return picks;
+}
+
+function renderDuelSide(containerId, cards, hps, activeIndex, owned) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = '';
+    cards.forEach((card, index) => {
+        const cardElement = document.createElement('div');
+        cardElement.className = owned ? ('card ' + card.rarity) : 'card locked';
+        cardElement.innerHTML = createCardHTML(card, owned);
+        const maxHp = card.defense * 10;
+        const hp = Math.max(0, hps[index]);
+        const track = document.createElement('div');
+        track.className = 'duel-hp-track';
+        const fill = document.createElement('div');
+        fill.className = 'duel-hp-fill';
+        const ratio = hp / maxHp;
+        if (ratio > 0.5) fill.classList.add('high');
+        else if (ratio > 0.25) fill.classList.add('mid');
+        else fill.classList.add('low');
+        fill.style.width = Math.max(0, ratio * 100) + '%';
+        track.appendChild(fill);
+        cardElement.appendChild(track);
+        const hpText = document.createElement('div');
+        hpText.className = 'duel-hp-text';
+        hpText.textContent = Math.round(hp) + '/' + maxHp;
+        cardElement.appendChild(hpText);
+        if (index === activeIndex) cardElement.classList.add('active');
+        container.appendChild(cardElement);
+    });
 }
 
 function renderDuelOngoing() {
-    const playerCardsContainer = document.getElementById('duel-player-cards');
-    playerCardsContainer.innerHTML = '';
-    GameState.duel.playerCards.forEach((card, index) => {
-        const cardElement = document.createElement('div');
-        cardElement.className = 'card ' + card.rarity;
-        cardElement.innerHTML = createCardHTML(card, true);
-        const hpBar = document.createElement('div');
-        hpBar.className = 'duel-hp-bar';
-        hpBar.style.width = '100%';
-        hpBar.style.height = '4px';
-        hpBar.style.background = 'linear-gradient(90deg, #4caf50 100%, #f44336 0%)';
-        hpBar.style.borderRadius = '2px';
-        hpBar.style.marginTop = '4px';
-        const hpPercent = (GameState.duel.playerHP[index] / (card.defense * 10)) * 100;
-        hpBar.style.background = `linear-gradient(90deg, #4caf50 ${hpPercent}%, #f44336 ${hpPercent}%)`;
-        cardElement.appendChild(hpBar);
-        if (index === GameState.duel.playerActiveIndex) cardElement.classList.add('active');
-        playerCardsContainer.appendChild(cardElement);
-    });
-    
-    const opponentCardsContainer = document.getElementById('duel-opponent-cards');
-    opponentCardsContainer.innerHTML = '';
-    GameState.duel.opponentCards.forEach((card, index) => {
-        const cardElement = document.createElement('div');
-        cardElement.className = 'card locked';
-        cardElement.innerHTML = createCardHTML(card, false);
-        const hpBar = document.createElement('div');
-        hpBar.className = 'duel-hp-bar';
-        hpBar.style.width = '100%';
-        hpBar.style.height = '4px';
-        hpBar.style.background = 'linear-gradient(90deg, #4caf50 100%, #f44336 0%)';
-        hpBar.style.borderRadius = '2px';
-        hpBar.style.marginTop = '4px';
-        const hpPercent = (GameState.duel.opponentHP[index] / (card.defense * 10)) * 100;
-        hpBar.style.background = `linear-gradient(90deg, #4caf50 ${hpPercent}%, #f44336 ${hpPercent}%)`;
-        cardElement.appendChild(hpBar);
-        if (index === GameState.duel.opponentActiveIndex) cardElement.classList.add('active');
-        opponentCardsContainer.appendChild(cardElement);
-    });
+    renderDuelSide('duel-player-cards', GameState.duel.playerCards, GameState.duel.playerHP, GameState.duel.playerActiveIndex, true);
+    renderDuelSide('duel-opponent-cards', GameState.duel.opponentCards, GameState.duel.opponentHP, GameState.duel.opponentActiveIndex, false);
     
     const opponentActive = GameState.duel.opponentCards[GameState.duel.opponentActiveIndex];
-    document.getElementById('duel-opponent-active').innerHTML = `
-        <div class="card" style="width: 100px; height: 140px;">
-            <div class="card-header" data-category="${opponentActive.category}">
-                <div class="card-emoji">${opponentActive.emoji}</div>
-            </div>
-            <div class="card-body"><div class="card-name">???</div></div>
-        </div>
-    `;
+    document.getElementById('duel-opponent-active').innerHTML = '<div class="card" style="width: 100px; height: 140px;"><div class="card-header" data-category="' + opponentActive.category + '"><div class="card-emoji">' + opponentActive.emoji + '</div></div><div class="card-body"><div class="card-name">???</div></div></div>';
     
     const playerActive = GameState.duel.playerCards[GameState.duel.playerActiveIndex];
-    document.getElementById('duel-player-active').innerHTML = `
-        <div class="card ${playerActive.rarity}" style="width: 100px; height: 140px;">${createCardHTML(playerActive, true)}</div>
-    `;
+    document.getElementById('duel-player-active').innerHTML = '<div class="card ' + playerActive.rarity + '" style="width: 100px; height: 140px;">' + createCardHTML(playerActive, true) + '</div>';
     
     renderDuelLog();
     document.getElementById('duel-turn').textContent = GameState.duel.turn;
@@ -760,7 +781,11 @@ function generateCardNameQuestion() {
 function renderDuelQuestion() {
     const qc = document.getElementById('duel-question');
     const ac = document.getElementById('duel-answers');
-    qc.innerHTML = `<h3>${GameState.duel.currentQuestion}</h3>`;
+    let html = '<h3>' + GameState.duel.currentQuestion + '</h3>';
+    if (GameState.duel.streak >= 2) {
+        html += '<div class="duel-combo">🔥 Série de ' + GameState.duel.streak + ' bonnes réponses !</div>';
+    }
+    qc.innerHTML = html;
     ac.innerHTML = '';
     GameState.duel.currentAnswers.forEach((answer, index) => {
         const el = document.createElement('div');
@@ -770,106 +795,185 @@ function renderDuelQuestion() {
         el.addEventListener('click', () => selectDuelAnswer(index));
         ac.appendChild(el);
     });
+    startQuestionTimer();
+}
+
+function startQuestionTimer() {
+    stopQuestionTimer();
+    const config = getDuelConfig();
+    let remaining = config.timer;
+    GameState.duel.remainingTime = remaining;
+    updateDuelTimerDisplay(remaining, config.timer);
+    GameState.duel.questionTimerId = setInterval(() => {
+        remaining -= 1;
+        GameState.duel.remainingTime = remaining;
+        updateDuelTimerDisplay(remaining, config.timer);
+        if (remaining <= 0) {
+            stopQuestionTimer();
+            handleDuelTimeout();
+        }
+    }, 1000);
+}
+
+function stopQuestionTimer() {
+    if (GameState.duel.questionTimerId) {
+        clearInterval(GameState.duel.questionTimerId);
+        GameState.duel.questionTimerId = null;
+    }
+}
+
+function updateDuelTimerDisplay(remaining, total) {
+    const display = document.getElementById('duel-timer-display');
+    if (display) {
+        display.textContent = '⏱️ ' + Math.max(0, remaining) + 's';
+        display.classList.toggle('urgent', remaining <= 5);
+    }
+    const bar = document.getElementById('duel-timer-bar');
+    if (bar) bar.style.width = Math.max(0, (remaining / total) * 100) + '%';
+}
+
+function handleDuelTimeout() {
+    if (!GameState.duel.isOngoing || GameState.duel.selectedAnswerIndex !== null) return;
+    GameState.duel.selectedAnswerIndex = -1;
+    GameState.duel.answerCount += 1;
+    GameState.duel.streak = 0;
+    GameState.duel.log.push('Tour ' + GameState.duel.turn + ': ⏰ Temps écoulé ! L\'IA contre-attaque');
+    renderDuelLog();
+    opponentAttacks();
 }
 
 function selectDuelAnswer(index) {
     if (GameState.duel.selectedAnswerIndex !== null) return;
+    stopQuestionTimer();
     GameState.duel.selectedAnswerIndex = index;
+    GameState.duel.answerCount += 1;
     const answers = document.querySelectorAll('.duel-answer');
     answers.forEach((el, i) => { if (i === index) el.classList.add('selected'); });
     
     setTimeout(() => {
         const isCorrect = index === GameState.duel.correctAnswerIndex;
         if (isCorrect) {
-            attackOpponent();
+            GameState.duel.correctCount += 1;
+            GameState.duel.streak += 1;
+            GameState.duel.maxStreak = Math.max(GameState.duel.maxStreak || 0, GameState.duel.streak);
             answers.forEach((el, i) => {
                 if (i === index) { el.classList.remove('selected'); el.classList.add('correct'); }
             });
-            const pa = GameState.duel.playerCards[GameState.duel.playerActiveIndex];
-            const oa = GameState.duel.opponentCards[GameState.duel.opponentActiveIndex];
-            GameState.duel.log.push(`Tour ${GameState.duel.turn}: ✅ ${pa.name} attaque ${oa.name} (${pa.attack} dégâts)`);
+            attackOpponent();
         } else {
-            opponentAttacks();
+            GameState.duel.streak = 0;
             answers.forEach((el, i) => {
                 if (i === index) { el.classList.remove('selected'); el.classList.add('wrong'); }
                 if (i === GameState.duel.correctAnswerIndex) el.classList.add('correct');
             });
-            const pa = GameState.duel.playerCards[GameState.duel.playerActiveIndex];
-            const oa = GameState.duel.opponentCards[GameState.duel.opponentActiveIndex];
-            GameState.duel.log.push(`Tour ${GameState.duel.turn}: ❌ ${oa.name} contre-attaque ${pa.name} (${oa.attack} dégâts)`);
+            opponentAttacks();
         }
-        renderDuelLog();
-        setTimeout(() => checkDuelEnd(), 1000);
-    }, 500);
+    }, 600);
+}
+
+function showDuelDamage(containerId, index, amount, isCrit) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    const target = container.children[index];
+    if (!target) return;
+    target.classList.add('shake', 'damage');
+    const float = document.createElement('span');
+    float.className = 'duel-float-dmg' + (isCrit ? ' crit' : '');
+    float.textContent = (isCrit ? '💥 -' : '-') + amount;
+    target.appendChild(float);
+    setTimeout(() => float.remove(), 1100);
 }
 
 function attackOpponent() {
     const pa = GameState.duel.playerCards[GameState.duel.playerActiveIndex];
     const oai = GameState.duel.opponentActiveIndex;
-    GameState.duel.opponentHP[oai] -= pa.attack;
+    let damage = Math.round(pa.attack * (0.85 + Math.random() * 0.3));
+    const isCrit = Math.random() < 0.15;
+    if (isCrit) damage *= 2;
+    if (GameState.duel.streak >= 5) damage = Math.round(damage * 2);
+    else if (GameState.duel.streak >= 3) damage = Math.round(damage * 1.5);
+    GameState.duel.opponentHP[oai] -= damage;
+    const comboText = GameState.duel.streak >= 5 ? ' (combo x2)' : (GameState.duel.streak >= 3 ? ' (combo x1.5)' : '');
+    GameState.duel.log.push('Tour ' + GameState.duel.turn + ': ✅ ' + (isCrit ? '💥 CRITIQUE ! ' : '') + pa.name + ' inflige ' + damage + ' dégâts' + comboText);
     if (GameState.duel.opponentHP[oai] <= 0) {
         GameState.duel.opponentHP[oai] = 0;
-        let next = (GameState.duel.opponentActiveIndex + 1) % GameState.duel.opponentCards.length;
-        while (next !== GameState.duel.opponentActiveIndex && GameState.duel.opponentHP[next] <= 0) {
+        GameState.duel.log.push('💥 Carte adverse vaincue !');
+        let next = (oai + 1) % GameState.duel.opponentCards.length;
+        while (next !== oai && GameState.duel.opponentHP[next] <= 0) {
             next = (next + 1) % GameState.duel.opponentCards.length;
         }
         GameState.duel.opponentActiveIndex = next;
-        const oc = GameState.duel.opponentCards[oai];
-        GameState.duel.log.push(`💥 ${oc.name} vaincue !`);
     }
     GameState.duel.turn += 1;
     GameState.duel.selectedAnswerIndex = null;
     renderDuelOngoing();
-    setTimeout(() => generateDuelQuestion(), 1000);
+    showDuelDamage('duel-opponent-cards', oai, damage, isCrit);
+    setTimeout(() => {
+        if (!GameState.duel.isOngoing) return;
+        if (!checkDuelEnd()) generateDuelQuestion();
+    }, 1300);
 }
 
 function opponentAttacks() {
+    const config = getDuelConfig();
     const oa = GameState.duel.opponentCards[GameState.duel.opponentActiveIndex];
     const pai = GameState.duel.playerActiveIndex;
-    GameState.duel.playerHP[pai] -= oa.attack;
+    const pa = GameState.duel.playerCards[pai];
+    let damage = Math.round(oa.attack * (0.85 + Math.random() * 0.3) * config.oppoMult);
+    const isCrit = GameState.duel.difficulty === 'hard' && Math.random() < 0.1;
+    if (isCrit) damage *= 2;
+    GameState.duel.playerHP[pai] -= damage;
+    GameState.duel.log.push('Tour ' + GameState.duel.turn + ': ❌ ' + (isCrit ? '💥 CRITIQUE ! ' : '') + 'L\'IA inflige ' + damage + ' dégâts à ' + pa.name);
     if (GameState.duel.playerHP[pai] <= 0) {
         GameState.duel.playerHP[pai] = 0;
-        let next = (GameState.duel.playerActiveIndex + 1) % GameState.duel.playerCards.length;
-        while (next !== GameState.duel.playerActiveIndex && GameState.duel.playerHP[next] <= 0) {
+        GameState.duel.log.push('💥 ' + pa.name + ' vaincue !');
+        let next = (pai + 1) % GameState.duel.playerCards.length;
+        while (next !== pai && GameState.duel.playerHP[next] <= 0) {
             next = (next + 1) % GameState.duel.playerCards.length;
         }
         GameState.duel.playerActiveIndex = next;
-        const pc = GameState.duel.playerCards[pai];
-        GameState.duel.log.push(`💥 ${pc.name} vaincue !`);
     }
     GameState.duel.turn += 1;
     GameState.duel.selectedAnswerIndex = null;
     renderDuelOngoing();
-    setTimeout(() => generateDuelQuestion(), 1000);
+    showDuelDamage('duel-player-cards', pai, damage, isCrit);
+    setTimeout(() => {
+        if (!GameState.duel.isOngoing) return;
+        if (!checkDuelEnd()) generateDuelQuestion();
+    }, 1300);
 }
 
 function checkDuelEnd() {
     const allPlayerDefeated = GameState.duel.playerHP.every(hp => hp <= 0);
     const allOpponentDefeated = GameState.duel.opponentHP.every(hp => hp <= 0);
-    if (allPlayerDefeated || allOpponentDefeated) {
-        GameState.duel.isOngoing = false;
-        document.getElementById('duel-ongoing').style.display = 'none';
-        document.getElementById('duel-result').style.display = 'block';
-        GameState.stats.duelsPlayed += 1;
-        const rc = document.getElementById('duel-result-content');
-        if (allOpponentDefeated) {
-            GameState.stats.duelsWon += 1;
-            const reward = 50 + Math.floor(Math.random() * 101);
-            GameState.coins += reward;
-            GameState.stats.coinsEarned += reward;
-            rc.className = 'duel-result-content win';
-            rc.innerHTML = `<h2>🎉 VICTOIRE !</h2><p>Vous avez vaincu l'IA !</p><p class="reward">+${reward} pièces</p>`;
-            checkAchievements();
-        } else {
-            const penalty = 25 + Math.floor(Math.random() * 26);
-            GameState.coins -= penalty;
-            if (GameState.coins < 0) GameState.coins = 0;
-            rc.className = 'duel-result-content lose';
-            rc.innerHTML = `<h2>😢 DÉFAITE</h2><p>L'IA vous a vaincu !</p><p class="reward">-${penalty} pièces</p>`;
-        }
-        saveGame();
-        updateUI();
+    if (!allPlayerDefeated && !allOpponentDefeated) return false;
+    stopQuestionTimer();
+    GameState.duel.isOngoing = false;
+    document.getElementById('duel-ongoing').style.display = 'none';
+    document.getElementById('duel-result').style.display = 'block';
+    GameState.stats.duelsPlayed += 1;
+    const config = getDuelConfig();
+    const rc = document.getElementById('duel-result-content');
+    const accuracy = GameState.duel.answerCount > 0 ? Math.round((GameState.duel.correctCount / GameState.duel.answerCount) * 100) : 0;
+    const statsHtml = '<div class="duel-result-stats"><div><span>Précision</span><strong>' + accuracy + '%</strong></div><div><span>Meilleure série</span><strong>' + (GameState.duel.maxStreak || 0) + ' 🔥</strong></div><div><span>Difficulté</span><strong>' + config.label + '</strong></div><div><span>Tours</span><strong>' + GameState.duel.turn + '</strong></div></div>';
+    if (allOpponentDefeated) {
+        GameState.stats.duelsWon += 1;
+        let reward = 50 + (GameState.duel.maxStreak || 0) * 10 + GameState.duel.correctCount * 5;
+        reward = Math.round(reward * config.rewardMult);
+        GameState.coins += reward;
+        GameState.stats.coinsEarned += reward;
+        rc.className = 'duel-result-content win';
+        rc.innerHTML = '<h2>🎉 VICTOIRE !</h2><p>Vous avez vaincu l\'IA !</p>' + statsHtml + '<p class="reward">+' + reward + ' pièces</p>';
+        checkAchievements();
+    } else {
+        const penalty = Math.min(config.penalty + Math.floor(Math.random() * 11), GameState.coins);
+        GameState.coins -= penalty;
+        rc.className = 'duel-result-content lose';
+        rc.innerHTML = '<h2>😢 DÉFAITE</h2><p>L\'IA vous a vaincu !</p>' + statsHtml + '<p class="reward">-' + penalty + ' pièces</p>';
     }
+    saveGame();
+    updateUI();
+    return true;
 }
 
 function renderDuelLog() {
@@ -885,11 +989,15 @@ function renderDuelLog() {
 }
 
 function returnToDuelSetup() {
+    stopQuestionTimer();
+    const keptDifficulty = GameState.duel.difficulty || 'normal';
     GameState.duel = {
         isOngoing: false, playerCards: [], opponentCards: [],
         playerActiveIndex: 0, opponentActiveIndex: 0, playerHP: [], opponentHP: [],
         turn: 1, currentQuestion: null, currentAnswers: [], correctAnswerIndex: null,
-        selectedAnswerIndex: null, log: []
+        selectedAnswerIndex: null, log: [], difficulty: keptDifficulty,
+        streak: 0, maxStreak: 0, correctCount: 0, answerCount: 0,
+        questionTimerId: null, remainingTime: 0
     };
     document.getElementById('duel-result').style.display = 'none';
     document.getElementById('duel-setup').style.display = 'block';

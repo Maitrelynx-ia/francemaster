@@ -234,6 +234,12 @@
 
                 <div class="duel-setup" id="duel-setup">
                     <h3>Sélectionnez 3 cartes</h3>
+                    <div class="difficulty-selector">
+                        <button class="difficulty-btn" data-difficulty="easy" onclick="setDuelDifficulty('easy')">😊 Facile</button>
+                        <button class="difficulty-btn active" data-difficulty="normal" onclick="setDuelDifficulty('normal')">⚔️ Normal</button>
+                        <button class="difficulty-btn" data-difficulty="hard" onclick="setDuelDifficulty('hard')">💀 Difficile</button>
+                    </div>
+                    <div class="difficulty-desc" id="duel-difficulty-desc">Adversaire équilibré, 15s par question, récompenses x1.5</div>
                     <div class="duel-selection-grid" id="duel-selection-grid"></div>
                     <div class="duel-selected-cards" id="duel-selected-cards"></div>
                     <button class="btn btn-primary" onclick="startDuel()" id="start-duel-btn" disabled>
@@ -252,7 +258,10 @@
                         <div class="duel-center">
                             <div class="duel-question" id="duel-question"></div>
                             <div class="duel-answers" id="duel-answers"></div>
-                            <div class="duel-timer" id="duel-timer"></div>
+                            <div class="duel-timer-wrap">
+                                <span id="duel-timer-display">⏱️ 15s</span>
+                                <div class="duel-timer-track"><div id="duel-timer-bar" style="width: 100%;"></div></div>
+                            </div>
                             <div class="duel-log" id="duel-log"></div>
                         </div>
                         
