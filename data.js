@@ -32,6 +32,7 @@ const CARDS = [
         defense: 95,
         views: 12500000,
         emoji: "👑"
+        image: null
     },
     {
         id: 2,
@@ -43,6 +44,7 @@ const CARDS = [
         defense: 88,
         views: 11200000,
         emoji: "⚔️"
+        image: null
     },
     
     // Ultra Rares
@@ -56,6 +58,7 @@ const CARDS = [
         defense: 90,
         views: 9800000,
         emoji: "👑"
+        image: null
     },
     {
         id: 4,
@@ -67,6 +70,7 @@ const CARDS = [
         defense: 92,
         views: 8500000,
         emoji: "🎖️"
+        image: null
     },
     {
         id: 5,
@@ -78,6 +82,7 @@ const CARDS = [
         defense: 85,
         views: 7200000,
         emoji: "🔬"
+        image: null
     },
     {
         id: 6,
@@ -89,6 +94,7 @@ const CARDS = [
         defense: 82,
         views: 5800000,
         emoji: "🛡️"
+        image: null
     },
     
     // Super Rares
@@ -102,6 +108,7 @@ const CARDS = [
         defense: 80,
         views: 4500000,
         emoji: "👑"
+        image: null
     },
     {
         id: 8,
@@ -113,6 +120,7 @@ const CARDS = [
         defense: 78,
         views: 3800000,
         emoji: "👑"
+        image: null
     },
     {
         id: 9,
@@ -124,6 +132,7 @@ const CARDS = [
         defense: 75,
         views: 3500000,
         emoji: "⚖️"
+        image: null
     },
     {
         id: 10,
@@ -135,6 +144,7 @@ const CARDS = [
         defense: 85,
         views: 4200000,
         emoji: "📜"
+        image: null
     },
     
     // Rares
@@ -148,6 +158,7 @@ const CARDS = [
         defense: 78,
         views: 3200000,
         emoji: "👑"
+        image: null
     },
     {
         id: 12,
@@ -159,6 +170,7 @@ const CARDS = [
         defense: 88,
         views: 2800000,
         emoji: "⛪"
+        image: null
     },
     {
         id: 13,
@@ -170,6 +182,7 @@ const CARDS = [
         defense: 82,
         views: 2500000,
         emoji: "🎭"
+        image: null
     },
     {
         id: 14,
@@ -181,6 +194,7 @@ const CARDS = [
         defense: 80,
         views: 2200000,
         emoji: "🎭"
+        image: null
     },
     {
         id: 15,
@@ -192,6 +206,7 @@ const CARDS = [
         defense: 75,
         views: 2000000,
         emoji: "⚔️"
+        image: null
     },
     {
         id: 16,
@@ -203,6 +218,7 @@ const CARDS = [
         defense: 65,
         views: 1800000,
         emoji: "🗣️"
+        image: null
     },
     {
         id: 17,
@@ -214,6 +230,7 @@ const CARDS = [
         defense: 78,
         views: 1600000,
         emoji: "🎖️"
+        image: null
     },
     
     // Communes
@@ -227,6 +244,7 @@ const CARDS = [
         defense: 70,
         views: 1200000,
         emoji: "👑"
+        image: null
     },
     {
         id: 19,
@@ -238,6 +256,7 @@ const CARDS = [
         defense: 65,
         views: 900000,
         emoji: "👑"
+        image: null
     },
     {
         id: 20,
@@ -249,6 +268,7 @@ const CARDS = [
         defense: 72,
         views: 1100000,
         emoji: "👑"
+        image: null
     },
     {
         id: 21,
@@ -260,6 +280,7 @@ const CARDS = [
         defense: 60,
         views: 800000,
         emoji: "📰"
+        image: null
     },
     
     // ========== MONUMENTS & LIEUX ==========
@@ -274,6 +295,7 @@ const CARDS = [
         defense: 98,
         views: 15000000,
         emoji: "🗼"
+        image: null
     },
     {
         id: 23,
@@ -285,6 +307,7 @@ const CARDS = [
         defense: 95,
         views: 14500000,
         emoji: "🏛️"
+        image: null
     },
     
     // Ultra Rares
@@ -298,6 +321,7 @@ const CARDS = [
         defense: 92,
         views: 12000000,
         emoji: "🏰"
+        image: null
     },
     {
         id: 25,
@@ -309,6 +333,7 @@ const CARDS = [
         defense: 88,
         views: 8500000,
         emoji: "🏰"
+        image: null
     },
     {
         id: 26,
@@ -320,6 +345,7 @@ const CARDS = [
         defense: 82,
         views: 6500000,
         emoji: "🌉"
+        image: null
     },
     
     // Super Rares
@@ -333,6 +359,7 @@ const CARDS = [
         defense: 78,
         views: 4500000,
         emoji: "🏟️"
+        image: null
     },
     {
         id: 28,
@@ -344,6 +371,7 @@ const CARDS = [
         defense: 85,
         views: 5200000,
         emoji: "⛪"
+        image: null
     },
     {
         id: 29,
@@ -355,6 +383,7 @@ const CARDS = [
         defense: 80,
         views: 4000000,
         emoji: "🏰"
+        image: null
     },
     {
         id: 30,
@@ -366,6 +395,7 @@ const CARDS = [
         defense: 75,
         views: 3800000,
         emoji: "🏆"
+        image: null
     },
     
     // Rares
@@ -379,6 +409,7 @@ const CARDS = [
         defense: 72,
         views: 3000000,
         emoji: "⛪"
+        image: null
     },
     {
         id: 32,
@@ -390,6 +421,7 @@ const CARDS = [
         defense: 78,
         views: 2500000,
         emoji: "🎭"
+        image: null
     },
     {
         id: 33,
@@ -401,6 +433,7 @@ const CARDS = [
         defense: 75,
         views: 2200000,
         emoji: "🏛️"
+        image: null
     },
     {
         id: 34,
@@ -412,6 +445,7 @@ const CARDS = [
         defense: 75,
         views: 2000000,
         emoji: "🏢"
+        image: null
     },
     {
         id: 35,
@@ -423,6 +457,7 @@ const CARDS = [
         defense: 70,
         views: 1800000,
         emoji: "🏛️"
+        image: null
     },
     
     // Communes
@@ -436,6 +471,7 @@ const CARDS = [
         defense: 60,
         views: 1000000,
         emoji: "🏙️"
+        image: null
     },
     {
         id: 37,
@@ -447,6 +483,7 @@ const CARDS = [
         defense: 65,
         views: 1200000,
         emoji: "⛪"
+        image: null
     },
     
     // ========== GASTRONOMIE ==========
@@ -461,6 +498,7 @@ const CARDS = [
         defense: 85,
         views: 7000000,
         emoji: "🥖"
+        image: null
     },
     {
         id: 39,
@@ -472,6 +510,7 @@ const CARDS = [
         defense: 80,
         views: 6000000,
         emoji: "🥐"
+        image: null
     },
     
     // Super Rares
@@ -485,6 +524,7 @@ const CARDS = [
         defense: 78,
         views: 3500000,
         emoji: "🍖"
+        image: null
     },
     {
         id: 41,
@@ -496,6 +536,7 @@ const CARDS = [
         defense: 80,
         views: 3000000,
         emoji: "🥘"
+        image: null
     },
     {
         id: 42,
@@ -507,6 +548,7 @@ const CARDS = [
         defense: 72,
         views: 2500000,
         emoji: "🍲"
+        image: null
     },
     {
         id: 43,
@@ -518,6 +560,7 @@ const CARDS = [
         defense: 75,
         views: 2800000,
         emoji: "🍲"
+        image: null
     },
     
     // Rares
@@ -531,6 +574,7 @@ const CARDS = [
         defense: 75,
         views: 2200000,
         emoji: "🧀"
+        image: null
     },
     {
         id: 45,
@@ -542,6 +586,7 @@ const CARDS = [
         defense: 70,
         views: 1800000,
         emoji: "🧀"
+        image: null
     },
     {
         id: 46,
@@ -553,6 +598,7 @@ const CARDS = [
         defense: 70,
         views: 2000000,
         emoji: "🍪"
+        image: null
     },
     {
         id: 47,
@@ -564,6 +610,7 @@ const CARDS = [
         defense: 65,
         views: 1500000,
         emoji: "🍖"
+        image: null
     },
     {
         id: 48,
@@ -575,6 +622,7 @@ const CARDS = [
         defense: 68,
         views: 1600000,
         emoji: "🍗"
+        image: null
     },
     
     // Communes
@@ -588,6 +636,7 @@ const CARDS = [
         defense: 60,
         views: 1000000,
         emoji: "🍰"
+        image: null
     },
     {
         id: 50,
@@ -599,6 +648,7 @@ const CARDS = [
         defense: 55,
         views: 900000,
         emoji: "🥧"
+        image: null
     },
     {
         id: 51,
@@ -610,6 +660,7 @@ const CARDS = [
         defense: 60,
         views: 800000,
         emoji: "🍲"
+        image: null
     },
     {
         id: 52,
@@ -621,6 +672,7 @@ const CARDS = [
         defense: 55,
         views: 1100000,
         emoji: "🥞"
+        image: null
     },
     
     // ========== GÉOGRAPHIE & RÉGIONS ==========
@@ -635,6 +687,7 @@ const CARDS = [
         defense: 85,
         views: 6500000,
         emoji: "⛰️"
+        image: null
     },
     {
         id: 54,
@@ -646,6 +699,7 @@ const CARDS = [
         defense: 80,
         views: 5500000,
         emoji: "🌊"
+        image: null
     },
     
     // Super Rares
@@ -659,6 +713,7 @@ const CARDS = [
         defense: 78,
         views: 3500000,
         emoji: "🌊"
+        image: null
     },
     {
         id: 56,
@@ -670,6 +725,7 @@ const CARDS = [
         defense: 80,
         views: 4000000,
         emoji: "🏴"
+        image: null
     },
     {
         id: 57,
@@ -681,6 +737,7 @@ const CARDS = [
         defense: 75,
         views: 3800000,
         emoji: "🌿"
+        image: null
     },
     {
         id: 58,
@@ -692,6 +749,7 @@ const CARDS = [
         defense: 82,
         views: 4500000,
         emoji: "🏖️"
+        image: null
     },
     
     // Rares
@@ -705,6 +763,7 @@ const CARDS = [
         defense: 70,
         views: 2000000,
         emoji: "⛰️"
+        image: null
     },
     {
         id: 60,
@@ -716,6 +775,7 @@ const CARDS = [
         defense: 72,
         views: 1500000,
         emoji: "⛰️"
+        image: null
     },
     {
         id: 61,
@@ -727,6 +787,7 @@ const CARDS = [
         defense: 68,
         views: 2200000,
         emoji: "🌳"
+        image: null
     },
     {
         id: 62,
@@ -738,6 +799,7 @@ const CARDS = [
         defense: 75,
         views: 1800000,
         emoji: "🏡"
+        image: null
     },
     
     // Communes
@@ -751,6 +813,7 @@ const CARDS = [
         defense: 60,
         views: 1000000,
         emoji: "🌊"
+        image: null
     },
     {
         id: 64,
@@ -762,6 +825,7 @@ const CARDS = [
         defense: 55,
         views: 800000,
         emoji: "🌊"
+        image: null
     },
     
     // ========== SCIENCES & ARTS ==========
@@ -776,6 +840,7 @@ const CARDS = [
         defense: 88,
         views: 7500000,
         emoji: "🔬"
+        image: null
     },
     {
         id: 66,
@@ -787,6 +852,7 @@ const CARDS = [
         defense: 85,
         views: 6000000,
         emoji: "🗼"
+        image: null
     },
     
     // Super Rares
@@ -800,6 +866,7 @@ const CARDS = [
         defense: 80,
         views: 5000000,
         emoji: "📖"
+        image: null
     },
     {
         id: 68,
@@ -811,6 +878,7 @@ const CARDS = [
         defense: 85,
         views: 4500000,
         emoji: "🎭"
+        image: null
     },
     {
         id: 69,
@@ -822,6 +890,7 @@ const CARDS = [
         defense: 75,
         views: 3800000,
         emoji: "🎬"
+        image: null
     },
     {
         id: 70,
@@ -833,6 +902,7 @@ const CARDS = [
         defense: 78,
         views: 3500000,
         emoji: "🎨"
+        image: null
     },
     
     // Rares
@@ -846,6 +916,7 @@ const CARDS = [
         defense: 80,
         views: 2500000,
         emoji: "🎹"
+        image: null
     },
     {
         id: 72,
@@ -857,6 +928,7 @@ const CARDS = [
         defense: 78,
         views: 2200000,
         emoji: "🎨"
+        image: null
     },
     {
         id: 73,
@@ -868,6 +940,7 @@ const CARDS = [
         defense: 75,
         views: 2000000,
         emoji: "🗿"
+        image: null
     },
     {
         id: 74,
@@ -879,6 +952,7 @@ const CARDS = [
         defense: 80,
         views: 3000000,
         emoji: "🎤"
+        image: null
     },
     
     // Communes
@@ -892,6 +966,7 @@ const CARDS = [
         defense: 70,
         views: 1500000,
         emoji: "🔬"
+        image: null
     },
     {
         id: 76,
@@ -903,6 +978,7 @@ const CARDS = [
         defense: 65,
         views: 1200000,
         emoji: "📐"
+        image: null
     },
     
     // ========== SPORT & CULTURE ==========
@@ -917,6 +993,7 @@ const CARDS = [
         defense: 85,
         views: 8000000,
         emoji: "🚴"
+        image: null
     },
     {
         id: 78,
@@ -928,6 +1005,7 @@ const CARDS = [
         defense: 80,
         views: 6500000,
         emoji: "🎾"
+        image: null
     },
     
     // Super Rares
@@ -941,6 +1019,7 @@ const CARDS = [
         defense: 75,
         views: 5000000,
         emoji: "🎬"
+        image: null
     },
     {
         id: 80,
@@ -952,6 +1031,7 @@ const CARDS = [
         defense: 82,
         views: 7000000,
         emoji: "⚽"
+        image: null
     },
     {
         id: 81,
@@ -963,6 +1043,7 @@ const CARDS = [
         defense: 75,
         views: 3000000,
         emoji: "🏁"
+        image: null
     },
     
     // Rares
@@ -976,6 +1057,7 @@ const CARDS = [
         defense: 75,
         views: 1500000,
         emoji: "🏅"
+        image: null
     },
     {
         id: 83,
@@ -987,6 +1069,7 @@ const CARDS = [
         defense: 70,
         views: 1200000,
         emoji: "🏅"
+        image: null
     },
     {
         id: 84,
@@ -998,6 +1081,7 @@ const CARDS = [
         defense: 80,
         views: 4000000,
         emoji: "⚽"
+        image: null
     },
     {
         id: 85,
@@ -1009,6 +1093,7 @@ const CARDS = [
         defense: 78,
         views: 2500000,
         emoji: "⚽"
+        image: null
     },
     
     // Communes
@@ -1022,6 +1107,7 @@ const CARDS = [
         defense: 60,
         views: 800000,
         emoji: "⛳"
+        image: null
     },
     {
         id: 87,
@@ -1033,6 +1119,7 @@ const CARDS = [
         defense: 55,
         views: 1000000,
         emoji: "🚴"
+        image: null
     },
     {
         id: 88,
@@ -1044,6 +1131,7 @@ const CARDS = [
         defense: 60,
         views: 1500000,
         emoji: "🏉"
+        image: null
     },
     // ========== NOUVELLES CARTES - PERSONNAGES HISTORIQUES ==========
     {
@@ -1056,6 +1144,7 @@ const CARDS = [
         defense: 95,
         views: 5000000,
         emoji: "⛪"
+        image: null
     },
     {
         id: 90,
@@ -1067,6 +1156,7 @@ const CARDS = [
         defense: 80,
         views: 3000000,
         emoji: "👑"
+        image: null
     },
     {
         id: 91,
@@ -1078,6 +1168,7 @@ const CARDS = [
         defense: 88,
         views: 2500000,
         emoji: "👑"
+        image: null
     },
     {
         id: 92,
@@ -1089,6 +1180,7 @@ const CARDS = [
         defense: 90,
         views: 2200000,
         emoji: "🎭"
+        image: null
     },
     {
         id: 93,
@@ -1100,6 +1192,7 @@ const CARDS = [
         defense: 85,
         views: 2000000,
         emoji: "🎭"
+        image: null
     },
     {
         id: 94,
@@ -1111,6 +1204,7 @@ const CARDS = [
         defense: 82,
         views: 1800000,
         emoji: "💼"
+        image: null
     },
     {
         id: 95,
@@ -1122,6 +1216,7 @@ const CARDS = [
         defense: 70,
         views: 2000000,
         emoji: "🗣️"
+        image: null
     },
     {
         id: 96,
@@ -1133,6 +1228,7 @@ const CARDS = [
         defense: 65,
         views: 1500000,
         emoji: "📰"
+        image: null
     },
     {
         id: 97,
@@ -1144,6 +1240,7 @@ const CARDS = [
         defense: 75,
         views: 2500000,
         emoji: "⚖️"
+        image: null
     },
     {
         id: 98,
@@ -1155,6 +1252,7 @@ const CARDS = [
         defense: 90,
         views: 2000000,
         emoji: "🕊️"
+        image: null
     },
     {
         id: 99,
@@ -1166,6 +1264,7 @@ const CARDS = [
         defense: 85,
         views: 1500000,
         emoji: "🎖️"
+        image: null
     },
     {
         id: 100,
@@ -1177,6 +1276,7 @@ const CARDS = [
         defense: 80,
         views: 1200000,
         emoji: "🎖️"
+        image: null
     },
     // Plus de personnages historiques
     {
@@ -1189,6 +1289,7 @@ const CARDS = [
         defense: 85,
         views: 4000000,
         emoji: "🛡️"
+        image: null
     },
     {
         id: 102,
@@ -1200,6 +1301,7 @@ const CARDS = [
         defense: 82,
         views: 3500000,
         emoji: "👑"
+        image: null
     },
     {
         id: 103,
@@ -1211,6 +1313,7 @@ const CARDS = [
         defense: 90,
         views: 6000000,
         emoji: "👑"
+        image: null
     },
     {
         id: 104,
@@ -1222,6 +1325,7 @@ const CARDS = [
         defense: 85,
         views: 2000000,
         emoji: "⛪"
+        image: null
     },
     {
         id: 105,
@@ -1233,6 +1337,7 @@ const CARDS = [
         defense: 88,
         views: 12000000,
         emoji: "⚔️"
+        image: null
     },
     {
         id: 106,
@@ -1244,6 +1349,7 @@ const CARDS = [
         defense: 80,
         views: 1500000,
         emoji: "⚔️"
+        image: null
     },
     {
         id: 107,
@@ -1255,6 +1361,7 @@ const CARDS = [
         defense: 85,
         views: 1200000,
         emoji: "⚔️"
+        image: null
     },
     {
         id: 108,
@@ -1266,6 +1373,7 @@ const CARDS = [
         defense: 75,
         views: 2000000,
         emoji: "⚔️"
+        image: null
     },
     {
         id: 109,
@@ -1277,6 +1385,7 @@ const CARDS = [
         defense: 70,
         views: 800000,
         emoji: "🎖️"
+        image: null
     },
     {
         id: 110,
@@ -1288,6 +1397,7 @@ const CARDS = [
         defense: 78,
         views: 1000000,
         emoji: "🎖️"
+        image: null
     },
     // ========== SCIENTIFIQUES & INVENTEURS ==========
     {
@@ -1300,6 +1410,7 @@ const CARDS = [
         defense: 90,
         views: 8000000,
         emoji: "🔬"
+        image: null
     },
     {
         id: 112,
@@ -1311,6 +1422,7 @@ const CARDS = [
         defense: 88,
         views: 7000000,
         emoji: "☢️"
+        image: null
     },
     {
         id: 113,
@@ -1322,6 +1434,7 @@ const CARDS = [
         defense: 80,
         views: 2500000,
         emoji: "📐"
+        image: null
     },
     {
         id: 114,
@@ -1333,6 +1446,7 @@ const CARDS = [
         defense: 90,
         views: 3000000,
         emoji: "📚"
+        image: null
     },
     {
         id: 115,
@@ -1344,6 +1458,7 @@ const CARDS = [
         defense: 85,
         views: 2000000,
         emoji: "🔬"
+        image: null
     },
     {
         id: 116,
@@ -1355,6 +1470,7 @@ const CARDS = [
         defense: 78,
         views: 1500000,
         emoji: "🦴"
+        image: null
     },
     {
         id: 117,
@@ -1366,6 +1482,7 @@ const CARDS = [
         defense: 80,
         views: 1200000,
         emoji: "🌌"
+        image: null
     },
     {
         id: 118,
@@ -1377,6 +1494,7 @@ const CARDS = [
         defense: 85,
         views: 1500000,
         emoji: "⚡"
+        image: null
     },
     {
         id: 119,
@@ -1388,6 +1506,7 @@ const CARDS = [
         defense: 70,
         views: 800000,
         emoji: "💡"
+        image: null
     },
     {
         id: 120,
@@ -1399,6 +1518,7 @@ const CARDS = [
         defense: 75,
         views: 900000,
         emoji: "🥫"
+        image: null
     },
     // Plus de scientifiques
     {
@@ -1411,6 +1531,7 @@ const CARDS = [
         defense: 90,
         views: 1500000,
         emoji: "📐"
+        image: null
     },
     {
         id: 122,
@@ -1422,6 +1543,7 @@ const CARDS = [
         defense: 85,
         views: 1800000,
         emoji: "📈"
+        image: null
     },
     {
         id: 123,
@@ -1433,6 +1555,7 @@ const CARDS = [
         defense: 78,
         views: 1000000,
         emoji: "🎲"
+        image: null
     },
     {
         id: 124,
@@ -1444,6 +1567,7 @@ const CARDS = [
         defense: 80,
         views: 800000,
         emoji: "📏"
+        image: null
     },
     {
         id: 125,
@@ -1455,6 +1579,7 @@ const CARDS = [
         defense: 82,
         views: 1200000,
         emoji: "⚙️"
+        image: null
     },
     // ========== ARTISTES & ÉCRIVAINS ==========
     {
@@ -1467,6 +1592,7 @@ const CARDS = [
         defense: 90,
         views: 5000000,
         emoji: "🎭"
+        image: null
     },
     {
         id: 127,
@@ -1478,6 +1604,7 @@ const CARDS = [
         defense: 85,
         views: 6000000,
         emoji: "📖"
+        image: null
     },
     {
         id: 128,
@@ -1489,6 +1616,7 @@ const CARDS = [
         defense: 80,
         views: 3000000,
         emoji: "📚"
+        image: null
     },
     {
         id: 129,
@@ -1500,6 +1628,7 @@ const CARDS = [
         defense: 85,
         views: 2500000,
         emoji: "📝"
+        image: null
     },
     {
         id: 130,
@@ -1511,6 +1640,7 @@ const CARDS = [
         defense: 78,
         views: 2800000,
         emoji: "✍️"
+        image: null
     },
     // Plus d'écrivains
     {
@@ -1523,6 +1653,7 @@ const CARDS = [
         defense: 80,
         views: 3500000,
         emoji: "🕰️"
+        image: null
     },
     {
         id: 132,
@@ -1534,6 +1665,7 @@ const CARDS = [
         defense: 82,
         views: 4000000,
         emoji: "📖"
+        image: null
     },
     {
         id: 133,
@@ -1545,6 +1677,7 @@ const CARDS = [
         defense: 80,
         views: 3000000,
         emoji: "🤔"
+        image: null
     },
     {
         id: 134,
@@ -1556,6 +1689,7 @@ const CARDS = [
         defense: 88,
         views: 3500000,
         emoji: "👩"
+        image: null
     },
     {
         id: 135,
@@ -1567,6 +1701,7 @@ const CARDS = [
         defense: 75,
         views: 5000000,
         emoji: "✈️"
+        image: null
     },
     // ========== VILLES FRANÇAISES ==========
     {
@@ -1579,6 +1714,7 @@ const CARDS = [
         defense: 100,
         views: 20000000,
         emoji: "🗼"
+        image: null
     },
     {
         id: 137,
@@ -1590,6 +1726,7 @@ const CARDS = [
         defense: 85,
         views: 8000000,
         emoji: "🌊"
+        image: null
     },
     {
         id: 138,
@@ -1601,6 +1738,7 @@ const CARDS = [
         defense: 82,
         views: 7000000,
         emoji: "🏛️"
+        image: null
     },
     {
         id: 139,
@@ -1612,6 +1750,7 @@ const CARDS = [
         defense: 80,
         views: 4000000,
         emoji: "🚀"
+        image: null
     },
     {
         id: 140,
@@ -1623,6 +1762,7 @@ const CARDS = [
         defense: 85,
         views: 5000000,
         emoji: "🏖️"
+        image: null
     },
     // Plus de villes
     {
@@ -1635,6 +1775,7 @@ const CARDS = [
         defense: 78,
         views: 4500000,
         emoji: "🍷"
+        image: null
     },
     {
         id: 142,
@@ -1646,6 +1787,7 @@ const CARDS = [
         defense: 80,
         views: 3500000,
         emoji: "⚓"
+        image: null
     },
     {
         id: 143,
@@ -1657,6 +1799,7 @@ const CARDS = [
         defense: 85,
         views: 4000000,
         emoji: "🏛️"
+        image: null
     },
     {
         id: 144,
@@ -1668,6 +1811,7 @@ const CARDS = [
         defense: 75,
         views: 2500000,
         emoji: "🏡"
+        image: null
     },
     {
         id: 145,
@@ -1679,6 +1823,7 @@ const CARDS = [
         defense: 75,
         views: 2000000,
         emoji: "🏰"
+        image: null
     },
     // ========== SPÉCIALITÉS RÉGIONALES ==========
     {
@@ -1691,6 +1836,7 @@ const CARDS = [
         defense: 80,
         views: 3000000,
         emoji: "🧀"
+        image: null
     },
     {
         id: 147,
@@ -1702,6 +1848,7 @@ const CARDS = [
         defense: 75,
         views: 2500000,
         emoji: "🧀"
+        image: null
     },
     {
         id: 148,
@@ -1713,6 +1860,7 @@ const CARDS = [
         defense: 70,
         views: 2000000,
         emoji: "🧀"
+        image: null
     },
     {
         id: 149,
@@ -1724,6 +1872,7 @@ const CARDS = [
         defense: 70,
         views: 1500000,
         emoji: "🧀"
+        image: null
     },
     {
         id: 150,
@@ -1735,6 +1884,7 @@ const CARDS = [
         defense: 78,
         views: 2200000,
         emoji: "🧀"
+        image: null
     },
     // Plus de fromages
     {
@@ -1747,6 +1897,7 @@ const CARDS = [
         defense: 65,
         views: 1200000,
         emoji: "🧀"
+        image: null
     },
     {
         id: 152,
@@ -1758,6 +1909,7 @@ const CARDS = [
         defense: 70,
         views: 1500000,
         emoji: "🐐"
+        image: null
     },
     {
         id: 153,
@@ -1769,6 +1921,7 @@ const CARDS = [
         defense: 70,
         views: 1000000,
         emoji: "🧀"
+        image: null
     },
     {
         id: 154,
@@ -1780,6 +1933,7 @@ const CARDS = [
         defense: 65,
         views: 900000,
         emoji: "🧀"
+        image: null
     },
     {
         id: 155,
@@ -1791,6 +1945,7 @@ const CARDS = [
         defense: 68,
         views: 800000,
         emoji: "🧀"
+        image: null
     },
     // ========== PLATS RÉGIONAUX ==========
     {
@@ -1803,6 +1958,7 @@ const CARDS = [
         defense: 75,
         views: 4000000,
         emoji: "🥘"
+        image: null
     },
     {
         id: 157,
@@ -1814,6 +1970,7 @@ const CARDS = [
         defense: 72,
         views: 3000000,
         emoji: "🍲"
+        image: null
     },
     {
         id: 158,
@@ -1825,6 +1982,7 @@ const CARDS = [
         defense: 78,
         views: 3500000,
         emoji: "🍲"
+        image: null
     },
     {
         id: 159,
@@ -1836,6 +1994,7 @@ const CARDS = [
         defense: 70,
         views: 2000000,
         emoji: "🥔"
+        image: null
     },
     {
         id: 160,
@@ -1847,6 +2006,7 @@ const CARDS = [
         defense: 65,
         views: 1500000,
         emoji: "🍕"
+        image: null
     },
     // ========== INVENTIONS FRANÇAISES ==========
     {
@@ -1859,6 +2019,7 @@ const CARDS = [
         defense: 85,
         views: 8000000,
         emoji: "📷"
+        image: null
     },
     {
         id: 162,
@@ -1870,6 +2031,7 @@ const CARDS = [
         defense: 80,
         views: 7000000,
         emoji: "🎬"
+        image: null
     },
     {
         id: 163,
@@ -1881,6 +2043,7 @@ const CARDS = [
         defense: 75,
         views: 4000000,
         emoji: "🎈"
+        image: null
     },
     {
         id: 164,
@@ -1892,6 +2055,7 @@ const CARDS = [
         defense: 85,
         views: 3000000,
         emoji: "🩺"
+        image: null
     },
     {
         id: 165,
@@ -1903,6 +2067,7 @@ const CARDS = [
         defense: 80,
         views: 5000000,
         emoji: "🧪"
+        image: null
     },
     {
         id: 166,
@@ -1914,6 +2079,7 @@ const CARDS = [
         defense: 88,
         views: 6000000,
         emoji: "🌉"
+        image: null
     },
     {
         id: 167,
@@ -1925,6 +2091,7 @@ const CARDS = [
         defense: 85,
         views: 10000000,
         emoji: "⛪"
+        image: null
     },
     {
         id: 168,
@@ -1936,6 +2103,7 @@ const CARDS = [
         defense: 75,
         views: 6000000,
         emoji: "🏆"
+        image: null
     },
     {
         id: 169,
@@ -1947,6 +2115,7 @@ const CARDS = [
         defense: 80,
         views: 5000000,
         emoji: "⛪"
+        image: null
     },
     {
         id: 170,
@@ -1958,6 +2127,7 @@ const CARDS = [
         defense: 82,
         views: 4000000,
         emoji: "🎭"
+        image: null
     },
     // ========== FLEUVES & MONTAGNES ==========
     {
@@ -1970,6 +2140,7 @@ const CARDS = [
         defense: 80,
         views: 5000000,
         emoji: "🌊"
+        image: null
     },
     {
         id: 172,
@@ -1981,6 +2152,7 @@ const CARDS = [
         defense: 70,
         views: 3000000,
         emoji: "🌊"
+        image: null
     },
     {
         id: 173,
@@ -1992,6 +2164,7 @@ const CARDS = [
         defense: 75,
         views: 3500000,
         emoji: "🌊"
+        image: null
     },
     {
         id: 174,
@@ -2003,6 +2176,7 @@ const CARDS = [
         defense: 60,
         views: 1000000,
         emoji: "🌊"
+        image: null
     },
     {
         id: 175,
@@ -2014,6 +2188,7 @@ const CARDS = [
         defense: 85,
         views: 7000000,
         emoji: "⛰️"
+        image: null
     },
     {
         id: 176,
@@ -2025,6 +2200,7 @@ const CARDS = [
         defense: 75,
         views: 4000000,
         emoji: "⛰️"
+        image: null
     },
     {
         id: 177,
@@ -2036,6 +2212,7 @@ const CARDS = [
         defense: 80,
         views: 3000000,
         emoji: "⛰️"
+        image: null
     },
     {
         id: 178,
@@ -2047,6 +2224,7 @@ const CARDS = [
         defense: 70,
         views: 1500000,
         emoji: "⛰️"
+        image: null
     },
     {
         id: 179,
@@ -2058,6 +2236,7 @@ const CARDS = [
         defense: 65,
         views: 1000000,
         emoji: "⛰️"
+        image: null
     },
     {
         id: 180,
@@ -2069,6 +2248,7 @@ const CARDS = [
         defense: 80,
         views: 3500000,
         emoji: "🏝️"
+        image: null
     },
     // ========== RÉGIONS FRANÇAISES ==========
     {
@@ -2081,6 +2261,7 @@ const CARDS = [
         defense: 85,
         views: 10000000,
         emoji: "🏙️"
+        image: null
     },
     {
         id: 182,
@@ -2092,6 +2273,7 @@ const CARDS = [
         defense: 82,
         views: 8000000,
         emoji: "🌿"
+        image: null
     },
     {
         id: 183,
@@ -2103,6 +2285,7 @@ const CARDS = [
         defense: 80,
         views: 5000000,
         emoji: "⛰️"
+        image: null
     },
     {
         id: 184,
@@ -2114,6 +2297,7 @@ const CARDS = [
         defense: 78,
         views: 4000000,
         emoji: "🌊"
+        image: null
     },
     {
         id: 185,
@@ -2125,6 +2309,7 @@ const CARDS = [
         defense: 85,
         views: 4500000,
         emoji: "🏰"
+        image: null
     },
     {
         id: 186,
@@ -2136,6 +2321,7 @@ const CARDS = [
         defense: 75,
         views: 2000000,
         emoji: "🏭"
+        image: null
     },
     {
         id: 187,
@@ -2147,6 +2333,7 @@ const CARDS = [
         defense: 80,
         views: 3000000,
         emoji: "🌍"
+        image: null
     },
     {
         id: 188,
@@ -2158,6 +2345,7 @@ const CARDS = [
         defense: 75,
         views: 2500000,
         emoji: "🏰"
+        image: null
     },
     {
         id: 189,
@@ -2169,6 +2357,7 @@ const CARDS = [
         defense: 80,
         views: 6000000,
         emoji: "🏴"
+        image: null
     },
     {
         id: 190,
@@ -2180,6 +2369,7 @@ const CARDS = [
         defense: 75,
         views: 4000000,
         emoji: "🌳"
+        image: null
     },
     // ========== DERNIÈRES CARTES - COMPLÉMENT ==========
     {
@@ -2192,6 +2382,7 @@ const CARDS = [
         defense: 78,
         views: 3500000,
         emoji: "🍷"
+        image: null
     },
     {
         id: 192,
@@ -2203,6 +2394,7 @@ const CARDS = [
         defense: 80,
         views: 4000000,
         emoji: "🏰"
+        image: null
     },
     {
         id: 193,
@@ -2214,6 +2406,7 @@ const CARDS = [
         defense: 80,
         views: 3000000,
         emoji: "🏡"
+        image: null
     },
     {
         id: 194,
@@ -2225,6 +2418,7 @@ const CARDS = [
         defense: 75,
         views: 2000000,
         emoji: "🥂"
+        image: null
     },
     {
         id: 195,
@@ -2236,6 +2430,7 @@ const CARDS = [
         defense: 70,
         views: 1500000,
         emoji: "🏰"
+        image: null
     },
     {
         id: 196,
@@ -2247,6 +2442,7 @@ const CARDS = [
         defense: 65,
         views: 1000000,
         emoji: "🌾"
+        image: null
     },
     {
         id: 197,
@@ -2258,6 +2454,7 @@ const CARDS = [
         defense: 60,
         views: 800000,
         emoji: "🐄"
+        image: null
     },
     {
         id: 198,
@@ -2269,6 +2466,7 @@ const CARDS = [
         defense: 75,
         views: 1200000,
         emoji: "⛰️"
+        image: null
     },
     {
         id: 199,
@@ -2280,6 +2478,7 @@ const CARDS = [
         defense: 75,
         views: 3000000,
         emoji: "🍷"
+        image: null
     },
     {
         id: 200,

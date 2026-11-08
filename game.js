@@ -334,6 +334,10 @@ function filterCollection() {
 }
 
 function createCardHTML(card, owned = true, duplicates = 0) {
+    const hasImage = card.image && card.image !== null && card.image !== '';
+    const cardImageClass = hasImage ? 'has-image' : '';
+    const imageHtml = hasImage ? `<div class="card-image-container"><img class="card-image" src="${card.image}" alt="${card.name}" onerror="this.style.display='none'"></div>` : '';
+    
     if (!owned) {
         return `
             <div class="card-header" data-category="${card.category}">
@@ -351,6 +355,7 @@ function createCardHTML(card, owned = true, duplicates = 0) {
     }
     
     return `
+        ${imageHtml}
         <div class="card-header" data-category="${card.category}">
             <div class="card-emoji">${card.emoji}</div>
             <div class="card-rarity ${card.rarity}">${card.rarity}</div>

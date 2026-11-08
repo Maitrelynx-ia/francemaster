@@ -51,8 +51,13 @@ function loadCustomCards() {
     if (customCards) {
         try {
             const parsedCards = JSON.parse(customCards);
+            // Ajouter image: null si manquant pour les cartes personnalisées
+            const normalizedCards = parsedCards.map(card => ({
+                ...card,
+                image: card.image !== undefined ? card.image : null
+            }));
             // Ajouter les cartes personnalisées aux cartes par défaut
-            EditorState.cards = [...CARDS, ...parsedCards];
+            EditorState.cards = [...CARDS, ...normalizedCards];
             EditorState.filteredCards = [...EditorState.cards];
             renderEditorCards();
             showEditorToast('Succès', 'Cartes personnalisées chargées', 'success');
@@ -100,7 +105,11 @@ function renderEditorCards() {
         cardElement.className = 'editor-card';
         cardElement.dataset.index = index;
         
+        const hasImage = card.image && card.image !== null && card.image !== '';
+        const imageHtml = hasImage ? `<div class="editor-card-image"><img src="${card.image}" alt="${card.name}" onerror="this.style.display='none'"></div>` : '';
+        
         cardElement.innerHTML = `
+            ${imageHtml}
             <div class="editor-card-header" data-category="${card.category}">
                 <span class="editor-card-emoji">${card.emoji}</span>
                 <span class="editor-card-rarity ${card.rarity}">${card.rarity}</span>
@@ -168,6 +177,7 @@ function addNewCard(event) {
     const defense = parseInt(document.getElementById('new-defense').value);
     const views = parseInt(document.getElementById('new-views').value);
     const emoji = document.getElementById('new-emoji').value;
+    const image = document.getElementById('new-image').value;
     
     // Vérifier si l'ID existe déjà
     if (EditorState.cards.some(card => card.id === id)) {
@@ -186,6 +196,7 @@ function addNewCard(event) {
         defense: defense,
         views: views,
         emoji: emoji,
+        image: image || null,
         isCustom: true
     };
     
@@ -225,6 +236,9 @@ function openEditModal(index) {
     document.getElementById('edit-views').value = card.views;
     document.getElementById('edit-emoji').value = card.emoji;
     
+    // Load image preview
+    loadImagePreview(card.image, 'edit-image-preview', 'edit-image');
+    
     document.getElementById('edit-modal').style.display = 'flex';
 }
 
@@ -250,6 +264,7 @@ function saveEditCard(event) {
     const defense = parseInt(document.getElementById('edit-defense').value);
     const views = parseInt(document.getElementById('edit-views').value);
     const emoji = document.getElementById('edit-emoji').value;
+    const image = document.getElementById('edit-image').value;
     
     // Mettre à jour la carte
     const originalCard = EditorState.cards[index];
@@ -263,6 +278,7 @@ function saveEditCard(event) {
         defense: defense,
         views: views,
         emoji: emoji,
+        image: image || null,
         isCustom: originalCard.isCustom || false
     };
     
@@ -407,23 +423,6 @@ const RARITIES = {
     ULTRA_RARE: { code: "UR", name: "Ultra Rare", weight: 7, color: "#FFD700", bgColor: "#fff8e6" },
     LEGENDARY: { code: "L", name: "Légendaire", weight: 3, color: "#FF69B4", bgColor: "linear-gradient(135deg, #ff69b4, #ffd700, #4169e1, #8a2be2, #00ff7f)" }
 };
-
-// Tableau de toutes les cartes
-const CARDS = [
-${EditorState.cards.map(card => `
-    {
-        id: ${card.id},
-        name: "${card.name.replace(/\\/g, '\\\\').replace(/"/g, '\\"')}",
-        description: "${card.description.replace(/\\/g, '\\\\').replace(/"/g, '\\"')}",
-        category: CATEGORIES.${getCategoryKey(card.category)},
-        rarity: RARITIES.${getRarityKey(card.rarity)}.code,
-        attack: ${card.attack},
-        defense: ${card.defense},
-        views: ${card.views},
-        emoji: "${card.emoji}"
-    }`).join(',
-')}
-];
 
 // Achievements
 const ACHIEVEMENTS = {
@@ -757,3 +756,49 @@ function showEditorToast(title, message, type = 'info') {
 
 // Démarrer l'éditeur quand le DOM est chargé
 document.addEventListener('DOMContentLoaded', initEditor);
+
+// ========== IMAGE UPLOAD FUNCTIONS ==========
+
+// Preview image when file is selected
+function previewImage(event, previewId) {
+    const file = event.target.files[0];
+    const preview = document.getElementById(previewId);
+    const hiddenInputId = previewId.replace('-preview', '');
+    const hiddenInput = document.getElementById(hiddenInputId);
+    
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            // Store as data URL in hidden input
+            hiddenInput.value = e.target.result;
+            
+            // Update preview
+            preview.innerHTML = `<img src="${e.target.result}" alt="Aperçu">`;
+        };
+        reader.readAsDataURL(file);
+    } else {
+        // Clear preview and hidden input
+        hiddenInput.value = '';
+        preview.innerHTML = '<span>📷 Aucune image</span>';
+    }
+}
+
+// Load image preview when editing a card
+function loadImagePreview(imageUrl, previewId, hiddenInputId) {
+    const preview = document.getElementById(previewId);
+    const hiddenInput = document.getElementById(hiddenInputId);
+    
+    if (imageUrl && imageUrl !== '' && imageUrl !== null) {
+        hiddenInput.value = imageUrl;
+        // Check if it's a data URL or external URL
+        if (imageUrl.startsWith('data:')) {
+            preview.innerHTML = `<img src="${imageUrl}" alt="Aperçu">`;
+        } else {
+            // For external URLs, show the image
+            preview.innerHTML = `<img src="${imageUrl}" alt="Aperçu" onerror="this.parentElement.innerHTML='<span>📷 Image non disponible</span>'">`;
+        }
+    } else {
+        hiddenInput.value = '';
+        preview.innerHTML = '<span>📷 Aucune image</span>';
+    }
+}

@@ -139,6 +139,15 @@
                             <div class="editor-form-group">
                                 <label for="new-emoji">Emoji *</label>
                                 <input type="text" id="new-emoji" required placeholder="🗼" maxlength="2">
+
+                        <div class="editor-form-group">
+                            <label class="image-upload-label" for="new-image-upload">Image (optionnelle)</label>
+                            <input type="file" id="new-image-upload" class="image-upload-input" accept="image/*" onchange="previewImage(event, 'new-image-preview')">
+                            <div class="image-preview" id="new-image-preview">
+                                <span>📷 Aucune image</span>
+                            </div>
+                            <input type="hidden" id="new-image" value="">
+                        </div>
                             </div>
                         </div>
                         
@@ -230,6 +239,15 @@
                         </div>
                         <div class="editor-form-group">
                             <label for="edit-defense">Défense (1-100) *</label>
+
+                    <div class="editor-form-group">
+                        <label class="image-upload-label" for="edit-image-upload">Image (optionnelle)</label>
+                        <input type="file" id="edit-image-upload" class="image-upload-input" accept="image/*" onchange="previewImage(event, 'edit-image-preview')">
+                        <div class="image-preview" id="edit-image-preview">
+                            <span>📷 Aucune image</span>
+                        </div>
+                        <input type="hidden" id="edit-image" value="">
+                    </div>
                             <input type="number" id="edit-defense" required min="1" max="100">
                         </div>
                     </div>

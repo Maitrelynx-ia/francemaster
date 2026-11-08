@@ -1827,3 +1827,90 @@ body {
 .user-info { display: flex; align-items: center; gap: var(--spacing-md); padding: var(--spacing-xs) var(--spacing-md); background: rgba(255, 255, 255, 0.1); border-radius: var(--radius-md); cursor: pointer; }
 .user-info:hover { background: rgba(255, 255, 255, 0.2); }
 .pack-counter { position: absolute; top: -10px; right: -10px; width: 30px; height: 30px; background: var(--secondary); color: var(--text-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; box-shadow: var(--shadow-sm); }
+
+/* ========== CARD IMAGES ========== */
+.card-image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    z-index: 0;
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+}
+
+.card:hover .card-image {
+    opacity: 0.5;
+}
+
+.card-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    background: linear-gradient(135deg, var(--category-histoire), var(--category-monuments));
+}
+
+/* Update card-emoji to have lower z-index when image exists */
+.card.has-image .card-emoji {
+    opacity: 0.5;
+}
+
+/* Image upload preview in editor */
+.image-preview {
+    width: 100px;
+    height: 100px;
+    border: 2px dashed #ccc;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    margin: var(--spacing-sm) 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f9f9f9;
+}
+
+.image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-upload-label {
+    display: block;
+    margin: var(--spacing-sm) 0;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.image-upload-input {
+    display: none;
+}
+
+/* Editor card image */
+.editor-card-image {
+    width: 100%;
+    height: 80px;
+    overflow: hidden;
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--spacing-xs);
+}
+
+.editor-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
