@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>France Masters - Le Jeu de Cartes Encyclopédique</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">🇫🇷</span>
+                <h1>France Masters</h1>
+            </div>
+            <div class="player-stats">
+                <div class="stat-item">
+                    <span class="stat-label">Pièces</span>
+                    <span class="stat-value" id="coins">300</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Cartes</span>
+                    <span class="stat-value" id="total-cards">0/88</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Duels</span>
+                    <span class="stat-value" id="duels-won">0</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav-tabs">
+            <button class="nav-tab active" data-tab="home">Accueil</button>
+            <button class="nav-tab" data-tab="packs">Packs</button>
+            <button class="nav-tab" data-tab="collection">Collection</button>
+            <button class="nav-tab" data-tab="duel">Duel</button>
+            <button class="nav-tab" data-tab="settings">Paramètres</button>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Home Tab -->
+            <section id="home" class="tab-content active">
+                <div class="home-welcome">
+                    <h2>Bienvenue sur France Masters !</h2>
+                    <p>Collectionnez des cartes inspirées des articles Wikipédia sur la France, ouvrez des packs, 
+                       complétez votre album et affrontez l'IA dans des duels quiz !</p>
+                </div>
+                
+                <div class="home-stats-grid">
+                    <div class="home-stat-card">
+                        <div class="home-stat-icon">📦</div>
+                        <div class="home-stat-info">
+                            <span class="home-stat-value" id="packs-opened">0</span>
+                            <span class="home-stat-label">Packs ouverts</span>
+                        </div>
+                    </div>
+                    <div class="home-stat-card">
+                        <div class="home-stat-icon">🎯</div>
+                        <div class="home-stat-info">
+                            <span class="home-stat-value" id="collection-percent">0%</span>
+                            <span class="home-stat-label">Collection</span>
+                        </div>
+                    </div>
+                    <div class="home-stat-card">
+                        <div class="home-stat-icon">⚔️</div>
+                        <div class="home-stat-info">
+                            <span class="home-stat-value" id="win-rate">0%</span>
+                            <span class="home-stat-label">Taux de victoire</span>
+                        </div>
+                    </div>
+                    <div class="home-stat-card">
+                        <div class="home-stat-icon">💎</div>
+                        <div class="home-stat-info">
+                            <span class="home-stat-value" id="legendary-count">0</span>
+                            <span class="home-stat-label">Légendaires</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="home-actions">
+                    <button class="btn btn-primary btn-large" onclick="openPack()">
+                        <span>📦 Ouvrir un Pack (100 pièces)</span>
+                    </button>
+                </div>
+
+                <div class="recent-cards">
+                    <h3>Dernières cartes obtenues</h3>
+                    <div class="recent-cards-grid" id="recent-cards"></div>
+                </div>
+
+                <div class="achievements-section">
+                    <h3>Succès récents</h3>
+                    <div class="achievements-grid" id="achievements"></div>
+                </div>
+            </section>
+
+            <!-- Packs Tab -->
+            <section id="packs" class="tab-content">
+                <div class="packs-header">
+                    <h2>Ouvrir un Pack</h2>
+                    <p>Chaque pack contient 5 cartes avec au moins 1 carte Rare ou mieux !</p>
+                </div>
+                
+                <div class="pack-preview">
+                    <div class="pack-container" id="pack-container">
+                        <div class="pack-closed" onclick="openPack()">
+                            <div class="pack-closed-inner">
+                                <span class="pack-closed-icon">📦</span>
+                                <span class="pack-closed-text">Pack de Cartes</span>
+                                <span class="pack-closed-cost">100 pièces</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pack-opening" id="pack-opening" style="display: none;">
+                    <div class="pack-opening-cards" id="pack-opening-cards"></div>
+                    <button class="btn btn-primary" onclick="finishPackOpening()" id="finish-pack-btn" style="display: none;">
+                        Continuer
+                    </button>
+                </div>
+
+                <div class="pack-stats">
+                    <h3>Statistiques des packs</h3>
+                    <div class="rarity-stats">
+                        <div class="rarity-stat">
+                            <span class="rarity-icon common">C</span>
+                            <span class="rarity-count" id="common-count">0</span>
+                        </div>
+                        <div class="rarity-stat">
+                            <span class="rarity-icon rare">R</span>
+                            <span class="rarity-count" id="rare-count">0</span>
+                        </div>
+                        <div class="rarity-stat">
+                            <span class="rarity-icon super-rare">SR</span>
+                            <span class="rarity-count" id="sr-count">0</span>
+                        </div>
+                        <div class="rarity-stat">
+                            <span class="rarity-icon ultra-rare">UR</span>
+                            <span class="rarity-count" id="ur-count">0</span>
+                        </div>
+                        <div class="rarity-stat">
+                            <span class="rarity-icon legendary">L</span>
+                            <span class="rarity-count" id="legendary-pack-count">0</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Collection Tab -->
+            <section id="collection" class="tab-content">
+                <div class="collection-header">
+                    <h2>Ma Collection</h2>
+                    <div class="collection-controls">
+                        <div class="filter-group">
+                            <label>Catégorie :</label>
+                            <select id="category-filter" onchange="filterCollection()">
+                                <option value="all">Toutes</option>
+                                <option value="Histoire & Personnages">Histoire & Personnages</option>
+                                <option value="Monuments & Lieux">Monuments & Lieux</option>
+                                <option value="Gastronomie">Gastronomie</option>
+                                <option value="Géographie & Régions">Géographie & Régions</option>
+                                <option value="Sciences & Arts">Sciences & Arts</option>
+                                <option value="Sport & Culture">Sport & Culture</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Rareté :</label>
+                            <select id="rarity-filter" onchange="filterCollection()">
+                                <option value="all">Toutes</option>
+                                <option value="C">Commune (C)</option>
+                                <option value="R">Rare (R)</option>
+                                <option value="SR">Super Rare (SR)</option>
+                                <option value="UR">Ultra Rare (UR)</option>
+                                <option value="L">Légendaire (L)</option>
+                            </select>
+                        </div>
+                        <div class="sort-group">
+                            <label>Trier par :</label>
+                            <select id="sort-filter" onchange="filterCollection()">
+                                <option value="id">ID</option>
+                                <option value="name">Nom</option>
+                                <option value="rarity">Rareté</option>
+                                <option value="attack">Attaque</option>
+                                <option value="defense">Défense</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="collection-progress">
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="collection-progress-bar"></div>
+                    </div>
+                    <span class="progress-text" id="collection-progress-text">0/88 cartes (0%)</span>
+                </div>
+
+                <div class="collection-grid" id="collection-grid"></div>
+
+                <div class="duplicates-section">
+                    <h3>Doublons à échanger</h3>
+                    <div class="duplicates-grid" id="duplicates-grid"></div>
+                </div>
+            </section>
+
+            <!-- Duel Tab -->
+            <section id="duel" class="tab-content">
+                <div class="duel-header">
+                    <h2>Duel Quiz</h2>
+                    <p>Affrontez l'IA avec 3 cartes de votre collection !</p>
+                </div>
+
+                <div class="duel-setup" id="duel-setup">
+                    <h3>Sélectionnez 3 cartes</h3>
+                    <div class="duel-selection-grid" id="duel-selection-grid"></div>
+                    <div class="duel-selected-cards" id="duel-selected-cards"></div>
+                    <button class="btn btn-primary" onclick="startDuel()" id="start-duel-btn" disabled>
+                        Commencer le Duel
+                    </button>
+                </div>
+
+                <div class="duel-ongoing" id="duel-ongoing" style="display: none;">
+                    <div class="duel-battlefield">
+                        <div class="duel-opponent-section">
+                            <h3>IA</h3>
+                            <div class="duel-opponent-cards" id="duel-opponent-cards"></div>
+                            <div class="duel-opponent-active" id="duel-opponent-active"></div>
+                        </div>
+                        
+                        <div class="duel-center">
+                            <div class="duel-question" id="duel-question"></div>
+                            <div class="duel-answers" id="duel-answers"></div>
+                            <div class="duel-timer" id="duel-timer"></div>
+                            <div class="duel-log" id="duel-log"></div>
+                        </div>
+                        
+                        <div class="duel-player-section">
+                            <h3>Vous</h3>
+                            <div class="duel-player-cards" id="duel-player-cards"></div>
+                            <div class="duel-player-active" id="duel-player-active"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="duel-stats">
+                        <div class="duel-stat">
+                            <span class="duel-stat-label">Tour :</span>
+                            <span class="duel-stat-value" id="duel-turn">1</span>
+                        </div>
+                        <div class="duel-stat">
+                            <span class="duel-stat-label">Récompense :</span>
+                            <span class="duel-stat-value" id="duel-reward">50-150 pièces</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="duel-result" id="duel-result" style="display: none;">
+                    <div class="duel-result-content" id="duel-result-content"></div>
+                    <button class="btn btn-primary" onclick="returnToDuelSetup()">
+                        Retour à la sélection
+                    </button>
+                </div>
+            </section>
+
+            <!-- Settings Tab -->
+            <section id="settings" class="tab-content">
+                <div class="settings-header">
+                    <h2>Paramètres</h2>
+                </div>
+
+                <div class="settings-section">
+                    <h3>Sauvegarde</h3>
+                    <p>Votre progression est automatiquement sauvegardée dans votre navigateur.</p>
+                    <button class="btn btn-danger" onclick="confirmReset()">
+                        ⚠️ Réinitialiser toute la progression
+                    </button>
+                </div>
+
+                <div class="settings-section">
+                    <h3>Statistiques détaillées</h3>
+                    <div class="detailed-stats">
+                        <div class="detailed-stat">
+                            <span class="detailed-stat-label">Pièces dépensées :</span>
+                            <span class="detailed-stat-value" id="coins-spent">0</span>
+                        </div>
+                        <div class="detailed-stat">
+                            <span class="detailed-stat-label">Pièces gagnées :</span>
+                            <span class="detailed-stat-value" id="coins-earned">0</span>
+                        </div>
+                        <div class="detailed-stat">
+                            <span class="detailed-stat-label">Duels joués :</span>
+                            <span class="detailed-stat-value" id="duels-played">0</span>
+                        </div>
+                        <div class="detailed-stat">
+                            <span class="detailed-stat-label">Duels gagnés :</span>
+                            <span class="detailed-stat-value" id="duels-won-stat">0</span>
+                        </div>
+                        <div class="detailed-stat">
+                            <span class="detailed-stat-label">Duels perdus :</span>
+                            <span class="detailed-stat-value" id="duels-lost">0</span>
+                        </div>
+                        <div class="detailed-stat">
+                            <span class="detailed-stat-label">Cartes uniques :</span>
+                            <span class="detailed-stat-value" id="unique-cards">0</span>
+                        </div>
+                        <div class="detailed-stat">
+                            <span class="detailed-stat-label">Doublons totaux :</span>
+                            <span class="detailed-stat-value" id="total-duplicates">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h3>À propos</h3>
+                    <p>France Masters est un jeu de cartes à collectionner inspiré de WikiMasters et des articles Wikipédia sur la France.</p>
+                    <p>Créé avec ❤️ en HTML/CSS/JS vanilla.</p>
+                    <p>Toutes les cartes sont basées sur de vrais articles Wikipédia.</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Toast Notifications -->
+        <div class="toast-container" id="toast-container"></div>
+
+        <!-- Modal for reset confirmation -->
+        <div class="modal" id="reset-modal" style="display: none;">
+            <div class="modal-content">
+                <h3>⚠️ Réinitialiser la progression</h3>
+                <p>Êtes-vous sûr de vouloir réinitialiser toute votre progression ?</p>
+                <p>Cela supprimera :</p>
+                <ul>
+                    <li>Votre collection de cartes</li>
+                    <li>Vos pièces</li>
+                    <li>Vos statistiques de duel</li>
+                    <li>Vos succès</li>
+                </ul>
+                <p>Cette action est irréversible !</p>
+                <div class="modal-buttons">
+                    <button class="btn btn-secondary" onclick="closeResetModal()">Annuler</button>
+                    <button class="btn btn-danger" onclick="resetGame()">Réinitialiser</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for pack opening -->
+        <div class="modal" id="pack-modal" style="display: none;">
+            <div class="modal-content pack-modal-content">
+                <div class="modal-close" onclick="closePackModal()">&times;</div>
+                <h2>Ouverture de Pack</h2>
+                <div class="modal-pack-container" id="modal-pack-container"></div>
+                <button class="btn btn-primary" onclick="closePackModal()" id="modal-continue-btn" style="display: none;">
+                    Continuer
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

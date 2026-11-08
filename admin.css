@@ -1,0 +1,652 @@
+/* France Masters - Styles pour l'Éditeur de Cartes */
+
+/* ========== RESET & BASE ========== */
+.editor-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    font-family: var(--font-family);
+}
+
+/* ========== HEADER ========== */
+.editor-header {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
+    color: var(--text-light);
+    padding: var(--spacing-md) var(--spacing-xl);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-md);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.editor-header .logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.editor-header .logo-icon {
+    font-size: 2rem;
+}
+
+.editor-header h1 {
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.editor-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.editor-actions .btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 0.9rem;
+}
+
+/* ========== NAVIGATION ========== */
+.editor-nav {
+    display: flex;
+    background: var(--surface);
+    border-bottom: 2px solid var(--primary);
+    box-shadow: var(--shadow-sm);
+    z-index: 90;
+}
+
+.editor-nav-tab {
+    flex: 1;
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    transition: all var(--transition-normal);
+    position: relative;
+}
+
+.editor-nav-tab:hover {
+    background: var(--rare-rare-bg);
+    color: var(--rare-rare);
+}
+
+.editor-nav-tab.active {
+    background: var(--primary);
+    color: var(--text-light);
+    box-shadow: inset 0 -3px 0 var(--secondary);
+}
+
+.editor-nav-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--secondary);
+}
+
+/* ========== MAIN CONTENT ========== */
+.editor-main {
+    flex: 1;
+    padding: var(--spacing-xl);
+}
+
+.editor-tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.editor-tab-content.active {
+    display: block;
+}
+
+/* ========== SEARCH BAR ========== */
+.editor-search {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+.editor-search input,
+.editor-search select {
+    flex: 1;
+    min-width: 200px;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid #e0e0e0;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    background: var(--surface);
+    color: var(--text-primary);
+}
+
+.editor-search input:focus,
+.editor-search select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(26, 35, 126, 0.2);
+}
+
+.editor-stats-bar {
+    display: flex;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* ========== CARDS GRID ========== */
+.editor-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.editor-card {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    transition: all var(--transition-normal);
+    cursor: pointer;
+}
+
+.editor-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.editor-card-header {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    position: relative;
+}
+
+.editor-card-header[data-category="Histoire & Personnages"] {
+    background: var(--category-histoire);
+}
+
+.editor-card-header[data-category="Monuments & Lieux"] {
+    background: var(--category-monuments);
+}
+
+.editor-card-header[data-category="Gastronomie"] {
+    background: var(--category-gastronomie);
+}
+
+.editor-card-header[data-category="Géographie & Régions"] {
+    background: var(--category-geographie);
+}
+
+.editor-card-header[data-category="Sciences & Arts"] {
+    background: var(--category-sciences);
+}
+
+.editor-card-header[data-category="Sport & Culture"] {
+    background: var(--category-sport);
+}
+
+.editor-card-emoji {
+    font-size: 2rem;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.editor-card-rarity {
+    position: absolute;
+    top: var(--spacing-xs);
+    right: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-light);
+    box-shadow: var(--shadow-sm);
+}
+
+.editor-card-rarity.C { background: var(--rare-common); }
+.editor-card-rarity.R { background: var(--rare-rare); }
+.editor-card-rarity.SR { background: var(--rare-sr); }
+.editor-card-rarity.UR { background: var(--rare-ur); color: var(--text-dark); }
+.editor-card-rarity.L { 
+    background: var(--rare-legendary);
+    animation: rainbow 3s linear infinite;
+    background-size: 400% 400%;
+}
+
+.editor-card-body {
+    padding: var(--spacing-md);
+}
+
+.editor-card-name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-xs);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.editor-card-id {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    display: flex;
+    justify-content: space-between;
+}
+
+.editor-card-actions {
+    display: flex;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: #f5f5f5;
+    border-top: 1px solid #e0e0e0;
+}
+
+.editor-card-actions button {
+    flex: 1;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 600;
+    transition: all var(--transition-fast);
+}
+
+.editor-card-actions .edit-btn {
+    background: var(--primary);
+    color: var(--text-light);
+}
+
+.editor-card-actions .edit-btn:hover {
+    background: var(--primary-dark);
+}
+
+.editor-card-actions .delete-btn {
+    background: #f44336;
+    color: var(--text-light);
+}
+
+.editor-card-actions .delete-btn:hover {
+    background: #d32f2f;
+}
+
+/* ========== FORMS ========== */
+.editor-form-container {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: var(--spacing-xl);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.editor-form-container h2 {
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+    color: var(--primary-dark);
+    margin-bottom: var(--spacing-xl);
+    text-align: center;
+}
+
+.editor-form-group {
+    margin-bottom: var(--spacing-lg);
+}
+
+.editor-form-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.editor-form-group input,
+.editor-form-group select,
+.editor-form-group textarea {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid #e0e0e0;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    font-family: inherit;
+    background: var(--surface);
+    color: var(--text-primary);
+    transition: all var(--transition-fast);
+}
+
+.editor-form-group input:focus,
+.editor-form-group select:focus,
+.editor-form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(26, 35, 126, 0.2);
+}
+
+.editor-form-group textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.editor-form-row {
+    display: flex;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+.editor-form-row .editor-form-group {
+    flex: 1;
+    min-width: 150px;
+}
+
+.editor-form-row .editor-form-group input,
+.editor-form-row .editor-form-group select {
+    width: auto;
+}
+
+/* ========== CATEGORIES & RARITIES STATS ========== */
+.editor-categories-stats {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+}
+
+.editor-categories-stats h2 {
+    font-family: var(--font-title);
+    font-size: 1.3rem;
+    color: var(--primary-dark);
+    margin-bottom: var(--spacing-lg);
+}
+
+.editor-categories-grid,
+.editor-rarities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.editor-category-card,
+.editor-rarity-card {
+    background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    text-align: center;
+}
+
+.editor-category-card h3,
+.editor-rarity-card h3 {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.editor-category-card .count,
+.editor-rarity-card .count {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.editor-category-card .percentage,
+.editor-rarity-card .percentage {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: var(--spacing-xs);
+}
+
+/* ========== OVERVIEW STATS ========== */
+.editor-stats-overview {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+}
+
+.editor-stats-overview h2 {
+    font-family: var(--font-title);
+    font-size: 1.3rem;
+    color: var(--primary-dark);
+    margin-bottom: var(--spacing-lg);
+}
+
+.editor-overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.editor-overview-card {
+    background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    text-align: center;
+}
+
+.editor-overview-card .label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.editor-overview-card .value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+/* ========== CHARTS ========== */
+.editor-charts {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: var(--spacing-xl);
+}
+
+.editor-charts h2 {
+    font-family: var(--font-title);
+    font-size: 1.3rem;
+    color: var(--primary-dark);
+    margin-bottom: var(--spacing-lg);
+}
+
+.editor-chart-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+.editor-chart {
+    background: var(--surface);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    border: 1px solid #e0e0e0;
+}
+
+.editor-chart h3 {
+    font-size: 1rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+.editor-chart-bars {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.editor-chart-bar {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.editor-chart-bar .label {
+    width: 80px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-align: right;
+}
+
+.editor-chart-bar .bar-container {
+    flex: 1;
+    height: 20px;
+    background: #e0e0e0;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+.editor-chart-bar .bar {
+    height: 100%;
+    border-radius: var(--radius-sm);
+    transition: width var(--transition-slow);
+}
+
+.editor-chart-bar .value {
+    width: 50px;
+    font-size: 0.8rem;
+    color: var(--text-primary);
+    text-align: right;
+}
+
+/* ========== MODALS ========== */
+.editor-modal-content {
+    max-width: 600px;
+    width: 90%;
+}
+
+.editor-modal-content h2 {
+    font-family: var(--font-title);
+    font-size: 1.3rem;
+    color: var(--primary-dark);
+    margin-bottom: var(--spacing-lg);
+}
+
+.editor-modal-content p {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-md);
+}
+
+#import-json {
+    width: 100%;
+    min-height: 200px;
+    padding: var(--spacing-md);
+    border: 1px solid #e0e0e0;
+    border-radius: var(--radius-sm);
+    font-family: monospace;
+    font-size: 0.85rem;
+    resize: vertical;
+    margin-bottom: var(--spacing-md);
+}
+
+.modal-buttons {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: flex-end;
+    margin-top: var(--spacing-xl);
+}
+
+/* ========== TOASTS ========== */
+#editor-toast-container {
+    position: fixed;
+    bottom: var(--spacing-xl);
+    left: var(--spacing-xl);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    pointer-events: none;
+}
+
+#editor-toast-container .toast {
+    min-width: 300px;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 992px) {
+    .editor-search {
+        flex-direction: column;
+    }
+    
+    .editor-search input,
+    .editor-search select {
+        min-width: 100%;
+    }
+    
+    .editor-form-row {
+        flex-direction: column;
+    }
+    
+    .editor-form-row .editor-form-group {
+        min-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .editor-header {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        padding: var(--spacing-md);
+    }
+    
+    .editor-actions {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .editor-nav-tab {
+        flex: 0 0 25%;
+        padding: var(--spacing-sm);
+        font-size: 0.85rem;
+    }
+    
+    .editor-main {
+        padding: var(--spacing-md);
+    }
+    
+    .editor-cards-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+    
+    .editor-form-container {
+        padding: var(--spacing-md);
+    }
+}
+
+@media (max-width: 480px) {
+    .editor-nav-tab {
+        flex: 0 0 50%;
+    }
+    
+    .editor-stats-bar {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+    
+    .editor-chart-container {
+        grid-template-columns: 1fr;
+    }
+    
+    #editor-toast-container {
+        left: var(--spacing-sm);
+        bottom: var(--spacing-sm);
+    }
+    
+    #editor-toast-container .toast {
+        min-width: 250px;
+    }
+}

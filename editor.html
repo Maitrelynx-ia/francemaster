@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>France Masters - Éditeur de Cartes</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="editor-container">
+        <!-- Header -->
+        <header class="editor-header">
+            <div class="logo">
+                <span class="logo-icon">👑</span>
+                <h1>Éditeur France Masters</h1>
+            </div>
+            <div class="editor-actions">
+                <button class="btn btn-secondary" onclick="exportCards()">
+                    📥 Exporter JSON
+                </button>
+                <button class="btn btn-secondary" onclick="importCards()">
+                    📤 Importer JSON
+                </button>
+                <button class="btn btn-primary" onclick="saveCards()">
+                    💾 Sauvegarder
+                </button>
+                <button class="btn btn-danger" onclick="confirmResetCards()">
+                    ⚠️ Réinitialiser
+                </button>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="editor-nav">
+            <button class="editor-nav-tab active" data-tab="list">Liste des Cartes</button>
+            <button class="editor-nav-tab" data-tab="add">Ajouter Carte</button>
+            <button class="editor-nav-tab" data-tab="categories">Catégories</button>
+            <button class="editor-nav-tab" data-tab="stats">Statistiques</button>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="editor-main">
+            <!-- List Tab -->
+            <section id="list" class="editor-tab-content active">
+                <div class="editor-search">
+                    <input type="text" id="search-input" placeholder="Rechercher une carte..." oninput="filterCards()">
+                    <select id="filter-category" onchange="filterCards()">
+                        <option value="all">Toutes les catégories</option>
+                        <option value="Histoire & Personnages">Histoire & Personnages</option>
+                        <option value="Monuments & Lieux">Monuments & Lieux</option>
+                        <option value="Gastronomie">Gastronomie</option>
+                        <option value="Géographie & Régions">Géographie & Régions</option>
+                        <option value="Sciences & Arts">Sciences & Arts</option>
+                        <option value="Sport & Culture">Sport & Culture</option>
+                    </select>
+                    <select id="filter-rarity" onchange="filterCards()">
+                        <option value="all">Toutes les raretés</option>
+                        <option value="C">Commune (C)</option>
+                        <option value="R">Rare (R)</option>
+                        <option value="SR">Super Rare (SR)</option>
+                        <option value="UR">Ultra Rare (UR)</option>
+                        <option value="L">Légendaire (L)</option>
+                    </select>
+                </div>
+                
+                <div class="editor-stats-bar">
+                    <span id="total-cards-count">0 cartes</span>
+                    <span id="filter-result-count">0 résultats</span>
+                </div>
+                
+                <div class="editor-cards-grid" id="editor-cards-grid"></div>
+            </section>
+
+            <!-- Add Tab -->
+            <section id="add" class="editor-tab-content">
+                <div class="editor-form-container">
+                    <h2>Ajouter une nouvelle carte</h2>
+                    <form id="add-card-form" onsubmit="addNewCard(event)">
+                        <div class="editor-form-group">
+                            <label for="new-id">ID *</label>
+                            <input type="number" id="new-id" required min="1" step="1">
+                            <button type="button" class="btn btn-secondary" onclick="generateId()">
+                                Auto
+                            </button>
+                        </div>
+                        
+                        <div class="editor-form-group">
+                            <label for="new-name">Nom *</label>
+                            <input type="text" id="new-name" required placeholder="Ex: Tour Eiffel">
+                        </div>
+                        
+                        <div class="editor-form-group">
+                            <label for="new-description">Description *</label>
+                            <textarea id="new-description" required placeholder="Ex: Monument emblématique de Paris..."></textarea>
+                        </div>
+                        
+                        <div class="editor-form-group">
+                            <label for="new-category">Catégorie *</label>
+                            <select id="new-category" required>
+                                <option value="Histoire & Personnages">Histoire & Personnages</option>
+                                <option value="Monuments & Lieux">Monuments & Lieux</option>
+                                <option value="Gastronomie">Gastronomie</option>
+                                <option value="Géographie & Régions">Géographie & Régions</option>
+                                <option value="Sciences & Arts">Sciences & Arts</option>
+                                <option value="Sport & Culture">Sport & Culture</option>
+                            </select>
+                        </div>
+                        
+                        <div class="editor-form-group">
+                            <label for="new-rarity">Rareté *</label>
+                            <select id="new-rarity" required>
+                                <option value="C">Commune (C)</option>
+                                <option value="R">Rare (R)</option>
+                                <option value="SR">Super Rare (SR)</option>
+                                <option value="UR">Ultra Rare (UR)</option>
+                                <option value="L">Légendaire (L)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="editor-form-row">
+                            <div class="editor-form-group">
+                                <label for="new-attack">Attaque (1-100) *</label>
+                                <input type="number" id="new-attack" required min="1" max="100" value="50">
+                            </div>
+                            <div class="editor-form-group">
+                                <label for="new-defense">Défense (1-100) *</label>
+                                <input type="number" id="new-defense" required min="1" max="100" value="50">
+                            </div>
+                        </div>
+                        
+                        <div class="editor-form-row">
+                            <div class="editor-form-group">
+                                <label for="new-views">Vues *</label>
+                                <input type="number" id="new-views" required min="1000" value="1000000">
+                            </div>
+                            <div class="editor-form-group">
+                                <label for="new-emoji">Emoji *</label>
+                                <input type="text" id="new-emoji" required placeholder="🗼" maxlength="2">
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-large">
+                            ✅ Ajouter la carte
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Categories Tab -->
+            <section id="categories" class="editor-tab-content">
+                <div class="editor-categories-stats">
+                    <h2>Répartition par Catégorie</h2>
+                    <div class="editor-categories-grid" id="editor-categories-grid"></div>
+                </div>
+                
+                <div class="editor-categories-stats">
+                    <h2>Répartition par Rareté</h2>
+                    <div class="editor-rarities-grid" id="editor-rarities-grid"></div>
+                </div>
+            </section>
+
+            <!-- Stats Tab -->
+            <section id="stats" class="editor-tab-content">
+                <div class="editor-stats-overview">
+                    <h2>Statistiques Globales</h2>
+                    <div class="editor-overview-grid" id="editor-overview-grid"></div>
+                </div>
+                
+                <div class="editor-charts">
+                    <h2>Analyse des Stats</h2>
+                    <div class="editor-chart-container">
+                        <div class="editor-chart" id="attack-chart"></div>
+                        <div class="editor-chart" id="defense-chart"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Card Edit Modal -->
+        <div class="modal" id="edit-modal" style="display: none;">
+            <div class="modal-content editor-modal-content">
+                <div class="modal-close" onclick="closeEditModal()">&times;</div>
+                <h2>Modifier la Carte</h2>
+                <form id="edit-card-form" onsubmit="saveEditCard(event)">
+                    <input type="hidden" id="edit-id">
+                    <input type="hidden" id="edit-index">
+                    
+                    <div class="editor-form-group">
+                        <label for="edit-name">Nom *</label>
+                        <input type="text" id="edit-name" required>
+                    </div>
+                    
+                    <div class="editor-form-group">
+                        <label for="edit-description">Description *</label>
+                        <textarea id="edit-description" required></textarea>
+                    </div>
+                    
+                    <div class="editor-form-row">
+                        <div class="editor-form-group">
+                            <label for="edit-category">Catégorie *</label>
+                            <select id="edit-category" required>
+                                <option value="Histoire & Personnages">Histoire & Personnages</option>
+                                <option value="Monuments & Lieux">Monuments & Lieux</option>
+                                <option value="Gastronomie">Gastronomie</option>
+                                <option value="Géographie & Régions">Géographie & Régions</option>
+                                <option value="Sciences & Arts">Sciences & Arts</option>
+                                <option value="Sport & Culture">Sport & Culture</option>
+                            </select>
+                        </div>
+                        <div class="editor-form-group">
+                            <label for="edit-rarity">Rareté *</label>
+                            <select id="edit-rarity" required>
+                                <option value="C">Commune (C)</option>
+                                <option value="R">Rare (R)</option>
+                                <option value="SR">Super Rare (SR)</option>
+                                <option value="UR">Ultra Rare (UR)</option>
+                                <option value="L">Légendaire (L)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="editor-form-row">
+                        <div class="editor-form-group">
+                            <label for="edit-attack">Attaque (1-100) *</label>
+                            <input type="number" id="edit-attack" required min="1" max="100">
+                        </div>
+                        <div class="editor-form-group">
+                            <label for="edit-defense">Défense (1-100) *</label>
+                            <input type="number" id="edit-defense" required min="1" max="100">
+                        </div>
+                    </div>
+                    
+                    <div class="editor-form-row">
+                        <div class="editor-form-group">
+                            <label for="edit-views">Vues *</label>
+                            <input type="number" id="edit-views" required min="1000">
+                        </div>
+                        <div class="editor-form-group">
+                            <label for="edit-emoji">Emoji *</label>
+                            <input type="text" id="edit-emoji" required maxlength="2">
+                        </div>
+                    </div>
+                    
+                    <div class="modal-buttons">
+                        <button type="button" class="btn btn-danger" onclick="deleteCard()">
+                            ❌ Supprimer
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            ✅ Sauvegarder
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Import Modal -->
+        <div class="modal" id="import-modal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-close" onclick="closeImportModal()">&times;</div>
+                <h2>Importer des Cartes</h2>
+                <p>Collez le JSON des cartes à importer :</p>
+                <textarea id="import-json" rows="10" placeholder="[...]"></textarea>
+                <div class="modal-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="closeImportModal()">
+                        Annuler
+                    </button>
+                    <button type="button" class="btn btn-primary" onclick="processImport()">
+                        Importer
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Confirm Modal -->
+        <div class="modal" id="confirm-modal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-close" onclick="closeConfirmModal()">&times;</div>
+                <h2 id="confirm-title">Confirmation</h2>
+                <p id="confirm-message">Êtes-vous sûr ?</p>
+                <div class="modal-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="closeConfirmModal()">
+                        Annuler
+                    </button>
+                    <button type="button" class="btn btn-danger" onclick="confirmAction()">
+                        Confirmer
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toast Container -->
+        <div class="toast-container" id="editor-toast-container"></div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="editor.js"></script>
+</body>
+</html>
