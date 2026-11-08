@@ -221,36 +221,99 @@ function showPackOpeningAnimation(cards) {
     const modal = document.getElementById('pack-modal');
     const container = document.getElementById('modal-pack-container');
     const continueBtn = document.getElementById('modal-continue-btn');
+    const announce = document.getElementById('pack-announcement');
+    const title = modal.querySelector('h2');
     modal.style.display = 'flex';
     container.innerHTML = '';
     continueBtn.style.display = 'none';
-    
+    continueBtn.classList.remove('pack-fade-up');
+    modal.querySelectorAll('.pack-confetti, .pack-flash').forEach(el => el.remove());
+    if (announce) announce.innerHTML = '<span>🎁 Ouverture du pack...</span>';
+    if (title) title.textContent = 'Ouverture de Pack';
+
     const cardBacks = [];
+    const slots = [];
     for (let i = 0; i < 5; i++) {
+        const slot = document.createElement('div');
+        slot.className = 'pack-card-slot';
         const cardBack = document.createElement('div');
         cardBack.className = 'card back';
         cardBack.innerHTML = '📦';
-        cardBack.style.transform = 'rotateY(180deg)';
-        cardBack.style.transition = `transform 0.6s ease ${i * 0.2}s`;
-        container.appendChild(cardBack);
+        const d = i * 0.12;
+        cardBack.style.animationDelay = d + 's, ' + (d + 0.55) + 's';
+        slot.appendChild(cardBack);
+        container.appendChild(slot);
         cardBacks.push(cardBack);
+        slots.push(slot);
     }
-    
+
+    const announceText = { C: 'Carte Commune', R: '💙 Carte Rare', SR: '✨ Super Rare !', UR: '🌟 ULTRA RARE !', L: '🌈 LÉGENDAIRE !!' };
+    const particleColors = { SR: '#b57bff', UR: '#ffd700', L: '#ff69b4' };
+
+    function spawnParticles(slot, color) {
+        for (let j = 0; j < 14; j++) {
+            const p = document.createElement('span');
+            p.className = 'pack-particle';
+            const angle = Math.random() * Math.PI * 2;
+            const dist = 40 + Math.random() * 55;
+            p.style.setProperty('--dx', Math.cos(angle) * dist + 'px');
+            p.style.setProperty('--dy', Math.sin(angle) * dist + 'px');
+            p.style.setProperty('--pc', color);
+            slot.appendChild(p);
+        }
+    }
+
+    function spawnFlash() {
+        const content = modal.querySelector('.pack-modal-content');
+        if (!content) return;
+        const f = document.createElement('div');
+        f.className = 'pack-flash';
+        content.appendChild(f);
+    }
+
+    function spawnConfetti() {
+        const colors = ['#ff69b4', '#ffd700', '#4169e1', '#8a2be2', '#00e676', '#ff6f00'];
+        const content = modal.querySelector('.pack-modal-content');
+        if (!content) return;
+        for (let j = 0; j < 36; j++) {
+            const c = document.createElement('div');
+            c.className = 'pack-confetti';
+            c.style.left = (Math.random() * 100) + '%';
+            c.style.width = (5 + Math.random() * 6) + 'px';
+            c.style.height = (8 + Math.random() * 8) + 'px';
+            c.style.animationDuration = (2.2 + Math.random() * 2.2) + 's';
+            c.style.animationDelay = (Math.random() * 0.6) + 's';
+            c.style.setProperty('--c', colors[j % colors.length]);
+            content.appendChild(c);
+        }
+    }
+
     setTimeout(() => {
+        if (announce) announce.innerHTML = '';
         cards.forEach((card, index) => {
             setTimeout(() => {
-                cardBacks[index].style.transform = 'rotateY(0deg)';
-                cardBacks[index].className = 'card front ' + card.rarity;
-                cardBacks[index].innerHTML = createCardHTML(card, true);
-                if (['SR', 'UR', 'L'].includes(card.rarity)) {
-                    cardBacks[index].classList.add('glow');
-                }
-                if (index === cards.length - 1) {
-                    setTimeout(() => { continueBtn.style.display = 'block'; }, 500);
-                }
-            }, index * 800);
+                cardBacks[index].classList.add('reveal-lift');
+                setTimeout(() => {
+                    cardBacks[index].className = 'card front reveal-pop ' + card.rarity;
+                    cardBacks[index].innerHTML = createCardHTML(card, true);
+                    if (['SR', 'UR', 'L'].includes(card.rarity)) {
+                        cardBacks[index].classList.add('glow');
+                        spawnParticles(slots[index], particleColors[card.rarity] || '#ffd700');
+                    }
+                    if (card.rarity === 'UR' || card.rarity === 'L') spawnFlash();
+                    if (card.rarity === 'L') spawnConfetti();
+                    if (announce) announce.innerHTML = '<span class="announce-' + card.rarity + '">' + announceText[card.rarity] + '</span>';
+                    if (index === cards.length - 1) {
+                        setTimeout(() => {
+                            if (title) title.textContent = '🎉 Pack Ouvert !';
+                            continueBtn.style.display = 'block';
+                            continueBtn.classList.add('pack-fade-up');
+                        }, 650);
+                    }
+                }, 350);
+            }, index * 750);
         });
-    }, 500);
+    }, 900);
 }
 
 function closePackModal() {

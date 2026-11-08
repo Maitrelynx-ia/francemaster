@@ -1973,3 +1973,111 @@ body {
 .recent-cards-grid .card-emoji { font-size: 2.2rem; }
 .card-emoji { transition: transform var(--transition-normal); }
 .card:hover .card-emoji { transform: scale(1.1); }
+
+/* ========== OUVERTURE DE PACK : CINEMATIQUE ========== */
+#pack-modal { background: radial-gradient(circle at 50% 35%, rgba(123, 31, 162, 0.6), rgba(8, 8, 28, 0.94)); backdrop-filter: blur(3px); }
+#pack-modal .modal-content { background: linear-gradient(170deg, #221c4e 0%, #161238 100%); border: 1px solid rgba(255, 215, 0, 0.22); box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6); }
+.pack-modal-content { max-width: 660px; }
+.pack-modal-content h2 { color: var(--text-light); text-shadow: 0 2px 12px rgba(255, 111, 0, 0.4); }
+.pack-modal-content .modal-close { color: rgba(255, 255, 255, 0.75); }
+.pack-modal-content .modal-close:hover { color: var(--text-light); }
+
+/* Cartes compactes dans la modale */
+.pack-modal-content .card { width: 100px; height: 145px; flex-shrink: 0; box-shadow: var(--shadow-lg); }
+.pack-modal-content .card-name { font-size: 0.72rem; border-bottom: none; padding-bottom: 0; }
+.pack-modal-content .card-description { display: none; }
+.pack-modal-content .card-stats { margin-top: auto; padding: 3px 4px; }
+.pack-modal-content .card-stat-label { font-size: 0.55rem; }
+.pack-modal-content .card-stat-value { font-size: 0.7rem; }
+.pack-modal-content .card-footer { padding: 3px 4px; }
+.pack-modal-content .card-views { display: none; }
+.pack-modal-content .card-id { font-size: 0.6rem; }
+.pack-modal-content .card-rarity { font-size: 0.6rem; padding: 1px 5px; top: 4px; right: 4px; }
+.pack-modal-content .card-header .card-emoji { font-size: 1.9rem; }
+.pack-modal-content .card-image-container + .card-header .card-emoji { font-size: 0.95rem; padding: 2px; bottom: 4px; left: 4px; }
+
+/* Dos de pack : distribution en cascade + flottement + reflet */
+.pack-modal-content .card.back { font-size: 1.6rem; border-width: 2px; animation: dealIn 0.55s cubic-bezier(0.2, 0.8, 0.3, 1.25) both, floatCard 3s ease-in-out infinite; }
+.card.back::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -80%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(105deg, transparent 0%, rgba(255, 255, 255, 0.45) 50%, transparent 100%);
+    transform: skewX(-18deg);
+    animation: shine 2.8s ease-in-out infinite;
+}
+.pack-card-slot { position: relative; }
+.modal-pack-container { flex-wrap: wrap; perspective: 900px; }
+
+/* Revelation : levee puis flip 3D */
+.pack-modal-content .card.reveal-lift { animation: liftCard 0.35s ease-in both; z-index: 2; }
+.pack-modal-content .card.reveal-pop { animation: revealPop 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.25) both; z-index: 3; }
+.pack-modal-content .card.glow { animation: revealPop 0.5s cubic-bezier(0.2, 0.9, 0.3, 1.25) both, glow 2s infinite 0.55s; }
+
+/* Annonce de rarete */
+.pack-announcement { min-height: 30px; text-align: center; font-size: 1.25rem; font-weight: 800; margin-bottom: var(--spacing-sm); letter-spacing: 0.5px; }
+.pack-announcement span { display: inline-block; color: #ffffff; animation: announceIn 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.4) both; }
+.pack-announcement .announce-C { color: #b9b9c3; }
+.pack-announcement .announce-R { color: #7fa8ff; }
+.pack-announcement .announce-SR { color: #b57bff; text-shadow: 0 0 14px rgba(138, 43, 226, 0.7); }
+.pack-announcement .announce-UR { color: #ffd54f; text-shadow: 0 0 16px rgba(255, 215, 0, 0.7); }
+.pack-announcement .announce-L { background: linear-gradient(90deg, #ff69b4, #ffd700, #4169e1, #ff69b4); background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: announceIn 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.4) both, rainbowText 2.5s linear 0.45s infinite; }
+
+/* Particules, flash et confettis */
+.pack-particle { position: absolute; top: 50%; left: 50%; width: 9px; height: 9px; border-radius: 50%; background: var(--pc, #ffd700); box-shadow: 0 0 8px var(--pc, #ffd700); pointer-events: none; z-index: 6; animation: packBurst 0.75s ease-out forwards; }
+.pack-confetti { position: absolute; top: -14px; height: 12px; background: var(--c, #ffd700); border-radius: 2px; opacity: 0; pointer-events: none; z-index: 5; animation: confettiFall linear forwards; }
+.pack-flash { position: absolute; inset: 0; background: radial-gradient(circle, #ffffff 0%, rgba(255, 255, 255, 0) 70%); pointer-events: none; z-index: 7; opacity: 0.85; animation: packFlash 0.55s ease-out forwards; }
+
+/* Bouton continuer */
+.pack-modal-content #modal-continue-btn { display: block; margin: 0 auto; }
+.pack-fade-up { animation: packFadeUp 0.5s ease both; }
+
+@keyframes dealIn {
+    0% { transform: translateY(90px) scale(0.4) rotate(-10deg); opacity: 0; }
+    100% { transform: translateY(0) scale(1) rotate(0deg); opacity: 1; }
+}
+@keyframes floatCard {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-7px); }
+}
+@keyframes shine {
+    0%, 55% { left: -80%; }
+    90%, 100% { left: 190%; }
+}
+@keyframes liftCard {
+    0% { transform: translateY(0) scale(1); }
+    60% { transform: translateY(-14px) scale(1.1) rotate(2deg); }
+    100% { transform: translateY(-10px) scale(1.06); }
+}
+@keyframes revealPop {
+    0% { transform: scale(0.5) rotateY(180deg); opacity: 0.4; }
+    60% { transform: scale(1.12) rotateY(0deg); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+@keyframes announceIn {
+    0% { transform: translateY(14px) scale(0.7); opacity: 0; }
+    100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+@keyframes rainbowText {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 300% 50%; }
+}
+@keyframes packBurst {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    100% { transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(0.15); opacity: 0; }
+}
+@keyframes confettiFall {
+    0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(560px) rotate(660deg); opacity: 0; }
+}
+@keyframes packFlash {
+    0% { opacity: 0.85; }
+    100% { opacity: 0; }
+}
+@keyframes packFadeUp {
+    0% { transform: translateY(16px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
