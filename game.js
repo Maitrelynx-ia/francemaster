@@ -139,6 +139,7 @@ function switchTab(tabId) {
     if (tabId === 'collection') renderCollection();
     else if (tabId === 'duel') renderDuelSetup();
     else if (tabId === 'packs') renderPacksTab();
+    else if (tabId === 'market') renderMarket();
 }
 
 // ========== PACKS ==========

@@ -40,6 +40,7 @@
         <nav class="nav-tabs">
             <button class="nav-tab active" data-tab="home">Accueil</button>
             <button class="nav-tab" data-tab="packs">Packs</button>
+            <button class="nav-tab" data-tab="market">Marché</button>
             <button class="nav-tab" data-tab="collection">Collection</button>
             <button class="nav-tab" data-tab="duel">Duel</button>
             <button class="nav-tab" data-tab="settings">Paramètres</button>
@@ -170,6 +171,34 @@
             </section>
 
             <!-- Collection Tab -->
+            <!-- Market Tab -->
+            <section id="market" class="tab-content">
+                <div class="market-header">
+                    <h2>🏛️ Marché aux Enchères</h2>
+                    <p>Achetez des cartes aux vendeurs IA et vendez vos doublons aux enchères !</p>
+                    <div class="market-coins-bar">Vos pièces : <strong id="market-coins">0</strong> 🪙</div>
+                </div>
+
+                <div class="market-section">
+                    <div class="market-section-head">
+                        <h3>🛒 Cartes en vente</h3>
+                        <button class="btn btn-secondary market-refresh-btn" onclick="refreshMarketOffers()">🔄 Renouveler les offres</button>
+                    </div>
+                    <div class="market-grid" id="market-offers-grid"></div>
+                </div>
+
+                <div class="market-section">
+                    <h3>📦 Mes ventes en cours <span class="market-sales-count" id="market-sales-count">(0/3)</span></h3>
+                    <div class="market-grid" id="market-my-sales"></div>
+                </div>
+
+                <div class="market-section">
+                    <h3>♻️ Vendre mes doublons</h3>
+                    <p class="market-hint">Mettez vos cartes en double (ou plus) aux enchères : les acheteurs IA enchérissent pendant 3 minutes en partant du prix de départ. Maximum 3 ventes simultanées.</p>
+                    <div class="market-grid" id="market-duplicates-grid"></div>
+                </div>
+            </section>
+
             <section id="collection" class="tab-content">
                 <div class="collection-header">
                     <h2>Ma Collection</h2>
@@ -468,5 +497,6 @@
     <script src="custom.js"></script>
     <script src="auth.js"></script>
     <script src="game.js"></script>
+    <script src="market.js"></script>
 </body>
 </html>
