@@ -143,12 +143,19 @@ function switchTab(tabId) {
 
 // ========== PACKS ==========
 function openPack() {
-    if (GameState.coins < 100) {
-        showToast('Erreur', 'Pas assez de pièces !', 'error');
+    // Packs are now free with auth system
+    // Check if user is logged in and has packs available
+    if (!window.isLoggedIn || !window.isLoggedIn()) {
+        if (window.showAuthModal) window.showAuthModal();
         return;
     }
-    GameState.coins -= 100;
-    GameState.stats.coinsSpent += 100;
+    
+    // Check if user has packs to open
+    if (window.AuthState && window.AuthState.packs && window.AuthState.packs.count > 0) {
+        window.AuthState.packs.count--;
+        if (window.saveUserPacks) window.saveUserPacks();
+    }
+    
     GameState.stats.packsOpened += 1;
     const packCards = generatePack();
     addCardsToCollection(packCards);
@@ -156,6 +163,9 @@ function openPack() {
     saveGame();
     updateUI();
     checkAchievements();
+    
+    // Update auth UI
+    if (window.updateAuthUI) window.updateAuthUI();
 }
 
 function generatePack() {
