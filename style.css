@@ -2195,3 +2195,19 @@ body {
 .fd-answer.disabled { cursor: default; }
 .fd-winner { font-size: 1.2rem; font-weight: 800; color: var(--secondary); margin: var(--spacing-sm) 0; }
 .fd-scores { display: flex; justify-content: center; gap: var(--spacing-xl); margin-top: var(--spacing-sm); font-size: 1.05rem; font-weight: 700; color: var(--primary-dark); }
+
+/* ========== OUVERTURE DE PACK : PAQUET A DECHIRER ========== */
+.pack-stage { display: flex; flex-direction: column; align-items: center; gap: var(--spacing-sm); margin: var(--spacing-md) 0; position: relative; }
+.pack-hint { font-size: 0.9rem; color: var(--text-secondary); text-align: center; transition: opacity 0.4s ease; }
+.pack-hint.hint-pulse { animation: hintPulse 1.2s ease-in-out infinite; }
+.tear-progress { width: 190px; height: 6px; border-radius: 999px; background: rgba(0, 0, 0, 0.12); overflow: hidden; transition: opacity 0.4s ease; }
+.tear-progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--primary-light), var(--secondary)); transition: width 0.08s linear; }
+
+.booster { position: relative; width: 190px; height: 264px; cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent; outline: none; animation: boosterFloat 3.4s ease-in-out infinite; }
+.booster.grabbed { cursor: grabbing; }
+.booster.shake { animation: boosterShake 0.45s ease both; }
+.booster:focus-visible { filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.9)); }
+
+.booster-body { position: absolute; inset: 0; border-radius: 12px; border: 3px solid var(--primary-dark); background: linear-gradient(160deg, #303f9f 0%, #1a237e 55%, #0d1b60 100%); box-shadow: var(--shadow-xl), inset 0 0 0 2px rgba(255, 215, 0, 0.35), inset 0 -18px 34px rgba(0, 0, 0, 0.45), inset 0 14px 24px rgba(255, 255, 255, 0.12); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; overflow: hidden; }
+.booster-body::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 9px; background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.35) 0 3px, transparent 3px 6px); }
+.booster-body::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 9px; background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.35)  0 3px, transparent 3px 6px); }

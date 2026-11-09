@@ -219,35 +219,250 @@ function addCardsToCollection(cards) {
     });
 }
 
+// ========== SFX D'OUVERTURE (WebAudio, sans fichiers externes) ==========
+const PackSfx = {
+    ctx: null,
+    ensure() {
+        if (!this.ctx) {
+            try {
+                const AC = window.AudioContext || window.webkitAudioContext;
+                if (AC) this.ctx = new AC();
+            } catch (e) {
+                this.ctx = null;
+            }
+        }
+        if (this.ctx && this.ctx.state === 'suspended') {
+            this.ctx.resume().catch(function () {});
+        }
+    },
+    noise(dur, freq, filterType) {
+        if (!this.ctx) return;
+        try {
+            const ctx = this.ctx;
+            const len = Math.max(1, Math.floor(ctx.sampleRate * dur));
+            const buffer = ctx.createBuffer(1, len, ctx.sampleRate);
+            const data = buffer.getChannelData(0);
+            for (let i = 0; i < data.length; i++) data[i] = Math.random() * 2 - 1;
+            const src = ctx.createBufferSource();
+            src.buffer = buffer;
+            const filter = ctx.createBiquadFilter();
+            filter.type = filterType || 'bandpass';
+            filter.frequency.value = freq || 1800;
+            const gain = ctx.createGain();
+            gain.gain.setValueAtTime(0.22, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + dur);
+            src.connect(filter);
+            filter.connect(gain);
+            gain.connect(ctx.destination);
+            src.start();
+        } catch (e) { /* audio indisponible */ }
+    },
+    tone(freq, dur, delay, vol, type) {
+        if (!this.ctx) return;
+        try {
+            const ctx = this.ctx;
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = type || 'triangle';
+            osc.frequency.value = freq;
+            const t = ctx.currentTime + (delay || 0);
+            gain.gain.setValueAtTime(0.0001, t);
+            gain.gain.exponentialRampToValueAtTime(vol || 0.12, t + 0.02);
+            gain.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start(t);
+            osc.stop(t + dur + 0.05);
+        } catch (e) { /* audio indisponible */ }
+    },
+    shake() { this.noise(0.09, 500, 'lowpass'); this.tone(120, 0.12, 0, 0.07, 'sine'); },
+    tear() { this.noise(0.32, 2600, 'highpass'); this.noise(0.22, 900, 'bandpass'); },
+    thud() { this.tone(90, 0.18, 0.06, 0.1, 'sine'); },
+    whoosh() { this.noise(0.25, 1200, 'bandpass'); },
+    flip() { this.tone(660, 0.08, 0, 0.05, 'square'); },
+    chime(rarity) {
+        if (rarity === 'SR') {
+            this.tone(784, 0.18, 0, 0.09);
+            this.tone(988, 0.22, 0.09, 0.09);
+        } else if (rarity === 'UR') {
+            this.tone(784, 0.16, 0, 0.1);
+            this.tone(988, 0.16, 0.08, 0.1);
+            this.tone(1319, 0.3, 0.16, 0.11);
+        }
+    },
+    legend() {
+        const notes = [523, 659, 784, 1047];
+        for (let i = 0; i < notes.length; i++) this.tone(notes[i], 0.35, i * 0.11, 0.12);
+        this.tone(1568, 0.6, 0.48, 0.1);
+    }
+};
+
+// ========== ANIMATION D'OUVERTURE : PAQUET A DECHIRER ==========
 function showPackOpeningAnimation(cards) {
     const modal = document.getElementById('pack-modal');
     const container = document.getElementById('modal-pack-container');
     const continueBtn = document.getElementById('modal-continue-btn');
     const announce = document.getElementById('pack-announcement');
+    const content = modal.querySelector('.pack-modal-content');
     const title = modal.querySelector('h2');
+
     modal.style.display = 'flex';
     container.innerHTML = '';
+    container.style.display = 'none';
     continueBtn.style.display = 'none';
     continueBtn.classList.remove('pack-fade-up');
-    modal.querySelectorAll('.pack-confetti, .pack-flash').forEach(el => el.remove());
-    if (announce) announce.innerHTML = '<span>🎁 Ouverture du pack...</span>';
+    modal.querySelectorAll('.pack-confetti, .pack-flash, .pack-particle, .shred, .pack-stage').forEach(function (el) { el.remove(); });
+    if (announce) announce.innerHTML = '<span>🎁 Vous recevez un pack France Masters !</span>';
     if (title) title.textContent = 'Ouverture de Pack';
 
-    const cardBacks = [];
-    const slots = [];
-    for (let i = 0; i < 5; i++) {
-        const slot = document.createElement('div');
-        slot.className = 'pack-card-slot';
-        const cardBack = document.createElement('div');
-        cardBack.className = 'card back';
-        cardBack.innerHTML = '📦';
-        const d = i * 0.12;
-        cardBack.style.animationDelay = d + 's, ' + (d + 0.55) + 's';
-        slot.appendChild(cardBack);
-        container.appendChild(slot);
-        cardBacks.push(cardBack);
-        slots.push(slot);
+    // ----- Phase 1 : le paquet a dechirer -----
+    const stage = document.createElement('div');
+    stage.className = 'pack-stage';
+    stage.innerHTML = `
+        <div class="booster" id="booster-pack" role="button" tabindex="0" aria-label="Déchirer le paquet">
+            <div class="booster-body">
+                <div class="booster-foil"></div>
+                <div class="booster-flag">🇫🇷</div>
+                <div class="booster-title">FRANCE<br>MASTERS</div>
+                <div class="booster-tricolor"></div>
+                <div class="booster-sub">Édition Hexagone</div>
+                <div class="booster-count">5 CARTES</div>
+            </div>
+            <div class="booster-inner-glow"></div>
+            <div class="booster-top" id="booster-top">
+                <span class="booster-pull">TIRER ↓</span>
+            </div>
+        </div>
+        <div class="pack-hint" id="pack-hint">👇 Appuyez sur le paquet et tirez vers le bas pour le déchirer</div>
+        <div class="tear-progress"><div class="tear-progress-fill" id="tear-progress-fill"></div></div>
+    `;
+    content.insertBefore(stage, container);
+
+    const booster = stage.querySelector('#booster-pack');
+    const topStrip = stage.querySelector('#booster-top');
+    const fill = stage.querySelector('#tear-progress-fill');
+    const hint = stage.querySelector('#pack-hint');
+
+    let dragging = false;
+    let startY = 0;
+    let progress = 0;
+    let shakes = 0;
+    let torn = false;
+
+    function setProgress(p) {
+        progress = Math.max(0, Math.min(1, p));
+        topStrip.style.transform = 'translateY(' + (progress * 64) + 'px) rotate(' + (progress * 8) + 'deg)';
+        topStrip.style.opacity = String(1 - progress * 0.4);
+        fill.style.width = (progress * 100) + '%';
     }
+
+    function completeTear() {
+        if (torn) return;
+        torn = true;
+        PackSfx.tear();
+        topStrip.classList.add('torn-off');
+        booster.classList.add('torn');
+        spawnShreds(stage);
+        content.classList.remove('shake-screen');
+        void content.offsetWidth;
+        content.classList.add('shake-screen');
+        if (announce) announce.innerHTML = '<span class="announce-SR">✨ Le paquet est ouvert !</span>';
+        setTimeout(function () {
+            PackSfx.thud();
+            stage.classList.add('pack-away');
+            if (announce) announce.innerHTML = '';
+            revealPackCards(cards, { container: container, continueBtn: continueBtn, announce: announce, title: title, content: content });
+        }, 850);
+    }
+
+    function onDown(e) {
+        if (torn) return;
+        PackSfx.ensure();
+        dragging = true;
+        startY = e.clientY;
+        if (e.target.setPointerCapture) {
+            try { e.target.setPointerCapture(e.pointerId); } catch (err) { /* ignore */ }
+        }
+        booster.classList.add('grabbed');
+        e.preventDefault();
+    }
+
+    function onMove(e) {
+        if (!dragging || torn) return;
+        setProgress((e.clientY - startY) / 70);
+    }
+
+    function onUp() {
+        if (!dragging || torn) return;
+        dragging = false;
+        booster.classList.remove('grabbed');
+        if (progress >= 0.45) {
+            completeTear();
+        } else if (progress < 0.08) {
+            // Simple clic : le paquet tremble ; apres 3 secousses il cede
+            shakes++;
+            PackSfx.shake();
+            booster.classList.remove('shake');
+            void booster.offsetWidth;
+            booster.classList.add('shake');
+            if (shakes === 2) hint.textContent = '💪 Encore un petit effort...';
+            if (shakes >= 3) {
+                hint.textContent = '💥 Le paquet cède !';
+                setTimeout(completeTear, 350);
+            }
+        } else {
+            setProgress(0);
+        }
+    }
+
+    function onKey(e) {
+        if (torn) return;
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            PackSfx.ensure();
+            PackSfx.shake();
+            booster.classList.remove('shake');
+            void booster.offsetWidth;
+            booster.classList.add('shake');
+            hint.textContent = '💥 Le paquet cède !';
+            setTimeout(completeTear, 400);
+        }
+    }
+
+    booster.addEventListener('pointerdown', onDown);
+    booster.addEventListener('pointermove', onMove);
+    booster.addEventListener('pointerup', onUp);
+    booster.addEventListener('pointercancel', onUp);
+    booster.addEventListener('keydown', onKey);
+
+    // Astuce : sans interaction prolongee, faire pulser l'aide
+    setTimeout(function () {
+        if (!torn) hint.classList.add('hint-pulse');
+    }, 4500);
+}
+
+function spawnShreds(stage) {
+    for (let i = 0; i < 16; i++) {
+        const s = document.createElement('span');
+        s.className = 'shred';
+        s.style.left = (25 + Math.random() * 50) + '%';
+        s.style.setProperty('--dx', (Math.random() * 160 - 80) + 'px');
+        s.style.setProperty('--dy', (40 + Math.random() * 110) + 'px');
+        s.style.setProperty('--rot', (Math.random() * 500 - 250) + 'deg');
+        s.style.animationDelay = (Math.random() * 0.12) + 's';
+        stage.appendChild(s);
+    }
+}
+
+// ----- Phase 2 : les cartes jaillissent une a une puis se retournent -----
+function revealPackCards(cards, ctx) {
+    const container = ctx.container;
+    const continueBtn = ctx.continueBtn;
+    const announce = ctx.announce;
+    const title = ctx.title;
+    const content = ctx.content;
+
+    container.style.display = 'flex';
 
     const announceText = { C: 'Carte Commune', R: '💙 Carte Rare', SR: '✨ Super Rare !', UR: '🌟 ULTRA RARE !', L: '🌈 LÉGENDAIRE !!' };
     const particleColors = { SR: '#b57bff', UR: '#ffd700', L: '#ff69b4' };
@@ -266,7 +481,6 @@ function showPackOpeningAnimation(cards) {
     }
 
     function spawnFlash() {
-        const content = modal.querySelector('.pack-modal-content');
         if (!content) return;
         const f = document.createElement('div');
         f.className = 'pack-flash';
@@ -274,9 +488,8 @@ function showPackOpeningAnimation(cards) {
     }
 
     function spawnConfetti() {
-        const colors = ['#ff69b4', '#ffd700', '#4169e1', '#8a2be2', '#00e676', '#ff6f00'];
-        const content = modal.querySelector('.pack-modal-content');
         if (!content) return;
+        const colors = ['#ff69b4', '#ffd700', '#4169e1', '#8a2be2', '#00e676', '#ff6f00'];
         for (let j = 0; j < 36; j++) {
             const c = document.createElement('div');
             c.className = 'pack-confetti';
@@ -290,32 +503,65 @@ function showPackOpeningAnimation(cards) {
         }
     }
 
-    setTimeout(() => {
-        if (announce) announce.innerHTML = '';
-        cards.forEach((card, index) => {
-            setTimeout(() => {
-                cardBacks[index].classList.add('reveal-lift');
-                setTimeout(() => {
-                    cardBacks[index].className = 'card front reveal-pop ' + card.rarity;
-                    cardBacks[index].innerHTML = createCardHTML(card, true);
-                    if (['SR', 'UR', 'L'].includes(card.rarity)) {
-                        cardBacks[index].classList.add('glow');
-                        spawnParticles(slots[index], particleColors[card.rarity] || '#ffd700');
-                    }
-                    if (card.rarity === 'UR' || card.rarity === 'L') spawnFlash();
-                    if (card.rarity === 'L') spawnConfetti();
-                    if (announce) announce.innerHTML = '<span class="announce-' + card.rarity + '">' + announceText[card.rarity] + '</span>';
-                    if (index === cards.length - 1) {
-                        setTimeout(() => {
-                            if (title) title.textContent = '🎉 Pack Ouvert !';
-                            continueBtn.style.display = 'block';
-                            continueBtn.classList.add('pack-fade-up');
-                        }, 650);
-                    }
-                }, 350);
-            }, index * 750);
-        });
-    }, 900);
+    const slots = [];
+    const flips = [];
+    for (let i = 0; i < cards.length; i++) {
+        const slot = document.createElement('div');
+        slot.className = 'pack-card-slot';
+        const wrap = document.createElement('div');
+        wrap.className = 'flip-wrap';
+        const back = document.createElement('div');
+        back.className = 'card back fm-back';
+        back.innerHTML = '<span class="fm-crest">🇫🇷</span>';
+        const front = document.createElement('div');
+        front.className = 'card front flip-face';
+        wrap.appendChild(back);
+        wrap.appendChild(front);
+        slot.appendChild(wrap);
+        container.appendChild(slot);
+        slots.push(slot);
+        flips.push({ wrap: wrap, front: front });
+    }
+
+    cards.forEach(function (card, index) {
+        setTimeout(function () {
+            const c = flips[index];
+            // La carte glisse hors du paquet
+            PackSfx.whoosh();
+            c.wrap.classList.add('card-out');
+            setTimeout(function () {
+                c.wrap.classList.remove('card-out');
+                c.wrap.classList.add('settled');
+                // Puis elle se retourne en 3D
+                setTimeout(function () {
+                    c.front.innerHTML = createCardHTML(card, true);
+                    c.front.classList.add(card.rarity);
+                    c.wrap.classList.add('flipped');
+                    PackSfx.flip();
+                    setTimeout(function () {
+                        if (['SR', 'UR', 'L'].includes(card.rarity)) {
+                            c.front.classList.add('glow');
+                            spawnParticles(slots[index], particleColors[card.rarity] || '#ffd700');
+                            PackSfx.chime(card.rarity);
+                        }
+                        if (card.rarity === 'UR' || card.rarity === 'L') spawnFlash();
+                        if (card.rarity === 'L') {
+                            spawnConfetti();
+                            PackSfx.legend();
+                        }
+                        if (announce) announce.innerHTML = '<span class="announce-' + card.rarity + '">' + announceText[card.rarity] + '</span>';
+                        if (index === cards.length - 1) {
+                            setTimeout(function () {
+                                if (title) title.textContent = '🎉 Pack Ouvert !';
+                                continueBtn.style.display = 'block';
+                                continueBtn.classList.add('pack-fade-up');
+                            }, 650);
+                        }
+                    }, 480);
+                }, 140);
+            }, 640);
+        }, index * 950);
+    });
 }
 
 function closePackModal() {
@@ -1153,4 +1399,5 @@ function closeResetModal() {
 
 // ========== START GAME ==========
 document.addEventListener('DOMContentLoaded', initGame);
+
 
