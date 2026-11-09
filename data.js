@@ -2967,7 +2967,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 54,
         defense: 34,
-        views: -189000,
+        views: 189000,
         emoji: "🗺️"
     },
     {
@@ -2978,7 +2978,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 57,
         defense: 31,
-        views: -17000,
+        views: 17000,
         emoji: "🗺️"
     },
     {
@@ -3000,7 +3000,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 70,
         defense: 57,
-        views: -889000,
+        views: 889000,
         emoji: "🗺️"
     },
     {
@@ -3022,7 +3022,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 58,
         defense: 40,
-        views: -448000,
+        views: 448000,
         emoji: "🗺️"
     },
     {
@@ -3033,7 +3033,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 45,
         defense: 35,
-        views: -363000,
+        views: 363000,
         emoji: "🗺️"
     },
     {
@@ -3077,7 +3077,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 62,
         defense: 44,
-        views: -73000,
+        views: 73000,
         emoji: "🗺️"
     },
     {
@@ -3253,7 +3253,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 60,
         defense: 40,
-        views: -55000,
+        views: 55000,
         emoji: "🗺️"
     },
     {
@@ -3385,7 +3385,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 47,
         defense: 45,
-        views: -131000,
+        views: 131000,
         emoji: "🗺️"
     },
     {
@@ -3396,7 +3396,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 51,
         defense: 44,
-        views: -353000,
+        views: 353000,
         emoji: "🗺️"
     },
     {
@@ -3418,7 +3418,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 56,
         defense: 43,
-        views: -25000,
+        views: 25000,
         emoji: "🗺️"
     },
     {
@@ -3462,7 +3462,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 56,
         defense: 44,
-        views: -426000,
+        views: 426000,
         emoji: "🗺️"
     },
     {
@@ -3473,7 +3473,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 54,
         defense: 37,
-        views: -291000,
+        views: 291000,
         emoji: "🗺️"
     },
     {
@@ -3484,7 +3484,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 56,
         defense: 36,
-        views: -360000,
+        views: 360000,
         emoji: "🗺️"
     },
     {
@@ -3495,7 +3495,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 61,
         defense: 38,
-        views: -434000,
+        views: 434000,
         emoji: "🗺️"
     },
     {
@@ -3517,7 +3517,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 47,
         defense: 31,
-        views: -434000,
+        views: 434000,
         emoji: "🗺️"
     },
     {
@@ -3572,7 +3572,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 70,
         defense: 51,
-        views: -534000,
+        views: 534000,
         emoji: "🗺️"
     },
     {
@@ -3715,7 +3715,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 54,
         defense: 32,
-        views: -267000,
+        views: 267000,
         emoji: "🗺️"
     },
     {
@@ -3759,7 +3759,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 70,
         defense: 54,
-        views: -747000,
+        views: 747000,
         emoji: "🗺️"
     },
     {
@@ -3792,7 +3792,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 56,
         defense: 41,
-        views: -482000,
+        views: 482000,
         emoji: "🗺️"
     },
     {
@@ -3902,7 +3902,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 61,
         defense: 41,
-        views: -352000,
+        views: 352000,
         emoji: "🗺️"
     },
     {
@@ -3946,7 +3946,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 53,
         defense: 33,
-        views: -150000,
+        views: 150000,
         emoji: "🗺️"
     },
     {
@@ -4012,7 +4012,7 @@ const CARDS = [
         rarity: RARITIES.SUPER_RARE.code,
         attack: 78,
         defense: 66,
-        views: -299000,
+        views: 299000,
         emoji: "🏝️"
     },
     {
@@ -4059,7 +4059,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 68,
         defense: 57,
-        views: -422000,
+        views: 422000,
         emoji: "🗺️"
     },
     {
@@ -4081,7 +4081,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 51,
         defense: 40,
-        views: -336000,
+        views: 336000,
         emoji: "🌊"
     },
     {
@@ -4125,7 +4125,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 56,
         defense: 41,
-        views: -407000,
+        views: 407000,
         emoji: "🌊"
     },
     {
@@ -4136,7 +4136,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 51,
         defense: 38,
-        views: -180000,
+        views: 180000,
         emoji: "🌊"
     },
     {
@@ -4147,7 +4147,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 46,
         defense: 41,
-        views: -377000,
+        views: 377000,
         emoji: "🌊"
     },
     {
@@ -4158,7 +4158,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 55,
         defense: 33,
-        views: -174000,
+        views: 174000,
         emoji: "🌊"
     },
     {
@@ -4180,7 +4180,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 56,
         defense: 43,
-        views: -486000,
+        views: 486000,
         emoji: "🌊"
     },
     {
@@ -4191,7 +4191,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 60,
         defense: 47,
-        views: -241000,
+        views: 241000,
         emoji: "🌊"
     },
     {
@@ -4202,7 +4202,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 60,
         defense: 32,
-        views: -374000,
+        views: 374000,
         emoji: "🌊"
     },
     {
@@ -4246,7 +4246,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 52,
         defense: 43,
-        views: -488000,
+        views: 488000,
         emoji: "🌊"
     },
     {
@@ -4301,7 +4301,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 48,
         defense: 33,
-        views: -47000,
+        views: 47000,
         emoji: "🌊"
     },
     {
@@ -4312,7 +4312,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 49,
         defense: 34,
-        views: -115000,
+        views: 115000,
         emoji: "🌊"
     },
     {
@@ -4356,7 +4356,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 61,
         defense: 39,
-        views: -482000,
+        views: 482000,
         emoji: "🌊"
     },
     {
@@ -4367,7 +4367,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 60,
         defense: 43,
-        views: -751000,
+        views: 751000,
         emoji: "🌊"
     },
     {
@@ -4444,7 +4444,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 48,
         defense: 41,
-        views: -430000,
+        views: 430000,
         emoji: "⛰️"
     },
     {
@@ -4466,7 +4466,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 68,
         defense: 43,
-        views: -363000,
+        views: 363000,
         emoji: "⛰️"
     },
     {
@@ -4576,7 +4576,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 60,
         defense: 44,
-        views: -868000,
+        views: 868000,
         emoji: "⛰️"
     },
     {
@@ -4587,7 +4587,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 56,
         defense: 45,
-        views: -231000,
+        views: 231000,
         emoji: "⛰️"
     },
     {
@@ -4598,7 +4598,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 66,
         defense: 57,
-        views: -409000,
+        views: 409000,
         emoji: "⛰️"
     },
     {
@@ -4631,7 +4631,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 56,
         defense: 35,
-        views: -76000,
+        views: 76000,
         emoji: "⛰️"
     },
     {
@@ -4675,7 +4675,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 53,
         defense: 36,
-        views: -435000,
+        views: 435000,
         emoji: "🏞️"
     },
     {
@@ -4686,7 +4686,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 72,
         defense: 50,
-        views: -819000,
+        views: 819000,
         emoji: "🏞️"
     },
     {
@@ -4708,7 +4708,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 68,
         defense: 45,
-        views: -579000,
+        views: 579000,
         emoji: "🏞️"
     },
     {
@@ -4730,7 +4730,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 71,
         defense: 53,
-        views: -556000,
+        views: 556000,
         emoji: "🏞️"
     },
     {
@@ -4752,7 +4752,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 63,
         defense: 56,
-        views: -801000,
+        views: 801000,
         emoji: "🏞️"
     },
     {
@@ -4829,7 +4829,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 52,
         defense: 40,
-        views: -53000,
+        views: 53000,
         emoji: "🏞️"
     },
     {
@@ -4840,7 +4840,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 45,
         defense: 34,
-        views: -425000,
+        views: 425000,
         emoji: "🏞️"
     },
     {
@@ -4873,7 +4873,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 69,
         defense: 47,
-        views: -383000,
+        views: 383000,
         emoji: "🏞️"
     },
     {
@@ -4884,7 +4884,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 60,
         defense: 50,
-        views: -392000,
+        views: 392000,
         emoji: "🏞️"
     },
     {
@@ -4906,7 +4906,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 71,
         defense: 47,
-        views: -604000,
+        views: 604000,
         emoji: "🏝️"
     },
     {
@@ -4917,7 +4917,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 45,
         defense: 34,
-        views: -248000,
+        views: 248000,
         emoji: "🏝️"
     },
     {
@@ -4939,7 +4939,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 51,
         defense: 34,
-        views: -299000,
+        views: 299000,
         emoji: "🏝️"
     },
     {
@@ -4961,7 +4961,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 47,
         defense: 39,
-        views: -193000,
+        views: 193000,
         emoji: "🏝️"
     },
     {
@@ -4972,7 +4972,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 60,
         defense: 43,
-        views: -737000,
+        views: 737000,
         emoji: "🏝️"
     },
     {
@@ -4994,7 +4994,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 47,
         defense: 35,
-        views: -213000,
+        views: 213000,
         emoji: "🏝️"
     },
     {
@@ -5005,7 +5005,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 46,
         defense: 38,
-        views: -50000,
+        views: 50000,
         emoji: "🏝️"
     },
     {
@@ -5016,7 +5016,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 71,
         defense: 46,
-        views: -391000,
+        views: 391000,
         emoji: "🏝️"
     },
     {
@@ -5129,7 +5129,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 63,
         defense: 50,
-        views: -566000,
+        views: 566000,
         emoji: "🏙️"
     },
     {
@@ -5151,7 +5151,7 @@ const CARDS = [
         rarity: RARITIES.SUPER_RARE.code,
         attack: 80,
         defense: 70,
-        views: -686000,
+        views: 686000,
         emoji: "🏙️"
     },
     {
@@ -5206,7 +5206,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 64,
         defense: 51,
-        views: -577000,
+        views: 577000,
         emoji: "🏙️"
     },
     {
@@ -5228,7 +5228,7 @@ const CARDS = [
         rarity: RARITIES.SUPER_RARE.code,
         attack: 85,
         defense: 68,
-        views: -868000,
+        views: 868000,
         emoji: "🏙️"
     },
     {
@@ -5272,7 +5272,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 75,
         defense: 43,
-        views: -520000,
+        views: 520000,
         emoji: "🏙️"
     },
     {
@@ -5448,7 +5448,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 65,
         defense: 46,
-        views: -616000,
+        views: 616000,
         emoji: "🏙️"
     },
     {
@@ -5514,7 +5514,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 53,
         defense: 44,
-        views: -324000,
+        views: 324000,
         emoji: "🏘️"
     },
     {
@@ -5591,7 +5591,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 58,
         defense: 42,
-        views: -397000,
+        views: 397000,
         emoji: "🏘️"
     },
     {
@@ -5668,7 +5668,7 @@ const CARDS = [
         rarity: RARITIES.SUPER_RARE.code,
         attack: 83,
         defense: 61,
-        views: -265000,
+        views: 265000,
         emoji: "🏙️"
     },
     {
@@ -5679,7 +5679,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 75,
         defense: 48,
-        views: -509000,
+        views: 509000,
         emoji: "🏙️"
     },
     {
@@ -5712,7 +5712,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 49,
         defense: 45,
-        views: -286000,
+        views: 286000,
         emoji: "🏘️"
     },
     {
@@ -5734,7 +5734,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 50,
         defense: 34,
-        views: -300000,
+        views: 300000,
         emoji: "🏘️"
     },
     {
@@ -5745,7 +5745,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 61,
         defense: 33,
-        views: -413000,
+        views: 413000,
         emoji: "🏘️"
     },
     {
@@ -5756,7 +5756,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 49,
         defense: 33,
-        views: -280000,
+        views: 280000,
         emoji: "🏘️"
     },
     {
@@ -5778,7 +5778,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 61,
         defense: 31,
-        views: -378000,
+        views: 378000,
         emoji: "🏘️"
     },
     {
@@ -5789,7 +5789,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 65,
         defense: 47,
-        views: -224000,
+        views: 224000,
         emoji: "🏙️"
     },
     {
@@ -5866,7 +5866,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 70,
         defense: 44,
-        views: -450000,
+        views: 450000,
         emoji: "🏙️"
     },
     {
@@ -5943,7 +5943,7 @@ const CARDS = [
         rarity: RARITIES.SUPER_RARE.code,
         attack: 82,
         defense: 60,
-        views: -1240000,
+        views: 1240000,
         emoji: "🏙️"
     },
     {
@@ -5976,7 +5976,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 66,
         defense: 58,
-        views: -616000,
+        views: 616000,
         emoji: "🏙️"
     },
     {
@@ -6064,7 +6064,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 75,
         defense: 46,
-        views: -433000,
+        views: 433000,
         emoji: "🏙️"
     },
     {
@@ -6075,7 +6075,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 54,
         defense: 41,
-        views: -142000,
+        views: 142000,
         emoji: "🏘️"
     },
     {
@@ -6119,7 +6119,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 75,
         defense: 49,
-        views: -707000,
+        views: 707000,
         emoji: "🏙️"
     },
     {
@@ -6141,7 +6141,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 50,
         defense: 44,
-        views: -142000,
+        views: 142000,
         emoji: "🏘️"
     },
     {
@@ -6229,7 +6229,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 67,
         defense: 50,
-        views: -678000,
+        views: 678000,
         emoji: "🏙️"
     },
     {
@@ -6240,7 +6240,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 74,
         defense: 54,
-        views: -643000,
+        views: 643000,
         emoji: "🏙️"
     },
     {
@@ -6262,7 +6262,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 52,
         defense: 41,
-        views: -330000,
+        views: 330000,
         emoji: "🏘️"
     },
     {
@@ -6339,7 +6339,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 53,
         defense: 37,
-        views: -62000,
+        views: 62000,
         emoji: "🏘️"
     },
     {
@@ -6416,7 +6416,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 53,
         defense: 43,
-        views: -359000,
+        views: 359000,
         emoji: "🏘️"
     },
     {
@@ -6482,7 +6482,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 70,
         defense: 47,
-        views: -957000,
+        views: 957000,
         emoji: "🏙️"
     },
     {
@@ -6493,7 +6493,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 59,
         defense: 31,
-        views: -352000,
+        views: 352000,
         emoji: "🏘️"
     },
     {
@@ -6504,7 +6504,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 63,
         defense: 55,
-        views: -793000,
+        views: 793000,
         emoji: "🏙️"
     },
     {
@@ -6559,7 +6559,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 72,
         defense: 44,
-        views: -993000,
+        views: 993000,
         emoji: "🏙️"
     },
     {
@@ -6570,7 +6570,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 75,
         defense: 46,
-        views: -119000,
+        views: 119000,
         emoji: "🏙️"
     },
     {
@@ -6592,7 +6592,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 50,
         defense: 37,
-        views: -192000,
+        views: 192000,
         emoji: "🏘️"
     },
     {
@@ -6625,7 +6625,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 47,
         defense: 43,
-        views: -125000,
+        views: 125000,
         emoji: "🏘️"
     },
     {
@@ -6669,7 +6669,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 60,
         defense: 55,
-        views: -748000,
+        views: 748000,
         emoji: "🏙️"
     },
     {
@@ -6680,7 +6680,7 @@ const CARDS = [
         rarity: RARITIES.SUPER_RARE.code,
         attack: 83,
         defense: 68,
-        views: -608000,
+        views: 608000,
         emoji: "🏙️"
     },
     {
@@ -6735,7 +6735,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 56,
         defense: 43,
-        views: -413000,
+        views: 413000,
         emoji: "🏘️"
     },
     {
@@ -6757,7 +6757,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 59,
         defense: 35,
-        views: -308000,
+        views: 308000,
         emoji: "🏘️"
     },
     {
@@ -6768,7 +6768,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 45,
         defense: 37,
-        views: -367000,
+        views: 367000,
         emoji: "🏘️"
     },
     {
@@ -6834,7 +6834,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 45,
         defense: 39,
-        views: -319000,
+        views: 319000,
         emoji: "🏘️"
     },
     {
@@ -6856,7 +6856,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 49,
         defense: 37,
-        views: -294000,
+        views: 294000,
         emoji: "🏘️"
     },
     {
@@ -6878,7 +6878,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 54,
         defense: 33,
-        views: -99000,
+        views: 99000,
         emoji: "🏘️"
     },
     {
@@ -6900,7 +6900,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 46,
         defense: 41,
-        views: -74000,
+        views: 74000,
         emoji: "🏘️"
     },
     {
@@ -6922,7 +6922,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 48,
         defense: 44,
-        views: -325000,
+        views: 325000,
         emoji: "🏘️"
     },
     {
@@ -6966,7 +6966,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 50,
         defense: 45,
-        views: -58000,
+        views: 58000,
         emoji: "🏘️"
     },
     {
@@ -6999,7 +6999,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 49,
         defense: 35,
-        views: -366000,
+        views: 366000,
         emoji: "🏘️"
     },
     {
@@ -7057,7 +7057,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 46,
         defense: 39,
-        views: -217000,
+        views: 217000,
         emoji: "🍲"
     },
     {
@@ -7123,7 +7123,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 70,
         defense: 45,
-        views: -705000,
+        views: 705000,
         emoji: "🍲"
     },
     {
@@ -7145,7 +7145,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 48,
         defense: 31,
-        views: -354000,
+        views: 354000,
         emoji: "🍲"
     },
     {
@@ -7178,7 +7178,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 52,
         defense: 40,
-        views: -208000,
+        views: 208000,
         emoji: "🍲"
     },
     {
@@ -7211,7 +7211,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 47,
         defense: 45,
-        views: -284000,
+        views: 284000,
         emoji: "🍲"
     },
     {
@@ -7255,7 +7255,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 50,
         defense: 40,
-        views: -310000,
+        views: 310000,
         emoji: "🍲"
     },
     {
@@ -7277,7 +7277,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 48,
         defense: 35,
-        views: -32000,
+        views: 32000,
         emoji: "🍲"
     },
     {
@@ -7310,7 +7310,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 52,
         defense: 41,
-        views: -97000,
+        views: 97000,
         emoji: "🍲"
     },
     {
@@ -7332,7 +7332,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 52,
         defense: 36,
-        views: -280000,
+        views: 280000,
         emoji: "🍲"
     },
     {
@@ -7354,7 +7354,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 65,
         defense: 52,
-        views: -852000,
+        views: 852000,
         emoji: "🍲"
     },
     {
@@ -7387,7 +7387,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 45,
         defense: 37,
-        views: -479000,
+        views: 479000,
         emoji: "🍲"
     },
     {
@@ -7398,7 +7398,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 49,
         defense: 32,
-        views: -85000,
+        views: 85000,
         emoji: "🍲"
     },
     {
@@ -7409,7 +7409,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 60,
         defense: 34,
-        views: -479000,
+        views: 479000,
         emoji: "🍲"
     },
     {
@@ -7486,7 +7486,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 58,
         defense: 37,
-        views: -135000,
+        views: 135000,
         emoji: "🍲"
     },
     {
@@ -7497,7 +7497,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 48,
         defense: 44,
-        views: -351000,
+        views: 351000,
         emoji: "🍲"
     },
     {
@@ -7508,7 +7508,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 58,
         defense: 41,
-        views: -96000,
+        views: 96000,
         emoji: "🍲"
     },
     {
@@ -7519,7 +7519,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 48,
         defense: 43,
-        views: -413000,
+        views: 413000,
         emoji: "🍲"
     },
     {
@@ -7552,7 +7552,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 60,
         defense: 43,
-        views: -546000,
+        views: 546000,
         emoji: "🍲"
     },
     {
@@ -7563,7 +7563,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 53,
         defense: 32,
-        views: -323000,
+        views: 323000,
         emoji: "🍲"
     },
     {
@@ -7585,7 +7585,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 56,
         defense: 38,
-        views: -98000,
+        views: 98000,
         emoji: "🍲"
     },
     {
@@ -7629,7 +7629,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 53,
         defense: 31,
-        views: -456000,
+        views: 456000,
         emoji: "🍲"
     },
     {
@@ -7651,7 +7651,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 61,
         defense: 43,
-        views: -229000,
+        views: 229000,
         emoji: "🍲"
     },
     {
@@ -7662,7 +7662,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 50,
         defense: 43,
-        views: -46000,
+        views: 46000,
         emoji: "🍲"
     },
     {
@@ -7684,7 +7684,7 @@ const CARDS = [
         rarity: RARITIES.SUPER_RARE.code,
         attack: 80,
         defense: 65,
-        views: -1466000,
+        views: 1466000,
         emoji: "🍄"
     },
     {
@@ -7695,7 +7695,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 64,
         defense: 50,
-        views: -580000,
+        views: 580000,
         emoji: "🌶️"
     },
     {
@@ -7750,7 +7750,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 53,
         defense: 34,
-        views: -170000,
+        views: 170000,
         emoji: "🍰"
     },
     {
@@ -7794,7 +7794,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 62,
         defense: 56,
-        views: -880000,
+        views: 880000,
         emoji: "🍰"
     },
     {
@@ -7816,7 +7816,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 74,
         defense: 56,
-        views: -702000,
+        views: 702000,
         emoji: "🍰"
     },
     {
@@ -7838,7 +7838,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 66,
         defense: 44,
-        views: -577000,
+        views: 577000,
         emoji: "🍰"
     },
     {
@@ -7849,7 +7849,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 58,
         defense: 39,
-        views: -168000,
+        views: 168000,
         emoji: "🍰"
     },
     {
@@ -7882,7 +7882,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 54,
         defense: 40,
-        views: -158000,
+        views: 158000,
         emoji: "🍰"
     },
     {
@@ -7981,7 +7981,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 68,
         defense: 55,
-        views: -567000,
+        views: 567000,
         emoji: "🍰"
     },
     {
@@ -8014,7 +8014,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 60,
         defense: 34,
-        views: -451000,
+        views: 451000,
         emoji: "🍰"
     },
     {
@@ -8036,7 +8036,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 57,
         defense: 34,
-        views: -375000,
+        views: 375000,
         emoji: "🍰"
     },
     {
@@ -8047,7 +8047,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 50,
         defense: 35,
-        views: -132000,
+        views: 132000,
         emoji: "🍰"
     },
     {
@@ -8058,7 +8058,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 48,
         defense: 34,
-        views: -479000,
+        views: 479000,
         emoji: "🍰"
     },
     {
@@ -8069,7 +8069,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 58,
         defense: 34,
-        views: -458000,
+        views: 458000,
         emoji: "🍰"
     },
     {
@@ -8091,7 +8091,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 56,
         defense: 42,
-        views: -375000,
+        views: 375000,
         emoji: "🍰"
     },
     {
@@ -8124,7 +8124,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 45,
         defense: 32,
-        views: -368000,
+        views: 368000,
         emoji: "🍰"
     },
     {
@@ -8179,7 +8179,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 57,
         defense: 44,
-        views: -142000,
+        views: 142000,
         emoji: "🍰"
     },
     {
@@ -8201,7 +8201,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 48,
         defense: 45,
-        views: -25000,
+        views: 25000,
         emoji: "🧀"
     },
     {
@@ -8278,7 +8278,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 53,
         defense: 44,
-        views: -138000,
+        views: 138000,
         emoji: "🧀"
     },
     {
@@ -8432,7 +8432,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 51,
         defense: 36,
-        views: -382000,
+        views: 382000,
         emoji: "🧀"
     },
     {
@@ -8454,7 +8454,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 73,
         defense: 50,
-        views: -531000,
+        views: 531000,
         emoji: "🧀"
     },
     {
@@ -8487,7 +8487,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 57,
         defense: 31,
-        views: -407000,
+        views: 407000,
         emoji: "🧀"
     },
     {
@@ -8509,7 +8509,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 75,
         defense: 45,
-        views: -705000,
+        views: 705000,
         emoji: "🧀"
     },
     {
@@ -8542,7 +8542,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 55,
         defense: 40,
-        views: -339000,
+        views: 339000,
         emoji: "🧀"
     },
     {
@@ -8553,7 +8553,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 54,
         defense: 45,
-        views: -55000,
+        views: 55000,
         emoji: "🧀"
     },
     {
@@ -8619,7 +8619,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 58,
         defense: 33,
-        views: -122000,
+        views: 122000,
         emoji: "🍷"
     },
     {
@@ -8674,7 +8674,7 @@ const CARDS = [
         rarity: RARITIES.SUPER_RARE.code,
         attack: 82,
         defense: 61,
-        views: -41000,
+        views: 41000,
         emoji: "🍷"
     },
     {
@@ -8784,7 +8784,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 46,
         defense: 42,
-        views: -315000,
+        views: 315000,
         emoji: "🍷"
     },
     {
@@ -8806,7 +8806,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 59,
         defense: 42,
-        views: -236000,
+        views: 236000,
         emoji: "🍷"
     },
     {
@@ -8817,7 +8817,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 59,
         defense: 34,
-        views: -168000,
+        views: 168000,
         emoji: "🍷"
     },
     {
@@ -8828,7 +8828,7 @@ const CARDS = [
         rarity: RARITIES.SUPER_RARE.code,
         attack: 76,
         defense: 71,
-        views: -1037000,
+        views: 1037000,
         emoji: "🍷"
     },
     {
@@ -8850,7 +8850,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 49,
         defense: 44,
-        views: -428000,
+        views: 428000,
         emoji: "🍷"
     },
     {
@@ -8861,7 +8861,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 70,
         defense: 56,
-        views: -735000,
+        views: 735000,
         emoji: "🍷"
     },
     {
@@ -8872,7 +8872,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 60,
         defense: 50,
-        views: -891000,
+        views: 891000,
         emoji: "🍷"
     },
     {
@@ -8894,7 +8894,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 47,
         defense: 43,
-        views: -490000,
+        views: 490000,
         emoji: "🍷"
     },
     {
@@ -8971,7 +8971,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 52,
         defense: 34,
-        views: -267000,
+        views: 267000,
         emoji: "🍷"
     },
     {
@@ -8993,7 +8993,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 62,
         defense: 49,
-        views: -115000,
+        views: 115000,
         emoji: "🍷"
     },
     {
@@ -9004,7 +9004,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 57,
         defense: 34,
-        views: -196000,
+        views: 196000,
         emoji: "🍷"
     },
     {
@@ -9026,7 +9026,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 69,
         defense: 53,
-        views: -766000,
+        views: 766000,
         emoji: "🍷"
     },
     {
@@ -9037,7 +9037,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 55,
         defense: 42,
-        views: -238000,
+        views: 238000,
         emoji: "🍷"
     },
     {
@@ -9059,7 +9059,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 57,
         defense: 45,
-        views: -261000,
+        views: 261000,
         emoji: "🍷"
     },
     {
@@ -9092,7 +9092,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 47,
         defense: 34,
-        views: -13000,
+        views: 13000,
         emoji: "🍷"
     },
     {
@@ -9136,7 +9136,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 51,
         defense: 33,
-        views: -412000,
+        views: 412000,
         emoji: "🍷"
     },
     {
@@ -9158,7 +9158,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 72,
         defense: 51,
-        views: -929000,
+        views: 929000,
         emoji: "🥂"
     },
     {
@@ -9169,7 +9169,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 65,
         defense: 56,
-        views: -958000,
+        views: 958000,
         emoji: "🥂"
     },
     {
@@ -9213,7 +9213,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 73,
         defense: 43,
-        views: -408000,
+        views: 408000,
         emoji: "🥂"
     },
     {
@@ -9224,7 +9224,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 58,
         defense: 37,
-        views: -497000,
+        views: 497000,
         emoji: "🥂"
     },
     {
@@ -9235,7 +9235,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 53,
         defense: 43,
-        views: -334000,
+        views: 334000,
         emoji: "🥂"
     },
 
@@ -9260,7 +9260,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 60,
         defense: 55,
-        views: -76000,
+        views: 76000,
         emoji: "📜"
     },
     {
@@ -9293,7 +9293,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 50,
         defense: 31,
-        views: -68000,
+        views: 68000,
         emoji: "📜"
     },
     {
@@ -9315,7 +9315,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 61,
         defense: 56,
-        views: -706000,
+        views: 706000,
         emoji: "📜"
     },
     {
@@ -9403,7 +9403,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 55,
         defense: 42,
-        views: -60000,
+        views: 60000,
         emoji: "📜"
     },
     {
@@ -9414,7 +9414,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 47,
         defense: 35,
-        views: -441000,
+        views: 441000,
         emoji: "📜"
     },
     {
@@ -9436,7 +9436,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 47,
         defense: 32,
-        views: -473000,
+        views: 473000,
         emoji: "📜"
     },
     {
@@ -9458,7 +9458,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 54,
         defense: 31,
-        views: -69000,
+        views: 69000,
         emoji: "📜"
     },
     {
@@ -9546,7 +9546,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 70,
         defense: 54,
-        views: -369000,
+        views: 369000,
         emoji: "📜"
     },
     {
@@ -9590,7 +9590,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 62,
         defense: 54,
-        views: -269000,
+        views: 269000,
         emoji: "📜"
     },
     {
@@ -9634,7 +9634,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 66,
         defense: 58,
-        views: -451000,
+        views: 451000,
         emoji: "📜"
     },
     {
@@ -9645,7 +9645,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 62,
         defense: 52,
-        views: -524000,
+        views: 524000,
         emoji: "📜"
     },
     {
@@ -9667,7 +9667,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 75,
         defense: 52,
-        views: -217000,
+        views: 217000,
         emoji: "📜"
     },
     {
@@ -9678,7 +9678,7 @@ const CARDS = [
         rarity: RARITIES.SUPER_RARE.code,
         attack: 86,
         defense: 59,
-        views: -915000,
+        views: 915000,
         emoji: "📜"
     },
     {
@@ -9689,7 +9689,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 74,
         defense: 56,
-        views: -131000,
+        views: 131000,
         emoji: "📜"
     },
     {
@@ -9700,7 +9700,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 66,
         defense: 49,
-        views: -896000,
+        views: 896000,
         emoji: "📜"
     },
     {
@@ -9722,7 +9722,7 @@ const CARDS = [
         rarity: RARITIES.SUPER_RARE.code,
         attack: 84,
         defense: 66,
-        views: -1432000,
+        views: 1432000,
         emoji: "📜"
     },
     {
@@ -9755,7 +9755,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 47,
         defense: 41,
-        views: -96000,
+        views: 96000,
         emoji: "📜"
     },
     {
@@ -9777,7 +9777,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 59,
         defense: 41,
-        views: -15000,
+        views: 15000,
         emoji: "📜"
     },
     {
@@ -9799,7 +9799,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 66,
         defense: 58,
-        views: -913000,
+        views: 913000,
         emoji: "📜"
     },
     {
@@ -9810,7 +9810,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 45,
         defense: 39,
-        views: -13000,
+        views: 13000,
         emoji: "📜"
     },
     {
@@ -9843,7 +9843,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 55,
         defense: 36,
-        views: -64000,
+        views: 64000,
         emoji: "📜"
     },
     {
@@ -9865,7 +9865,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 54,
         defense: 32,
-        views: -449000,
+        views: 449000,
         emoji: "📜"
     },
 
@@ -9901,7 +9901,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 56,
         defense: 33,
-        views: -308000,
+        views: 308000,
         emoji: "🔬"
     },
     {
@@ -9923,7 +9923,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 69,
         defense: 58,
-        views: -413000,
+        views: 413000,
         emoji: "🔬"
     },
     {
@@ -9945,7 +9945,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 75,
         defense: 49,
-        views: -850000,
+        views: 850000,
         emoji: "🔬"
     },
     {
@@ -9956,7 +9956,7 @@ const CARDS = [
         rarity: RARITIES.SUPER_RARE.code,
         attack: 74,
         defense: 72,
-        views: -1131000,
+        views: 1131000,
         emoji: "🔬"
     },
     {
@@ -9989,7 +9989,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 68,
         defense: 46,
-        views: -940000,
+        views: 940000,
         emoji: "🔬"
     },
     {
@@ -10000,7 +10000,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 60,
         defense: 51,
-        views: -516000,
+        views: 516000,
         emoji: "🔬"
     },
     {
@@ -10033,7 +10033,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 69,
         defense: 54,
-        views: -262000,
+        views: 262000,
         emoji: "🔬"
     },
     {
@@ -10044,7 +10044,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 71,
         defense: 51,
-        views: -635000,
+        views: 635000,
         emoji: "🔬"
     },
     {
@@ -10121,7 +10121,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 49,
         defense: 43,
-        views: -494000,
+        views: 494000,
         emoji: "🔬"
     },
     {
@@ -10209,7 +10209,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 49,
         defense: 37,
-        views: -477000,
+        views: 477000,
         emoji: "🔬"
     },
     {
@@ -10220,7 +10220,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 60,
         defense: 31,
-        views: -224000,
+        views: 224000,
         emoji: "🔬"
     },
     {
@@ -10253,7 +10253,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 65,
         defense: 45,
-        views: -93000,
+        views: 93000,
         emoji: "🔬"
     },
     {
@@ -10286,7 +10286,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 52,
         defense: 37,
-        views: -9000,
+        views: 9000,
         emoji: "🔬"
     },
     {
@@ -10308,7 +10308,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 60,
         defense: 57,
-        views: -51000,
+        views: 51000,
         emoji: "🔬"
     },
     {
@@ -10319,7 +10319,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 75,
         defense: 51,
-        views: -808000,
+        views: 808000,
         emoji: "🔬"
     },
     {
@@ -10363,7 +10363,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 52,
         defense: 33,
-        views: -99000,
+        views: 99000,
         emoji: "🔬"
     },
     {
@@ -10396,7 +10396,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 47,
         defense: 33,
-        views: -235000,
+        views: 235000,
         emoji: "🔬"
     },
     {
@@ -10407,7 +10407,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 62,
         defense: 55,
-        views: -779000,
+        views: 779000,
         emoji: "🔬"
     },
     {
@@ -10418,7 +10418,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 59,
         defense: 44,
-        views: -295000,
+        views: 295000,
         emoji: "🔬"
     },
     {
@@ -10429,7 +10429,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 62,
         defense: 47,
-        views: -742000,
+        views: 742000,
         emoji: "🔬"
     },
     {
@@ -10440,7 +10440,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 60,
         defense: 41,
-        views: -405000,
+        views: 405000,
         emoji: "🔬"
     },
     {
@@ -10462,7 +10462,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 54,
         defense: 43,
-        views: -233000,
+        views: 233000,
         emoji: "🔬"
     },
     {
@@ -10473,7 +10473,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 52,
         defense: 31,
-        views: -326000,
+        views: 326000,
         emoji: "🔬"
     },
     {
@@ -10484,7 +10484,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 64,
         defense: 49,
-        views: -616000,
+        views: 616000,
         emoji: "🔬"
     },
     {
@@ -10550,7 +10550,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 58,
         defense: 32,
-        views: -346000,
+        views: 346000,
         emoji: "🔬"
     },
     {
@@ -10616,7 +10616,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 69,
         defense: 43,
-        views: -413000,
+        views: 413000,
         emoji: "📚"
     },
     {
@@ -10638,7 +10638,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 75,
         defense: 44,
-        views: -413000,
+        views: 413000,
         emoji: "📚"
     },
     {
@@ -10748,7 +10748,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 49,
         defense: 39,
-        views: -120000,
+        views: 120000,
         emoji: "📚"
     },
     {
@@ -10770,7 +10770,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 68,
         defense: 51,
-        views: -369000,
+        views: 369000,
         emoji: "📚"
     },
     {
@@ -10803,7 +10803,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 69,
         defense: 51,
-        views: -509000,
+        views: 509000,
         emoji: "📚"
     },
     {
@@ -10825,7 +10825,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 60,
         defense: 44,
-        views: -334000,
+        views: 334000,
         emoji: "📚"
     },
     {
@@ -10847,7 +10847,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 56,
         defense: 45,
-        views: -445000,
+        views: 445000,
         emoji: "📚"
     },
     {
@@ -10880,7 +10880,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 51,
         defense: 40,
-        views: -129000,
+        views: 129000,
         emoji: "📚"
     },
     {
@@ -10902,7 +10902,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 61,
         defense: 54,
-        views: -868000,
+        views: 868000,
         emoji: "📚"
     },
     {
@@ -10957,7 +10957,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 64,
         defense: 47,
-        views: -266000,
+        views: 266000,
         emoji: "📚"
     },
     {
@@ -10968,7 +10968,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 71,
         defense: 43,
-        views: -55000,
+        views: 55000,
         emoji: "📚"
     },
     {
@@ -10979,7 +10979,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 66,
         defense: 53,
-        views: -829000,
+        views: 829000,
         emoji: "📚"
     },
     {
@@ -10990,7 +10990,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 63,
         defense: 53,
-        views: -26000,
+        views: 26000,
         emoji: "📚"
     },
     {
@@ -11012,7 +11012,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 64,
         defense: 52,
-        views: -706000,
+        views: 706000,
         emoji: "📚"
     },
     {
@@ -11067,7 +11067,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 60,
         defense: 46,
-        views: -670000,
+        views: 670000,
         emoji: "📚"
     },
     {
@@ -11089,7 +11089,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 59,
         defense: 36,
-        views: -45000,
+        views: 45000,
         emoji: "📚"
     },
     {
@@ -11166,7 +11166,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 75,
         defense: 57,
-        views: -301000,
+        views: 301000,
         emoji: "🎨"
     },
     {
@@ -11188,7 +11188,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 52,
         defense: 45,
-        views: -340000,
+        views: 340000,
         emoji: "🎨"
     },
     {
@@ -11276,7 +11276,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 46,
         defense: 44,
-        views: -326000,
+        views: 326000,
         emoji: "🎨"
     },
     {
@@ -11353,7 +11353,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 61,
         defense: 56,
-        views: -278000,
+        views: 278000,
         emoji: "🎨"
     },
     {
@@ -11408,7 +11408,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 70,
         defense: 44,
-        views: -402000,
+        views: 402000,
         emoji: "🎨"
     },
     {
@@ -11419,7 +11419,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 51,
         defense: 40,
-        views: -31000,
+        views: 31000,
         emoji: "🎨"
     },
     {
@@ -11441,7 +11441,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 62,
         defense: 58,
-        views: -958000,
+        views: 958000,
         emoji: "🎨"
     },
     {
@@ -11452,7 +11452,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 59,
         defense: 41,
-        views: -332000,
+        views: 332000,
         emoji: "🎨"
     },
     {
@@ -11485,7 +11485,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 46,
         defense: 44,
-        views: -143000,
+        views: 143000,
         emoji: "🎨"
     },
     {
@@ -11551,7 +11551,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 64,
         defense: 51,
-        views: -563000,
+        views: 563000,
         emoji: "🎨"
     },
     {
@@ -11562,7 +11562,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 49,
         defense: 45,
-        views: -183000,
+        views: 183000,
         emoji: "🎨"
     },
     {
@@ -11573,7 +11573,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 61,
         defense: 38,
-        views: -227000,
+        views: 227000,
         emoji: "🎨"
     },
     {
@@ -11606,7 +11606,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 61,
         defense: 34,
-        views: -141000,
+        views: 141000,
         emoji: "🎼"
     },
     {
@@ -11650,7 +11650,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 75,
         defense: 46,
-        views: -170000,
+        views: 170000,
         emoji: "🎼"
     },
     {
@@ -11683,7 +11683,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 65,
         defense: 47,
-        views: -107000,
+        views: 107000,
         emoji: "🎼"
     },
     {
@@ -11694,7 +11694,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 61,
         defense: 34,
-        views: -68000,
+        views: 68000,
         emoji: "🎼"
     },
     {
@@ -11705,7 +11705,7 @@ const CARDS = [
         rarity: RARITIES.SUPER_RARE.code,
         attack: 78,
         defense: 61,
-        views: -309000,
+        views: 309000,
         emoji: "🎼"
     },
     {
@@ -11782,7 +11782,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 68,
         defense: 58,
-        views: -825000,
+        views: 825000,
         emoji: "🎼"
     },
     {
@@ -11848,7 +11848,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 69,
         defense: 48,
-        views: -929000,
+        views: 929000,
         emoji: "🎼"
     },
     {
@@ -11892,7 +11892,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 74,
         defense: 57,
-        views: -212000,
+        views: 212000,
         emoji: "🎼"
     },
     {
@@ -11958,7 +11958,7 @@ const CARDS = [
         rarity: RARITIES.SUPER_RARE.code,
         attack: 76,
         defense: 72,
-        views: -938000,
+        views: 938000,
         emoji: "🎬"
     },
     {
@@ -11969,7 +11969,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 62,
         defense: 49,
-        views: -188000,
+        views: 188000,
         emoji: "🎬"
     },
     {
@@ -11980,7 +11980,7 @@ const CARDS = [
         rarity: RARITIES.SUPER_RARE.code,
         attack: 80,
         defense: 71,
-        views: -496000,
+        views: 496000,
         emoji: "🎬"
     },
     {
@@ -12024,7 +12024,7 @@ const CARDS = [
         rarity: RARITIES.SUPER_RARE.code,
         attack: 87,
         defense: 60,
-        views: -556000,
+        views: 556000,
         emoji: "🎬"
     },
     {
@@ -12035,7 +12035,7 @@ const CARDS = [
         rarity: RARITIES.SUPER_RARE.code,
         attack: 84,
         defense: 71,
-        views: -1614000,
+        views: 1614000,
         emoji: "🎬"
     },
     {
@@ -12046,7 +12046,7 @@ const CARDS = [
         rarity: RARITIES.SUPER_RARE.code,
         attack: 78,
         defense: 60,
-        views: -111000,
+        views: 111000,
         emoji: "🎬"
     },
     {
@@ -12156,7 +12156,7 @@ const CARDS = [
         rarity: RARITIES.SUPER_RARE.code,
         attack: 77,
         defense: 63,
-        views: -787000,
+        views: 787000,
         emoji: "🎬"
     },
     {
@@ -12167,7 +12167,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 54,
         defense: 44,
-        views: -354000,
+        views: 354000,
         emoji: "🎬"
     },
     {
@@ -12178,7 +12178,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 50,
         defense: 33,
-        views: -174000,
+        views: 174000,
         emoji: "🎬"
     },
     {
@@ -12211,7 +12211,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 75,
         defense: 44,
-        views: -847000,
+        views: 847000,
         emoji: "🎬"
     },
     {
@@ -12233,7 +12233,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 63,
         defense: 51,
-        views: -602000,
+        views: 602000,
         emoji: "🎬"
     },
     {
@@ -12244,7 +12244,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 60,
         defense: 39,
-        views: -293000,
+        views: 293000,
         emoji: "🎬"
     },
     {
@@ -12255,7 +12255,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 47,
         defense: 44,
-        views: -350000,
+        views: 350000,
         emoji: "🎬"
     },
     {
@@ -12266,7 +12266,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 75,
         defense: 57,
-        views: -772000,
+        views: 772000,
         emoji: "🎬"
     },
     {
@@ -12299,7 +12299,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 61,
         defense: 33,
-        views: -460000,
+        views: 460000,
         emoji: "💭"
     },
     {
@@ -12310,7 +12310,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 49,
         defense: 42,
-        views: -395000,
+        views: 395000,
         emoji: "💭"
     },
     {
@@ -12332,7 +12332,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 64,
         defense: 52,
-        views: -87000,
+        views: 87000,
         emoji: "💭"
     },
     {
@@ -12398,7 +12398,7 @@ const CARDS = [
         rarity: RARITIES.SUPER_RARE.code,
         attack: 74,
         defense: 69,
-        views: -78000,
+        views: 78000,
         emoji: "👨‍🍳"
     },
     {
@@ -12409,7 +12409,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 48,
         defense: 45,
-        views: -368000,
+        views: 368000,
         emoji: "👨‍🍳"
     },
     {
@@ -12456,7 +12456,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 61,
         defense: 44,
-        views: -546000,
+        views: 546000,
         emoji: "⚔️"
     },
     {
@@ -12467,7 +12467,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 60,
         defense: 48,
-        views: -885000,
+        views: 885000,
         emoji: "⚔️"
     },
     {
@@ -12478,7 +12478,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 75,
         defense: 48,
-        views: -556000,
+        views: 556000,
         emoji: "⚔️"
     },
     {
@@ -12489,7 +12489,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 62,
         defense: 52,
-        views: -194000,
+        views: 194000,
         emoji: "⚔️"
     },
     {
@@ -12533,7 +12533,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 49,
         defense: 43,
-        views: -228000,
+        views: 228000,
         emoji: "⚔️"
     },
     {
@@ -12566,7 +12566,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 69,
         defense: 58,
-        views: -814000,
+        views: 814000,
         emoji: "🏛️"
     },
     {
@@ -12588,7 +12588,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 53,
         defense: 33,
-        views: -306000,
+        views: 306000,
         emoji: "🏛️"
     },
     {
@@ -12654,7 +12654,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 56,
         defense: 40,
-        views: -365000,
+        views: 365000,
         emoji: "🏛️"
     },
     {
@@ -12665,7 +12665,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 68,
         defense: 45,
-        views: -125000,
+        views: 125000,
         emoji: "⚖️"
     },
     {
@@ -12698,7 +12698,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 68,
         defense: 56,
-        views: -559000,
+        views: 559000,
         emoji: "⚔️"
     },
     {
@@ -12720,7 +12720,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 63,
         defense: 54,
-        views: -661000,
+        views: 661000,
         emoji: "🏛️"
     },
     {
@@ -12731,7 +12731,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 67,
         defense: 51,
-        views: -429000,
+        views: 429000,
         emoji: "🤝"
     },
     {
@@ -12753,7 +12753,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 61,
         defense: 49,
-        views: -300000,
+        views: 300000,
         emoji: "🏛️"
     },
     {
@@ -12775,7 +12775,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 74,
         defense: 49,
-        views: -217000,
+        views: 217000,
         emoji: "🏛️"
     },
     {
@@ -12797,7 +12797,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 63,
         defense: 52,
-        views: -457000,
+        views: 457000,
         emoji: "🏛️"
     },
     {
@@ -12808,7 +12808,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 66,
         defense: 43,
-        views: -448000,
+        views: 448000,
         emoji: "🏛️"
     },
     {
@@ -12819,7 +12819,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 66,
         defense: 54,
-        views: -527000,
+        views: 527000,
         emoji: "🤝"
     },
     {
@@ -12830,7 +12830,7 @@ const CARDS = [
         rarity: RARITIES.SUPER_RARE.code,
         attack: 83,
         defense: 63,
-        views: -1125000,
+        views: 1125000,
         emoji: "🏛️"
     },
     {
@@ -12841,7 +12841,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 64,
         defense: 58,
-        views: -672000,
+        views: 672000,
         emoji: "🏛️"
     },
     {
@@ -12852,7 +12852,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 70,
         defense: 58,
-        views: -587000,
+        views: 587000,
         emoji: "🏛️"
     },
     {
@@ -12885,7 +12885,7 @@ const CARDS = [
         rarity: RARITIES.SUPER_RARE.code,
         attack: 82,
         defense: 65,
-        views: -1318000,
+        views: 1318000,
         emoji: "🏛️"
     },
     {
@@ -12918,7 +12918,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 47,
         defense: 43,
-        views: -384000,
+        views: 384000,
         emoji: "🏛️"
     },
     {
@@ -12940,7 +12940,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 63,
         defense: 53,
-        views: -756000,
+        views: 756000,
         emoji: "⚖️"
     },
     {
@@ -13053,7 +13053,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 56,
         defense: 40,
-        views: -445000,
+        views: 445000,
         emoji: "🧮"
     },
     {
@@ -13108,7 +13108,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 46,
         defense: 37,
-        views: -289000,
+        views: 289000,
         emoji: "🚗"
     },
     {
@@ -13196,7 +13196,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 54,
         defense: 32,
-        views: -313000,
+        views: 313000,
         emoji: "🪂"
     },
 
@@ -13221,7 +13221,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 75,
         defense: 45,
-        views: -397000,
+        views: 397000,
         emoji: "⛵"
     },
     {
@@ -13298,7 +13298,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 66,
         defense: 45,
-        views: -224000,
+        views: 224000,
         emoji: "🎿"
     },
     {
@@ -13309,7 +13309,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 45,
         defense: 45,
-        views: -210000,
+        views: 210000,
         emoji: "🎿"
     },
     {
@@ -13331,7 +13331,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 71,
         defense: 43,
-        views: -509000,
+        views: 509000,
         emoji: "⚽"
     },
     {
@@ -13364,7 +13364,7 @@ const CARDS = [
         rarity: RARITIES.SUPER_RARE.code,
         attack: 82,
         defense: 69,
-        views: -787000,
+        views: 787000,
         emoji: "⚽"
     },
     {
@@ -13386,7 +13386,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 56,
         defense: 40,
-        views: -52000,
+        views: 52000,
         emoji: "⚽"
     },
     {
@@ -13397,7 +13397,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 64,
         defense: 55,
-        views: -115000,
+        views: 115000,
         emoji: "⚽"
     },
     {
@@ -13540,7 +13540,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 68,
         defense: 45,
-        views: -705000,
+        views: 705000,
         emoji: "🎾"
     },
     {
@@ -13573,7 +13573,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 67,
         defense: 49,
-        views: -572000,
+        views: 572000,
         emoji: "🎿"
     },
     {
@@ -13584,7 +13584,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 58,
         defense: 44,
-        views: -66000,
+        views: 66000,
         emoji: "🎿"
     },
     {
@@ -13650,7 +13650,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 72,
         defense: 43,
-        views: -24000,
+        views: 24000,
         emoji: "🏃"
     },
     {
@@ -13727,7 +13727,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 60,
         defense: 31,
-        views: -304000,
+        views: 304000,
         emoji: "🏉"
     },
     {
@@ -13771,7 +13771,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 69,
         defense: 49,
-        views: -145000,
+        views: 145000,
         emoji: "⚽"
     },
     {
@@ -13782,7 +13782,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 71,
         defense: 53,
-        views: -836000,
+        views: 836000,
         emoji: "⚽"
     },
     {
@@ -13826,7 +13826,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 48,
         defense: 41,
-        views: -170000,
+        views: 170000,
         emoji: "🏟️"
     },
     {
@@ -13862,7 +13862,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 67,
         defense: 57,
-        views: -110000,
+        views: 110000,
         emoji: "🏰"
     },
     {
@@ -13873,7 +13873,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 51,
         defense: 45,
-        views: -389000,
+        views: 389000,
         emoji: "🏰"
     },
     {
@@ -13906,7 +13906,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 60,
         defense: 51,
-        views: -762000,
+        views: 762000,
         emoji: "🏰"
     },
     {
@@ -13939,7 +13939,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 47,
         defense: 44,
-        views: -371000,
+        views: 371000,
         emoji: "🌉"
     },
     {
@@ -14049,7 +14049,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 54,
         defense: 42,
-        views: -291000,
+        views: 291000,
         emoji: "⛪"
     },
     {
@@ -14104,7 +14104,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 46,
         defense: 44,
-        views: -297000,
+        views: 297000,
         emoji: "⛪"
     },
     {
@@ -14137,7 +14137,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 54,
         defense: 35,
-        views: -235000,
+        views: 235000,
         emoji: "🏛️"
     },
     {
@@ -14148,7 +14148,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 54,
         defense: 43,
-        views: -128000,
+        views: 128000,
         emoji: "🏛️"
     },
     {
@@ -14181,7 +14181,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 59,
         defense: 44,
-        views: -146000,
+        views: 146000,
         emoji: "🏛️"
     },
     {
@@ -14225,7 +14225,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 59,
         defense: 43,
-        views: -209000,
+        views: 209000,
         emoji: "🏛️"
     },
     {
@@ -14258,7 +14258,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 64,
         defense: 55,
-        views: -392000,
+        views: 392000,
         emoji: "🏔️"
     },
     {
@@ -14280,7 +14280,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 72,
         defense: 46,
-        views: -940000,
+        views: 940000,
         emoji: "🚇"
     },
     {
@@ -14302,7 +14302,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 74,
         defense: 55,
-        views: -187000,
+        views: 187000,
         emoji: "🖼️"
     },
     {
@@ -14324,7 +14324,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 51,
         defense: 44,
-        views: -33000,
+        views: 33000,
         emoji: "🖼️"
     },
     {
@@ -14346,7 +14346,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 57,
         defense: 35,
-        views: -470000,
+        views: 470000,
         emoji: "🖼️"
     },
     {
@@ -14390,7 +14390,7 @@ const CARDS = [
         rarity: RARITIES.ULTRA_RARE.code,
         attack: 92,
         defense: 81,
-        views: -376000,
+        views: 376000,
         emoji: "📖"
     },
     {
@@ -14434,7 +14434,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 54,
         defense: 45,
-        views: -337000,
+        views: 337000,
         emoji: "📖"
     },
     {
@@ -14467,7 +14467,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 60,
         defense: 54,
-        views: -300000,
+        views: 300000,
         emoji: "📖"
     },
     {
@@ -14478,7 +14478,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 63,
         defense: 49,
-        views: -462000,
+        views: 462000,
         emoji: "📖"
     },
     {
@@ -14489,7 +14489,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 55,
         defense: 37,
-        views: -214000,
+        views: 214000,
         emoji: "📖"
     },
     {
@@ -14500,7 +14500,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 62,
         defense: 55,
-        views: -143000,
+        views: 143000,
         emoji: "📖"
     },
     {
@@ -14533,7 +14533,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 58,
         defense: 41,
-        views: -228000,
+        views: 228000,
         emoji: "🎵"
     },
     {
@@ -14566,7 +14566,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 64,
         defense: 53,
-        views: -664000,
+        views: 664000,
         emoji: "🎥"
     },
     {
@@ -14588,7 +14588,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 60,
         defense: 56,
-        views: -154000,
+        views: 154000,
         emoji: "🎥"
     },
     {
@@ -14599,7 +14599,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 57,
         defense: 31,
-        views: -13000,
+        views: 13000,
         emoji: "🎥"
     },
     {
@@ -14643,7 +14643,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 63,
         defense: 52,
-        views: -345000,
+        views: 345000,
         emoji: "🖼️"
     },
     {
@@ -14676,7 +14676,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 49,
         defense: 33,
-        views: -48000,
+        views: 48000,
         emoji: "🎉"
     },
     {
@@ -14764,7 +14764,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 49,
         defense: 45,
-        views: -472000,
+        views: 472000,
         emoji: "🎉"
     },
     {
@@ -14786,7 +14786,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 45,
         defense: 37,
-        views: -472000,
+        views: 472000,
         emoji: "🎉"
     },
     {
@@ -14819,7 +14819,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 62,
         defense: 56,
-        views: -9000,
+        views: 9000,
         emoji: "🇫🇷"
     },
     {
@@ -14830,7 +14830,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 61,
         defense: 55,
-        views: -656000,
+        views: 656000,
         emoji: "🇫🇷"
     },
     {
@@ -14885,7 +14885,7 @@ const CARDS = [
         rarity: RARITIES.COMMON.code,
         attack: 55,
         defense: 38,
-        views: -50000,
+        views: 50000,
         emoji: "🎭"
     },
     {
@@ -14896,7 +14896,7 @@ const CARDS = [
         rarity: RARITIES.RARE.code,
         attack: 72,
         defense: 55,
-        views: -831000,
+        views: 831000,
         emoji: "🎭"
     },
     {
@@ -14921,6 +14921,517 @@ const CARDS = [
         views: 157000,
         emoji: "🎭"
     },
+  // ========== EXTENSION 2 : Batailles & Conflits ==========
+  { id: 1308, name: "Bataille de Gergovie", description: "Victoire de Vercingétorix sur les légions de César en 52 av. J.-C.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.SUPER_RARE.code, attack: 85, defense: 76, views: 1017024, emoji: "⚔️" },
+  { id: 1309, name: "Bataille de Marignan", description: "Triomphe de François Ier en 1515, entrée fracassante dans les guerres d'Italie.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.SUPER_RARE.code, attack: 87, defense: 78, views: 2575882, emoji: "⚔️" },
+  { id: 1310, name: "Bataille de Pavie", description: "François Ier y est capturé en 1525 par les Impériaux.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.RARE.code, attack: 75, defense: 64, views: 1782684, emoji: "⚔️" },
+  { id: 1311, name: "Siège de La Rochelle", description: "Le blocus de Richelieu en 1628 soumet la place forte protestante.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.RARE.code, attack: 70, defense: 63, views: 725276, emoji: "⚔️" },
+  { id: 1312, name: "Bataille de Rocroi", description: "Le jeune Grand Condé brise les tercios espagnols en 1643.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.SUPER_RARE.code, attack: 86, defense: 74, views: 1414665, emoji: "⚔️" },
+  { id: 1313, name: "Bataille de Lens", description: "Dernière victoire de Condé sur l'Espagne en 1648.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.COMMON.code, attack: 48, defense: 42, views: 601890, emoji: "⚔️" },
+  { id: 1314, name: "Bataille de Jemmapes", description: "Première victoire offensive de la Révolution, remportée par Dumouriez en 1792.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.COMMON.code, attack: 46, defense: 50, views: 290442, emoji: "⚔️" },
+  { id: 1315, name: "Bataille des Pyramides", description: "Triomphe de Bonaparte en Égypte en 1798.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.SUPER_RARE.code, attack: 82, defense: 78, views: 1103904, emoji: "⚔️" },
+  { id: 1316, name: "Bataille d'Iéna", description: "Victoire écrasante de Napoléon sur la Prusse en 1806.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.RARE.code, attack: 68, defense: 68, views: 1087364, emoji: "⚔️" },
+  { id: 1317, name: "Bataille d'Eylau", description: "Bataille sanglante et indécise de 1807 dans la neige de Prusse.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.COMMON.code, attack: 54, defense: 47, views: 505771, emoji: "⚔️" },
+  { id: 1318, name: "Bataille de Wagram", description: "Victoire de Napoléon sur l'Autriche en 1809.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.RARE.code, attack: 73, defense: 70, views: 1504737, emoji: "⚔️" },
+  { id: 1319, name: "La Bérézina", description: "Le passage désastreux de la Grande Armée en 1812 pendant la retraite de Russie.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.SUPER_RARE.code, attack: 84, defense: 74, views: 1445414, emoji: "⚔️" },
+  { id: 1320, name: "Bataille de Camerone", description: "Le sacrifice héroïque de la Légion étrangère au Mexique en 1863.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.SUPER_RARE.code, attack: 86, defense: 75, views: 1981151, emoji: "⚔️" },
+  { id: 1321, name: "Le Chemin des Dames", description: "L'offensive meurtrière de 1917 qui provoque les mutineries.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.RARE.code, attack: 65, defense: 54, views: 1431370, emoji: "⚔️" },
+  { id: 1322, name: "Bataille de la Somme", description: "L'une des batailles les plus meurtrières de la Grande Guerre, en 1916.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.RARE.code, attack: 60, defense: 67, views: 1085522, emoji: "⚔️" },
+  { id: 1323, name: "Bir Hakeim", description: "La résistance héroïque de la France libre face à Rommel en 1942.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.ULTRA_RARE.code, attack: 92, defense: 90, views: 6713726, emoji: "⚔️" },
+  { id: 1324, name: "Bataille de Dien Bien Phu", description: "La défaite de 1954 met fin à la présence française en Indochine.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.SUPER_RARE.code, attack: 78, defense: 71, views: 1631446, emoji: "⚔️" },
+  { id: 1325, name: "Bataille de Patay", description: "La cavalerie française écrase les Anglais en 1429, lendemain d'Orléans.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.RARE.code, attack: 69, defense: 64, views: 1793370, emoji: "⚔️" },
+  { id: 1326, name: "Bataille de Saint-Quentin", description: "La lourde défaite de 1557 face aux Espagnols de Philippe II.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.COMMON.code, attack: 52, defense: 57, views: 214555, emoji: "⚔️" },
+  { id: 1327, name: "Bataille de Denain", description: "La victoire de Villars en 1712 sauve la France de l'invasion.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.COMMON.code, attack: 57, defense: 55, views: 437139, emoji: "⚔️" },
+
+  // ========== EXTENSION 2 : Grandes Périodes Historiques ==========
+  { id: 1328, name: "La Gaule", description: "Territoire des peuples gaulois avant la conquête romaine.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.RARE.code, attack: 62, defense: 58, views: 1753230, emoji: "📜" },
+  { id: 1329, name: "La Gaule romaine", description: "Quatre siècles de paix et de romanisation après la conquête de César.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.RARE.code, attack: 63, defense: 69, views: 900142, emoji: "📜" },
+  { id: 1330, name: "Les Invasions barbares", description: "Les vagues germaniques qui morcellent l'Empire romain d'Occident.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.COMMON.code, attack: 57, defense: 54, views: 409162, emoji: "📜" },
+  { id: 1331, name: "L'époque mérovingienne", description: "Le temps des premiers rois francs, de Clovis aux maires du palais.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.RARE.code, attack: 75, defense: 57, views: 504497, emoji: "📜" },
+  { id: 1332, name: "L'époque carolingienne", description: "L'empire de Charlemagne et sa renaissance culturelle.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.SUPER_RARE.code, attack: 76, defense: 69, views: 1966908, emoji: "📜" },
+  { id: 1333, name: "La féodalité", description: "Seigneurs et vassaux structurent le royaume pendant des siècles.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.RARE.code, attack: 74, defense: 56, views: 1293799, emoji: "📜" },
+  { id: 1334, name: "La guerre de Cent Ans", description: "Le long conflit franco-anglais qui forge lentement la nation.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.SUPER_RARE.code, attack: 75, defense: 76, views: 1973256, emoji: "📜" },
+  { id: 1335, name: "Les Guerres de religion", description: "Catholiques et protestants déchirent le royaume au XVIe siècle.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.RARE.code, attack: 70, defense: 62, views: 1114963, emoji: "📜" },
+  { id: 1336, name: "Le Grand Siècle", description: "Le siècle de Louis XIV, apogée de la monarchie absolue et des arts.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.ULTRA_RARE.code, attack: 94, defense: 91, views: 5498911, emoji: "📜" },
+  { id: 1337, name: "Le Siècle des Lumières", description: "L'Encyclopédie et les philosophes préparent la Révolution.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.ULTRA_RARE.code, attack: 93, defense: 87, views: 3998673, emoji: "📜" },
+  { id: 1338, name: "La Terreur", description: "Phase extrême de la Révolution dirigée par Robespierre en 1793.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.SUPER_RARE.code, attack: 77, defense: 83, views: 2247837, emoji: "📜" },
+  { id: 1339, name: "Le Directoire", description: "Régime instable de 1795 à 1799, antichambre du Consulat.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.COMMON.code, attack: 48, defense: 56, views: 336927, emoji: "📜" },
+  { id: 1340, name: "La Restauration", description: "Le retour des Bourbons de 1814 à 1830.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.RARE.code, attack: 72, defense: 63, views: 1057014, emoji: "📜" },
+  { id: 1341, name: "La Belle Époque", description: "L'effervescence parisienne de 1880 à 1914, entre progrès et plaisirs.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.SUPER_RARE.code, attack: 83, defense: 80, views: 2273619, emoji: "📜" },
+  { id: 1342, name: "Les Années folles", description: "Le jazz et les avant-gardes des années 1920 à Paris.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.SUPER_RARE.code, attack: 84, defense: 76, views: 1212432, emoji: "📜" },
+  { id: 1343, name: "Le Front populaire", description: "1936 : les congés payés et la semaine de 40 heures sous Léon Blum.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.SUPER_RARE.code, attack: 84, defense: 69, views: 3096136, emoji: "📜" },
+  { id: 1344, name: "Les Trente Glorieuses", description: "Trente ans de croissance et de modernisation après 1945.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.SUPER_RARE.code, attack: 87, defense: 77, views: 1771702, emoji: "📜" },
+
+  // ========== EXTENSION 2 : Rois, Reines & Souverains ==========
+  { id: 1345, name: "Dagobert Ier", description: "Roi mérovingien rendu célèbre par sa chanson.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.RARE.code, attack: 74, defense: 63, views: 542839, emoji: "👑" },
+  { id: 1346, name: "Pépin le Bref", description: "Premier roi carolingien, sacré avec l'appui de l'Église.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.RARE.code, attack: 74, defense: 64, views: 513544, emoji: "👑" },
+  { id: 1347, name: "Robert le Pieux", description: "Deuxième roi capétien, réputé pour sa profonde piété.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.COMMON.code, attack: 53, defense: 44, views: 228422, emoji: "👑" },
+  { id: 1348, name: "Blanche de Castille", description: "Régente de France pendant la minorité de Louis IX.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.RARE.code, attack: 75, defense: 58, views: 925035, emoji: "👑" },
+  { id: 1349, name: "Jean le Bon", description: "Roi valeureux fait prisonnier à Poitiers en 1356.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.COMMON.code, attack: 49, defense: 47, views: 363534, emoji: "👑" },
+  { id: 1350, name: "Charles V le Sage", description: "Roi lettré qui reconquiert le royaume sur les Anglais.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.RARE.code, attack: 75, defense: 59, views: 1740859, emoji: "👑" },
+  { id: 1351, name: "Charles IX", description: "Roi associé au massacre de la Saint-Barthélemy en 1572.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.RARE.code, attack: 74, defense: 55, views: 1522941, emoji: "👑" },
+  { id: 1352, name: "Henri III", description: "Dernier roi Valois, assassiné par le moine Jacques Clément.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.RARE.code, attack: 64, defense: 64, views: 575616, emoji: "👑" },
+  { id: 1353, name: "Marie de Médicis", description: "Reine régente et mécène, mère de Louis XIII.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.COMMON.code, attack: 56, defense: 49, views: 403352, emoji: "👑" },
+  { id: 1354, name: "Anne d'Autriche", description: "Reine régente avec Mazarin pendant la Fronde.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.RARE.code, attack: 76, defense: 55, views: 1449838, emoji: "👑" },
+  { id: 1355, name: "Marquise de Pompadour", description: "Favorite de Louis XV et protectrice des philosophes.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.SUPER_RARE.code, attack: 78, defense: 72, views: 2691880, emoji: "👑" },
+  { id: 1356, name: "Louis XVIII", description: "Roi de la Restauration installé après la chute de l'Empire.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.RARE.code, attack: 76, defense: 56, views: 915345, emoji: "👑" },
+  { id: 1357, name: "Charles X", description: "Dernier Bourbon de la branche aînée, renversé en 1830.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.COMMON.code, attack: 59, defense: 55, views: 412935, emoji: "👑" },
+  { id: 1358, name: "Eugénie de Montijo", description: "Dernière impératrice des Français, icône du Second Empire.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.RARE.code, attack: 66, defense: 64, views: 1382314, emoji: "👑" },
+  { id: 1359, name: "Berthe au grand pied", description: "Mère de Charlemagne, figure légendaire des carolingiens.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.COMMON.code, attack: 49, defense: 54, views: 157391, emoji: "👑" },
+  { id: 1360, name: "Brunehaut", description: "Reine d'Austrasie, souveraine énergique de l'époque mérovingienne.", category: CATEGORIES.HISTOIRE, rarity: RARITIES.COMMON.code, attack: 51, defense: 43, views: 244745, emoji: "👑" },
+
+  // ========== EXTENSION 2 : Chefs-d'œuvre de la Littérature ==========
+  { id: 1361, name: "Les Essais", description: "Montaigne invente l'introspection moderne.", category: CATEGORIES.SCIENCES, rarity: RARITIES.SUPER_RARE.code, attack: 78, defense: 73, views: 1504863, emoji: "📖" },
+  { id: 1362, name: "Gargantua", description: "Rabelais et la joie de vivre d'un géant débonnaire.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 68, defense: 68, views: 809882, emoji: "📖" },
+  { id: 1363, name: "Pantagruel", description: "Les aventures hallucinées du géant de Rabelais.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 54, defense: 47, views: 511966, emoji: "📖" },
+  { id: 1364, name: "Le Cid", description: "Corneille oppose amour et honneur dans l'Espagne des Maures.", category: CATEGORIES.SCIENCES, rarity: RARITIES.SUPER_RARE.code, attack: 83, defense: 72, views: 2418884, emoji: "📖" },
+  { id: 1365, name: "Andromaque", description: "Racine met en scène la captivité de la veuve d'Hector.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 73, defense: 64, views: 1503585, emoji: "📖" },
+  { id: 1366, name: "Phèdre", description: "Le chef-d'œuvre de Racine sur la passion coupable.", category: CATEGORIES.SCIENCES, rarity: RARITIES.SUPER_RARE.code, attack: 80, defense: 74, views: 1753251, emoji: "📖" },
+  { id: 1367, name: "Tartuffe", description: "Molière fustige l'hypocrisie du faux dévot.", category: CATEGORIES.SCIENCES, rarity: RARITIES.SUPER_RARE.code, attack: 88, defense: 75, views: 2379271, emoji: "📖" },
+  { id: 1368, name: "L'Avare", description: "Molière et la cassette d'Harpagon.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 72, defense: 57, views: 859824, emoji: "📖" },
+  { id: 1369, name: "Le Malade imaginaire", description: "La dernière comédie de Molière, satire de la médecine.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 68, defense: 67, views: 487734, emoji: "📖" },
+  { id: 1370, name: "Le Mariage de Figaro", description: "Beaumarchais annonce la Révolution sur les planches.", category: CATEGORIES.SCIENCES, rarity: RARITIES.SUPER_RARE.code, attack: 79, defense: 83, views: 1693735, emoji: "📖" },
+  { id: 1371, name: "Manon Lescaut", description: "Prévost raconte l'amour fatal de Des Grieux.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 47, defense: 51, views: 799192, emoji: "📖" },
+  { id: 1372, name: "Les Liaisons dangereuses", description: "Laclos orchestre un duel de séduction épistolaire.", category: CATEGORIES.SCIENCES, rarity: RARITIES.SUPER_RARE.code, attack: 86, defense: 76, views: 1616341, emoji: "📖" },
+  { id: 1373, name: "Atala", description: "Chateaubriand, passion tragique dans les forêts d'Amérique.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 56, defense: 58, views: 516962, emoji: "📖" },
+  { id: 1374, name: "Le Rouge et le Noir", description: "Stendhal suit l'ascension et la chute de Julien Sorel.", category: CATEGORIES.SCIENCES, rarity: RARITIES.ULTRA_RARE.code, attack: 93, defense: 88, views: 5739731, emoji: "📖" },
+  { id: 1375, name: "La Chartreuse de Parme", description: "Stendhal, fresque romanesque de l'Italie napoléonienne.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 69, defense: 56, views: 838424, emoji: "📖" },
+  { id: 1376, name: "Le Père Goriot", description: "Balzac, le père ruiné par ses filles au cœur du monde.", category: CATEGORIES.SCIENCES, rarity: RARITIES.SUPER_RARE.code, attack: 81, defense: 77, views: 2242482, emoji: "📖" },
+  { id: 1377, name: "Eugénie Grandet", description: "Balzac peint l'avarice provinciale du père Grandet.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 68, defense: 63, views: 733030, emoji: "📖" },
+  { id: 1378, name: "Illusions perdues", description: "Balzac suit le rêve brisé du poète Lucien à Paris.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 68, defense: 57, views: 1242792, emoji: "📖" },
+  { id: 1379, name: "Notre-Dame de Paris (roman)", description: "Hugo, Quasimodo veille sur la cathédrale.", category: CATEGORIES.SCIENCES, rarity: RARITIES.ULTRA_RARE.code, attack: 92, defense: 81, views: 6806462, emoji: "📖" },
+  { id: 1380, name: "Les Contemplations", description: "Hugo, de la joie paternelle au deuil de Léopoldine.", category: CATEGORIES.SCIENCES, rarity: RARITIES.SUPER_RARE.code, attack: 76, defense: 74, views: 2168315, emoji: "📖" },
+  { id: 1381, name: "Salammbô", description: "Flaubert ressuscite Carthage antique.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 46, defense: 52, views: 796400, emoji: "📖" },
+  { id: 1382, name: "L'Éducation sentimentale", description: "Flaubert, les désillusions de la génération de 1848.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 64, defense: 55, views: 1764349, emoji: "📖" },
+  { id: 1383, name: "Bel-Ami", description: "Maupassant suit l'ascension du séduisant Duroy.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 62, defense: 69, views: 644125, emoji: "📖" },
+  { id: 1384, name: "L'Assommoir", description: "Zola, la chute de Gervaise dans l'alcool ouvrier.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 74, defense: 69, views: 1621877, emoji: "📖" },
+  { id: 1385, name: "Nana", description: "Zola, l'ascension et la chute d'une courtisane.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 76, defense: 65, views: 1405448, emoji: "📖" },
+  { id: 1386, name: "Au Bonheur des Dames", description: "Zola, la révolution des grands magasins.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 52, defense: 56, views: 582143, emoji: "📖" },
+  { id: 1387, name: "La Bête humaine", description: "Zola, train, passion et fatalité.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 52, defense: 52, views: 335489, emoji: "📖" },
+  { id: 1388, name: "La Reine Margot", description: "Dumas, amours sanglantes à la cour de Charles IX.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 70, defense: 61, views: 770727, emoji: "📖" },
+  { id: 1389, name: "Cyrano de Bergerac", description: "Rostand, le panache du gascon au grand cœur.", category: CATEGORIES.SCIENCES, rarity: RARITIES.ULTRA_RARE.code, attack: 90, defense: 89, views: 3992744, emoji: "📖" },
+  { id: 1390, name: "Hernani", description: "Hugo gagne la bataille romantique de 1830.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 69, defense: 57, views: 642293, emoji: "📖" },
+  { id: 1391, name: "Ruy Blas", description: "Hugo, serviteur poète au service de la reine.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 53, defense: 55, views: 643530, emoji: "📖" },
+  { id: 1392, name: "On ne badine pas avec l'amour", description: "Musset, drame romantique des malentendus.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 63, defense: 59, views: 860640, emoji: "📖" },
+  { id: 1393, name: "Lorenzaccio", description: "Musset, le complot mélancolique de Florence.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 66, defense: 65, views: 1503733, emoji: "📖" },
+  { id: 1394, name: "À la recherche du temps perdu", description: "Proust, la mémoire et le temps, en sept volumes.", category: CATEGORIES.SCIENCES, rarity: RARITIES.LEGENDARY.code, attack: 98, defense: 89, views: 7321433, emoji: "📖" },
+  { id: 1395, name: "Du côté de chez Swann", description: "Proust, madeleine et enfance en Combray.", category: CATEGORIES.SCIENCES, rarity: RARITIES.SUPER_RARE.code, attack: 86, defense: 83, views: 1976976, emoji: "📖" },
+  { id: 1396, name: "Le Grand Meaulnes", description: "Alain-Fournier, le charme des territoires perdus.", category: CATEGORIES.SCIENCES, rarity: RARITIES.SUPER_RARE.code, attack: 77, defense: 71, views: 2156980, emoji: "📖" },
+  { id: 1397, name: "Voyage au bout de la nuit", description: "Céline, le colloque sentimental de Bardamu.", category: CATEGORIES.SCIENCES, rarity: RARITIES.SUPER_RARE.code, attack: 77, defense: 77, views: 2630733, emoji: "📖" },
+  { id: 1398, name: "La Peste", description: "Camus, la ville d'Oran face au mal.", category: CATEGORIES.SCIENCES, rarity: RARITIES.SUPER_RARE.code, attack: 77, defense: 68, views: 1638452, emoji: "📖" },
+  { id: 1399, name: "La Nausée", description: "Sartre, vertige existentiel de Roquentin.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 71, defense: 62, views: 1095304, emoji: "📖" },
+  { id: 1400, name: "Huis clos", description: "Sartre : « L'enfer, c'est les autres. »", category: CATEGORIES.SCIENCES, rarity: RARITIES.SUPER_RARE.code, attack: 74, defense: 74, views: 3124976, emoji: "📖" },
+  { id: 1401, name: "Les Mots", description: "Sartre raconte l'enfance d'un écrivain.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 69, defense: 55, views: 1077832, emoji: "📖" },
+  { id: 1402, name: "Les Nourritures terrestres", description: "Gide appelle à la jouissance du monde.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 63, defense: 65, views: 1068970, emoji: "📖" },
+  { id: 1403, name: "Les Faux-monnayeurs", description: "Gide, le roman dans le roman.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 47, defense: 45, views: 197784, emoji: "📖" },
+  { id: 1404, name: "Terre des hommes", description: "Saint-Exupéry, l'humaine condition du pilote de ligne.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 69, defense: 64, views: 1232507, emoji: "📖" },
+  { id: 1405, name: "La Vie devant soi", description: "Romain Gary sous le masque d'Émile Ajar, prix Goncourt 1975.", category: CATEGORIES.SCIENCES, rarity: RARITIES.SUPER_RARE.code, attack: 87, defense: 79, views: 2917432, emoji: "📖" },
+  { id: 1406, name: "Les Racines du ciel", description: "Gary, prix Goncourt 1956 du combat pour les éléphants.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 60, defense: 50, views: 600696, emoji: "📖" },
+  { id: 1407, name: "La Vie mode d'emploi", description: "Perec, puzzle romanesque de l'immeuble rue Simon-Crubellier.", category: CATEGORIES.SCIENCES, rarity: RARITIES.SUPER_RARE.code, attack: 77, defense: 75, views: 1098014, emoji: "📖" },
+  { id: 1408, name: "Les Choses", description: "Perec, la passion d'une génération pour les objets.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 67, defense: 63, views: 1676545, emoji: "📖" },
+  { id: 1409, name: "Zazie dans le métro", description: "Queneau déraille la langue dans le Paris de Gabriel.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 64, defense: 54, views: 1347951, emoji: "📖" },
+  { id: 1410, name: "L'Écume des jours", description: "Boris Vian, jazz et tragédie en couleurs pastel.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 75, defense: 64, views: 957758, emoji: "📖" },
+  { id: 1411, name: "Bonjour tristesse", description: "Sagan publie à 18 ans ce premier roman sulfureux.", category: CATEGORIES.SCIENCES, rarity: RARITIES.SUPER_RARE.code, attack: 76, defense: 81, views: 1960131, emoji: "📖" },
+  { id: 1412, name: "Le Deuxième Sexe", description: "Simone de Beauvoir fonde la réflexion féministe moderne.", category: CATEGORIES.SCIENCES, rarity: RARITIES.ULTRA_RARE.code, attack: 93, defense: 84, views: 3482946, emoji: "📖" },
+  { id: 1413, name: "Mémoires d'Hadrien", description: "Yourcenar prête sa voix à l'empereur Hadrien.", category: CATEGORIES.SCIENCES, rarity: RARITIES.SUPER_RARE.code, attack: 83, defense: 68, views: 1383214, emoji: "📖" },
+
+  // ========== EXTENSION 2 : Arts, Peinture & Photographie ==========
+  { id: 1414, name: "Les Glaneuses", description: "Millet, la dignité des femmes des champs.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 76, defense: 57, views: 1753481, emoji: "🎨" },
+  { id: 1415, name: "L'Angélus", description: "Millet, prière du soir dans la plaine.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 68, defense: 67, views: 1488248, emoji: "🎨" },
+  { id: 1416, name: "Un dimanche après-midi à l'île de la Grande Jatte", description: "Seurat invente le pointillisme au bord de la Seine.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 71, defense: 58, views: 954257, emoji: "🎨" },
+  { id: 1417, name: "Les Raboteurs de parquet", description: "Caillebotte, la plongée audacieuse sur les ouvriers.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 66, defense: 54, views: 1642327, emoji: "🎨" },
+  { id: 1418, name: "La Classe de danse", description: "Degas et la salle d'opéra.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 47, defense: 45, views: 797800, emoji: "🎨" },
+  { id: 1419, name: "L'Absinthe", description: "Degas, deux solitudes au café.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 58, defense: 43, views: 291796, emoji: "🎨" },
+  { id: 1420, name: "Le Bain turc", description: "Ingres, harem circulaire et chair peinte.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 48, defense: 57, views: 411908, emoji: "🎨" },
+  { id: 1421, name: "La Grande Odalisque", description: "Ingres, luxe et anatomie impossible.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 48, defense: 55, views: 669248, emoji: "🎨" },
+  { id: 1422, name: "Officier de chasseurs à cheval", description: "Géricault, l'élan romantique en uniforme.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 53, defense: 45, views: 568670, emoji: "🎨" },
+  { id: 1423, name: "Le Sacre de Napoléon", description: "David consacre l'Empereur dans un tableau d'apparat.", category: CATEGORIES.SCIENCES, rarity: RARITIES.SUPER_RARE.code, attack: 78, defense: 82, views: 956579, emoji: "🎨" },
+  { id: 1424, name: "Le Serment des Horaces", description: "David, la vertu romaine en trois frères.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 76, defense: 59, views: 1624111, emoji: "🎨" },
+  { id: 1425, name: "La Mort de Marat", description: "David, le martyr révolutionnaire dans sa baignoire.", category: CATEGORIES.SCIENCES, rarity: RARITIES.SUPER_RARE.code, attack: 78, defense: 82, views: 3292935, emoji: "🎨" },
+  { id: 1426, name: "Les Sabines", description: "David, les romaines séparant les combattants.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 62, defense: 55, views: 397501, emoji: "🎨" },
+  { id: 1427, name: "Olympia", description: "Manet, le regard qui blesse le public de 1865.", category: CATEGORIES.SCIENCES, rarity: RARITIES.SUPER_RARE.code, attack: 87, defense: 81, views: 970062, emoji: "🎨" },
+  { id: 1428, name: "Le Fifre", description: "Manet, l'enfant soldat en aplats.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 48, defense: 43, views: 620190, emoji: "🎨" },
+  { id: 1429, name: "Un bar des Folies-Bergère", description: "Manet, miroir vertigineux du spectacle.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 67, defense: 66, views: 876100, emoji: "🎨" },
+  { id: 1430, name: "Les Coquelicots", description: "Monet, rouge vif au bord du chemin.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 62, defense: 43, views: 269356, emoji: "🎨" },
+  { id: 1431, name: "La Gare Saint-Lazare", description: "Monet, les vapeurs impressionnistes des quais.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 62, defense: 67, views: 1462751, emoji: "🎨" },
+  { id: 1432, name: "La Cathédrale de Rouen", description: "Monet dissout la pierre en trente lumières.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 69, defense: 66, views: 1421262, emoji: "🎨" },
+  { id: 1433, name: "Meules", description: "Monet, la fin de jour dans la paille dorée.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 50, defense: 51, views: 591377, emoji: "🎨" },
+  { id: 1434, name: "La Goulue au Moulin Rouge", description: "Toulouse-Lautrec affiche la star de Montmartre.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 74, defense: 55, views: 609396, emoji: "🎨" },
+  { id: 1435, name: "La Fée électricité", description: "Dufy, fresque monumentale de la lumière moderne.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 49, defense: 49, views: 342577, emoji: "🎨" },
+  { id: 1436, name: "La Tristesse du roi", description: "Matisse découpe ses papiers en fin de vie.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 53, defense: 52, views: 651969, emoji: "🎨" },
+  { id: 1437, name: "Le Bonheur de vivre", description: "Matisse, l'arcadie fauve.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 46, defense: 54, views: 342348, emoji: "🎨" },
+  { id: 1438, name: "La Danse", description: "Matisse, cinq corps rouges en cercle.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 68, defense: 70, views: 604815, emoji: "🎨" },
+  { id: 1439, name: "Le Violon d'Ingres", description: "Man Ray transforme un dos de modèle en instrument.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 62, defense: 62, views: 837439, emoji: "📷" },
+  { id: 1440, name: "Le Baiser de l'hôtel de ville", description: "Doisneau capture l'embrassade de 1950.", category: CATEGORIES.SCIENCES, rarity: RARITIES.SUPER_RARE.code, attack: 83, defense: 76, views: 3302641, emoji: "📷" },
+  { id: 1441, name: "Derrière la gare Saint-Lazare", description: "Cartier-Bresson saisit l'instant décisif d'un bond.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 73, defense: 62, views: 1605343, emoji: "📷" },
+  { id: 1442, name: "Le Penseur", description: "Rodin, l'homme qui pense en bronze.", category: CATEGORIES.SCIENCES, rarity: RARITIES.SUPER_RARE.code, attack: 84, defense: 81, views: 1695832, emoji: "🗿" },
+  { id: 1443, name: "Le Baiser", description: "Rodin, étreinte de marbre.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 60, defense: 65, views: 705252, emoji: "🗿" },
+  { id: 1444, name: "Le Départ des volontaires de 1792", description: "Rude sculpte l'hymne de l'Arc de triomphe.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 72, defense: 57, views: 1602506, emoji: "🗿" },
+  { id: 1445, name: "La Statue de la Liberté", description: "Bartholdi forge à Paris le cadeau fait à l'Amérique.", category: CATEGORIES.SCIENCES, rarity: RARITIES.ULTRA_RARE.code, attack: 86, defense: 91, views: 6907936, emoji: "🗿" },
+  { id: 1446, name: "Le Lion de Belfort", description: "Bartholdi, lion monumental de la résistance.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 75, defense: 62, views: 691914, emoji: "🗿" },
+  { id: 1447, name: "Le Zouave du pont de l'Alma", description: "Le zouave de Bartholdi jauge les crues de la Seine.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 51, defense: 55, views: 527493, emoji: "🗿" },
+  { id: 1448, name: "Nadar", description: "Portraitiste des géants et pionnier de l'aéronautique.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 64, defense: 68, views: 802597, emoji: "📷" },
+  { id: 1449, name: "Robert Doisneau", description: "Poète humaniste des rues de Paris.", category: CATEGORIES.SCIENCES, rarity: RARITIES.SUPER_RARE.code, attack: 82, defense: 74, views: 1075897, emoji: "📷" },
+  { id: 1450, name: "Henri Cartier-Bresson", description: "L'instant décisif de la photographie.", category: CATEGORIES.SCIENCES, rarity: RARITIES.SUPER_RARE.code, attack: 80, defense: 74, views: 1899840, emoji: "📷" },
+  { id: 1451, name: "Man Ray", description: "Dadaïste américain de Paris, rayogrammes et solarisations.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 70, defense: 58, views: 516244, emoji: "📷" },
+  { id: 1452, name: "Brassaï", description: "L'œil de la nuit parisienne.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 68, defense: 69, views: 672294, emoji: "📷" },
+  { id: 1453, name: "Eugène Atget", description: "Le documentaliste du vieux Paris.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 56, defense: 49, views: 650803, emoji: "📷" },
+
+  // ========== EXTENSION 2 : Légendes du Cinéma ==========
+  { id: 1454, name: "Annie Girardot", description: "Tonitruante et généreuse, reine du cinéma des années 1970.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 62, defense: 55, views: 312685, emoji: "🎭" },
+  { id: 1455, name: "Michèle Morgan", description: "Grande dame du cinéma français des années 1940.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 57, defense: 42, views: 291757, emoji: "🎭" },
+  { id: 1456, name: "Jean Reno", description: "Le grand silencieux de Léon et du Grand Bleu.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 60, defense: 60, views: 1419122, emoji: "🎭" },
+  { id: 1457, name: "Isabelle Adjani", description: "Multi-césarisée, de L'Histoire d'Adèle H. à Camille Claudel.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 73, defense: 66, views: 511236, emoji: "🎭" },
+  { id: 1458, name: "Isabelle Huppert", description: "Actrice fétiche de la modernité, de La Pianiste à Elle.", category: CATEGORIES.SCIENCES, rarity: RARITIES.SUPER_RARE.code, attack: 80, defense: 83, views: 2376724, emoji: "🎭" },
+  { id: 1459, name: "Juliette Binoche", description: "Muse de Kieslowski, oscarisée pour Le Patient anglais.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 66, defense: 67, views: 1108020, emoji: "🎭" },
+  { id: 1460, name: "Omar Sy", description: "Le rire fédérateur d'Intouchables, devenu Lupin.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 70, defense: 66, views: 468179, emoji: "🎭" },
+  { id: 1461, name: "Éric Rohmer", description: "Contes moraux et étés provinciaux du cinéma parlé.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 61, defense: 54, views: 1007333, emoji: "🎬" },
+  { id: 1462, name: "Leos Carax", description: "Poète électrique, des Amants du Pont-Neuf à Annette.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 53, defense: 50, views: 264286, emoji: "🎬" },
+  { id: 1463, name: "Céline Sciamma", description: "Portrait de la jeune fille en feu, cinéma du désir féminin.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 65, defense: 69, views: 1705840, emoji: "🎬" },
+  { id: 1464, name: "Julia Ducournau", description: "Palme d'or 2021 pour Titane, body horror française.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 62, defense: 57, views: 347561, emoji: "🎬" },
+  { id: 1465, name: "René Clair", description: "Poète du son à la française, d'À nous la liberté.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 58, defense: 48, views: 691971, emoji: "🎬" },
+  { id: 1466, name: "Maurice Pialat", description: "La vérité brute et rugueuse, sous le soleil de Satan.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 56, defense: 56, views: 216770, emoji: "🎬" },
+  { id: 1467, name: "Bertrand Tavernier", description: "Chroniqueur de Lyon et mémoire du cinéma français.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 61, defense: 57, views: 709239, emoji: "🎬" },
+  { id: 1468, name: "Claire Denis", description: "Beau Travail, corps et lumière au-delà des genres.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 48, defense: 45, views: 643314, emoji: "🎬" },
+
+  // ========== EXTENSION 2 : Grandes Voix de la Chanson ==========
+  { id: 1469, name: "Jacques Dutronc", description: "Le dandy de Paris qui s'éveille à cinq heures.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 61, defense: 57, views: 813237, emoji: "🎤" },
+  { id: 1470, name: "Françoise Hardy", description: "Mélancolie yé-yé de Tous les garçons et les filles.", category: CATEGORIES.SCIENCES, rarity: RARITIES.SUPER_RARE.code, attack: 83, defense: 75, views: 1623852, emoji: "🎤" },
+  { id: 1471, name: "France Gall", description: "Poupée de cire victorieuse de l'Eurovision 1965.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 70, defense: 64, views: 787673, emoji: "🎤" },
+  { id: 1472, name: "Claude François", description: "CloClo, showman d'Alexandrie Alexandra.", category: CATEGORIES.SCIENCES, rarity: RARITIES.SUPER_RARE.code, attack: 80, defense: 72, views: 967764, emoji: "🎤" },
+  { id: 1473, name: "Michel Polnareff", description: "Falset pop de La Poupée qui fait non.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 73, defense: 66, views: 733881, emoji: "🎤" },
+  { id: 1474, name: "Mireille Mathieu", description: "Le rossignol avignonnais aux millions de disques.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 53, defense: 58, views: 157167, emoji: "🎤" },
+  { id: 1475, name: "Daniel Balavoine", description: "Rockeur humaniste de L'Aziza.", category: CATEGORIES.SCIENCES, rarity: RARITIES.SUPER_RARE.code, attack: 84, defense: 73, views: 3045005, emoji: "🎤" },
+  { id: 1476, name: "Michel Berger", description: "Compositeur de Starmania et de l'opéra rock français.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 68, defense: 69, views: 1108715, emoji: "🎤" },
+  { id: 1477, name: "Jean-Jacques Goldman", description: "Plume fédératrice, d'Envole-moi à la pop rock française.", category: CATEGORIES.SCIENCES, rarity: RARITIES.SUPER_RARE.code, attack: 84, defense: 73, views: 2400429, emoji: "🎤" },
+  { id: 1478, name: "Joséphine Baker", description: "La Vénus noire, bananes, résistance et Panthéon.", category: CATEGORIES.SCIENCES, rarity: RARITIES.ULTRA_RARE.code, attack: 92, defense: 88, views: 5440620, emoji: "🎤" },
+  { id: 1479, name: "Tino Rossi", description: "Le crooner corse du Petit Papa Noël.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 76, defense: 62, views: 1196263, emoji: "🎤" },
+  { id: 1480, name: "Henri Salvador", description: "Chansons douces, scat et humour.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 51, defense: 41, views: 406759, emoji: "🎤" },
+  { id: 1481, name: "Georges Moustaki", description: "Le Métèque, sage à la guitare.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 46, defense: 46, views: 332581, emoji: "🎤" },
+  { id: 1482, name: "Maxime Le Forestier", description: "La maison bleue et les années de San Francisco.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 52, defense: 49, views: 718470, emoji: "🎤" },
+  { id: 1483, name: "Renaud", description: "Mistral gagnant et hexagone en slalom.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 76, defense: 61, views: 1287537, emoji: "🎤" },
+  { id: 1484, name: "Zaz", description: "Je veux, jazz manouche et voix éraillée.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 62, defense: 48, views: 336916, emoji: "🎤" },
+  { id: 1485, name: "Manu Chao", description: "Clandestino, troubadour des frontières.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 60, defense: 64, views: 911172, emoji: "🎤" },
+
+  // ========== EXTENSION 2 : Entreprises & Industrie ==========
+  { id: 1486, name: "Airbus", description: "Le géant aéronautique européen assemblé à Toulouse.", category: CATEGORIES.SCIENCES, rarity: RARITIES.ULTRA_RARE.code, attack: 88, defense: 90, views: 4532778, emoji: "🏭" },
+  { id: 1487, name: "Dassault Aviation", description: "Chasseurs à aile delta et jets d'affaires.", category: CATEGORIES.SCIENCES, rarity: RARITIES.SUPER_RARE.code, attack: 77, defense: 80, views: 2781208, emoji: "🏭" },
+  { id: 1488, name: "Renault", description: "Le losange de la voiture pour tous.", category: CATEGORIES.SCIENCES, rarity: RARITIES.SUPER_RARE.code, attack: 80, defense: 83, views: 2315610, emoji: "🏭" },
+  { id: 1489, name: "Peugeot", description: "Le lion de Montbéliard, du moulin à café à l'automobile.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 75, defense: 69, views: 1607228, emoji: "🏭" },
+  { id: 1490, name: "Citroën", description: "Les chevrons de Javel, la traction avant et la 2CV.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 73, defense: 59, views: 583648, emoji: "🏭" },
+  { id: 1491, name: "Michelin", description: "Bibendum et les pneus de Clermont-Ferrand.", category: CATEGORIES.SCIENCES, rarity: RARITIES.SUPER_RARE.code, attack: 86, defense: 76, views: 2842065, emoji: "🏭" },
+  { id: 1492, name: "SNCF", description: "Chemins de fer nationaux et trains à grande vitesse.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 70, defense: 65, views: 957599, emoji: "🏭" },
+  { id: 1493, name: "RATP", description: "Métro, RER et bus de l'Île-de-France.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 46, defense: 48, views: 678754, emoji: "🏭" },
+  { id: 1494, name: "EDF", description: "Électricité de France, du nucléaire aux barrages.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 71, defense: 68, views: 503447, emoji: "🏭" },
+  { id: 1495, name: "Air France", description: "La compagnie nationale à cocarde.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 54, defense: 47, views: 486542, emoji: "🏭" },
+  { id: 1496, name: "L'Oréal", description: "Numéro un mondial de la beauté.", category: CATEGORIES.SCIENCES, rarity: RARITIES.SUPER_RARE.code, attack: 86, defense: 79, views: 1031529, emoji: "🏭" },
+  { id: 1497, name: "Louis Vuitton", description: "La malle au monogramme, reine du luxe.", category: CATEGORIES.SCIENCES, rarity: RARITIES.ULTRA_RARE.code, attack: 90, defense: 86, views: 4459176, emoji: "🏭" },
+  { id: 1498, name: "Chanel", description: "N°5, tailleur et savoir-faire parisien.", category: CATEGORIES.SCIENCES, rarity: RARITIES.ULTRA_RARE.code, attack: 91, defense: 85, views: 6788085, emoji: "🏭" },
+  { id: 1499, name: "Hermès", description: "Sellier du Faubourg Saint-Honoré depuis 1837.", category: CATEGORIES.SCIENCES, rarity: RARITIES.SUPER_RARE.code, attack: 74, defense: 75, views: 1376664, emoji: "🏭" },
+  { id: 1500, name: "Dior", description: "Le New Look de 1947 et l'avenue Montaigne.", category: CATEGORIES.SCIENCES, rarity: RARITIES.SUPER_RARE.code, attack: 88, defense: 76, views: 1192668, emoji: "🏭" },
+  { id: 1501, name: "Yves Saint Laurent", description: "Le smoking pour femmes et la robe Mondrian.", category: CATEGORIES.SCIENCES, rarity: RARITIES.SUPER_RARE.code, attack: 77, defense: 80, views: 1503578, emoji: "🏭" },
+  { id: 1502, name: "Cartier", description: "Le joaillier des têtes couronnées.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 71, defense: 58, views: 821054, emoji: "🏭" },
+  { id: 1503, name: "BIC", description: "La bille orange, le briquet et le rasoir du quotidien.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 73, defense: 62, views: 498122, emoji: "🏭" },
+  { id: 1504, name: "Danone", description: "Yaourts et eaux, née à Barcelone devenue française.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 62, defense: 56, views: 813385, emoji: "🏭" },
+  { id: 1505, name: "Lactalis", description: "Numéro un laitier mondial, basé à Laval.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 56, defense: 56, views: 714110, emoji: "🏭" },
+  { id: 1506, name: "LU", description: "Le petit-beurre et le petit écolier.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 62, defense: 56, views: 525560, emoji: "🏭" },
+  { id: 1507, name: "Alstom", description: "Trains, tramways et turbines de Belfort.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 61, defense: 54, views: 740813, emoji: "🏭" },
+  { id: 1508, name: "Thales", description: "Électronique de défense et systèmes embarqués.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 52, defense: 52, views: 259213, emoji: "🏭" },
+  { id: 1509, name: "Safran", description: "Moteurs d'avion et équipements aéronautiques.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 54, defense: 57, views: 562364, emoji: "🏭" },
+  { id: 1510, name: "TotalEnergies", description: "Le major énergétique français.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 68, defense: 55, views: 888862, emoji: "🏭" },
+  { id: 1511, name: "Engie", description: "Gaz et services énergétiques mondiaux.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 61, defense: 49, views: 494247, emoji: "🏭" },
+  { id: 1512, name: "BNP Paribas", description: "Grande banque de la zone euro.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 55, defense: 41, views: 427873, emoji: "🏭" },
+  { id: 1513, name: "Crédit Agricole", description: "La banque verte des caisses régionales.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 56, defense: 55, views: 435751, emoji: "🏭" },
+  { id: 1514, name: "AXA", description: "Assureur mondial né des mutuelles de la Nièvre.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 51, defense: 55, views: 294629, emoji: "🏭" },
+  { id: 1515, name: "LVMH", description: "L'empire des 75 maisons de luxe.", category: CATEGORIES.SCIENCES, rarity: RARITIES.ULTRA_RARE.code, attack: 86, defense: 83, views: 3833964, emoji: "🏭" },
+  { id: 1516, name: "Kering", description: "Groupe de luxe, de Gucci à Boucheron.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 57, defense: 56, views: 780553, emoji: "🏭" },
+  { id: 1517, name: "Decathlon", description: "Le sport à prix juste, né dans le Nord.", category: CATEGORIES.SCIENCES, rarity: RARITIES.SUPER_RARE.code, attack: 82, defense: 76, views: 2675126, emoji: "🏭" },
+  { id: 1518, name: "Carrefour", description: "Pionnier français de l'hypermarché en 1963.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 48, defense: 52, views: 666962, emoji: "🏭" },
+  { id: 1519, name: "Ubisoft", description: "Studio français du jeu vidéo.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 74, defense: 66, views: 738407, emoji: "🏭" },
+  { id: 1520, name: "Bugatti", description: "Les bolides d'exception nés à Molsheim en Alsace.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 66, defense: 66, views: 551930, emoji: "🏭" },
+  { id: 1521, name: "CMA CGM", description: "Grand armateur mondial basé à Marseille.", category: CATEGORIES.SCIENCES, rarity: RARITIES.RARE.code, attack: 72, defense: 69, views: 1113503, emoji: "🏭" },
+  { id: 1522, name: "Air Liquide", description: "Leader mondial des gaz industriels.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 56, defense: 56, views: 152901, emoji: "🏭" },
+  { id: 1523, name: "Perrier", description: "L'eau pétillante de Vergèze.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 50, defense: 56, views: 672470, emoji: "🏭" },
+  { id: 1524, name: "Evian", description: "L'eau minérale des Alpes.", category: CATEGORIES.SCIENCES, rarity: RARITIES.COMMON.code, attack: 54, defense: 47, views: 586019, emoji: "🏭" },
+
+  // ========== EXTENSION 2 : Films Français Cultes ==========
+  { id: 1525, name: "Le Voyage dans la Lune", description: "Méliès et sa fusée plantée dans l'œil de la Lune, premier grand trucage du cinéma.", category: CATEGORIES.SPORT, rarity: RARITIES.SUPER_RARE.code, attack: 75, defense: 72, views: 2100891, emoji: "🎬" },
+  { id: 1526, name: "La Règle du jeu", description: "Renoir, comédie sociale annonciatrice du désastre.", category: CATEGORIES.SPORT, rarity: RARITIES.SUPER_RARE.code, attack: 87, defense: 69, views: 1314086, emoji: "🎬" },
+  { id: 1527, name: "Quai des brumes", description: "Carné, le réalisme poétique dans la brume du Havre.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 68, defense: 59, views: 405273, emoji: "🎬" },
+  { id: 1528, name: "Le Jour se lève", description: "Carné, Gabin retranché dans sa chambre d'hôtel.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 76, defense: 60, views: 856028, emoji: "🎬" },
+  { id: 1529, name: "La Belle et la Bête", description: "Cocteau, la magie du conte en surimpression.", category: CATEGORIES.SPORT, rarity: RARITIES.SUPER_RARE.code, attack: 80, defense: 81, views: 3038173, emoji: "🎬" },
+  { id: 1530, name: "Casque d'or", description: "Becker, l'amour tragique des apaches de la Belle Époque.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 55, defense: 55, views: 540700, emoji: "🎬" },
+  { id: 1531, name: "Les Diaboliques", description: "Clouzot, le thriller du pensionnat et de la piscine.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 64, defense: 56, views: 457701, emoji: "🎬" },
+  { id: 1532, name: "Tirez sur le pianiste", description: "Truffaut rend hommage au polar américain.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 51, defense: 40, views: 795681, emoji: "🎬" },
+  { id: 1533, name: "Jules et Jim", description: "Truffaut, trio amoureux de la Belle Époque.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 69, defense: 63, views: 823993, emoji: "🎬" },
+  { id: 1534, name: "Le Mépris", description: "Godard, Bardot et le rouge de l'appartement romain.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 50, defense: 50, views: 312644, emoji: "🎬" },
+  { id: 1535, name: "Pierrot le Fou", description: "Godard, road movie néo-romantique explosif.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 71, defense: 62, views: 460200, emoji: "🎬" },
+  { id: 1536, name: "Le Samouraï", description: "Melville, trench-coat et silence de Delon.", category: CATEGORIES.SPORT, rarity: RARITIES.SUPER_RARE.code, attack: 78, defense: 77, views: 2892887, emoji: "🎬" },
+  { id: 1537, name: "Un homme et une femme", description: "Lelouch, la romance deauvillaise Palmée et Oscarisée.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 74, defense: 57, views: 1297728, emoji: "🎬" },
+  { id: 1538, name: "Les Parapluies de Cherbourg", description: "Demy, tout en chants et couleurs pastel.", category: CATEGORIES.SPORT, rarity: RARITIES.SUPER_RARE.code, attack: 85, defense: 83, views: 1708194, emoji: "🎬" },
+  { id: 1539, name: "Les Demoiselles de Rochefort", description: "Demy, danse et musique sur le port charentais.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 74, defense: 58, views: 1021193, emoji: "🎬" },
+  { id: 1540, name: "Peau d'Âne", description: "Demy, le conte en chansons avec Deneuve en robe de lune.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 66, defense: 69, views: 1517749, emoji: "🎬" },
+  { id: 1541, name: "Ma nuit chez Maud", description: "Rohmer, conversations morales et pari de Pascal.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 66, defense: 58, views: 595646, emoji: "🎬" },
+  { id: 1542, name: "Baisers volés", description: "Truffaut, Doinel amoureux et démobilisé.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 59, defense: 51, views: 217384, emoji: "🎬" },
+  { id: 1543, name: "Le Corniaud", description: "Bourvil et de Funès dans la 2CV chargée d'or de contrebande.", category: CATEGORIES.SPORT, rarity: RARITIES.SUPER_RARE.code, attack: 74, defense: 74, views: 1813825, emoji: "🎬" },
+  { id: 1544, name: "La Grande Vadrouille", description: "Oury, la comédie culte des aviateurs alliés en France occupée.", category: CATEGORIES.SPORT, rarity: RARITIES.SUPER_RARE.code, attack: 87, defense: 79, views: 1046898, emoji: "🎬" },
+  { id: 1545, name: "Le Père Noël est une ordure", description: "La veille du réveillon catastrophique de SOS Amitié.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 76, defense: 62, views: 1321059, emoji: "🎬" },
+  { id: 1546, name: "Les Bronzés", description: "Le club Med et les quiproquos de la troupe du Splendid.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 69, defense: 67, views: 1551453, emoji: "🎬" },
+  { id: 1547, name: "La Cage aux folles", description: "Le cabaret de Saint-Tropez face à une famille très traditionnelle.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 71, defense: 60, views: 500782, emoji: "🎬" },
+  { id: 1548, name: "Trois hommes et un couffin", description: "Trois célibataires anticonformistes face à un bébé sur le palier.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 49, defense: 56, views: 197812, emoji: "🎬" },
+  { id: 1549, name: "Les Visiteurs", description: "Le sire de Montmirail et son gueux servis par un portail temporel.", category: CATEGORIES.SPORT, rarity: RARITIES.SUPER_RARE.code, attack: 75, defense: 77, views: 2439621, emoji: "🎬" },
+  { id: 1550, name: "Le Grand Bleu", description: "Besson, l'apnée et l'amitié entre Enzo et Jacques.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 63, defense: 67, views: 535685, emoji: "🎬" },
+  { id: 1551, name: "Nikita", description: "Besson, la tueuse en formation contrainte.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 51, defense: 48, views: 379735, emoji: "🎬" },
+  { id: 1552, name: "Léon", description: "Besson, le tueur au grand cœur et la petite fille en deuil.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 73, defense: 65, views: 1464314, emoji: "🎬" },
+  { id: 1553, name: "Le Cinquième Élément", description: "Besson, opéra intersidéral et taxi volant dans New York futuriste.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 70, defense: 67, views: 1468548, emoji: "🎬" },
+  { id: 1554, name: "La Haine", description: "Kassovitz, la banlieue en noir et blanc et « la haine attire la haine ».", category: CATEGORIES.SPORT, rarity: RARITIES.ULTRA_RARE.code, attack: 86, defense: 91, views: 6941625, emoji: "🎬" },
+  { id: 1555, name: "Delicatessen", description: "Jeunet, la boucherie post-apocalyptique loufoque.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 61, defense: 55, views: 536939, emoji: "🎬" },
+  { id: 1556, name: "Le Dîner de cons", description: "Le cercle des cons tourne très mal pour M. Brochant.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 62, defense: 68, views: 1318367, emoji: "🎬" },
+  { id: 1557, name: "Les Choristes", description: "Le chœur d'enfants et la rédemption du pensionnat Fond-de-l'Étang.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 60, defense: 69, views: 1467750, emoji: "🎬" },
+  { id: 1558, name: "The Artist", description: "Le film muet noir et blanc Oscarisé made in France.", category: CATEGORIES.SPORT, rarity: RARITIES.SUPER_RARE.code, attack: 79, defense: 81, views: 1677457, emoji: "🎬" },
+  { id: 1559, name: "La Vie d'Adèle", description: "Kechiche, la Palme d'or d'un amour bleu profond.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 62, defense: 54, views: 810976, emoji: "🎬" },
+  { id: 1560, name: "Kirikou et la Sorcière", description: "Ocelot, le nouveau-né qui marche déjà vers la sorcière.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 70, defense: 61, views: 1255079, emoji: "🎬" },
+  { id: 1561, name: "Le Roi et l'Oiseau", description: "Le tyran de Tachycardie et le charmant oiseau, classique de l'animation.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 72, defense: 67, views: 458079, emoji: "🎬" },
+  { id: 1562, name: "Les Triplettes de Belleville", description: "Le jazz, le Tour de France et trois grands-mères chanteuses.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 71, defense: 67, views: 1162517, emoji: "🎬" },
+  { id: 1563, name: "Persepolis", description: "Satrapi, l'adolescence iranienne en noir et blanc.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 73, defense: 60, views: 469271, emoji: "🎬" },
+  { id: 1564, name: "Jean de Florette", description: "Le bossu et la source convoitée de Provence.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 63, defense: 63, views: 736961, emoji: "🎬" },
+  { id: 1565, name: "Manon des sources", description: "La vendetta provençale de Manon pour la source volée.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 66, defense: 57, views: 705068, emoji: "🎬" },
+  { id: 1566, name: "La Gloire de mon père", description: "Pagnol, Marcel et les collines de sa Provence.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 66, defense: 68, views: 1105824, emoji: "🎬" },
+  { id: 1567, name: "Le Château de ma mère", description: "Pagnol, le raccourci interdit vers les collines.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 45, defense: 51, views: 473377, emoji: "🎬" },
+  { id: 1568, name: "Au revoir les enfants", description: "Malle, le collège occupé et la trahison qui brise l'enfance.", category: CATEGORIES.SPORT, rarity: RARITIES.ULTRA_RARE.code, attack: 90, defense: 82, views: 6293148, emoji: "🎬" },
+  { id: 1569, name: "La Boum", description: "Les affres du premier bal de Vic.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 57, defense: 41, views: 360930, emoji: "🎬" },
+  { id: 1570, name: "Qu'est-ce qu'on a fait au Bon Dieu ?", description: "Les quatre gendres de la famille Verneuil bousculent les habitudes.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 70, defense: 63, views: 405284, emoji: "🎬" },
+  { id: 1571, name: "La Vie est un long fleuve tranquille", description: "Le berceau échangé entre les familles Groseille et Le Quesnoy.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 61, defense: 52, views: 605899, emoji: "🎬" },
+
+  // ========== EXTENSION 2 : Chansons Emblématiques ==========
+  { id: 1572, name: "Le Temps des cerises", description: "Le chant de la Commune et de l'amour perdu.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 64, defense: 66, views: 1181987, emoji: "🎵" },
+  { id: 1573, name: "À la claire fontaine", description: "La plus ancienne chanson folklorique française connue.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 61, defense: 70, views: 1105160, emoji: "🎵" },
+  { id: 1574, name: "La Vie en rose", description: "Piaf, l'hymne universel de l'amour simple.", category: CATEGORIES.SPORT, rarity: RARITIES.ULTRA_RARE.code, attack: 92, defense: 92, views: 3647243, emoji: "🎵" },
+  { id: 1575, name: "Non, je ne regrette rien", description: "Piaf, le manifeste de la volonté.", category: CATEGORIES.SPORT, rarity: RARITIES.SUPER_RARE.code, attack: 83, defense: 82, views: 1962187, emoji: "🎵" },
+  { id: 1576, name: "Hymne à l'amour", description: "Piaf, l'amour plus fort que la mort.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 61, defense: 70, views: 993346, emoji: "🎵" },
+  { id: 1577, name: "La Mer", description: "Trenet, la vague chantée du monde entier.", category: CATEGORIES.SPORT, rarity: RARITIES.ULTRA_RARE.code, attack: 92, defense: 91, views: 3214368, emoji: "🎵" },
+  { id: 1578, name: "Douce France", description: "Trenet, la nostalgie du pays en 1943.", category: CATEGORIES.SPORT, rarity: RARITIES.SUPER_RARE.code, attack: 82, defense: 72, views: 1458245, emoji: "🎵" },
+  { id: 1579, name: "Que reste-t-il de nos amours ?", description: "Trenet, standard du swing français.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 64, defense: 65, views: 874113, emoji: "🎵" },
+  { id: 1580, name: "Boum !", description: "Trenet, le cœur qui fait boum.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 49, defense: 40, views: 587957, emoji: "🎵" },
+  { id: 1581, name: "Les Feuilles mortes", description: "Le standard jazz de Kosma et Prévert repris partout dans le monde.", category: CATEGORIES.SPORT, rarity: RARITIES.SUPER_RARE.code, attack: 81, defense: 80, views: 3100919, emoji: "🎵" },
+  { id: 1582, name: "Sous le ciel de Paris", description: "La berceuse des toits et des quais.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 71, defense: 54, views: 787231, emoji: "🎵" },
+  { id: 1583, name: "J'ai deux amours", description: "Baker, mon pays et Paris.", category: CATEGORIES.SPORT, rarity: RARITIES.SUPER_RARE.code, attack: 80, defense: 78, views: 3281378, emoji: "🎵" },
+  { id: 1584, name: "Les Copains d'abord", description: "Brassens, l'hymne à l'amitié.", category: CATEGORIES.SPORT, rarity: RARITIES.SUPER_RARE.code, attack: 80, defense: 72, views: 3051056, emoji: "🎵" },
+  { id: 1585, name: "Chanson pour l'Auvergnat", description: "Brassens, la gratitude aux humbles.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 75, defense: 57, views: 886275, emoji: "🎵" },
+  { id: 1586, name: "L'Aigle noir", description: "Barbara, la nuit originelle en noir majeur.", category: CATEGORIES.SPORT, rarity: RARITIES.SUPER_RARE.code, attack: 79, defense: 69, views: 2808235, emoji: "🎵" },
+  { id: 1587, name: "Göttingen", description: "Barbara, la réconciliation franco-allemande en chanson.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 65, defense: 65, views: 1243705, emoji: "🎵" },
+  { id: 1588, name: "Avec le temps", description: "Léo Ferré, la désillusion devenue standard.", category: CATEGORIES.SPORT, rarity: RARITIES.SUPER_RARE.code, attack: 80, defense: 80, views: 2111766, emoji: "🎵" },
+  { id: 1589, name: "La Javanaise", description: "Gainsbourg, la java des je t'aime en gammes fausses.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 62, defense: 67, views: 1332768, emoji: "🎵" },
+  { id: 1590, name: "Couleur café", description: "Gainsbourg, le funk créole sucré.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 57, defense: 48, views: 501180, emoji: "🎵" },
+  { id: 1591, name: "Tous les garçons et les filles", description: "Hardy, le mal du premier amour à la Nouvelle Vague.", category: CATEGORIES.SPORT, rarity: RARITIES.SUPER_RARE.code, attack: 83, defense: 78, views: 951843, emoji: "🎵" },
+  { id: 1592, name: "Comment te dire adieu", description: "Hardy, la rupture élégante signée Gainsbourg.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 53, defense: 41, views: 443323, emoji: "🎵" },
+  { id: 1593, name: "Poupée de cire, poupée de son", description: "France Gall, la victoire de l'Eurovision 1965.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 71, defense: 57, views: 1546807, emoji: "🎵" },
+  { id: 1594, name: "Il est cinq heures, Paris s'éveille", description: "Dutronc, le réveil pop de la capitale.", category: CATEGORIES.SPORT, rarity: RARITIES.SUPER_RARE.code, attack: 74, defense: 73, views: 2880031, emoji: "🎵" },
+  { id: 1595, name: "Les Play-Boys", description: "Dutronc, l'ironie yé-yé.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 53, defense: 46, views: 346764, emoji: "🎵" },
+  { id: 1596, name: "Aline", description: "Christophe, la romance criarde et sublime.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 62, defense: 60, views: 515570, emoji: "🎵" },
+  { id: 1597, name: "Les Paradis perdus", description: "Christophe, synthés et mélancolie.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 58, defense: 48, views: 776680, emoji: "🎵" },
+  { id: 1598, name: "Que je t'aime", description: "Hallyday, le rock frissonnant des stades.", category: CATEGORIES.SPORT, rarity: RARITIES.SUPER_RARE.code, attack: 86, defense: 70, views: 2878690, emoji: "🎵" },
+  { id: 1599, name: "Allumer le feu", description: "Hallyday, l'hymne pyrotechnique.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 60, defense: 63, views: 783863, emoji: "🎵" },
+  { id: 1600, name: "L'Idole des jeunes", description: "Hallyday, la naissance du rocker français.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 55, defense: 41, views: 202962, emoji: "🎵" },
+  { id: 1601, name: "Cette année-là", description: "Claude François, l'année-souvenir dansée.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 46, defense: 56, views: 776124, emoji: "🎵" },
+  { id: 1602, name: "Alexandrie Alexandra", description: "Claude François, le single disco-mélancolique posthume.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 75, defense: 58, views: 462438, emoji: "🎵" },
+  { id: 1603, name: "La Poupée qui fait non", description: "Polnareff, le falsetto et le refrain obsédant.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 69, defense: 64, views: 1715978, emoji: "🎵" },
+  { id: 1604, name: "Tout, tout pour ma chérie", description: "Polnareff, la pop bouclée aux nappes d'amour.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 53, defense: 41, views: 505764, emoji: "🎵" },
+  { id: 1605, name: "La Bohème", description: "Aznavour, le Montmartre des années de misère heureuse.", category: CATEGORIES.SPORT, rarity: RARITIES.ULTRA_RARE.code, attack: 86, defense: 91, views: 3100322, emoji: "🎵" },
+  { id: 1606, name: "Emmenez-moi", description: "Aznavour, le rêve d'ailleurs.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 61, defense: 64, views: 760957, emoji: "🎵" },
+  { id: 1607, name: "Je m'voyais déjà", description: "Aznavour, la comédie du vedettariat éphémère.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 68, defense: 55, views: 1455053, emoji: "🎵" },
+  { id: 1608, name: "Paroles, paroles", description: "Dalida, le duo parlé-chanté avec Alain Delon.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 67, defense: 69, views: 1331421, emoji: "🎵" },
+  { id: 1609, name: "Il venait d'avoir 18 ans", description: "Dalida, la tendresse pour un presque-homme.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 62, defense: 49, views: 407911, emoji: "🎵" },
+  { id: 1610, name: "Mon credo", description: "Mireille Mathieu, l'envol d'un grand cru sentimental.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 52, defense: 54, views: 575210, emoji: "🎵" },
+  { id: 1611, name: "La Ballade des gens heureux", description: "Lenorman, la guirlande des gens heureux.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 60, defense: 53, views: 772379, emoji: "🎵" },
+  { id: 1612, name: "Les Lacs du Connemara", description: "Sardou, l'épopée irlandaise en pyramide de synthés.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 71, defense: 65, views: 1605028, emoji: "🎵" },
+  { id: 1613, name: "La Maladie d'amour", description: "Sardou, l'amour sans vaccin ni remède.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 52, defense: 41, views: 642206, emoji: "🎵" },
+  { id: 1614, name: "Vivre ou survivre", description: "Balavoine, les synthés et l'urgence vitale.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 63, defense: 67, views: 1343137, emoji: "🎵" },
+  { id: 1615, name: "L'Aziza", description: "Balavoine, la douceur contre le racisme ordinaire.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 74, defense: 63, views: 731432, emoji: "🎵" },
+  { id: 1616, name: "Envole-moi", description: "Goldman, le décollage pop du désir.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 64, defense: 57, views: 1075890, emoji: "🎵" },
+  { id: 1617, name: "Un autre monde", description: "Téléphone, le rock français qui rêve d'ailleurs.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 68, defense: 59, views: 552753, emoji: "🎵" },
+  { id: 1618, name: "Je veux", description: "Zaz, la liberté revendiquée sur un groove manouche.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 75, defense: 64, views: 1199321, emoji: "🎵" },
+  { id: 1619, name: "Clandestino", description: "Manu Chao, l'errance multilingue des migrants.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 72, defense: 63, views: 1151239, emoji: "🎵" },
+  { id: 1620, name: "Une chanson douce", description: "Salvador, le loup, la biche et le chevalier.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 73, defense: 59, views: 1496936, emoji: "🎵" },
+  { id: 1621, name: "Petit Papa Noël", description: "Tino Rossi, chanté dans toutes les cheminées de décembre.", category: CATEGORIES.SPORT, rarity: RARITIES.SUPER_RARE.code, attack: 86, defense: 71, views: 1390796, emoji: "🎵" },
+
+  // ========== EXTENSION 2 : Festivals & Fêtes ==========
+  { id: 1622, name: "Festival international d'art lyrique d'Aix-en-Provence", description: "L'opéra sous les lumières provençales depuis 1948.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 76, defense: 59, views: 496801, emoji: "🎪" },
+  { id: 1623, name: "Les Vieilles Charrues", description: "Le géant breton de la pop à Carhaix.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 75, defense: 59, views: 795292, emoji: "🎪" },
+  { id: 1624, name: "Hellfest", description: "Le métal déchaîné à Clisson chaque été.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 61, defense: 59, views: 1552645, emoji: "🎪" },
+  { id: 1625, name: "Rock en Seine", description: "Le rock au bord de la Seine, au domaine de Saint-Cloud.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 65, defense: 66, views: 1237726, emoji: "🎪" },
+  { id: 1626, name: "Les Francofolies", description: "La Rochelle, la fête des chanteurs de langue française.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 60, defense: 68, views: 1507500, emoji: "🎪" },
+  { id: 1627, name: "Le Printemps de Bourges", description: "Révélateur de la scène rock française depuis 1977.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 61, defense: 58, views: 879116, emoji: "🎪" },
+  { id: 1628, name: "Fêtes de Bayonne", description: "Blanc et rouge, la plus grande fête du Sud-Ouest.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 64, defense: 54, views: 857860, emoji: "🎪" },
+  { id: 1629, name: "Festival interceltique de Lorient", description: "Les pays celtes en musique en Bretagne-Sud.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 63, defense: 60, views: 1174433, emoji: "🎪" },
+  { id: 1630, name: "Jazz à Juan", description: "La pinède Gould et les légendes du jazz d'Antibes.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 46, defense: 53, views: 759949, emoji: "🎪" },
+  { id: 1631, name: "Jazz à Vienne", description: "Les nuits du jazz dans le théâtre antique.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 47, defense: 51, views: 681227, emoji: "🎪" },
+  { id: 1632, name: "Chorégies d'Orange", description: "L'opéra en plein air du théâtre antique d'Orange.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 63, defense: 64, views: 1497077, emoji: "🎪" },
+  { id: 1633, name: "Solidays", description: "Le festival militant contre le sida à Longchamp.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 59, defense: 41, views: 544285, emoji: "🎪" },
+
+  // ========== EXTENSION 2 : Sport : Champions & Clubs (2) ==========
+  { id: 1634, name: "Clarisse Agbégnénou", description: "La judoka double championne olympique.", category: CATEGORIES.SPORT, rarity: RARITIES.SUPER_RARE.code, attack: 87, defense: 84, views: 1171542, emoji: "🥇" },
+  { id: 1635, name: "Martin Fourcade", description: "Le roi du biathlon, quintuple champion olympique.", category: CATEGORIES.SPORT, rarity: RARITIES.SUPER_RARE.code, attack: 75, defense: 76, views: 2881809, emoji: "🎿" },
+  { id: 1636, name: "Julian Alaphilippe", description: "Champion du monde et porteur du maillot jaune.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 68, defense: 59, views: 801933, emoji: "🚴" },
+  { id: 1637, name: "Marie-José Perec", description: "La sprinteuse double championne olympique du 200 et 400 m.", category: CATEGORIES.SPORT, rarity: RARITIES.SUPER_RARE.code, attack: 77, defense: 71, views: 1689857, emoji: "🏃" },
+  { id: 1638, name: "Christophe Lemaitre", description: "Le sprinter français sous la barre des dix secondes.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 59, defense: 54, views: 446082, emoji: "🏃" },
+  { id: 1639, name: "Laura Flessel", description: "L'escrimeuse multi-médaillée, devenue ministre des Sports.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 46, defense: 46, views: 646883, emoji: "🤺" },
+  { id: 1640, name: "Alain Mimoun", description: "Le champion olympique du marathon de 1956.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 71, defense: 65, views: 502192, emoji: "🏃" },
+  { id: 1641, name: "Wendie Renard", description: "La capitaine historique de l'OL féminin, décuple championne d'Europe.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 63, defense: 64, views: 730264, emoji: "⚽" },
+  { id: 1642, name: "Eugénie Le Sommer", description: "La meilleure buteuse de l'histoire des Bleues.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 55, defense: 57, views: 429541, emoji: "⚽" },
+  { id: 1643, name: "Stade Rochelais", description: "Double champion d'Europe de rugby en 2022 et 2023.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 75, defense: 65, views: 686042, emoji: "🏉" },
+  { id: 1644, name: "FC Nantes", description: "Les Canaris et le fameux jeu à la nantaise.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 53, defense: 47, views: 632558, emoji: "⚽" },
+  { id: 1645, name: "RC Lens", description: "Les Sang et Or du bassin minier.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 56, defense: 42, views: 306450, emoji: "⚽" },
+  { id: 1646, name: "Stade de Reims", description: "Le club glorieux des années Kopa et Piantoni.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 61, defense: 51, views: 390489, emoji: "⚽" },
+  { id: 1647, name: "Lille OSC", description: "Le champion de France surprise de 2021.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 52, defense: 58, views: 233585, emoji: "⚽" },
+  { id: 1648, name: "Stade Vélodrome", description: "L'antre marseillais et ses tribunes enflammées.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 74, defense: 63, views: 1291653, emoji: "🏟️" },
+  { id: 1649, name: "Le Tournoi des Six Nations", description: "Le tournoi annuel des rugbymen européens.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 63, defense: 63, views: 854475, emoji: "🏆" },
+  { id: 1650, name: "La Route du Rhum", description: "La transatlantique en solitaire de Saint-Malo à Pointe-à-Pitre.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 46, defense: 45, views: 218594, emoji: "⛵" },
+  { id: 1651, name: "Le Vendée Globe", description: "Le tour du monde à la voile en solitaire et sans escale.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 71, defense: 67, views: 419405, emoji: "⛵" },
+  { id: 1652, name: "Le Marathon de Paris", description: "Les 42 km de la capitale au printemps.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 46, defense: 55, views: 628538, emoji: "🏃" },
+  { id: 1653, name: "Le Grand Prix de l'Arc de Triomphe", description: "Le sommet mondial des courses de galop à Longchamp.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 46, defense: 54, views: 334749, emoji: "🐎" },
+  { id: 1654, name: "Le Prix d'Amérique", description: "La plus grande course de trot du monde à Vincennes.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 57, defense: 44, views: 291807, emoji: "🐎" },
+  { id: 1655, name: "Le Grand Prix de France", description: "L'étape française de la Formule 1.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 53, defense: 53, views: 799134, emoji: "🏎️" },
+  { id: 1656, name: "Le Critérium du Dauphiné", description: "La course de préparation au Tour dans les Alpes.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 55, defense: 55, views: 656517, emoji: "🚴" },
+  { id: 1657, name: "Le Masters de Paris-Bercy", description: "Le grand tournoi de tennis indoor parisien.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 45, defense: 57, views: 571585, emoji: "🎾" },
+  { id: 1658, name: "Albertville 1992", description: "Les Jeux olympiques d'hiver en Savoie.", category: CATEGORIES.SPORT, rarity: RARITIES.RARE.code, attack: 65, defense: 70, views: 900916, emoji: "🏔️" },
+  { id: 1659, name: "La Ligue Magnus", description: "Le championnat de France de hockey sur glace.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 59, defense: 44, views: 244260, emoji: "🏒" },
+  { id: 1660, name: "La course landaise", description: "L'art de l'écart face aux vachettes gasconnes.", category: CATEGORIES.SPORT, rarity: RARITIES.COMMON.code, attack: 60, defense: 57, views: 459686, emoji: "🐂" },
+
+  // ========== EXTENSION 2 : Gastronomie Régionale (2) ==========
+  { id: 1661, name: "La matelote", description: "Le ragoût de poissons mijoté au vin rouge.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.COMMON.code, attack: 61, defense: 50, views: 493346, emoji: "🍽️" },
+  { id: 1662, name: "Le petit salé aux lentilles", description: "La poitrine de porc salée et les lentilles du Berry.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.COMMON.code, attack: 51, defense: 50, views: 186731, emoji: "🍽️" },
+  { id: 1663, name: "Le baeckeoffe", description: "La marmite alsacienne de trois viandes au vin blanc.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.RARE.code, attack: 61, defense: 57, views: 1680626, emoji: "🍽️" },
+  { id: 1664, name: "Les diots", description: "Les saucisses savoyardes mijotées au vin blanc.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.COMMON.code, attack: 50, defense: 53, views: 241870, emoji: "🍽️" },
+  { id: 1665, name: "Les tripes à la mode de Caen", description: "Les tripes longuement mijotées au cidre et calvados.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.COMMON.code, attack: 60, defense: 41, views: 773069, emoji: "🍽️" },
+  { id: 1666, name: "La potée auvergnate", description: "Le chou, les salaisons et les pommes de terre d'Auvergne.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.COMMON.code, attack: 57, defense: 50, views: 495693, emoji: "🍽️" },
+  { id: 1667, name: "Le poulet au vin jaune", description: "La volaille au trésor du Jura.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.RARE.code, attack: 63, defense: 60, views: 1633870, emoji: "🍽️" },
+  { id: 1668, name: "Le flan parisien", description: "Le flan vanillé des boulangeries parisiennes.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.COMMON.code, attack: 56, defense: 54, views: 517650, emoji: "🍽️" },
+  { id: 1669, name: "La croustade landaise", description: "Le feuilletage aux pommes et armagnac des Landes.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.COMMON.code, attack: 55, defense: 42, views: 316057, emoji: "🍽️" },
+  { id: 1670, name: "L'andouillette de Troyes", description: "Le rouleau tripier champenois à l'arôme franc.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.COMMON.code, attack: 57, defense: 49, views: 579148, emoji: "🍽️" },
+  { id: 1671, name: "L'andouille de Guémené", description: "Les anneaux bretons d'andouille fumée.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.COMMON.code, attack: 46, defense: 45, views: 360953, emoji: "🍽️" },
+  { id: 1672, name: "Le jambon de Bayonne", description: "Le jambon sec salé du bassin de l'Adour.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.RARE.code, attack: 60, defense: 70, views: 537467, emoji: "🍽️" },
+  { id: 1673, name: "La saucisse de Morteau", description: "La saucisse fumée au tuyé comtois.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.RARE.code, attack: 76, defense: 64, views: 1563213, emoji: "🍽️" },
+  { id: 1674, name: "La saucisse de Montbéliard", description: "La saucisse fumée de Franche-Comté.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.COMMON.code, attack: 58, defense: 51, views: 555203, emoji: "🍽️" },
+  { id: 1675, name: "Le morbier", description: "La raie de cendre et le goût de noix du Jura.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.COMMON.code, attack: 58, defense: 54, views: 420244, emoji: "🍽️" },
+  { id: 1676, name: "Le bleu de Gex", description: "Le bleu doux du Haut-Jura.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.COMMON.code, attack: 51, defense: 55, views: 442281, emoji: "🍽️" },
+  { id: 1677, name: "L'époisses", description: "Le fromage lavé à la marc de Bourgogne.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.RARE.code, attack: 63, defense: 54, views: 855609, emoji: "🍽️" },
+  { id: 1678, name: "La fourme d'Ambert", description: "Le bleu cylindrique des monts du Forez.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.COMMON.code, attack: 52, defense: 47, views: 587464, emoji: "🍽️" },
+  { id: 1679, name: "Le pélardon", description: "Le petit chèvre cévenol.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.COMMON.code, attack: 45, defense: 45, views: 164426, emoji: "🍽️" },
+  { id: 1680, name: "La faisselle", description: "Le fromage frais égoutté dans son moule.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.COMMON.code, attack: 60, defense: 45, views: 398686, emoji: "🍽️" },
+  { id: 1681, name: "Le pruneau d'Agen", description: "La prune séchée du Lot-et-Garonne.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.COMMON.code, attack: 54, defense: 56, views: 214789, emoji: "🍽️" },
+  { id: 1682, name: "Les crozets", description: "Les petites pâtes carrées de Savoie.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.COMMON.code, attack: 55, defense: 51, views: 537803, emoji: "🍽️" },
+  { id: 1683, name: "La daube provençale", description: "Le bœuf mijoté au vin rouge et herbes de garrigue.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.COMMON.code, attack: 46, defense: 41, views: 630558, emoji: "🍽️" },
+  { id: 1684, name: "Le colombo", description: "Le curry antillais de poulet ou de cabri.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.COMMON.code, attack: 45, defense: 43, views: 605750, emoji: "🍽️" },
+  { id: 1685, name: "Le pâté-croûte lyonnais", description: "Le joyau des bouchons lyonnais en croûte dorée.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.COMMON.code, attack: 47, defense: 43, views: 304903, emoji: "🍽️" },
+  { id: 1686, name: "Le tablier de sapeur", description: "L'estomac de bœuf pané à la lyonnaise.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.COMMON.code, attack: 50, defense: 58, views: 657951, emoji: "🍽️" },
+  { id: 1687, name: "La cervelle de canut", description: "Le fromage blanc aux herbes des canuts lyonnais.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.COMMON.code, attack: 62, defense: 58, views: 416281, emoji: "🍽️" },
+  { id: 1688, name: "La lamproie à la bordelaise", description: "Le poisson du Gironde cuisiné au vin rouge.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.COMMON.code, attack: 62, defense: 46, views: 689255, emoji: "🍽️" },
+  { id: 1689, name: "La garbure", description: "La soupe de chou et confit de Gascogne.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.COMMON.code, attack: 52, defense: 41, views: 313371, emoji: "🍽️" },
+  { id: 1690, name: "La piperade", description: "Les œufs, le jambon et les piments du Pays basque.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.COMMON.code, attack: 58, defense: 52, views: 618065, emoji: "🍽️" },
+  { id: 1691, name: "La choucroute de la mer", description: "La variante marine de la choucroute alsacienne.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.COMMON.code, attack: 57, defense: 44, views: 176590, emoji: "🍽️" },
+  { id: 1692, name: "Le potjevleesch", description: "La terrine de trois viandes servie froide du Nord.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.COMMON.code, attack: 54, defense: 42, views: 349959, emoji: "🍽️" },
+  { id: 1693, name: "Le hochepot", description: "Le ragoût de viandes et légumes des Flandres.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.COMMON.code, attack: 50, defense: 56, views: 744340, emoji: "🍽️" },
+  { id: 1694, name: "Le welsh", description: "Le toast gratiné au cheddar et à la bière du Nord.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.COMMON.code, attack: 51, defense: 43, views: 167600, emoji: "🍽️" },
+  { id: 1695, name: "La tarte au sucre", description: "La tarte du Nord à la vergeoise fondante.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.COMMON.code, attack: 60, defense: 58, views: 764318, emoji: "🍽️" },
+  { id: 1696, name: "Le berlingot", description: "Le bonbon strié aux fruits de Nantes.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.COMMON.code, attack: 58, defense: 41, views: 476926, emoji: "🍽️" },
+  { id: 1697, name: "Les merveilleux", description: "La meringue, la chantilly et le chocolat du Nord.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.COMMON.code, attack: 47, defense: 53, views: 711874, emoji: "🍽️" },
+  { id: 1698, name: "La raviole du Dauphiné", description: "Les petites ravioles au fromage de Romans.", category: CATEGORIES.GASTRONOMIE, rarity: RARITIES.COMMON.code, attack: 53, defense: 41, views: 618745, emoji: "🍽️" },
+
+  // ========== EXTENSION 2 : Châteaux de France ==========
+  { id: 1699, name: "Château de Villandry", description: "Les jardins en broderie et le potager décoratif.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.RARE.code, attack: 71, defense: 67, views: 995534, emoji: "🏰" },
+  { id: 1700, name: "Château d'Ussé", description: "Le château qui inspira la Belle au bois dormant.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.COMMON.code, attack: 60, defense: 56, views: 400358, emoji: "🏰" },
+  { id: 1701, name: "Château de Cheverny", description: "Le classicisme intact et les meutes de chasse.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.COMMON.code, attack: 58, defense: 40, views: 641577, emoji: "🏰" },
+  { id: 1702, name: "Château du Clos Lucé", description: "La dernière demeure de Léonard de Vinci.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.RARE.code, attack: 73, defense: 70, views: 1375786, emoji: "🏰" },
+  { id: 1703, name: "Château de Chantilly", description: "Les grandes écuries et la crème fameuse.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.SUPER_RARE.code, attack: 87, defense: 68, views: 3334379, emoji: "🏰" },
+  { id: 1704, name: "Château de Compiègne", description: "La résidence impériale au cœur de la forêt.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.COMMON.code, attack: 62, defense: 56, views: 218463, emoji: "🏰" },
+  { id: 1705, name: "Château de Pau", description: "Le berceau d'Henri IV au pied des Pyrénées.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.RARE.code, attack: 71, defense: 55, views: 702500, emoji: "🏰" },
+  { id: 1706, name: "Château de Foix", description: "Les trois tours veillent sur l'Ariège.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.COMMON.code, attack: 56, defense: 58, views: 606755, emoji: "🏰" },
+  { id: 1707, name: "Château des Baux", description: "Les ruines citadines des Baux-de-Provence.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.COMMON.code, attack: 61, defense: 47, views: 324655, emoji: "🏰" },
+  { id: 1708, name: "Château d'If", description: "La forteresse-prison au large de Marseille.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.RARE.code, attack: 72, defense: 68, views: 1538992, emoji: "🏰" },
+  { id: 1709, name: "Château de Josselin", description: "Le fief breton de la maison de Rohan.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.COMMON.code, attack: 47, defense: 57, views: 264174, emoji: "🏰" },
+  { id: 1710, name: "Château de Vitré", description: "Le donjon breton face à la Vilaine.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.COMMON.code, attack: 50, defense: 56, views: 274973, emoji: "🏰" },
+  { id: 1711, name: "Château de Fougères", description: "L'une des plus vastes forteresses d'Europe.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.COMMON.code, attack: 61, defense: 42, views: 205744, emoji: "🏰" },
+  { id: 1712, name: "Château de Langeais", description: "Le donjon du XVe siècle et le mariage d'Anne de Bretagne.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.COMMON.code, attack: 58, defense: 40, views: 654321, emoji: "🏰" },
+  { id: 1713, name: "Château de Saumur", description: "La fierté de l'Anjou sur la Loire.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.COMMON.code, attack: 59, defense: 51, views: 569817, emoji: "🏰" },
+  { id: 1714, name: "Château d'Angers", description: "Les remparts et la tenture de l'Apocalypse.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.RARE.code, attack: 67, defense: 60, views: 1204054, emoji: "🏰" },
+  { id: 1715, name: "Château de Chinon", description: "La rencontre de Jeanne et du dauphin Charles.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.RARE.code, attack: 72, defense: 60, views: 491990, emoji: "🏰" },
+  { id: 1716, name: "Château de Loches", description: "Le donjon redouté des comtes d'Anjou.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.COMMON.code, attack: 62, defense: 42, views: 709104, emoji: "🏰" },
+  { id: 1717, name: "Château de Valençay", description: "Le séjour des princes espagnols pendant l'Empire.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.COMMON.code, attack: 61, defense: 52, views: 398836, emoji: "🏰" },
+  { id: 1718, name: "Château du Haut-Koenigsbourg", description: "La forteresse vosgienne restaurée face à la plaine d'Alsace.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.RARE.code, attack: 61, defense: 66, views: 991252, emoji: "🏰" },
+  { id: 1719, name: "Château de Saint-Germain-en-Laye", description: "Le berceau de Louis XIV et le musée d'archéologie.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.COMMON.code, attack: 45, defense: 41, views: 470614, emoji: "🏰" },
+  { id: 1720, name: "Château de Vincennes", description: "Le donjon médiéval le plus haut d'Europe.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.RARE.code, attack: 68, defense: 62, views: 947711, emoji: "🏰" },
+  { id: 1721, name: "Château des ducs de Bretagne", description: "La forteresse de Nantes, mémoire ducale bretonne.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.RARE.code, attack: 75, defense: 61, views: 461149, emoji: "🏰" },
+  { id: 1722, name: "Château de Tarascon", description: "La forteresse du roi René sur le Rhône.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.COMMON.code, attack: 57, defense: 46, views: 489615, emoji: "🏰" },
+  { id: 1723, name: "Fort de Salses", description: "La forteresse catalane entre château et bastion.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.COMMON.code, attack: 62, defense: 52, views: 406262, emoji: "🏰" },
+  { id: 1724, name: "Château comtal de Carcassonne", description: "Le château au cœur de la Cité médiévale.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.RARE.code, attack: 75, defense: 55, views: 1700208, emoji: "🏰" },
+  { id: 1725, name: "Château de Falaise", description: "Le berceau de Guillaume le Conquérant.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.COMMON.code, attack: 47, defense: 56, views: 232365, emoji: "🏰" },
+  { id: 1726, name: "Château de Maintenon", description: "Le château de Madame de Maintenon et son aqueduc.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.COMMON.code, attack: 51, defense: 56, views: 263228, emoji: "🏰" },
+  { id: 1727, name: "Château de Malmaison", description: "La demeure préférée de l'impératrice Joséphine.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.RARE.code, attack: 67, defense: 67, views: 782294, emoji: "🏰" },
+  { id: 1728, name: "Château de Rambouillet", description: "La résidence présidentielle au cœur de la forêt.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.COMMON.code, attack: 46, defense: 41, views: 525441, emoji: "🏰" },
+
+  // ========== EXTENSION 2 : Musées, Ponts & Gares ==========
+  { id: 1729, name: "Musée de l'Orangerie", description: "Les Nymphéas de Monet à 360 degrés.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.SUPER_RARE.code, attack: 87, defense: 75, views: 1813050, emoji: "🏛️" },
+  { id: 1730, name: "Musée Rodin", description: "Le Penseur et les jardins de l'Hôtel Biron.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.RARE.code, attack: 67, defense: 68, views: 1187372, emoji: "🏛️" },
+  { id: 1731, name: "Musée Picasso", description: "L'œuvre du maître au cœur de l'Hôtel Salé.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.RARE.code, attack: 69, defense: 61, views: 1506525, emoji: "🏛️" },
+  { id: 1732, name: "Musée Marmottan Monet", description: "La plus riche collection mondiale de Monet.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.COMMON.code, attack: 58, defense: 54, views: 506929, emoji: "🏛️" },
+  { id: 1733, name: "Musée du quai Branly", description: "Les arts premiers sous la végétation de Jean Nouvel.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.RARE.code, attack: 76, defense: 54, views: 631173, emoji: "🏛️" },
+  { id: 1734, name: "Institut du monde arabe", description: "Le mur de moucharabiehs face à la Seine.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.COMMON.code, attack: 46, defense: 49, views: 614660, emoji: "🏛️" },
+  { id: 1735, name: "Fondation Louis Vuitton", description: "Les voiles de verre au bois de Boulogne.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.COMMON.code, attack: 54, defense: 56, views: 173138, emoji: "🏛️" },
+  { id: 1736, name: "Musée des Beaux-Arts de Lyon", description: "L'un des plus riches musées de province.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.COMMON.code, attack: 45, defense: 41, views: 545101, emoji: "🏛️" },
+  { id: 1737, name: "Musée Unterlinden", description: "Le retable d'Issenheim, star de Colmar.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.COMMON.code, attack: 60, defense: 43, views: 330854, emoji: "🏛️" },
+  { id: 1738, name: "Musée Fabre", description: "La grande collection montpelliéraine, de Fabre à Soulages.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.COMMON.code, attack: 48, defense: 52, views: 214088, emoji: "🏛️" },
+  { id: 1739, name: "Musée des Confluences", description: "Le vaisseau de cristal des sciences à Lyon.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.COMMON.code, attack: 49, defense: 50, views: 665479, emoji: "🏛️" },
+  { id: 1740, name: "Mucem", description: "Les civilisations de la Méditerranée au fort Saint-Jean.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.RARE.code, attack: 60, defense: 64, views: 1008588, emoji: "🏛️" },
+  { id: 1741, name: "Musée Toulouse-Lautrec", description: "Le palais de la Berbie et l'œuvre du maître d'Albi.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.COMMON.code, attack: 57, defense: 47, views: 529813, emoji: "🏛️" },
+  { id: 1742, name: "Musée Ingres", description: "Montauban et le violon d'Ingres.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.COMMON.code, attack: 48, defense: 47, views: 164956, emoji: "🏛️" },
+  { id: 1743, name: "Musée national Marc Chagall", description: "Le message biblique en azur niçois.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.COMMON.code, attack: 55, defense: 58, views: 185307, emoji: "🏛️" },
+  { id: 1744, name: "Musée du Débarquement d'Arromanches", description: "Le port artificiel et la mémoire du 6 juin 1944.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.COMMON.code, attack: 58, defense: 50, views: 172346, emoji: "🏛️" },
+  { id: 1745, name: "Musée national de la Marine", description: "Les collections maritimes du palais de Chaillot.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.COMMON.code, attack: 54, defense: 45, views: 698360, emoji: "🏛️" },
+  { id: 1746, name: "Cité des sciences et de l'industrie", description: "La Géode et les grandes expériences de la Villette.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.RARE.code, attack: 68, defense: 65, views: 1784128, emoji: "🏛️" },
+  { id: 1747, name: "Musée Grévin", description: "Les célébrités en cire des Grands Boulevards.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.COMMON.code, attack: 57, defense: 44, views: 670076, emoji: "🏛️" },
+  { id: 1748, name: "Pont de Normandie", description: "Les câbles record enjambant l'estuaire de la Seine.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.RARE.code, attack: 67, defense: 61, views: 1129558, emoji: "🌉" },
+  { id: 1749, name: "Pont Mirabeau", description: "« Sous le pont Mirabeau coule la Seine » d'Apollinaire.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.COMMON.code, attack: 58, defense: 53, views: 418057, emoji: "🌉" },
+  { id: 1750, name: "Pont Saint-Bénézet", description: "Le pont d'Avignon où l'on danse.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.RARE.code, attack: 75, defense: 61, views: 400461, emoji: "🌉" },
+  { id: 1751, name: "Pont Jacques-Chaban-Delmas", description: "Le pont levant face aux quais de Bordeaux.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.COMMON.code, attack: 61, defense: 42, views: 268478, emoji: "🌉" },
+  { id: 1752, name: "Pont de Bir-Hakeim", description: "Le viaduc du métal face à la tour Eiffel.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.COMMON.code, attack: 60, defense: 54, views: 611350, emoji: "🌉" },
+  { id: 1753, name: "Gare du Nord", description: "La première gare d'Europe par son trafic de voyageurs.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.RARE.code, attack: 61, defense: 69, views: 834821, emoji: "🚉" },
+  { id: 1754, name: "Gare de Lyon", description: "L'horloge et le restaurant du Train Bleu.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.COMMON.code, attack: 49, defense: 51, views: 648094, emoji: "🚉" },
+  { id: 1755, name: "Gare Saint-Lazare", description: "La gare des impressionnistes.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.COMMON.code, attack: 61, defense: 46, views: 492987, emoji: "🚉" },
+  { id: 1756, name: "Gare de Limoges-Bénédictins", description: "Le dôme de verre et le campanile limousin.", category: CATEGORIES.MONUMENTS, rarity: RARITIES.COMMON.code, attack: 62, defense: 45, views: 333729, emoji: "🚉" },
+
+  // ========== EXTENSION 2 : Territoires d'Outre-Mer ==========
+  { id: 1757, name: "La Polynésie française", description: "Les 118 îles et atolls autour de Tahiti.", category: CATEGORIES.GEOGRAPHIE, rarity: RARITIES.SUPER_RARE.code, attack: 84, defense: 68, views: 1841466, emoji: "🏝️" },
+  { id: 1758, name: "La Nouvelle-Calédonie", description: "Le grand lagon et le nickel du Pacifique Sud.", category: CATEGORIES.GEOGRAPHIE, rarity: RARITIES.SUPER_RARE.code, attack: 77, defense: 70, views: 2139729, emoji: "🏝️" },
+  { id: 1759, name: "Wallis-et-Futuna", description: "Les trois royaumes coutumiers du Pacifique.", category: CATEGORIES.GEOGRAPHIE, rarity: RARITIES.COMMON.code, attack: 61, defense: 48, views: 349645, emoji: "🏝️" },
+  { id: 1760, name: "Saint-Pierre-et-Miquelon", description: "La brume, la morue et la dernière Amérique française.", category: CATEGORIES.GEOGRAPHIE, rarity: RARITIES.COMMON.code, attack: 61, defense: 48, views: 309997, emoji: "🏝️" },
+  { id: 1761, name: "Saint-Martin", description: "L'île franco-néerlandaise des Caraïbes.", category: CATEGORIES.GEOGRAPHIE, rarity: RARITIES.COMMON.code, attack: 50, defense: 52, views: 449897, emoji: "🏝️" },
+  { id: 1762, name: "Saint-Barthélemy", description: "La perle touristique des Antilles.", category: CATEGORIES.GEOGRAPHIE, rarity: RARITIES.COMMON.code, attack: 58, defense: 51, views: 769599, emoji: "🏝️" },
+  { id: 1763, name: "Les TAAF", description: "Kerguelen, Crozet et les manchots des terres australes.", category: CATEGORIES.GEOGRAPHIE, rarity: RARITIES.COMMON.code, attack: 57, defense: 40, views: 203296, emoji: "🏝️" },
+  { id: 1764, name: "La Terre Adélie", description: "La portion de l'Antarctique revendiquée par la France.", category: CATEGORIES.GEOGRAPHIE, rarity: RARITIES.RARE.code, attack: 65, defense: 63, views: 1207022, emoji: "🏝️" },
+  { id: 1765, name: "L'île Clipperton", description: "L'atoll français isolé du Pacifique.", category: CATEGORIES.GEOGRAPHIE, rarity: RARITIES.COMMON.code, attack: 51, defense: 52, views: 431756, emoji: "🏝️" },
+  { id: 1766, name: "Les îles Marquises", description: "L'archipel de Gauguin, le pays des hommes.", category: CATEGORIES.GEOGRAPHIE, rarity: RARITIES.RARE.code, attack: 72, defense: 61, views: 454512, emoji: "🏝️" },
+  { id: 1767, name: "Tahiti", description: "La plus grande île de la Polynésie française.", category: CATEGORIES.GEOGRAPHIE, rarity: RARITIES.SUPER_RARE.code, attack: 79, defense: 77, views: 1181060, emoji: "🏝️" },
+  { id: 1768, name: "Nouméa", description: "La capitale de la Nouvelle-Calédonie et ses baies.", category: CATEGORIES.GEOGRAPHIE, rarity: RARITIES.RARE.code, attack: 65, defense: 67, views: 1272892, emoji: "🏝️" },
+  { id: 1769, name: "Papeete", description: "Le port et le marché de la Polynésie.", category: CATEGORIES.GEOGRAPHIE, rarity: RARITIES.COMMON.code, attack: 61, defense: 55, views: 688742, emoji: "🏝️" },
+  { id: 1770, name: "Saint-Denis de La Réunion", description: "La préfecture de l'océan Indien.", category: CATEGORIES.GEOGRAPHIE, rarity: RARITIES.COMMON.code, attack: 58, defense: 54, views: 750521, emoji: "🏝️" },
+  { id: 1771, name: "Mata-Utu", description: "La capitale de Wallis-et-Futuna.", category: CATEGORIES.GEOGRAPHIE, rarity: RARITIES.COMMON.code, attack: 61, defense: 56, views: 307580, emoji: "🏝️" },
+
+  // ========== EXTENSION 2 : Langues & Parlers de France ==========
+  { id: 1772, name: "Le français", description: "La langue de Molière, parlée sur les cinq continents.", category: CATEGORIES.GEOGRAPHIE, rarity: RARITIES.LEGENDARY.code, attack: 96, defense: 96, views: 7684995, emoji: "🗣️" },
+  { id: 1773, name: "Le breton", description: "La langue celtique en renaissance grâce aux écoles Diwan.", category: CATEGORIES.GEOGRAPHIE, rarity: RARITIES.SUPER_RARE.code, attack: 84, defense: 80, views: 3487807, emoji: "🗣️" },
+  { id: 1774, name: "L'occitan", description: "La langue d'oc des troubadours.", category: CATEGORIES.GEOGRAPHIE, rarity: RARITIES.SUPER_RARE.code, attack: 76, defense: 82, views: 2599324, emoji: "🗣️" },
+  { id: 1775, name: "Le corse", description: "La langue insulaire au chant polyphonique.", category: CATEGORIES.GEOGRAPHIE, rarity: RARITIES.RARE.code, attack: 67, defense: 67, views: 943772, emoji: "🗣️" },
+  { id: 1776, name: "Le basque", description: "L'euskara, langue unique entre Pyrénées et Atlantique.", category: CATEGORIES.GEOGRAPHIE, rarity: RARITIES.SUPER_RARE.code, attack: 80, defense: 83, views: 1975924, emoji: "🗣️" },
+  { id: 1777, name: "L'alsacien", description: "Le dialecte germanique de la plaine d'Alsace.", category: CATEGORIES.GEOGRAPHIE, rarity: RARITIES.RARE.code, attack: 67, defense: 65, views: 1382312, emoji: "🗣️" },
+  { id: 1778, name: "Le picard", description: "Le parler ch'ti du Nord.", category: CATEGORIES.GEOGRAPHIE, rarity: RARITIES.COMMON.code, attack: 47, defense: 40, views: 751230, emoji: "🗣️" },
+  { id: 1779, name: "Le normand", description: "Le parler aux racines vikings.", category: CATEGORIES.GEOGRAPHIE, rarity: RARITIES.COMMON.code, attack: 61, defense: 43, views: 482132, emoji: "🗣️" },
+  { id: 1780, name: "Le gallo", description: "La langue d'oïl de Haute-Bretagne.", category: CATEGORIES.GEOGRAPHIE, rarity: RARITIES.COMMON.code, attack: 59, defense: 48, views: 750437, emoji: "🗣️" },
+  { id: 1781, name: "L'arpitan", description: "Le francoprovençal, langue charnière entre Lyon et les Alpes.", category: CATEGORIES.GEOGRAPHIE, rarity: RARITIES.COMMON.code, attack: 57, defense: 53, views: 743194, emoji: "🗣️" },
+  { id: 1782, name: "Le catalan", description: "La langue vive du Roussillon.", category: CATEGORIES.GEOGRAPHIE, rarity: RARITIES.RARE.code, attack: 70, defense: 63, views: 611785, emoji: "🗣️" },
+  { id: 1783, name: "Le créole", description: "La langue née du métissage aux Antilles et dans l'océan Indien.", category: CATEGORIES.GEOGRAPHIE, rarity: RARITIES.RARE.code, attack: 65, defense: 67, views: 1598285, emoji: "🗣️" },
+  { id: 1784, name: "Le nissart", description: "Le parler niçois, entre oc et Italie.", category: CATEGORIES.GEOGRAPHIE, rarity: RARITIES.COMMON.code, attack: 52, defense: 45, views: 708564, emoji: "🗣️" },
+  { id: 1785, name: "Le poitevin", description: "Le parler du Poitou et de la Saintonge.", category: CATEGORIES.GEOGRAPHIE, rarity: RARITIES.COMMON.code, attack: 46, defense: 44, views: 695977, emoji: "🗣️" },
 ];
 
 // Achievements
