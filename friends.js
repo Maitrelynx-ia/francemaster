@@ -149,26 +149,33 @@ function fdShuffle(arr) {
 function generateFriendQuestions(count) {
     const cards = window.getAllCards ? window.getAllCards() : [];
     const categories = [...new Set(cards.map(c => c.category))];
+    const rarityNames = { C: 'Commune', R: 'Rare', SR: 'Super Rare', UR: 'Ultra Rare', L: 'Légendaire' };
     const questions = [];
-    const types = ['card_name', 'category', 'highest_attack'];
+    const types = ['card_name', 'category', 'rarity', 'emoji', 'blurb'];
     for (let i = 0; i < count; i++) {
         const type = types[i % types.length];
+        const card = cards[Math.floor(Math.random() * cards.length)];
         if (type === 'card_name') {
-            const card = cards[Math.floor(Math.random() * cards.length)];
             const wrong = fdShuffle(cards.filter(c => c.name !== card.name)).slice(0, 3).map(c => c.name);
             const answers = fdShuffle([card.name].concat(wrong));
             questions.push({ text: 'Quel est le nom de la carte ' + card.emoji + ' ?', hint: card.description, answers: answers, correctIndex: answers.indexOf(card.name) });
         } else if (type === 'category') {
-            const card = cards[Math.floor(Math.random() * cards.length)];
             const wrong = fdShuffle(categories.filter(c => c !== card.category)).slice(0, 3);
             const answers = fdShuffle([card.category].concat(wrong));
             questions.push({ text: 'À quelle catégorie appartient ' + card.emoji + ' ?', hint: card.name, answers: answers, correctIndex: answers.indexOf(card.category) });
+        } else if (type === 'rarity') {
+            const correct = rarityNames[card.rarity] || card.rarity;
+            const wrong = fdShuffle(Object.keys(rarityNames).filter(r => r !== card.rarity)).slice(0, 3).map(r => rarityNames[r]);
+            const answers = fdShuffle([correct].concat(wrong));
+            questions.push({ text: 'Quelle est la rareté de ' + card.name + ' ?', hint: card.description, answers: answers, correctIndex: answers.indexOf(correct) });
+        } else if (type === 'emoji') {
+            const wrong = fdShuffle(cards.filter(c => c.emoji !== card.emoji)).slice(0, 3).map(c => c.emoji);
+            const answers = fdShuffle([card.emoji].concat(wrong));
+            questions.push({ text: 'Quel emoji représente ' + card.name + ' ?', hint: card.description, answers: answers, correctIndex: answers.indexOf(card.emoji) });
         } else {
-            const picks = fdShuffle(cards).slice(0, 4);
-            let best = picks[0];
-            picks.forEach(c => { if (c.attack > best.attack) best = c; });
-            const answers = picks.map(c => c.name);
-            questions.push({ text: 'Quelle carte a la plus haute attaque ?', hint: '', answers: answers, correctIndex: answers.indexOf(best.name) });
+            const wrong = fdShuffle(cards.filter(c => c.name !== card.name)).slice(0, 3).map(c => c.name);
+            const answers = fdShuffle([card.name].concat(wrong));
+            questions.push({ text: 'Quelle carte correspond à cette description : « ' + card.description + ' » ?', hint: '', answers: answers, correctIndex: answers.indexOf(card.name) });
         }
     }
     return questions;

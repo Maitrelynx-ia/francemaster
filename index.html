@@ -55,7 +55,7 @@
                 <div class="home-welcome">
                     <h2>Bienvenue sur France Masters !</h2>
                     <p>Collectionnez des cartes inspirées des articles Wikipédia sur la France, ouvrez des packs, 
-                       complétez votre album et affrontez l'IA dans des duels quiz !</p>
+                       complétez votre album et affrontez l'IA ou un autre joueur dans des duels quiz !</p>
                 </div>
                 
                 <div class="home-stats-grid">
@@ -259,11 +259,19 @@
             <section id="duel" class="tab-content">
                 <div class="duel-header">
                     <h2>Duel Quiz</h2>
-                    <p>Affrontez l'IA avec 3 cartes de votre collection !</p>
+                    <p>Affrontez l'IA ou un autre joueur avec 3 cartes de votre collection !</p>
                 </div>
 
                 <div class="duel-setup" id="duel-setup">
                     <h3>Sélectionnez 3 cartes</h3>
+                    <div class="mode-selector">
+                        <button class="mode-btn active" data-mode="ai" onclick="setDuelMode('ai')">🤖 IA</button>
+                        <button class="mode-btn" data-mode="human" onclick="setDuelMode('human')">👤 Autre joueur</button>
+                    </div>
+                    <div class="duel-p2" id="duel-p2" style="display: none;">
+                        <input type="text" id="duel-p2-name" placeholder="Pseudo du joueur 2" maxlength="20">
+                        <p class="duel-p2-note">Duel amical sur le même appareil : les questions alternent entre vous deux, aucune pièce en jeu !</p>
+                    </div>
                     <div class="difficulty-selector">
                         <button class="difficulty-btn" data-difficulty="easy" onclick="setDuelDifficulty('easy')">😊 Facile</button>
                         <button class="difficulty-btn active" data-difficulty="normal" onclick="setDuelDifficulty('normal')">⚔️ Normal</button>
@@ -280,7 +288,7 @@
                 <div class="duel-ongoing" id="duel-ongoing" style="display: none;">
                     <div class="duel-battlefield">
                         <div class="duel-opponent-section">
-                            <h3>IA</h3>
+                            <h3 id="duel-opponent-label">🤖 IA</h3>
                             <div class="duel-opponent-cards" id="duel-opponent-cards"></div>
                             <div class="duel-opponent-active" id="duel-opponent-active"></div>
                         </div>
@@ -296,7 +304,7 @@
                         </div>
                         
                         <div class="duel-player-section">
-                            <h3>Vous</h3>
+                            <h3 id="duel-player-label">Vous</h3>
                             <div class="duel-player-cards" id="duel-player-cards"></div>
                             <div class="duel-player-active" id="duel-player-active"></div>
                         </div>

@@ -2214,3 +2214,17 @@ body {
 
 /* ========== LISTE DE SOUHAITS ========== */
 .nav-tabs .nav-tab { position: relative; }
+
+/* ========== DUEL : MODE ADVERSAIRE (IA / AUTRE JOUEUR) ========== */
+.mode-selector { display: flex; gap: var(--spacing-sm); justify-content: center; margin: var(--spacing-sm) 0 var(--spacing-sm); flex-wrap: wrap; }
+.mode-btn { padding: var(--spacing-sm) var(--spacing-lg); border-radius: 999px; border: 2px solid #e0e0e0; background: var(--surface); font-weight: 700; cursor: pointer; transition: all var(--transition-fast); font-size: 0.9rem; font-family: var(--font-family); }
+.mode-btn:hover { border-color: var(--secondary); transform: translateY(-2px); }
+.mode-btn.active { background: var(--secondary); color: var(--text-light); border-color: var(--secondary); box-shadow: var(--shadow-md); }
+.duel-p2 { display: flex; flex-direction: column; align-items: center; gap: var(--spacing-xs); margin-bottom: var(--spacing-md); }
+.duel-p2 input { padding: var(--spacing-sm) var(--spacing-md); border: 1px solid #e0e0e0; border-radius: var(--radius-md); font-size: 0.95rem; min-width: 240px; text-align: center; }
+.duel-p2 input:focus { outline: 2px solid var(--secondary); outline-offset: 1px; border-color: var(--secondary); }
+.duel-p2-note { color: var(--text-secondary); font-size: 0.85rem; text-align: center; max-width: 520px; }
+.duel-turn-banner { font-weight: 800; color: var(--secondary); margin-bottom: var(--spacing-sm); font-size: 1rem; }
+.duel-pass-sub { color: var(--text-secondary); margin-top: var(--spacing-sm); }
+.duel-pass-btn { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: var(--text-light); border-color: var(--primary); font-weight: 700; }
+.duel-pass-btn:hover { border-color: var(--secondary); background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%); }
