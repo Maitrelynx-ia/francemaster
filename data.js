@@ -2672,7 +2672,268 @@ const CARDS = [
         views: 2500000,
         emoji: "⛰️",
         image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2b/Midi-Pyr%C3%A9n%C3%A9es_region_locator_map.svg/250px-Midi-Pyr%C3%A9n%C3%A9es_region_locator_map.svg.png"
-    }
+    },
+
+    // ========== EXTENSION : 20 NOUVELLES CARTES ==========
+    {
+        id: 201,
+        name: "Claude Monet",
+        description: "Peintre impressionniste, maître des nymphéas de Giverny",
+        category: CATEGORIES.SCIENCES,
+        rarity: RARITIES.LEGENDARY.code,
+        attack: 90,
+        defense: 88,
+        views: 5200000,
+        emoji: "🎨",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Claude_Monet_1899_Nadar_crop.jpg/250px-Claude_Monet_1899_Nadar_crop.jpg"
+    },
+
+    {
+        id: 202,
+        name: "Coupe du monde de football 1998",
+        description: "Premier sacre des Bleus, victoire 3-0 contre le Brésil au Stade de France",
+        category: CATEGORIES.SPORT,
+        rarity: RARITIES.LEGENDARY.code,
+        attack: 95,
+        defense: 90,
+        views: 9500000,
+        emoji: "🏆",
+        image: "https://upload.wikimedia.org/wikipedia/fr/thumb/a/a7/1998_FIFA_World_Cup_logo.svg/250px-1998_FIFA_World_Cup_logo.svg.png"
+    },
+
+    {
+        id: 203,
+        name: "Simone Veil",
+        description: "Rescapée de la Shoah, ministre de la Santé, première présidente du Parlement européen",
+        category: CATEGORIES.HISTOIRE,
+        rarity: RARITIES.ULTRA_RARE.code,
+        attack: 88,
+        defense: 92,
+        views: 4500000,
+        emoji: "⚖️",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Official_portrait_of_Simone_Veil_(cropped).jpg/250px-Official_portrait_of_Simone_Veil_(cropped).jpg"
+    },
+
+    {
+        id: 204,
+        name: "Teddy Riner",
+        description: "Judoka français, multiple champion olympique et mondial en toutes catégories",
+        category: CATEGORIES.SPORT,
+        rarity: RARITIES.ULTRA_RARE.code,
+        attack: 93,
+        defense: 85,
+        views: 3800000,
+        emoji: "🥋",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Teddy_Riner_Cannes_2016.jpg/250px-Teddy_Riner_Cannes_2016.jpg"
+    },
+
+    {
+        id: 205,
+        name: "Champagne",
+        description: "Vin effervescent de fête, symbole du savoir-faire français",
+        category: CATEGORIES.GASTRONOMIE,
+        rarity: RARITIES.ULTRA_RARE.code,
+        attack: 86,
+        defense: 82,
+        views: 6500000,
+        emoji: "🍾",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Cocktail_by_candle_light_1.jpg/250px-Cocktail_by_candle_light_1.jpg"
+    },
+
+    {
+        id: 206,
+        name: "Jean Moulin",
+        description: "Préfet et résistant, unificateur de la Résistance française",
+        category: CATEGORIES.HISTOIRE,
+        rarity: RARITIES.SUPER_RARE.code,
+        attack: 82,
+        defense: 80,
+        views: 2600000,
+        emoji: "🎗️",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Moulin_Harcourt_1937.jpg/250px-Moulin_Harcourt_1937.jpg"
+    },
+
+    {
+        id: 207,
+        name: "Jules Verne",
+        description: "Écrivain visionnaire, auteur des Voyages extraordinaires",
+        category: CATEGORIES.HISTOIRE,
+        rarity: RARITIES.SUPER_RARE.code,
+        attack: 80,
+        defense: 84,
+        views: 4300000,
+        emoji: "🐙",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Jules_Verne_2.jpg/250px-Jules_Verne_2.jpg"
+    },
+
+    {
+        id: 208,
+        name: "Grotte de Lascaux",
+        description: "Grotte ornée du Périgord, la chapelle Sixtine de l'art préhistorique",
+        category: CATEGORIES.MONUMENTS,
+        rarity: RARITIES.SUPER_RARE.code,
+        attack: 78,
+        defense: 85,
+        views: 2900000,
+        emoji: "🌄",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Lascaux_painting.jpg/250px-Lascaux_painting.jpg"
+    },
+
+    {
+        id: 209,
+        name: "Château de Chenonceau",
+        description: "Château des Dames enjambant le Cher, joyau de la Renaissance",
+        category: CATEGORIES.MONUMENTS,
+        rarity: RARITIES.SUPER_RARE.code,
+        attack: 80,
+        defense: 88,
+        views: 3100000,
+        emoji: "🏰",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Chenonceau-20050320.jpg/250px-Chenonceau-20050320.jpg"
+    },
+
+    {
+        id: 210,
+        name: "Jacques-Yves Cousteau",
+        description: "Officier et océanographe, inventeur du scaphandre autonome avec Émile Gagnan",
+        category: CATEGORIES.SCIENCES,
+        rarity: RARITIES.SUPER_RARE.code,
+        attack: 84,
+        defense: 78,
+        views: 3600000,
+        emoji: "🤿",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Cousteau1972_(cropped).jpg/250px-Cousteau1972_(cropped).jpg"
+    },
+
+    {
+        id: 211,
+        name: "Charles Martel",
+        description: "Maire du palais, vainqueur de la bataille de Poitiers en 732",
+        category: CATEGORIES.HISTOIRE,
+        rarity: RARITIES.RARE.code,
+        attack: 80,
+        defense: 74,
+        views: 2100000,
+        emoji: "⚔️",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Charles-Martel.jpg/250px-Charles-Martel.jpg"
+    },
+
+    {
+        id: 212,
+        name: "Place Stanislas",
+        description: "Place royale de Nancy, joyau du XVIIIe siècle classé à l'UNESCO",
+        category: CATEGORIES.MONUMENTS,
+        rarity: RARITIES.RARE.code,
+        attack: 72,
+        defense: 80,
+        views: 1600000,
+        emoji: "✨",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Nancy_Place_Stanislas_BW_2015-07-18_14-00-16.jpg/250px-Nancy_Place_Stanislas_BW_2015-07-18_14-00-16.jpg"
+    },
+
+    {
+        id: 213,
+        name: "Musée d'Orsay",
+        description: "Ancienne gare transformée en musée des impressionnistes",
+        category: CATEGORIES.MONUMENTS,
+        rarity: RARITIES.RARE.code,
+        attack: 75,
+        defense: 78,
+        views: 3300000,
+        emoji: "🖼️",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/MuseeOrsay_20070324.jpg/250px-MuseeOrsay_20070324.jpg"
+    },
+
+    {
+        id: 214,
+        name: "Panthéon de Paris",
+        description: "Nécropole des grands hommes, au cœur du Quartier latin",
+        category: CATEGORIES.MONUMENTS,
+        rarity: RARITIES.RARE.code,
+        attack: 74,
+        defense: 82,
+        views: 2700000,
+        emoji: "🏛️",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Pantheon_of_Paris_007.JPG/250px-Pantheon_of_Paris_007.JPG"
+    },
+
+    {
+        id: 215,
+        name: "Escargots de Bourgogne",
+        description: "Plat bourguignon par excellence, escargots au beurre persillé",
+        category: CATEGORIES.GASTRONOMIE,
+        rarity: RARITIES.RARE.code,
+        attack: 70,
+        defense: 72,
+        views: 1900000,
+        emoji: "🐌",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/NIEdot365.jpg/250px-NIEdot365.jpg"
+    },
+
+    {
+        id: 216,
+        name: "Gorges du Verdon",
+        description: "Le plus grand canyon d'Europe, entre Provence et haut Var",
+        category: CATEGORIES.GEOGRAPHIE,
+        rarity: RARITIES.RARE.code,
+        attack: 76,
+        defense: 70,
+        views: 2300000,
+        emoji: "🏞️",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Verdon_Gorge_1.jpg/250px-Verdon_Gorge_1.jpg"
+    },
+
+    {
+        id: 217,
+        name: "Louis Braille",
+        description: "Inventeur du système d'écriture tactile en points pour les aveugles",
+        category: CATEGORIES.SCIENCES,
+        rarity: RARITIES.RARE.code,
+        attack: 68,
+        defense: 76,
+        views: 2000000,
+        emoji: "👐",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/LouisBraille.png/250px-LouisBraille.png"
+    },
+
+    {
+        id: 218,
+        name: "Blanquette de veau",
+        description: "Ragoût mijoté à la crème, grand classique du terroir français",
+        category: CATEGORIES.GASTRONOMIE,
+        rarity: RARITIES.COMMON.code,
+        attack: 58,
+        defense: 64,
+        views: 1300000,
+        emoji: "🍲",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Blanquette_de_veau_%C3%A0_l'ancienne_04.jpg/250px-Blanquette_de_veau_%C3%A0_l'ancienne_04.jpg"
+    },
+
+    {
+        id: 219,
+        name: "Kouign-amann",
+        description: "Pâtisserie bretonne caramélisée au beurre et au sucre",
+        category: CATEGORIES.GASTRONOMIE,
+        rarity: RARITIES.COMMON.code,
+        attack: 62,
+        defense: 58,
+        views: 950000,
+        emoji: "🧈",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Kouignamann.JPG/250px-Kouignamann.JPG"
+    },
+
+    {
+        id: 220,
+        name: "Camargue",
+        description: "Marais, chevaux blancs et flamants roses entre Rhône et Méditerranée",
+        category: CATEGORIES.GEOGRAPHIE,
+        rarity: RARITIES.COMMON.code,
+        attack: 55,
+        defense: 62,
+        views: 1600000,
+        emoji: "🦩",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Portrait_de_flamant_rose_dans_la_r%C3%A9serve_nationale_de_Camargue.jpg/250px-Portrait_de_flamant_rose_dans_la_r%C3%A9serve_nationale_de_Camargue.jpg"
+    },
 ];
 
 // Achievements
