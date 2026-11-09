@@ -90,9 +90,7 @@
                 </div>
 
                 <div class="home-actions">
-                    <button class="btn btn-primary btn-large claim-pack-btn" onclick="claimPack()">
-                        <span>🎁 Récolter un Pack</span>
-                    </button>
+                    <p class="pack-storage-info">🎁 Un pack gratuit se stocke automatiquement toutes les 15 minutes (10 max en réserve)</p>
                     <button class="btn btn-secondary btn-large open-stored-pack-btn" onclick="openStoredPack()">
                         <span>📦 Ouvrir un Pack stocké (<span class="stored-pack-count">0</span>/10)</span>
                     </button>
@@ -114,7 +112,7 @@
                 <div class="packs-header">
                     <h2>Packs</h2>
                     <p>Chaque pack contient 5 cartes avec au moins 1 carte Rare ou mieux !</p>
-                    <p>Récoltez un pack gratuit toutes les 15 minutes et stockez-en jusqu'à 10 : ouvrez-les quand vous voulez !</p>
+                    <p>Un pack gratuit se stocke automatiquement toutes les 15 minutes (10 max en réserve) : ouvrez-les quand vous voulez !</p>
                 </div>
                 
                 <div class="pack-preview">
@@ -122,8 +120,8 @@
                         <div class="pack-closed claim-pack-btn" onclick="claimPack()" id="packs-claim-btn">
                             <div class="pack-closed-inner">
                                 <span class="pack-closed-icon">🎁</span>
-                                <span class="pack-closed-text">Récolter un Pack</span>
-                                <span class="pack-closed-cost">Gratuit · toutes les 15 min</span>
+                                <span class="pack-closed-text">Stockage automatique</span>
+                                <span class="pack-closed-cost">Un pack gratuit · toutes les 15 min</span>
                             </div>
                         </div>
                         <div class="pack-closed open-stored-pack-btn" onclick="openStoredPack()" id="packs-open-stored-btn">

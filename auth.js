@@ -196,6 +196,25 @@ function isLoggedIn() {
     return AuthState.currentUser !== null;
 }
 
+// Stockage automatique : les packs se récoltent tout seuls dans la réserve
+function autoClaimPacks() {
+    if (!isLoggedIn()) return;
+    if (!AuthState.packs.lastOpenTime) {
+        AuthState.packs.lastOpenTime = Date.now() - AuthState.packs.cooldown;
+    }
+    let added = 0;
+    while (AuthState.packs.count < AuthState.packs.max && Date.now() - AuthState.packs.lastOpenTime >= AuthState.packs.cooldown) {
+        AuthState.packs.lastOpenTime += AuthState.packs.cooldown;
+        AuthState.packs.count++;
+        added++;
+    }
+    if (added > 0) {
+        saveUserPacks();
+        updateAuthUI();
+        showToast('Info', '🎁 ' + added + ' pack(s) stocké(s) automatiquement ! Réserve : ' + AuthState.packs.count + '/' + AuthState.packs.max, 'info');
+    }
+}
+
 // Récolter un pack : l'ajoute à la réserve de packs non ouverts (max 10)
 function claimPack() {
     if (!isLoggedIn()) {
@@ -237,7 +256,7 @@ function openStoredPack() {
     }
     
     if (!AuthState.packs || AuthState.packs.count <= 0) {
-        showToast('Info', "Aucun pack stocké ! Récoltez-en un avec le bouton 🎁.", 'info');
+        showToast('Info', "Aucun pack stocké ! Le prochain se stocke automatiquement dans moins de 15 minutes.", 'info');
         return false;
     }
     
@@ -298,7 +317,9 @@ function updatePackTimer() {
     
     const profileTimer = document.getElementById('profile-timer');
     if (profileTimer) {
-        if (timeSinceLastOpen >= AuthState.packs.cooldown) {
+        if (AuthState.packs.count >= AuthState.packs.max) {
+            profileTimer.innerHTML = 'Réserve pleine';
+        } else if (timeSinceLastOpen >= AuthState.packs.cooldown) {
             profileTimer.innerHTML = 'Prêt';
         } else {
             const remainingTime = Math.ceil((AuthState.packs.cooldown - timeSinceLastOpen) / 1000 / 60);
@@ -313,7 +334,7 @@ function updatePackTimer() {
             packTimer.style.display = 'none';
         } else {
             const remainingTime = Math.ceil((AuthState.packs.cooldown - timeSinceLastOpen) / 1000 / 60);
-            packTimer.innerHTML = `Prochain pack récoltable dans <span class="timer-value">${remainingTime} min</span>`;
+            packTimer.innerHTML = `Prochain pack stocké automatiquement dans <span class="timer-value">${remainingTime} min</span>`;
             packTimer.style.display = 'block';
         }
     }
@@ -391,6 +412,7 @@ function updateHeader() {
 function startPackTimer() {
     setInterval(() => {
         if (isLoggedIn()) {
+            autoClaimPacks();
             updatePackTimer();
         }
     }, 1000);
