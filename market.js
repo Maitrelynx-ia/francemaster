@@ -9,6 +9,51 @@ const MarketState = {
 
 const MARKET_PRICES = { C: 30, R: 80, SR: 200, UR: 500, L: 1200 };
 
+const wishlistNotified = new Set();
+
+function checkWishlistOffers() {
+    if (typeof GameState === 'undefined' || !GameState.wishlist) {
+        updateWishlistMarketBadge();
+        return;
+    }
+    const currentIds = new Set(MarketState.offers.map(o => o.id));
+    [...wishlistNotified].forEach(id => { if (!currentIds.has(id)) wishlistNotified.delete(id); });
+    MarketState.offers.forEach(offer => {
+        if (GameState.wishlist[offer.cardId] && !wishlistNotified.has(offer.id)) {
+            wishlistNotified.add(offer.id);
+            const card = getAllCards().find(c => c.id === offer.cardId);
+            if (!card) return;
+            const price = offer.type === 'buy' ? 'achat direct : ' + offer.price + ' pièces' : 'enchère en cours : ' + offer.currentPrice + ' pièces';
+            showToast('⭐ Souhait disponible !', card.name + ' est en vente au marché (' + price + ') !', 'success');
+        }
+    });
+    updateWishlistMarketBadge();
+}
+
+function updateWishlistMarketBadge() {
+    const btn = document.querySelector('.nav-tab[data-tab="market"]');
+    if (!btn) return;
+    const count = (typeof GameState !== 'undefined' && GameState.wishlist)
+        ? MarketState.offers.filter(o => GameState.wishlist[o.cardId]).length
+        : 0;
+    let badge = btn.querySelector('.nav-wish-badge');
+    if (count > 0) {
+        if (!badge) {
+            badge = document.createElement('span');
+            badge.className = 'nav-wish-badge';
+            btn.appendChild(badge);
+        }
+        badge.textContent = '⭐ ' + count;
+    } else if (badge) {
+        badge.remove();
+    }
+}
+
+function toggleWishlistMarket(cardId, event) {
+    if (event) event.stopPropagation();
+    if (typeof toggleWishlist === 'function') toggleWishlist(cardId);
+}
+
 function basePrice(rarity) {
     return MARKET_PRICES[rarity] || 30;
 }
@@ -62,6 +107,10 @@ function addMarketCardToCollection(card) {
     }
     GameState.recentCards.unshift(card);
     if (GameState.recentCards.length > 5) GameState.recentCards.pop();
+    if (GameState.wishlist && GameState.wishlist[card.id]) {
+        delete GameState.wishlist[card.id];
+        showToast('🎯 Souhait réalisé !', card.name + ' rejoint votre collection et quitte votre liste de souhaits.', 'success');
+    }
 }
 
 function buyOffer(offerId) {
@@ -169,6 +218,7 @@ function refreshMarketOffers() {
     MarketState.lastRefresh = Date.now();
     saveMarket();
     renderMarket();
+    checkWishlistOffers();
     showToast('Succès', "Nouvelles cartes en vente !", 'success');
 }
 
@@ -239,6 +289,7 @@ function marketTick() {
         saveMarket();
         updateUI();
     }
+    checkWishlistOffers();
     const marketTab = document.getElementById('market');
     if (marketTab && marketTab.classList.contains('active')) renderMarket();
 }
@@ -273,6 +324,7 @@ function renderMarket() {
             if (!card) return;
             const item = document.createElement('div');
             item.className = 'market-item r-' + card.rarity;
+            const wished = typeof GameState !== 'undefined' && GameState.wishlist && GameState.wishlist[offer.cardId];
             let footer;
             if (offer.type === 'buy') {
                 footer = '<div class="market-item-price">💰 ' + offer.price + ' pièces</div>' +
@@ -285,7 +337,8 @@ function renderMarket() {
                     '<div class="market-item-timer" data-endsat="' + offer.endsAt + '">⏱️ ' + formatMarketTime(offer.endsAt - Date.now()) + '</div>' +
                     '<button class="btn btn-primary market-item-btn" onclick="bidOnOffer(' + offer.id + ')">Enchérir ' + minBid + ' 🪙</button>';
             }
-            item.innerHTML = marketItemVisual(card) +
+            footer += '<button class="market-wish-btn' + (wished ? ' wished' : '') + '" onclick="toggleWishlistMarket(' + offer.cardId + ', event)">' + (wished ? '⭐ Dans mes souhaits' : '☆ Souhaiter') + '</button>';
+            item.innerHTML = (wished ? '<div class="wish-flag">⭐ Souhait</div>' : '') + marketItemVisual(card) +
                 '<div class="market-item-name">' + card.name + '</div>' +
                 '<span class="card-rarity ' + card.rarity + '">' + card.rarity + '</span>' +
                 footer;
@@ -355,6 +408,7 @@ function initMarket() {
         for (let i = 0; i < 6; i++) MarketState.offers.push(generateOffer());
         saveMarket();
     }
+    checkWishlistOffers();
     setInterval(marketTick, 5000);
     setInterval(updateMarketTimers, 1000);
 }

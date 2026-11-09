@@ -15,6 +15,7 @@ const GameState = {
     },
     achievements: {},
     recentCards: [],
+    wishlist: {},
     duel: {
         isOngoing: false,
         playerCards: [],
@@ -61,6 +62,7 @@ function loadGame() {
             GameState.stats = parsedState.stats || GameState.stats;
             GameState.achievements = parsedState.achievements || {};
             GameState.recentCards = parsedState.recentCards || [];
+            GameState.wishlist = parsedState.wishlist || {};
         } catch (e) {
             console.error('Erreur chargement sauvegarde:', e);
         }
@@ -86,7 +88,8 @@ function saveGame() {
         coins: GameState.coins,
         stats: GameState.stats,
         achievements: GameState.achievements,
-        recentCards: GameState.recentCards
+        recentCards: GameState.recentCards,
+        wishlist: GameState.wishlist
     };
     localStorage.setItem('franceMastersSave', JSON.stringify(saveData));
 }
@@ -213,6 +216,9 @@ function addCardsToCollection(cards) {
         GameState.collection[card.id].count += 1;
         if (GameState.collection[card.id].count > 1) {
             GameState.collection[card.id].duplicates += 1;
+        }
+        if (GameState.wishlist && GameState.wishlist[card.id]) {
+            delete GameState.wishlist[card.id];
         }
         GameState.recentCards.unshift(card);
         if (GameState.recentCards.length > 5) GameState.recentCards.pop();
@@ -624,11 +630,18 @@ function renderCollection() {
         if (hasCard) {
             cardElement.addEventListener('click', () => showCardDetails(card, duplicates));
         }
+        const wishBtn = document.createElement('button');
+        wishBtn.className = 'wish-star' + (isWished(card.id) ? ' wished' : '');
+        wishBtn.innerHTML = isWished(card.id) ? '⭐' : '☆';
+        wishBtn.title = isWished(card.id) ? 'Retirer de ma liste de souhaits' : 'Ajouter à ma liste de souhaits';
+        wishBtn.addEventListener('click', (e) => { e.stopPropagation(); toggleWishlist(card.id); renderCollection(); });
+        cardElement.appendChild(wishBtn);
         grid.appendChild(cardElement);
     });
     
     updateCollectionProgress();
     renderDuplicates();
+    renderWishlist();
 }
 
 function getRarityOrder(rarity) {
@@ -750,6 +763,7 @@ function showCardDetails(card, duplicates) {
                     Catégorie: ${card.category} | Rareté: ${getRarityName(card.rarity)} | Vues: ${formatNumber(card.views)}
                 </p>
                 ${duplicates > 0 ? `<p style="color: var(--secondary); font-size: 0.85rem;">Doublons: ${duplicates}</p>` : ''}
+                <button class="btn btn-secondary" style="margin-top: var(--spacing-sm);" onclick="toggleWishlist(${card.id}); this.textContent = wishButtonText(${card.id});">${wishButtonText(card.id)}</button>
             </div>
         </div>
     `;
@@ -1397,7 +1411,77 @@ function closeResetModal() {
     document.getElementById('reset-modal').style.display = 'none';
 }
 
-// ========== START GAME ==========
-document.addEventListener('DOMContentLoaded', initGame);
+// ========== LISTE DE SOUHAITS ==========
+function isWished(cardId) {
+    return !!(GameState.wishlist && GameState.wishlist[cardId]);
+}
 
+function wishButtonText(cardId) {
+    return isWished(cardId) ? '⭐ Retirer de ma liste de souhaits' : '☆ Ajouter à ma liste de souhaits';
+}
+
+function getWishlistCards() {
+    return Object.keys(GameState.wishlist || {})
+        .map(id => parseInt(id, 10))
+        .map(id => getAllCards().find(c => c.id === id))
+        .filter(c => c);
+}
+
+function toggleWishlist(cardId) {
+    if (!GameState.wishlist) GameState.wishlist = {};
+    const card = getAllCards().find(c => c.id === cardId);
+    if (!card) return;
+    if (GameState.wishlist[cardId]) {
+        delete GameState.wishlist[cardId];
+        showToast('Info', card.name + ' retirée de votre liste de souhaits.', 'info');
+    } else {
+        GameState.wishlist[cardId] = Date.now();
+        showToast('⭐ Souhait ajouté', card.name + ' ajoutée à votre liste ! Vous serez prévenu dès qu\'elle sera en vente au marché.', 'success');
+    }
+    saveGame();
+    renderWishlist();
+    if (typeof renderMarket === 'function') {
+        const marketTab = document.getElementById('market');
+        if (marketTab && marketTab.classList.contains('active')) renderMarket();
+    }
+    if (typeof updateWishlistMarketBadge === 'function') updateWishlistMarketBadge();
+}
+
+function removeWishlist(cardId, event) {
+    if (event) event.stopPropagation();
+    if (GameState.wishlist) delete GameState.wishlist[cardId];
+    saveGame();
+    renderWishlist();
+    if (typeof renderMarket === 'function') {
+        const marketTab = document.getElementById('market');
+        if (marketTab && marketTab.classList.contains('active')) renderMarket();
+    }
+    if (typeof updateWishlistMarketBadge === 'function') updateWishlistMarketBadge();
+}
+
+function renderWishlist() {
+    const section = document.getElementById('wishlist-section');
+    if (!section) return;
+    const cards = getWishlistCards();
+    if (cards.length === 0) {
+        section.innerHTML = '<div class="wishlist-empty">⭐ Astuce : cliquez sur l\'étoile d\'une carte manquante de votre collection, ou sur « ☆ Souhaiter » sur une offre du marché, pour être prévenu dès que la carte sera en vente !</div>';
+        return;
+    }
+    const items = cards.map(card => {
+        const owned = GameState.collection[card.id] && GameState.collection[card.id].count > 0;
+        const onSale = typeof MarketState !== 'undefined' && MarketState.offers && MarketState.offers.some(o => o.cardId === card.id);
+        const status = onSale
+            ? '<span class="wishlist-status on-sale">🔥 En vente</span>'
+            : (owned ? '<span class="wishlist-status owned">✓ Possédée</span>' : '<span class="wishlist-status missing">À collectionner</span>');
+        return '<div class="wishlist-chip" onclick="showCardDetails(getAllCards().find(c => c.id === ' + card.id + '), 0)">' +
+            '<span class="wishlist-chip-emoji">' + card.emoji + '</span>' +
+            '<span class="wishlist-chip-name">' + card.name + '</span>' +
+            '<span class="card-rarity ' + card.rarity + '">' + card.rarity + '</span>' +
+            status +
+            '<button class="wishlist-remove" onclick="removeWishlist(' + card.id + ', event)" title="Retirer de la liste">&times;</button>' +
+            '</div>';
+    }).join('');
+    section.innerHTML = '<h3 class="wishlist-title">⭐ Ma liste de souhaits <span class="wishlist-count">(' + cards.length + ')</span></h3>' +
+        '<div class="wishlist-grid">' + items + '</div>';
+}
 
