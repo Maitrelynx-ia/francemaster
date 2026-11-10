@@ -1,6 +1,7 @@
 // France Masters - Parametres additionnels
 // Theme clair/sombre, sons, animations reduites, export/import de sauvegarde,
-// gestion du compte, informations sur les donnees et aide integree.
+// gestion du compte (deconnexion, changement de mot de passe ET de pseudo),
+// informations sur les donnees et aide integree.
 
 (function () {
     "use strict";
@@ -31,8 +32,6 @@
             ".st-io-btns { display: flex; gap: 10px; flex-wrap: wrap; }",
             ".st-io-btns button, .st-btn { padding: 9px 16px; border-radius: 8px; border: 1px solid rgba(128,128,128,0.4); background: transparent; color: inherit; font: inherit; cursor: pointer; }",
             ".st-io-btns button:hover, .st-btn:hover { background: rgba(128,128,128,0.15); }",
-            ".st-btn.danger { border-color: rgba(224,36,94,0.6); color: #e0245e; }",
-            ".st-btn.danger:hover { background: rgba(224,36,94,0.12); }",
             ".st-account { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }",
             ".st-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--primary, #4169e1); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: bold; flex-shrink: 0; }",
             ".st-pw-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }",
@@ -130,40 +129,6 @@
         return null;
     }
 
-    function renderAccount() {
-        var zone = document.getElementById("st-account-zone");
-        if (!zone) return;
-        var name = currentUser();
-        if (name) {
-            zone.innerHTML =
-                '<div class="st-account">' +
-                '<div class="st-avatar">' + escapeHtml(name.charAt(0).toUpperCase()) + "</div>" +
-                "<div><strong>" + escapeHtml(name) + "</strong><br><span style=\"opacity:0.7; font-size:0.85rem;\">Connect\u00e9</span></div>" +
-                '<button type="button" class="st-btn" id="st-logout">\uD83D\uDEAA Se d\u00e9connecter</button>' +
-                "</div>" +
-                '<div class="st-pw-row">' +
-                '<input type="password" id="st-pw1" placeholder="Nouveau mot de passe" />' +
-                '<input type="password" id="st-pw2" placeholder="Confirmer" />' +
-                '<button type="button" class="st-btn" id="st-pw-save">Changer</button>' +
-                "</div>" +
-                '<div class="st-pw-msg" id="st-pw-msg"></div>';
-            document.getElementById("st-logout").addEventListener("click", function () {
-                if (typeof logout === "function") { logout(); renderAccount(); }
-            });
-            document.getElementById("st-pw-save").addEventListener("click", changePassword);
-        } else {
-            zone.innerHTML =
-                '<div class="st-account">' +
-                '<div class="st-avatar">?</div>' +
-                "<div><strong>Non connect\u00e9</strong><br><span style=\"opacity:0.7; font-size:0.85rem;\">Connecte-toi pour ouvrir des packs et figurer au classement</span></div>" +
-                '<button type="button" class="st-btn" id="st-login">\uD83D\uDD11 Se connecter / Cr\u00e9er un compte</button>' +
-                "</div>";
-            document.getElementById("st-login").addEventListener("click", function () {
-                if (typeof showAuthModal === "function") showAuthModal();
-            });
-        }
-    }
-
     function changePassword() {
         var msg = document.getElementById("st-pw-msg");
         var p1 = document.getElementById("st-pw1").value;
@@ -182,6 +147,113 @@
             document.getElementById("st-pw2").value = "";
         } catch (e) {
             msg.textContent = "\u26A0\uFE0F Erreur lors du changement.";
+        }
+    }
+
+    // ----- Changement de pseudo -----
+    function renameAccount() {
+        var msg = document.getElementById("st-rename-msg");
+        var newName = (document.getElementById("st-newname").value || "").trim();
+        var oldName = currentUser();
+        if (!oldName) return;
+        if (newName.length < 3 || newName.length > 20) {
+            msg.textContent = "\u26A0\uFE0F Le pseudo doit faire entre 3 et 20 caract\u00e8res.";
+            return;
+        }
+        if (newName === oldName) { msg.textContent = "\u26A0\uFE0F C\u2019est d\u00e9j\u00e0 ton pseudo actuel."; return; }
+        try {
+            var users = window.AuthState.users || [];
+            var pris = users.some(function (u) { return u.username.toLowerCase() === newName.toLowerCase(); });
+            if (pris) { msg.textContent = "\u26A0\uFE0F Ce pseudo est d\u00e9j\u00e0 utilis\u00e9 par un autre compte."; return; }
+
+            // 1. Migrer les packs et les amis (cles basees sur le pseudo)
+            var oldPacks = "franceMastersPacks_" + oldName;
+            var newPacks = "franceMastersPacks_" + newName;
+            var packsData = localStorage.getItem(oldPacks);
+            if (packsData !== null) {
+                localStorage.setItem(newPacks, packsData);
+                localStorage.removeItem(oldPacks);
+            }
+            var oldFriends = "franceMastersFriends_" + oldName;
+            var newFriends = "franceMastersFriends_" + newName;
+            var friendsData = localStorage.getItem(oldFriends);
+            if (friendsData !== null) {
+                localStorage.setItem(newFriends, friendsData);
+                localStorage.removeItem(oldFriends);
+            }
+
+            // 2. Mettre a jour le compte et l'utilisateur courant
+            var user = users.find(function (u) { return u.username === oldName; });
+            if (user) user.username = newName;
+            localStorage.setItem("franceMastersUsers", JSON.stringify(users));
+            window.AuthState.currentUser.username = newName;
+            localStorage.setItem("franceMastersCurrentUser", JSON.stringify(window.AuthState.currentUser));
+
+            // 3. Rafraichir l'interface et publier le nouveau score au classement
+            if (typeof updateAuthUI === "function") updateAuthUI();
+            if (typeof renderFriends === "function") renderFriends();
+            if (typeof loadUserPacks === "function") loadUserPacks();
+            try {
+                if (typeof computeMyStats === "function" && typeof publishOnline === "function") {
+                    publishOnline(computeMyStats());
+                }
+            } catch (e) { /* ignore */ }
+
+            msg.textContent = "\u2705 Pseudo chang\u00e9 en \"" + newName + "\" !";
+            document.getElementById("st-newname").value = "";
+            renderAccount();
+            toast("\uD83D\uDC64 Bonjour " + newName + " !");
+        } catch (e) {
+            msg.textContent = "\u26A0\uFE0F Erreur lors du changement de pseudo.";
+        }
+    }
+
+    function renderAccount() {
+        var zone = document.getElementById("st-account-zone");
+        if (!zone) return;
+        var name = currentUser();
+        if (name) {
+            zone.innerHTML =
+                '<div class="st-account">' +
+                '<div class="st-avatar">' + escapeHtml(name.charAt(0).toUpperCase()) + "</div>" +
+                "<div><strong>" + escapeHtml(name) + "</strong><br><span style=\"opacity:0.7; font-size:0.85rem;\">Connect\u00e9</span></div>" +
+                '<button type="button" class="st-btn" id="st-rename">\u270F\uFE0F Changer de pseudo</button>' +
+                '<button type="button" class="st-btn" id="st-logout">\uD83D\uDEAA Se d\u00e9connecter</button>' +
+                "</div>" +
+                '<div class="st-pw-row" id="st-rename-row" style="display:none;">' +
+                '<input type="text" id="st-newname" placeholder="Nouveau pseudo (3-20 caract\u00e8res)" maxlength="20" />' +
+                '<button type="button" class="st-btn" id="st-rename-save">Valider</button>' +
+                "</div>" +
+                '<div class="st-pw-msg" id="st-rename-msg"></div>' +
+                '<div class="st-pw-row">' +
+                '<input type="password" id="st-pw1" placeholder="Nouveau mot de passe" />' +
+                '<input type="password" id="st-pw2" placeholder="Confirmer" />' +
+                '<button type="button" class="st-btn" id="st-pw-save">Changer</button>' +
+                "</div>" +
+                '<div class="st-pw-msg" id="st-pw-msg"></div>';
+            document.getElementById("st-logout").addEventListener("click", function () {
+                if (typeof logout === "function") { logout(); renderAccount(); }
+            });
+            document.getElementById("st-pw-save").addEventListener("click", changePassword);
+            document.getElementById("st-rename").addEventListener("click", function () {
+                var row = document.getElementById("st-rename-row");
+                row.style.display = row.style.display === "none" ? "flex" : "none";
+                if (row.style.display === "flex") document.getElementById("st-newname").focus();
+            });
+            document.getElementById("st-rename-save").addEventListener("click", renameAccount);
+            document.getElementById("st-newname").addEventListener("keydown", function (e) {
+                if (e.key === "Enter") renameAccount();
+            });
+        } else {
+            zone.innerHTML =
+                '<div class="st-account">' +
+                '<div class="st-avatar">?</div>' +
+                "<div><strong>Non connect\u00e9</strong><br><span style=\"opacity:0.7; font-size:0.85rem;\">Connecte-toi pour ouvrir des packs et figurer au classement</span></div>" +
+                '<button type="button" class="st-btn" id="st-login">\uD83D\uDD11 Se connecter / Cr\u00e9er un compte</button>' +
+                "</div>";
+            document.getElementById("st-login").addEventListener("click", function () {
+                if (typeof showAuthModal === "function") showAuthModal();
+            });
         }
     }
 
@@ -218,7 +290,7 @@
             } catch (e) { /* ignore */ }
         });
         document.getElementById("st-clear-lb").addEventListener("click", function () {
-            if (!confirm("Effacer les scores locaux du classement sur cet appareil ? (le score en ligne n'est pas touch\u00e9)")) return;
+            if (!confirm("Effacer les scores locaux du classement sur cet appareil ?")) return;
             localStorage.removeItem("franceMastersLocalLeaderboard");
             renderData();
             toast("\uD83C\uDFC6 Score local effac\u00e9");
@@ -232,6 +304,7 @@
         zone.innerHTML =
             "<details><summary>\uD83C\uDFAF Comment jouer ?</summary><p>Collectionne des cartes inspir\u00e9es d'articles Wikip\u00e9dia sur la France : ouvre des packs (un pack gratuit s'ajoute \u00e0 ta r\u00e9serve toutes les 15 minutes), compl\u00e8te ton album et affronte l'IA ou tes amis en duels quiz.</p></details>" +
             "<details><summary>\uD83D\uDC8E Quelles sont les raret\u00e9s et leur valeur ?</summary><p>Commune (C) 10 pts \u00b7 Rare (R) 25 pts \u00b7 Super Rare (SR) 60 pts \u00b7 Ultra Rare (UR) 150 pts \u00b7 L\u00e9gendaire (L) 400 pts. La valeur de ta collection au classement est la somme des points de toutes tes cartes.</p></details>" +
+            "<details><summary>\uD83D\uDC64 Puis-je changer de pseudo ?</summary><p>Oui ! Dans la section Compte ci-dessus, clique sur Changer de pseudo. Ton pseudo change partout : compte, amis, packs et classement.</p></details>" +
             "<details><summary>\uD83C\uDCCF Comment fonctionne la liste de souhait ?</summary><p>Dans l'onglet Collection, ajoute les cartes que tu r\u00eaves d'obtenir. D\u00e8s que tu les obtiens dans un pack, elles sortent automatiquement de la liste.</p></details>" +
             "<details><summary>\u2694\uFE0F Comment d\u00e9fier un ami ?</summary><p>Dans l'onglet Amis, ajoute son pseudo et lance un duel amical (3, 5 ou 10 questions). Tu peux aussi ajouter un pseudo non inscrit pour jouer \u00e0 deux sur le m\u00eame appareil.</p></details>" +
             "<details><summary>\uD83D\uDCBE Comment transf\u00e9rer ma progression ?</summary><p>Exporte ta sauvegarde ici m\u00eame (bouton Exporter), puis importe le fichier sur l'autre appareil.</p></details>";
@@ -241,13 +314,11 @@
         var section = document.getElementById("settings");
         if (!section || document.getElementById("st-grid")) return;
 
-        // 1. Compte (en premier)
         var account = document.createElement("div");
         account.className = "settings-section";
         account.innerHTML = "<h3>\uD83D\uDC64 Compte</h3><div id=\"st-account-zone\"></div>";
         section.insertBefore(account, section.querySelector(".settings-section"));
 
-        // 2. Preferences
         var box = document.createElement("div");
         box.className = "settings-section";
         box.innerHTML =
@@ -260,20 +331,17 @@
             "</div>";
         section.insertBefore(box, section.querySelector(".settings-section"));
 
-        // 3. Donnees
         var data = document.createElement("div");
         data.className = "settings-section";
         data.innerHTML = "<h3>\uD83D\uDDC2\uFE0F Mes donn\u00e9es</h3><div id=\"st-data-zone\"></div>";
         section.insertBefore(data, section.querySelector(".settings-section"));
 
-        // 4. Aide
         var faq = document.createElement("div");
         faq.className = "settings-section";
         faq.innerHTML = "<h3>\u2753 Aide</h3><div class=\"st-faq\" id=\"st-faq-zone\"></div>";
         var about = Array.prototype.find.call(section.querySelectorAll(".settings-section"), function (s) { return s.querySelector("h3") && s.querySelector("h3").textContent.indexOf("propos") !== -1; });
         if (about) section.insertBefore(faq, about); else section.appendChild(faq);
 
-        // 5. Export / Import
         var io = document.createElement("div");
         io.className = "settings-section";
         io.innerHTML =
@@ -290,7 +358,6 @@
             e.target.value = "";
         });
 
-        // Preferences : wiring
         document.getElementById("st-theme-dark").addEventListener("click", function () { setPref(LS_THEME, "dark"); applyTheme(); });
         document.getElementById("st-theme-light").addEventListener("click", function () { setPref(LS_THEME, "light"); applyTheme(); });
         var bSound = document.getElementById("st-sound");
