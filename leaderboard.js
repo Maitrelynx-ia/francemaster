@@ -69,8 +69,7 @@
         var cards = 0, distinct = 0, value = 0;
         var all = {};
         if (typeof getAllCards === "function") {
-            getAllCards().forEach(function (c) { all[c.id] = c; })
-;
+            getAllCards().forEach(function (c) { all[c.id] = c; });
         }
         var col = (typeof GameState !== "undefined") ? GameState.collection : {};
         Object.keys(col).forEach(function (id) {
@@ -137,6 +136,18 @@
         return String(s).replace(/[&<>"']/g, function (c) { return map[c]; });
     }
 
+    // Changement d'onglet autonome (ne depend pas de switchTab du jeu)
+    function activateTab() {
+        var section = document.getElementById("leaderboard");
+        if (!section) return;
+        document.querySelectorAll(".tab-content").forEach(function (c) { c.classList.remove("active"); });
+        document.querySelectorAll(".nav-tab").forEach(function (t) { t.classList.remove("active"); });
+        section.classList.add("active");
+        var btn = document.querySelector('[data-tab="leaderboard"]');
+        if (btn) btn.classList.add("active");
+        window.scrollTo(0, 0);
+    }
+
     function render() {
         var list = document.getElementById("lb-list");
         var podium = document.getElementById("lb-podium");
@@ -159,8 +170,7 @@
             if (top.length === 0) {
                 podium.innerHTML = '<div class="lb-empty">Aucun joueur classé pour le moment. Connecte-toi et ouvre des packs !</div>';
             } else {
-                podium.innerHTML = top.map(function (p, i) 
-{
+                podium.innerHTML = top.map(function (p, i) {
                     return '<div class="lb-podium-card ' + cls[i] + '">' +
                         '<div class="lb-podium-medal">' + medals[i] + "</div>" +
                         '<div class="lb-podium-name">' + escapeHtml(p.name) + "</div>" +
@@ -196,7 +206,10 @@
             btn.className = "nav-tab";
             btn.setAttribute("data-tab", "leaderboard");
             btn.textContent = "🏆 Classement";
-            btn.addEventListener("click", function () { try { switchTab("leaderboard"); } catch (e) { /* ignore */ } setTimeout(render, 30); });
+            btn.addEventListener("click", function () {
+                activateTab();
+                setTimeout(render, 30);
+            });
             var ideas = nav.querySelector("a.nav-tab");
             if (ideas) nav.insertBefore(btn, ideas); else nav.appendChild(btn);
         }
@@ -243,8 +256,7 @@
     function init() {
         injectLeaderboardStyles();
         buildUI();
-        
-syncAndRender();
+        syncAndRender();
         setInterval(syncAndRender, 60000);
     }
 
