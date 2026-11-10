@@ -40,3 +40,10 @@
         boot();
     }
 })();
+
+// Charge les ameliorations de l'animation d'ouverture de pack (pack-fx.js).
+(function () {
+    var s = document.createElement("script");
+    s.src = "pack-fx.js";
+    document.body.appendChild(s);
+})();
