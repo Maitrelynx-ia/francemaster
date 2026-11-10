@@ -1,6 +1,7 @@
 // France Masters - Systeme d'amis (version enrichie)
 // Liste d'amis par compte, duels amicaux (meme appareil), recherche, tri,
 // favoris, podium, statistiques detaillees et duels configurables.
+// + Amis du monde : recherche dans le classement en ligne (Supabase).
 
 const FRIEND_AVATARS = ['🦊', '🐺', '🦉', '🐯', '🐼', '🦁', '🐸', '🦄', '🐨', '🐙', '🦖', '🦜', '🐝', '🐬', '🦔', '🐲'];
 
@@ -8,7 +9,10 @@ const FriendState = {
     friends: [],
     duel: null,
     search: '',
-    sort: 'name'
+    sort: 'name',
+    worldQuery: '',
+    worldResults: null,
+    worldLoading: false
 };
 
 function friendKey() {
@@ -54,6 +58,222 @@ function friendStreakText(f) {
     return '';
 }
 
+// ===== AMIS DU MONDE (classement en ligne Supabase) =====
+
+const WORLD_URL = 'https://wossxalinroykryemifh.supabase.co';
+const WORLD_KEY = 'sb_publishable_pVjrrIXKNjftbm1wrXlkBw_pSZEYYWo';
+
+function worldHeaders() {
+    return {
+        'apikey': WORLD_KEY,
+        'Authorization': 'Bearer ' + WORLD_KEY,
+        'Content-Type': 'application/json'
+    };
+}
+
+function fetchWorldPlayers(query, limit) {
+    let url = WORLD_URL + '/rest/v1/players?select=key,name,cards,distinct_cards,value,updated&order=value.desc&limit=' + (limit || 12);
+    if (query) url += '&name=ilike.*' + encodeURIComponent(query) + '*';
+    return fetch(url, { headers: worldHeaders() })
+        .then(r => r.ok ? r.json() : null)
+        .catch(() => null);
+}
+
+function fmtWorld(n) {
+    return String(n || 0).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+}
+
+function worldSeenText(ts) {
+    if (!ts) return '';
+    const m = Math.floor((Date.now() - ts) / 60000);
+    if (m < 1) return "vu à l'instant";
+    if (m < 60) return 'vu il y a ' + m + ' min';
+    const h = Math.floor(m / 60);
+    if (h < 24) return 'vu il y a ' + h + ' h';
+    const d = Math.floor(h / 24);
+    if (d < 30) return 'vu il y a ' + d + ' j';
+    return 'vu il y a longtemps';
+}
+
+function isWorldFriend(name) {
+    return FriendState.friends.some(f => f.username === name);
+}
+
+function addWorldFriend(p) {
+    if (!isLoggedIn()) {
+        showAuthModal();
+        return;
+    }
+    if (p.name === AuthState.currentUser.username) {
+        showToast('Erreur', "Vous ne pouvez pas vous ajouter vous-même !", 'error');
+        return;
+    }
+    if (isWorldFriend(p.name)) {
+        showToast('Erreur', p.name + " est déjà dans vos amis.", 'error');
+        return;
+    }
+    FriendState.friends.push({
+        username: p.name, wins: 0, losses: 0, addedAt: Date.now(),
+        world: true, value: p.value, cards: p.cards, lastSeen: p.updated
+    });
+    saveFriends();
+    renderFriendCards();
+    renderWorldResults();
+    showToast('Succès', p.name + ' a été ajouté à vos amis ! 🤝', 'success');
+}
+
+function updateWorldSnapshots(players) {
+    let changed = false;
+    (players || []).forEach(p => {
+        FriendState.friends.forEach(f => {
+            if (f.world && f.username === p.name) {
+                f.value = p.value;
+                f.cards = p.cards;
+                f.lastSeen = p.updated;
+                changed = true;
+            }
+        });
+    });
+    if (changed) saveFriends();
+}
+
+function refreshWorldFriendsStats() {
+    return fetchWorldPlayers('', 200).then(players => {
+        if (players) updateWorldSnapshots(players);
+        return players;
+    });
+}
+
+function runWorldSearch() {
+    const input = document.getElementById('fw-search');
+    const q = input ? input.value.trim() : '';
+    FriendState.worldQuery = q;
+    FriendState.worldLoading = true;
+    renderWorldResults();
+    fetchWorldPlayers(q, 12).then(players => {
+        FriendState.worldLoading = false;
+        FriendState.worldResults = players;
+        if (players) updateWorldSnapshots(players);
+        renderWorldResults();
+        renderFriendCards();
+    });
+}
+
+function escapeWorldHtml(s) {
+    const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
+    return String(s).replace(/[&<>"']/g, c => map[c]);
+}
+
+function renderWorldResults() {
+    const box = document.getElementById('fw-results');
+    if (!box) return;
+    box.innerHTML = '';
+    if (FriendState.worldLoading) {
+        box.innerHTML = '<p class="fw-status">Recherche dans le monde...</p>';
+        return;
+    }
+    const players = FriendState.worldResults;
+    if (players === null) {
+        box.innerHTML = '<p class="fw-status">Classement en ligne momentanément indisponible. Réessayez plus tard.</p>';
+        return;
+    }
+    if (!players.length) {
+        box.innerHTML = '<p class="fw-status">Aucun joueur trouvé' + (FriendState.worldQuery ? ' pour « ' + escapeWorldHtml(FriendState.worldQuery) + ' »' : '') + '.</p>';
+        return;
+    }
+    const me = isLoggedIn() ? AuthState.currentUser.username : null;
+    players.forEach(p => {
+        const isMe = me && p.name === me;
+        const isFriend = isWorldFriend(p.name);
+        const card = document.createElement('div');
+        card.className = 'fw-card' + (isFriend ? ' fw-friend' : '');
+        const av = document.createElement('div');
+        av.className = 'friend-avatar';
+        av.textContent = getFriendAvatar(p.name);
+        const info = document.createElement('div');
+        info.className = 'friend-info';
+        const nm = document.createElement('div');
+        nm.className = 'friend-name';
+        nm.textContent = p.name;
+        const st = document.createElement('div');
+        st.className = 'friend-stats';
+        st.textContent = '💎 ' + fmtWorld(p.value) + ' pts · 🃏 ' + fmtWorld(p.cards) + ' cartes · ' + worldSeenText(p.updated);
+        info.appendChild(nm);
+        info.appendChild(st);
+        const actions = document.createElement('div');
+        actions.className = 'friend-actions';
+        const addBtn = document.createElement('button');
+        addBtn.className = 'btn ' + (isFriend || isMe ? 'btn-secondary' : 'btn-primary');
+        if (isMe) {
+            addBtn.textContent = '🙂 Vous';
+            addBtn.disabled = true;
+        } else if (isFriend) {
+            addBtn.textContent = '✅ Ami';
+            addBtn.disabled = true;
+        } else {
+            addBtn.textContent = '➕ Ajouter';
+            addBtn.addEventListener('click', () => addWorldFriend(p));
+        }
+        actions.appendChild(addBtn);
+        card.appendChild(av);
+        card.appendChild(info);
+        card.appendChild(actions);
+        box.appendChild(card);
+    });
+}
+
+function buildWorldBlock(grid) {
+    const old = document.getElementById('friends-world');
+    if (old) old.remove();
+    const block = document.createElement('div');
+    block.className = 'friends-world';
+    block.id = 'friends-world';
+
+    const head = document.createElement('div');
+    head.className = 'fw-head';
+    const title = document.createElement('h3');
+    title.textContent = '🌍 Amis du monde';
+    const refresh = document.createElement('button');
+    refresh.className = 'btn btn-secondary fw-refresh';
+    refresh.textContent = '🔄';
+    refresh.title = 'Actualiser les infos des joueurs du monde (et de vos amis en ligne)';
+    refresh.addEventListener('click', () => {
+        refresh.textContent = '⏳';
+        refreshWorldFriendsStats().then(() => {
+            refresh.textContent = '🔄';
+            renderFriendCards();
+            renderWorldResults();
+        });
+    });
+    head.appendChild(title);
+    head.appendChild(refresh);
+    block.appendChild(head);
+
+    const row = document.createElement('div');
+    row.className = 'fw-search-row';
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.id = 'fw-search';
+    input.placeholder = '🌍 Rechercher un joueur dans le monde...';
+    input.addEventListener('keydown', e => { if (e.key === 'Enter') runWorldSearch(); });
+    const btn = document.createElement('button');
+    btn.className = 'btn btn-primary';
+    btn.textContent = '🔍 Rechercher';
+    btn.addEventListener('click', runWorldSearch);
+    row.appendChild(input);
+    row.appendChild(btn);
+    block.appendChild(row);
+
+    const res = document.createElement('div');
+    res.className = 'fw-results';
+    res.id = 'fw-results';
+    block.appendChild(res);
+
+    grid.parentNode.insertBefore(block, grid);
+    if (FriendState.worldResults === null) runWorldSearch();
+    else renderWorldResults();
+}
+
 // ===== Styles injectes (compatibles theme clair et sombre via variables CSS) =====
 
 function injectFriendStyles() {
@@ -75,7 +295,16 @@ function injectFriendStyles() {
         '.fd-counts { display: flex; gap: 10px; justify-content: center; margin: 12px 0 16px; }',
         '.fd-count { min-width: 52px; font-weight: 700; }',
         '.friend-confirm .modal-content { max-width: 400px; width: 90%; text-align: center; }',
-        '.friend-confirm .fc-actions { display: flex; gap: 10px; justify-content: center; margin-top: 18px; }'
+        '.friend-confirm .fc-actions { display: flex; gap: 10px; justify-content: center; margin-top: 18px; }',
+        '.friends-world { background: var(--surface); border: 1px solid rgba(128,128,160,0.25); border-radius: 16px; padding: 14px 16px; margin-bottom: 16px; box-shadow: var(--shadow-md); }',
+        '.fw-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px; }',
+        '.fw-head h3 { margin: 0; }',
+        '.fw-search-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }',
+        '.fw-search-row input { flex: 1; min-width: 160px; padding: 9px 12px; border-radius: 10px; border: 1px solid rgba(128,128,160,0.35); background: var(--bg, transparent); color: var(--text-primary); font-size: 14px; }',
+        '.fw-results { display: flex; flex-direction: column; gap: 8px; }',
+        '.fw-card { display: flex; align-items: center; gap: 12px; background: var(--bg, rgba(128,128,128,0.08)); border-radius: 12px; padding: 8px 12px; }',
+        '.fw-card.fw-friend { outline: 1px solid var(--secondary); }',
+        '.fw-status { opacity: 0.7; font-size: 13px; text-align: center; padding: 8px; margin: 0; }'
     ];
     const style = document.createElement('style');
     style.id = 'friends-styles';
@@ -150,7 +379,7 @@ function renderFriendCards() {
     if (list.length === 0) {
         const p = document.createElement('p');
         p.className = 'friends-empty';
-        p.textContent = q ? 'Aucun ami ne correspond à votre recherche.' : "Aucun ami pour le moment. Ajoutez le pseudo d'un joueur ci-dessus !";
+        p.textContent = q ? 'Aucun ami ne correspond à votre recherche.' : "Aucun ami pour le moment. Ajoutez le pseudo d'un joueur ci-dessus, ou cherchez-en un dans le monde !";
         grid.appendChild(p);
         return;
     }
@@ -175,6 +404,13 @@ function renderFriendCards() {
             tag.title = "Ce pseudo n'est pas inscrit sur cet appareil : duels possibles uniquement sur ce même appareil.";
             name.appendChild(tag);
         }
+        if (friend.world) {
+            const tag = document.createElement('span');
+            tag.className = 'friend-tag';
+            tag.textContent = '🌍 monde';
+            tag.title = 'Ce joueur vient du classement en ligne : ses stats sont mises à jour automatiquement.';
+            name.appendChild(tag);
+        }
         const record = document.createElement('div');
         record.className = 'friend-record';
         const total = (friend.wins || 0) + (friend.losses || 0);
@@ -182,7 +418,11 @@ function renderFriendCards() {
         record.textContent = '⚔️ ' + (friend.wins || 0) + 'V - ' + (friend.losses || 0) + 'D' + (rate !== null ? ' (' + rate + '%)' : '') + (total > 0 ? ' · ' + total + ' duel' + (total > 1 ? 's' : '') : '');
         const stats = document.createElement('div');
         stats.className = 'friend-stats';
-        const st = friendStreakText(friend);
+        let st = friendStreakText(friend);
+        if (friend.world) {
+            const w = '💎 ' + fmtWorld(friend.value) + ' pts · 🃏 ' + fmtWorld(friend.cards) + ' cartes' + (friend.lastSeen ? ' · ' + worldSeenText(friend.lastSeen) : '');
+            st = st ? st + ' · ' + w : w;
+        }
         if (st) stats.textContent = st;
         info.appendChild(name);
         info.appendChild(record);
@@ -233,6 +473,8 @@ function renderFriends() {
     if (!isLoggedIn()) {
         if (addBlock) addBlock.style.display = 'none';
         if (toolbar) toolbar.style.display = 'none';
+        const world = document.getElementById('friends-world');
+        if (world) world.style.display = 'none';
         grid.innerHTML = '';
         const p = document.createElement('p');
         p.className = 'friends-empty';
@@ -288,6 +530,7 @@ function renderFriends() {
     }
     toolbar.style.display = 'flex';
 
+    buildWorldBlock(grid);
     renderFriendCards();
 }
 
@@ -320,17 +563,34 @@ function addFriend() {
         renderFriends();
         showToast('Succès', name + " a été ajouté à vos amis ! 🤝", 'success');
     } else {
-        friendConfirm(
-            'Ajouter un ami hors ligne ?',
-            name + " n'est pas inscrit sur cet appareil. Vous pouvez quand même l'ajouter pour jouer des duels sur ce même appareil (frère, sœur, ami de passage...).",
-            () => {
-                FriendState.friends.push({ username: name, wins: 0, losses: 0, addedAt: Date.now(), offline: true });
-                saveFriends();
-                input.value = '';
-                renderFriends();
-                showToast('Succès', name + " a été ajouté à vos amis ! 🤝", 'success');
-            }
-        );
+        // Recherche dans le classement en ligne avant de proposer le mode hors ligne
+        fetch(WORLD_URL + '/rest/v1/players?select=name,value,cards,updated&name=eq.' + encodeURIComponent(name), { headers: worldHeaders() })
+            .then(r => r.ok ? r.json() : null)
+            .then(list => {
+                if (list && list.length) {
+                    const p = list[0];
+                    FriendState.friends.push({
+                        username: p.name, wins: 0, losses: 0, addedAt: Date.now(),
+                        world: true, value: p.value, cards: p.cards, lastSeen: p.updated
+                    });
+                    saveFriends();
+                    input.value = '';
+                    renderFriends();
+                    showToast('Succès', p.name + ' (joueur du monde) a été ajouté à vos amis ! 🤝', 'success');
+                } else {
+                    friendConfirm(
+                        'Ajouter un ami hors ligne ?',
+                        name + " n'est ni inscrit sur cet appareil, ni présent dans le classement en ligne. Vous pouvez quand même l'ajouter pour jouer des duels sur ce même appareil (frère, sœur, ami de passage...).",
+                        () => {
+                            FriendState.friends.push({ username: name, wins: 0, losses: 0, addedAt: Date.now(), offline: true });
+                            saveFriends();
+                            input.value = '';
+                            renderFriends();
+                            showToast('Succès', name + " a été ajouté à vos amis ! 🤝", 'success');
+                        }
+                    );
+                }
+            });
     }
 }
 
@@ -671,3 +931,4 @@ window.addFriend = addFriend;
 window.removeFriend = removeFriend;
 window.friendDuel = friendDuel;
 window.closeFriendDuel = closeFriendDuel;
+window.runWorldSearch = runWorldSearch;
