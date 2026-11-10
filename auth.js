@@ -66,8 +66,7 @@ function loadUserPacks() {
     }
 }
 
-// Sauvegarder les packs de l'u
-tilisateur
+// Sauvegarder les packs de l'utilisateur
 function saveUserPacks() {
     if (!AuthState.currentUser) return;
     
@@ -323,8 +322,7 @@ function updatePackTimer() {
     if (profileTimer) {
         if (AuthState.packs.count >= AuthState.packs.max) {
             profileTimer.innerHTML = 'Réserve pleine';
-        } else if (timeSi
-nceLastOpen >= AuthState.packs.cooldown) {
+        } else if (timeSinceLastOpen >= AuthState.packs.cooldown) {
             profileTimer.innerHTML = 'Prêt';
         } else {
             const remainingTime = Math.ceil((AuthState.packs.cooldown - timeSinceLastOpen) / 1000 / 60);
@@ -375,8 +373,7 @@ function showRegisterTab() {
 
 // Afficher le modal de profil
 function showProfileModal() {
-    if (!isLogg
-edIn()) {
+    if (!isLoggedIn()) {
         showAuthModal();
         return;
     }
