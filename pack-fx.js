@@ -1,7 +1,8 @@
 // France Masters - Amelioration de l'animation d'ouverture de pack
 // Remplace la revelation des cartes par une version plus rythmee :
 // bouton "Tout reveler", aura pulsante sur les cartes rares, rayons de
-// lumiere pour UR/L, bandeau d'annonce anime et paquet qui flotte.
+// lumiere pour UR/L, bandeau d'annonce anime, paquet qui flotte et
+// ouverture en PLEIN ECRAN.
 
 (function () {
     "use strict";
@@ -11,6 +12,15 @@
         var st = document.createElement("style");
         st.id = "pkfx-styles";
         st.textContent = [
+            /* ----- Plein ecran ----- */
+            "#pack-modal { padding: 0; }",
+            "#pack-modal .pack-modal-content { width: 100vw; height: 100vh; height: 100dvh; max-width: none; max-height: none; margin: 0; border-radius: 0; border: none; overflow-y: auto; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; background: radial-gradient(ellipse at center, rgba(30, 34, 54, 0.97) 0%, rgba(10, 12, 22, 0.99) 75%); }",
+            "#pack-modal .modal-close { position: fixed; top: 14px; right: 20px; z-index: 10; font-size: 2rem; }",
+            "#pack-modal .pack-announcement { font-size: 1.35rem; min-height: 2.2em; }",
+            "#pack-modal .modal-pack-container { width: 100%; max-width: 1100px; flex: 1; display: flex; align-items: center; justify-content: center; gap: 18px; flex-wrap: wrap; padding: 10px 20px; }",
+            "#pack-modal .pack-stage { width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; }",
+            "@media (min-width: 900px) { #pack-modal .modal-pack-container .pack-card-slot { transform: scale(1.15); } }",
+            /* ----- Effets ----- */
             "@keyframes pkfx-float { 0%, 100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-9px) rotate(1.2deg); } }",
             "#booster-pack { animation: pkfx-float 2.8s ease-in-out infinite; }",
             "#booster-pack.grabbed, #booster-pack.torn { animation: none; }",
@@ -22,8 +32,8 @@
             ".pack-card-slot .flip-wrap { position: relative; z-index: 1; }",
             "@keyframes pkfx-beam { 0% { opacity: 0; transform: translateY(40px) scaleY(0.4); } 30% { opacity: 0.9; } 100% { opacity: 0; transform: translateY(-70px) scaleY(1.5); } }",
             ".pkfx-beam { position: absolute; top: 15%; width: 3px; height: 75px; background: linear-gradient(to top, rgba(255, 215, 0, 0), #ffd700, rgba(255, 215, 0, 0)); animation: pkfx-beam 1.1s ease-out both; pointer-events: none; z-index: 2; }",
-            ".pkfx-skip { margin-top: 14px; padding: 8px 20px; border-radius: 999px; border: 1px solid rgba(128, 128, 128, 0.4); background: rgba(128, 128, 128, 0.15); color: inherit; font: inherit; font-size: 0.9rem; cursor: pointer; transition: background 0.2s, transform 0.15s; }",
-            ".pkfx-skip:hover { background: rgba(128, 128, 128, 0.3); transform: scale(1.06); }",
+            ".pkfx-skip { margin-top: 14px; padding: 8px 20px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.3); background: rgba(255, 255, 255, 0.1); color: #fff; font: inherit; font-size: 0.95rem; cursor: pointer; transition: background 0.2s, transform 0.15s; }",
+            ".pkfx-skip:hover { background: rgba(255, 255, 255, 0.22); transform: scale(1.06); }",
             ".pkfx-skip:active { transform: scale(0.97); }"
         ].join("\n");
         document.head.appendChild(st);
