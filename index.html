@@ -45,8 +45,7 @@
             <button class="nav-tab" data-tab="collection">Collection</button>
             <button class="nav-tab" data-tab="duel">Duel</button>
             <button class="nav-tab" data-tab="friends">Amis</button>
-            <button class="nav-tab" data-
-tab="settings">Paramètres</button>
+            <button class="nav-tab" data-tab="settings">Paramètres</button>
             <a href="idees.html" class="nav-tab" style="text-decoration: none;">Idées</a>
         </nav>
 
@@ -122,7 +121,8 @@ tab="settings">Paramètres</button>
                         <div class="pack-closed claim-pack-btn" onclick="claimPack()" id="packs-claim-btn">
                             <div class="pack-closed-inner">
                                 <span class="pack-closed-icon">🎁</span>
-                                <span class="pack-closed-text">Stockage automatique</span>
+          
+                      <span class="pack-closed-text">Stockage automatique</span>
                                 <span class="pack-closed-cost">Un pack gratuit · toutes les 15 min</span>
                             </div>
                         </div>
@@ -195,7 +195,8 @@ tab="settings">Paramètres</button>
 
                 <div class="market-section">
                     <h3>♻️ Vendre mes doublons</h3>
-                    <p class="market-hint">Mettez vos cartes en 
+             
+       <p class="market-hint">Mettez vos cartes en 
 double (ou plus) aux enchères : les acheteurs IA enchérissent pendant 3 minutes en partant du prix de départ. Maximum 3 ventes simultanées.</p>
                     <div class="market-grid" id="market-duplicates-grid"></div>
                 </div>
@@ -295,7 +296,8 @@ double (ou plus) aux enchères : les acheteurs IA enchérissent pendant 3 minute
                             <h3 id="duel-opponent-label">🤖 IA</h3>
                             <div class="duel-opponent-cards" id="duel-opponent-cards"></div>
                             <div class="duel-opponent-active" id="duel-opponent-active"></div>
-                        </div>
+         
+               </div>
                         
       
                   <div class="duel-center">
@@ -333,7 +335,8 @@ double (ou plus) aux enchères : les acheteurs IA enchérissent pendant 3 minute
                         Retour à la sélection
                     </button>
                 </div>
-            </section>
+            
+</section>
 
             <!-- Friends Tab -->
          
@@ -374,7 +377,8 @@ double (ou plus) aux enchères : les acheteurs IA enchérissent pendant 3 minute
                             <span class="detailed-stat-label">Pièces gagnées :</span>
                             <span class="detailed-stat-value" id="coins-earned">0</span>
                         </div>
-                        <div class="detailed-stat">
+                  
+      <div class="detailed-stat">
                      
        <span class="detailed-stat-label">Duels joués :</span>
                             <span class="detailed-stat-value" id="duels-played">0</span>
@@ -448,8 +452,7 @@ double (ou plus) aux enchères : les acheteurs IA enchérissent pendant 3 minute
     <!-- Login/Register Modal -->
     <div class="modal" id="auth-modal" style="display: none;">
         <div class="modal-content auth-modal-content">
-            <div
- class="modal-close" onclick="closeAuthModal()">&times;</div>
+            <div class="modal-close" onclick="closeAuthModal()">&times;</div>
             <div class="auth-tabs">
                 <button class="auth-tab active" onclick="showLoginTab()">Connexion</button>
                 <button class="auth-tab" onclick="showRegisterTab()">Inscription</button>
@@ -489,6 +492,7 @@ double (ou plus) aux enchères : les acheteurs IA enchérissent pendant 3 minute
                     </div>
                     <button type="submit" class="btn btn-primary">S'inscrire</button>
                 </form>
+
                 <p class="auth-error" id="register-error"></p>
             </div>
         </div>
@@ -538,6 +542,10 @@ double (ou plus) aux enchères : les acheteurs IA enchérissent pendant 3 minute
     <script src="game.js"></script>
     <script src="market.js"></script>
     <script src="friends.js"></script>
+    <script src="pack-fx.js"></script>
+    <script src="leaderboard.js"></script>
+    <script src="wishlist.js"></script>
+    <script src="settings.js"></script>
     <script src="boot.js"></script>
 </body>
 </html>
