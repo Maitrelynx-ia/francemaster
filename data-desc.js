@@ -149,7 +149,7 @@
   };
 
   function enrichirTexte(card) {
-    var base = (card.description || '').replace(/s+/g, ' ').trim();
+    var base = (card.description || '').replace(/\s+/g, ' ').trim();
     if (base && !/[.!?…]$/.test(base)) base += '.';
     var r = PHRASES_RARETE[card.rarity] || PHRASES_RARETE.C;
     var p1 = r[card.id % 3];
