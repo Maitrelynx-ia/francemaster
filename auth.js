@@ -66,7 +66,8 @@ function loadUserPacks() {
     }
 }
 
-// Sauvegarder les packs de l'utilisateur
+// Sauvegarder les packs de l'u
+tilisateur
 function saveUserPacks() {
     if (!AuthState.currentUser) return;
     
@@ -108,7 +109,7 @@ function register(event) {
         username: username,
         password: hashPassword(password),
         createdAt: Date.now(),
-        role: AuthState.users.length === 0 ? 'admin' : 'joueur'
+        role: 'joueur'
     };
     
     AuthState.users.push(newUser);
@@ -129,6 +130,7 @@ function register(event) {
     updateAuthUI();
     
     showToast('Succès', 'Inscription réussie !', 'success');
+
 }
 
 // Se connecter
@@ -200,7 +202,8 @@ function isLoggedIn() {
 function autoClaimPacks() {
     if (!isLoggedIn()) return;
     if (!AuthState.packs.lastOpenTime) {
-        AuthState.packs.lastOpenTime = Date.now() - AuthState.packs.cooldown;
+        AuthState.packs.lastOpenTime = 
+Date.now() - AuthState.packs.cooldown;
     }
     let added = 0;
     while (AuthState.packs.count < AuthState.packs.max && Date.now() - AuthState.packs.lastOpenTime >= AuthState.packs.cooldown) {
@@ -256,7 +259,8 @@ function openStoredPack() {
     }
     
     if (!AuthState.packs || AuthState.packs.count <= 0) {
-        showToast('Info', "Aucun pack stocké ! Le prochain se stocke automatiquement dans moins de 15 minutes.", 'info');
+     
+   showToast('Info', "Aucun pack stocké ! Le prochain se stocke automatiquement dans moins de 15 minutes.", 'info');
         return false;
     }
     
@@ -319,7 +323,8 @@ function updatePackTimer() {
     if (profileTimer) {
         if (AuthState.packs.count >= AuthState.packs.max) {
             profileTimer.innerHTML = 'Réserve pleine';
-        } else if (timeSinceLastOpen >= AuthState.packs.cooldown) {
+        } else if (timeSi
+nceLastOpen >= AuthState.packs.cooldown) {
             profileTimer.innerHTML = 'Prêt';
         } else {
             const remainingTime = Math.ceil((AuthState.packs.cooldown - timeSinceLastOpen) / 1000 / 60);
@@ -370,7 +375,8 @@ function showRegisterTab() {
 
 // Afficher le modal de profil
 function showProfileModal() {
-    if (!isLoggedIn()) {
+    if (!isLogg
+edIn()) {
         showAuthModal();
         return;
     }
@@ -382,13 +388,7 @@ function showProfileModal() {
     
     const roleEl = document.getElementById('profile-role');
     if (roleEl) {
-        const fullUser = AuthState.users.find(u => u.username === AuthState.currentUser.username);
-        const role = (fullUser && fullUser.role) || 'joueur';
-        roleEl.textContent = role === 'admin' ? '🛡️ Administrateur' : (role === 'moderateur' ? '⭐ Modérateur' : '🎮 Joueur');
-    }
-    const adminBtn = document.getElementById('admin-panel-btn');
-    if (adminBtn) {
-        adminBtn.style.display = (window.isAdmin && window.isAdmin()) ? 'inline-block' : 'none';
+        roleEl.textContent = '🎮 Joueur';
     }
 }
 
@@ -431,7 +431,8 @@ function initAuth() {
     document.querySelectorAll('.open-stored-pack-btn').forEach(button => {
         button.onclick = openStoredPack;
     });
-    
+  
+  
     // Ajouter le timer sous le bouton de récolte (onglet Packs)
     const packButton = document.getElementById('packs-claim-btn');
     if (packButton) {
