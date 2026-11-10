@@ -1,15 +1,16 @@
 // France Masters - Classement des joueurs (nombre de cartes et valeur de collection)
 // Valeur par rarete : C=10, R=25, SR=60, UR=150, L=400.
-// Mode en ligne : Firebase Realtime Database (REST). Sans URL configuree,
-// le classement fonctionne en mode local (snapshots par compte de ce navigateur).
+// Backend : Supabase (REST / PostgREST). La cle "anon" est publique par design,
+// protegee par les regles RLS de la table players (lecture/insertion/maj uniquement).
 
 (function () {
     "use strict";
 
-    var BUILTIN_URL = ""; // URL Firebase a coller ici (ex. https://mon-projet.firebaseio.com)
+    var SUPABASE_URL = "https://wossxalinroykryemifh.supabase.co";
+    var SUPABASE_KEY = "sb_publishable_pVjrrIXKNjftbm1wrXlkBw_pSZEYYWo";
+    var TABLE = "players";
     var VALUES = { C: 10, R: 25, SR: 60, UR: 150, L: 400 };
     var LS_LOCAL = "franceMastersLocalLeaderboard";
-    var LS_URL = "franceMastersLeaderboardUrl";
     var sortBy = "value";
 
     function injectLeaderboardStyles() {
@@ -40,17 +41,19 @@
             ".lb-cards, .lb-val { white-space: nowrap; }",
             ".lb-val { font-weight: bold; color: var(--primary, #4169e1); }",
             ".lb-status { text-align: center; opacity: 0.7; margin-top: 14px; font-size: 0.9rem; }",
-            ".lb-admin { margin-top: 26px; font-size: 0.9rem; }",
-            ".lb-admin summary { cursor: pointer; opacity: 0.7; }",
-            ".lb-admin-box { margin-top: 10px; display: flex; flex-direction: column; gap: 8px; }",
-            ".lb-admin-box input { padding: 8px 12px; border-radius: 8px; border: 1px solid rgba(128,128,128,0.4); background: transparent; color: inherit; font: inherit; }",
             ".lb-empty { text-align: center; opacity: 0.6; padding: 20px; }"
         ].join("\n");
         document.head.appendChild(st);
     }
 
-    function getFirebaseUrl() {
-        return BUILTIN_URL || localStorage.getItem(LS_URL) || "";
+    function restHeaders(extra) {
+        var h = {
+            "apikey": SUPABASE_KEY,
+            "Authorization": "Bearer " + SUPABASE_KEY,
+            "Content-Type": "application/json"
+        };
+        if (extra) Object.keys(extra).forEach(function (k) { h[k] = extra[k]; });
+        return h;
     }
 
     function currentUsername() {
@@ -97,21 +100,21 @@
     }
 
     function publishOnline(stats) {
-        var url = getFirebaseUrl();
         var name = currentUsername();
-        if (!url || !name || !stats) return Promise.resolve(false);
-        var key = encodeURIComponent(name).replace(/[.#$\[\]\/]/g, "_");
-        return fetch(url.replace(/\/+$/, "") + "/players/" + key + ".json", {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name: name, cards: stats.cards, distinct: stats.distinct, value: stats.value, updated: Date.now() })
+        if (!name || !stats) return Promise.resolve(false);
+        var key = encodeURIComponent(name).replace(/[^\w\-]/g, "_");
+        var body = [{ key: key, name: name, cards: stats.cards, distinct_cards: stats.distinct, value: stats.value, updated: Date.now() }];
+        return fetch(SUPABASE_URL + "/rest/v1/" + TABLE + "?on_conflict=key", {
+            method: "POST",
+            headers: restHeaders({ "Prefer": "resolution=merge-duplicates,return=minimal" }),
+            body: JSON.stringify(body)
         }).then(function (r) { return r.ok; }).catch(function () { return false; });
     }
 
     function fetchOnline() {
-        var url = getFirebaseUrl();
-        if (!url) return Promise.resolve(null);
-        return fetch(url.replace(/\/+$/, "") + "/players.json").then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
+        return fetch(SUPABASE_URL + "/rest/v1/" + TABLE + "?select=key,name,cards,distinct_cards,value,updated&order=value.desc&limit=200", {
+            headers: restHeaders()
+        }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
     }
 
     function mergedPlayers(online) {
@@ -120,12 +123,9 @@
         Object.keys(local).forEach(function (k) {
             players[k] = { name: k, cards: local[k].cards, distinct: local[k].distinct, value: local[k].value, updated: local[k].updated };
         });
-        if (online) {
-            Object.keys(online).forEach(function (k) {
-                var p = online[k];
-                if (p && p.name) players[p.name] = p;
-            });
-        }
+        (online || []).forEach(function (p) {
+            if (p && p.name) players[p.name] = { name: p.name, cards: p.cards, distinct: p.distinct_cards, value: p.value, updated: p.updated };
+        });
         return Object.keys(players).map(function (k) { return players[k]; });
     }
 
@@ -180,7 +180,7 @@
             if (status) {
                 status.textContent = online
                     ? "Classement en ligne synchronisé 🌍 (" + players.length + " joueur" + (players.length > 1 ? "s" : "") + ")"
-                    : "Mode local : seuls les comptes de ce navigateur apparaissent. Connecte un serveur en ligne pour un classement mondial (voir en bas de page).";
+                    : "Classement en ligne momentanément indisponible, affichage local.";
             }
         });
     }
@@ -214,13 +214,7 @@
             "</div>" +
             '<div class="lb-podium" id="lb-podium"></div>' +
             '<div class="lb-list" id="lb-list"></div>' +
-            '<div class="lb-status" id="lb-status"></div>' +
-            '<details class="lb-admin"><summary>⚙️ Connecter le classement en ligne (avancé)</summary>' +
-            '<div class="lb-admin-box">' +
-            '<input type="url" id="lb-url-input" placeholder="https://ton-projet.firebaseio.com" />' +
-            '<button class="lb-btn" id="lb-url-save">Enregistrer l’URL du serveur</button>' +
-            '<span>Crée une base gratuite sur console.firebase.google.com (Realtime Database, mode test), puis colle son URL ici. Tous les joueurs du site partageront alors le même classement.</span>' +
-            "</div></details>";
+            '<div class="lb-status" id="lb-status"></div>';
         main.appendChild(section);
 
         var bVal = document.getElementById("lb-sort-value");
@@ -232,13 +226,6 @@
         bVal.addEventListener("click", function () { sortBy = "value"; refreshSortBtns(); render(); });
         bCards.addEventListener("click", function () { sortBy = "cards"; refreshSortBtns(); render(); });
         document.getElementById("lb-refresh").addEventListener("click", render);
-        document.getElementById("lb-url-save").addEventListener("click", function () {
-            var input = document.getElementById("lb-url-input");
-            var v = (input.value || "").trim();
-            if (v) { localStorage.setItem(LS_URL, v); render(); }
-        });
-        var savedUrl = localStorage.getItem(LS_URL);
-        if (savedUrl) document.getElementById("lb-url-input").value = savedUrl;
         refreshSortBtns();
     }
 
