@@ -151,6 +151,46 @@
     }
 
     // ----- Changement de pseudo -----
+
+    // Cle de classement en ligne : meme encodage que leaderboard.js
+    function onlineKey(name) {
+        return encodeURIComponent(name).replace(/[^\w\-]/g, "_");
+    }
+
+    var SUPABASE_URL = "https://wossxalinroykryemifh.supabase.co";
+    var SUPABASE_KEY = "sb_publishable_pVjrrIXKNjftbm1wrXlkBw_pSZEYYWo";
+
+    // Renomme l'entree du classement en ligne (au lieu de la dupliquer),
+    // puis republie le score sous le nouveau pseudo.
+    function renameOnlineEntry(oldName, newName) {
+        try {
+            var oldKey = onlineKey(oldName);
+            var newKey = onlineKey(newName);
+            if (oldKey === newKey) {
+                if (typeof computeMyStats === "function" && typeof publishOnline === "function") {
+                    publishOnline(computeMyStats());
+                }
+                return;
+            }
+            fetch(SUPABASE_URL + "/rest/v1/players?key=eq." + encodeURIComponent(oldKey), {
+                method: "PATCH",
+                headers: {
+                    "apikey": SUPABASE_KEY,
+                    "Authorization": "Bearer " + SUPABASE_KEY,
+                    "Content-Type": "application/json",
+                    "Prefer": "return=minimal"
+                },
+                body: JSON.stringify({ key: newKey, name: newName })
+            }).then(function () {
+                try {
+                    if (typeof computeMyStats === "function" && typeof publishOnline === "function") {
+                        publishOnline(computeMyStats());
+                    }
+                } catch (e) { /* ignore */ }
+            }).catch(function () { /* ignore */ });
+        } catch (e) { /* ignore */ }
+    }
+
     function renameAccount() {
         var msg = document.getElementById("st-rename-msg");
         var newName = (document.getElementById("st-newname").value || "").trim();
@@ -189,17 +229,13 @@
             window.AuthState.currentUser.username = newName;
             localStorage.setItem("franceMastersCurrentUser", JSON.stringify(window.AuthState.currentUser));
 
-            // 3. Rafraichir l'interface et publier le nouveau score au classement
+            // 3. Rafraichir l'interface et renommer l'entree du classement en ligne
             if (typeof updateAuthUI === "function") updateAuthUI();
             if (typeof renderFriends === "function") renderFriends();
             if (typeof loadUserPacks === "function") loadUserPacks();
-            try {
-                if (typeof computeMyStats === "function" && typeof publishOnline === "function") {
-                    publishOnline(computeMyStats());
-                }
-            } catch (e) { /* ignore */ }
+            renameOnlineEntry(oldName, newName);
 
-            msg.textContent = "\u2705 Pseudo chang\u00e9 en \"" + newName + "\" !";
+            msg.textContent = "\u2705 Pseudo chang\u00e9 en \"" + newName + "\" ! Le classement en ligne est mis \u00e0 jour.";
             document.getElementById("st-newname").value = "";
             renderAccount();
             toast("\uD83D\uDC64 Bonjour " + newName + " !");
@@ -304,7 +340,7 @@
         zone.innerHTML =
             "<details><summary>\uD83C\uDFAF Comment jouer ?</summary><p>Collectionne des cartes inspir\u00e9es d'articles Wikip\u00e9dia sur la France : ouvre des packs (un pack gratuit s'ajoute \u00e0 ta r\u00e9serve toutes les 15 minutes), compl\u00e8te ton album et affronte l'IA ou tes amis en duels quiz.</p></details>" +
             "<details><summary>\uD83D\uDC8E Quelles sont les raret\u00e9s et leur valeur ?</summary><p>Commune (C) 10 pts \u00b7 Rare (R) 25 pts \u00b7 Super Rare (SR) 60 pts \u00b7 Ultra Rare (UR) 150 pts \u00b7 L\u00e9gendaire (L) 400 pts. La valeur de ta collection au classement est la somme des points de toutes tes cartes.</p></details>" +
-            "<details><summary>\uD83D\uDC64 Puis-je changer de pseudo ?</summary><p>Oui ! Dans la section Compte ci-dessus, clique sur Changer de pseudo. Ton pseudo change partout : compte, amis, packs et classement.</p></details>" +
+            "<details><summary>\uD83D\uDC64 Puis-je changer de pseudo ?</summary><p>Oui ! Dans la section Compte ci-dessus, clique sur Changer de pseudo. Ton pseudo change partout : compte, amis, packs et classement en ligne (ton ancienne entr\u00e9e est renomm\u00e9e, pas dupliqu\u00e9e).</p></details>" +
             "<details><summary>\uD83C\uDCCF Comment fonctionne la liste de souhait ?</summary><p>Dans l'onglet Collection, ajoute les cartes que tu r\u00eaves d'obtenir. D\u00e8s que tu les obtiens dans un pack, elles sortent automatiquement de la liste.</p></details>" +
             "<details><summary>\u2694\uFE0F Comment d\u00e9fier un ami ?</summary><p>Dans l'onglet Amis, ajoute son pseudo et lance un duel amical (3, 5 ou 10 questions). Tu peux aussi ajouter un pseudo non inscrit pour jouer \u00e0 deux sur le m\u00eame appareil.</p></details>" +
             "<details><summary>\uD83D\uDCBE Comment transf\u00e9rer ma progression ?</summary><p>Exporte ta sauvegarde ici m\u00eame (bouton Exporter), puis importe le fichier sur l'autre appareil.</p></details>";
