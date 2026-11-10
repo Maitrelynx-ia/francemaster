@@ -1,0 +1,306 @@
+/* ============================================================
+   France Masters - Couche graphique premium (style-plus.css)
+   Chargee en dernier : habille le theme clair ET le theme sombre
+   sans les modifier. Fond vivant, relief, lumieres de rarete,
+   micro-interactions. Respecte l'option "animations reduites".
+   ============================================================ */
+
+/* ---------- Fond vivant : degrades profonds + halos flottants ---------- */
+
+html {
+    background:
+        radial-gradient(1100px 550px at 85% -10%, rgba(92, 109, 255, 0.18), transparent 60%),
+        radial-gradient(900px 500px at -10% 35%, rgba(255, 179, 0, 0.10), transparent 55%),
+        radial-gradient(800px 700px at 50% 115%, rgba(138, 43, 226, 0.12), transparent 60%),
+        var(--background);
+    background-attachment: fixed;
+}
+
+body {
+    background: transparent;
+}
+
+body::before,
+body::after {
+    content: '';
+    position: fixed;
+    z-index: -1;
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+body::before {
+    width: 46vw;
+    height: 46vw;
+    top: -12vw;
+    right: -10vw;
+    background: radial-gradient(circle, rgba(92, 109, 255, 0.5), transparent 70%);
+    animation: fm-float 16s ease-in-out infinite alternate;
+}
+
+body::after {
+    width: 40vw;
+    height: 40vw;
+    bottom: -14vw;
+    left: -12vw;
+    background: radial-gradient(circle, rgba(255, 179, 0, 0.35), transparent 70%);
+    animation: fm-float 20s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes fm-float {
+    from { transform: translate3d(0, 0, 0) scale(1); }
+    to   { transform: translate3d(-4vw, 5vh, 0) scale(1.15); }
+}
+
+/* ---------- Header : verre et lumiere ---------- */
+
+.header {
+    backdrop-filter: blur(12px);
+    position: relative;
+    overflow: hidden;
+}
+
+.header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.8), rgba(127, 143, 255, 0.8), transparent);
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.logo h1 {
+    letter-spacing: 0.04em;
+    filter: drop-shadow(0 2px 10px rgba(255, 215, 0, 0.25));
+}
+
+.stat-item {
+    backdrop-filter: blur(6px);
+    transition: transform 0.2s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* ---------- Navigation : onglets pilules + barre collante ---------- */
+
+.nav-tabs {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(14px);
+}
+
+.nav-tab {
+    border-radius: 12px;
+    margin: 4px 3px;
+    transition: transform 0.2s ease, background 0.25s ease, color 0.2s ease, box-shadow 0.25s ease;
+}
+
+.nav-tab:hover {
+    transform: translateY(-2px);
+}
+
+.nav-tab.active {
+    box-shadow: inset 0 -3px 0 var(--secondary), 0 6px 16px rgba(92, 109, 255, 0.3);
+    transform: translateY(-1px);
+}
+
+/* ---------- Boutons : relief et reflet balaie ---------- */
+
+.btn {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.18s ease, box-shadow 0.25s ease, filter 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(0) scale(0.97);
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -80%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+    transform: skewX(-18deg);
+    transition: left 0.5s ease;
+    pointer-events: none;
+}
+
+.btn:hover::after {
+    left: 130%;
+}
+
+/* ---------- Cartes : relief 3D et lumieres de rarete ---------- */
+
+.card {
+    transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.3, 1.2), box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px) scale(1.02);
+}
+
+.card.R:hover {
+    box-shadow: 0 14px 34px rgba(111, 141, 255, 0.35);
+}
+
+.card.SR:hover {
+    box-shadow: 0 14px 34px rgba(167, 107, 255, 0.4);
+}
+
+.card.UR:hover {
+    box-shadow: 0 14px 38px rgba(255, 213, 79, 0.45);
+}
+
+.card.L {
+    animation: fm-legend 2.6s ease-in-out infinite alternate;
+}
+
+@keyframes fm-legend {
+    from { box-shadow: 0 0 14px rgba(255, 105, 180, 0.35), 0 10px 26px rgba(0, 0, 0, 0.4); }
+    to   { box-shadow: 0 0 26px rgba(255, 215, 0, 0.55), 0 14px 34px rgba(0, 0, 0, 0.5); }
+}
+
+/* Effet holographique sur les legendaires */
+.card.L::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(120deg, rgba(255, 0, 150, 0.12), rgba(0, 229, 255, 0.12), rgba(255, 215, 0, 0.16), rgba(255, 0, 150, 0.12));
+    background-size: 300% 300%;
+    animation: fm-holo 5s linear infinite;
+    pointer-events: none;
+    z-index: 4;
+}
+
+@keyframes fm-holo {
+    from { background-position: 0% 50%; }
+    to   { background-position: 100% 50%; }
+}
+
+/* ---------- Barre de progression animee ---------- */
+
+.progress-bar {
+    background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary));
+    background-size: 200% 100%;
+    animation: fm-slide 3s linear infinite;
+    border-radius: 99px;
+    box-shadow: 0 0 12px rgba(92, 109, 255, 0.4);
+}
+
+@keyframes fm-slide {
+    from { background-position: 0% 0; }
+    to   { background-position: 200% 0; }
+}
+
+/* ---------- Modales et toasts ---------- */
+
+.modal-content {
+    animation: fm-pop 0.32s cubic-bezier(0.2, 1.4, 0.4, 1);
+    border: 1px solid rgba(127, 143, 255, 0.25);
+}
+
+@keyframes fm-pop {
+    from { transform: scale(0.85) translateY(14px); opacity: 0; }
+    to   { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.toast {
+    animation: fm-toast 0.3s ease;
+    border-left: 3px solid var(--secondary);
+}
+
+@keyframes fm-toast {
+    from { transform: translateX(30px); opacity: 0; }
+    to   { transform: none; opacity: 1; }
+}
+
+/* ---------- Cartes d'interface : accueil, amis, podium ---------- */
+
+.home-stat-card,
+.friend-card,
+.podium-card,
+.fw-card {
+    transition: transform 0.22s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.home-stat-card:hover,
+.friend-card:hover,
+.podium-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(127, 143, 255, 0.5);
+}
+
+/* ---------- Duel : reponses reactives ---------- */
+
+.duel-answers > *,
+.fd-answer {
+    transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.duel-answers > *:hover,
+.fd-answer:hover:not(.disabled) {
+    transform: translateX(4px);
+}
+
+/* ---------- Formulaires ---------- */
+
+input:focus,
+select:focus,
+textarea:focus {
+    box-shadow: 0 0 0 3px rgba(92, 109, 255, 0.25);
+}
+
+/* ---------- Selection et barre de defilement ---------- */
+
+::selection {
+    background: rgba(92, 109, 255, 0.4);
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 99px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+
+/* ---------- Respect des animations reduites ---------- */
+
+body.st-no-anim *,
+body.st-no-anim *::before,
+body.st-no-anim *::after {
+    animation: none !important;
+    transition: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}

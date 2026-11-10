@@ -4,6 +4,14 @@
 // au chargement de la page.
 
 (function () {
+    // Couche graphique premium : chargee en dernier pour habiller les deux themes.
+    if (!document.querySelector('link[href="style-plus.css"]')) {
+        var linkPlus = document.createElement('link');
+        linkPlus.rel = 'stylesheet';
+        linkPlus.href = 'style-plus.css';
+        document.head.appendChild(linkPlus);
+    }
+
     // Filet de securite : jeu de succes par defaut si jamais ils ne sont pas definis.
     if (typeof ACHIEVEMENTS === 'undefined') {
         window.ACHIEVEMENTS = {
