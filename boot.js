@@ -41,9 +41,11 @@
     }
 })();
 
-// Charge les ameliorations de l'animation d'ouverture de pack (pack-fx.js).
+// Charge les modules complementaires : animation de pack et classement.
 (function () {
-    var s = document.createElement("script");
-    s.src = "pack-fx.js";
-    document.body.appendChild(s);
+    ["pack-fx.js", "leaderboard.js"].forEach(function (src) {
+        var s = document.createElement("script");
+        s.src = src;
+        document.body.appendChild(s);
+    });
 })();
