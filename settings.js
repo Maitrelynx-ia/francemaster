@@ -1,6 +1,6 @@
 // France Masters - Parametres additionnels
-// Theme clair/sombre, sons, animations reduites, export/import de sauvegarde.
-// Les preferences sont stockees dans localStorage et appliquees au demarrage.
+// Theme clair/sombre, sons, animations reduites, export/import de sauvegarde,
+// gestion du compte, informations sur les donnees et aide integree.
 
 (function () {
     "use strict";
@@ -29,9 +29,18 @@
             ".st-theme-btn { padding: 7px 14px; border-radius: 999px; border: 1px solid rgba(128,128,128,0.4); background: transparent; color: inherit; font: inherit; cursor: pointer; }",
             ".st-theme-btn.active { background: var(--primary, #4169e1); color: #fff; border-color: transparent; }",
             ".st-io-btns { display: flex; gap: 10px; flex-wrap: wrap; }",
-            ".st-io-btns button { padding: 9px 16px; border-radius: 8px; border: 1px solid rgba(128,128,128,0.4); background: transparent; color: inherit; font: inherit; cursor: pointer; }",
-            ".st-io-btns button:hover { background: rgba(128,128,128,0.15); }",
-            "body.st-no-anim *, body.st-no-anim *::before, body.st-no-anim *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }",
+            ".st-io-btns button, .st-btn { padding: 9px 16px; border-radius: 8px; border: 1px solid rgba(128,128,128,0.4); background: transparent; color: inherit; font: inherit; cursor: pointer; }",
+            ".st-io-btns button:hover, .st-btn:hover { background: rgba(128,128,128,0.15); }",
+            ".st-btn.danger { border-color: rgba(224,36,94,0.6); color: #e0245e; }",
+            ".st-btn.danger:hover { background: rgba(224,36,94,0.12); }",
+            ".st-account { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }",
+            ".st-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--primary, #4169e1); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: bold; flex-shrink: 0; }",
+            ".st-pw-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }",
+            ".st-pw-row input { padding: 9px 12px; border-radius: 8px; border: 1px solid rgba(128,128,128,0.4); background: transparent; color: inherit; font: inherit; flex: 1; min-width: 160px; }",
+            ".st-pw-msg { font-size: 0.85rem; margin-top: 6px; min-height: 1.2em; }",
+            ".st-faq details { background: var(--surface, rgba(128,128,128,0.08)); border-radius: 10px; padding: 10px 16px; margin-bottom: 8px; }",
+            ".st-faq summary { cursor: pointer; font-weight: 600; }",
+            ".st-faq p { opacity: 0.85; font-size: 0.92rem; }",
             ".st-toast { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%); background: var(--surface, #222); color: inherit; padding: 12px 22px; border-radius: 999px; box-shadow: 0 6px 20px rgba(0,0,0,0.3); z-index: 9999; font-size: 0.95rem; animation: st-toast-in 0.3s ease both; }",
             "@keyframes st-toast-in { from { opacity: 0; transform: translate(-50%, 12px); } to { opacity: 1; transform: translate(-50%, 0); } }"
         ].join("\n");
@@ -113,10 +122,132 @@
         reader.readAsText(file);
     }
 
+    // ----- Compte -----
+    function currentUser() {
+        try {
+            if (window.AuthState && window.AuthState.currentUser) return window.AuthState.currentUser.username;
+        } catch (e) { /* ignore */ }
+        return null;
+    }
+
+    function renderAccount() {
+        var zone = document.getElementById("st-account-zone");
+        if (!zone) return;
+        var name = currentUser();
+        if (name) {
+            zone.innerHTML =
+                '<div class="st-account">' +
+                '<div class="st-avatar">' + escapeHtml(name.charAt(0).toUpperCase()) + "</div>" +
+                "<div><strong>" + escapeHtml(name) + "</strong><br><span style=\"opacity:0.7; font-size:0.85rem;\">Connect\u00e9</span></div>" +
+                '<button type="button" class="st-btn" id="st-logout">\uD83D\uDEAA Se d\u00e9connecter</button>' +
+                "</div>" +
+                '<div class="st-pw-row">' +
+                '<input type="password" id="st-pw1" placeholder="Nouveau mot de passe" />' +
+                '<input type="password" id="st-pw2" placeholder="Confirmer" />' +
+                '<button type="button" class="st-btn" id="st-pw-save">Changer</button>' +
+                "</div>" +
+                '<div class="st-pw-msg" id="st-pw-msg"></div>';
+            document.getElementById("st-logout").addEventListener("click", function () {
+                if (typeof logout === "function") { logout(); renderAccount(); }
+            });
+            document.getElementById("st-pw-save").addEventListener("click", changePassword);
+        } else {
+            zone.innerHTML =
+                '<div class="st-account">' +
+                '<div class="st-avatar">?</div>' +
+                "<div><strong>Non connect\u00e9</strong><br><span style=\"opacity:0.7; font-size:0.85rem;\">Connecte-toi pour ouvrir des packs et figurer au classement</span></div>" +
+                '<button type="button" class="st-btn" id="st-login">\uD83D\uDD11 Se connecter / Cr\u00e9er un compte</button>' +
+                "</div>";
+            document.getElementById("st-login").addEventListener("click", function () {
+                if (typeof showAuthModal === "function") showAuthModal();
+            });
+        }
+    }
+
+    function changePassword() {
+        var msg = document.getElementById("st-pw-msg");
+        var p1 = document.getElementById("st-pw1").value;
+        var p2 = document.getElementById("st-pw2").value;
+        var name = currentUser();
+        if (p1.length < 3) { msg.textContent = "\u26A0\uFE0F Mot de passe trop court (3 caract\u00e8res minimum)."; return; }
+        if (p1 !== p2) { msg.textContent = "\u26A0\uFE0F Les deux mots de passe ne correspondent pas."; return; }
+        try {
+            var users = window.AuthState.users || [];
+            var user = users.find(function (u) { return u.username === name; });
+            if (!user) { msg.textContent = "\u26A0\uFE0F Compte introuvable."; return; }
+            user.password = hashPassword(p1);
+            localStorage.setItem("franceMastersUsers", JSON.stringify(users));
+            msg.textContent = "\u2705 Mot de passe modifi\u00e9 !";
+            document.getElementById("st-pw1").value = "";
+            document.getElementById("st-pw2").value = "";
+        } catch (e) {
+            msg.textContent = "\u26A0\uFE0F Erreur lors du changement.";
+        }
+    }
+
+    // ----- Donnees -----
+    function renderData() {
+        var zone = document.getElementById("st-data-zone");
+        if (!zone) return;
+        var save = localStorage.getItem("franceMastersSave") || "";
+        var tailleKo = (save.length / 1024).toFixed(1);
+        var nComptes = 0;
+        try { nComptes = JSON.parse(localStorage.getItem("franceMastersUsers") || "[]").length; } catch (e) { nComptes = 0; }
+        var nSouhaits = 0;
+        try { nSouhaits = Object.keys(JSON.parse(save).wishlist || {}).length; } catch (e) { nSouhaits = 0; }
+        zone.innerHTML =
+            '<div class="st-io-btns" style="margin-bottom:10px;">' +
+            '<span class="st-btn" style="cursor:default;">\uD83D\uDCBE Sauvegarde : ' + tailleKo + " Ko</span>" +
+            '<span class="st-btn" style="cursor:default;">\uD83D\uDC65 Comptes : ' + nComptes + "</span>" +
+            '<span class="st-btn" style="cursor:default;">\u2764\uFE0F Souhaits : ' + nSouhaits + "</span>" +
+            "</div>" +
+            '<div class="st-io-btns">' +
+            '<button type="button" class="st-btn" id="st-clear-wl">Vider la liste de souhait</button>' +
+            '<button type="button" class="st-btn" id="st-clear-lb">R\u00e9initialiser mon score au classement local</button>' +
+            "</div>";
+        document.getElementById("st-clear-wl").addEventListener("click", function () {
+            if (!confirm("Vider toute la liste de souhait ?")) return;
+            try {
+                var parsed = JSON.parse(localStorage.getItem("franceMastersSave") || "{}");
+                parsed.wishlist = {};
+                localStorage.setItem("franceMastersSave", JSON.stringify(parsed));
+                if (typeof GameState !== "undefined") GameState.wishlist = {};
+                if (typeof renderWishlist === "function") renderWishlist();
+                renderData();
+                toast("\u2764\uFE0F Liste de souhait vid\u00e9e");
+            } catch (e) { /* ignore */ }
+        });
+        document.getElementById("st-clear-lb").addEventListener("click", function () {
+            if (!confirm("Effacer les scores locaux du classement sur cet appareil ? (le score en ligne n'est pas touch\u00e9)")) return;
+            localStorage.removeItem("franceMastersLocalLeaderboard");
+            renderData();
+            toast("\uD83C\uDFC6 Score local effac\u00e9");
+        });
+    }
+
+    // ----- Aide -----
+    function buildFaq() {
+        var zone = document.getElementById("st-faq-zone");
+        if (!zone) return;
+        zone.innerHTML =
+            "<details><summary>\uD83C\uDFAF Comment jouer ?</summary><p>Collectionne des cartes inspir\u00e9es d'articles Wikip\u00e9dia sur la France : ouvre des packs (un pack gratuit s'ajoute \u00e0 ta r\u00e9serve toutes les 15 minutes), compl\u00e8te ton album et affronte l'IA ou tes amis en duels quiz.</p></details>" +
+            "<details><summary>\uD83D\uDC8E Quelles sont les raret\u00e9s et leur valeur ?</summary><p>Commune (C) 10 pts \u00b7 Rare (R) 25 pts \u00b7 Super Rare (SR) 60 pts \u00b7 Ultra Rare (UR) 150 pts \u00b7 L\u00e9gendaire (L) 400 pts. La valeur de ta collection au classement est la somme des points de toutes tes cartes.</p></details>" +
+            "<details><summary>\uD83C\uDCCF Comment fonctionne la liste de souhait ?</summary><p>Dans l'onglet Collection, ajoute les cartes que tu r\u00eaves d'obtenir. D\u00e8s que tu les obtiens dans un pack, elles sortent automatiquement de la liste.</p></details>" +
+            "<details><summary>\u2694\uFE0F Comment d\u00e9fier un ami ?</summary><p>Dans l'onglet Amis, ajoute son pseudo et lance un duel amical (3, 5 ou 10 questions). Tu peux aussi ajouter un pseudo non inscrit pour jouer \u00e0 deux sur le m\u00eame appareil.</p></details>" +
+            "<details><summary>\uD83D\uDCBE Comment transf\u00e9rer ma progression ?</summary><p>Exporte ta sauvegarde ici m\u00eame (bouton Exporter), puis importe le fichier sur l'autre appareil.</p></details>";
+    }
+
     function buildUI() {
         var section = document.getElementById("settings");
         if (!section || document.getElementById("st-grid")) return;
 
+        // 1. Compte (en premier)
+        var account = document.createElement("div");
+        account.className = "settings-section";
+        account.innerHTML = "<h3>\uD83D\uDC64 Compte</h3><div id=\"st-account-zone\"></div>";
+        section.insertBefore(account, section.querySelector(".settings-section"));
+
+        // 2. Preferences
         var box = document.createElement("div");
         box.className = "settings-section";
         box.innerHTML =
@@ -129,9 +260,39 @@
             "</div>";
         section.insertBefore(box, section.querySelector(".settings-section"));
 
+        // 3. Donnees
+        var data = document.createElement("div");
+        data.className = "settings-section";
+        data.innerHTML = "<h3>\uD83D\uDDC2\uFE0F Mes donn\u00e9es</h3><div id=\"st-data-zone\"></div>";
+        section.insertBefore(data, section.querySelector(".settings-section"));
+
+        // 4. Aide
+        var faq = document.createElement("div");
+        faq.className = "settings-section";
+        faq.innerHTML = "<h3>\u2753 Aide</h3><div class=\"st-faq\" id=\"st-faq-zone\"></div>";
+        var about = Array.prototype.find.call(section.querySelectorAll(".settings-section"), function (s) { return s.querySelector("h3") && s.querySelector("h3").textContent.indexOf("propos") !== -1; });
+        if (about) section.insertBefore(faq, about); else section.appendChild(faq);
+
+        // 5. Export / Import
+        var io = document.createElement("div");
+        io.className = "settings-section";
+        io.innerHTML =
+            "<h3>\uD83D\uDCBE Sauvegarde</h3>" +
+            "<p>Exporte ta progression pour la transf\u00e9rer sur un autre appareil, ou importe un fichier de sauvegarde.</p>" +
+            '<div class="st-io-btns"><button type="button" id="st-export">\u2B07\uFE0F Exporter ma sauvegarde</button><button type="button" id="st-import">\u2B06\uFE0F Importer une sauvegarde</button></div>' +
+            '<input type="file" id="st-file" accept=".json,application/json" style="display:none" />';
+        if (about) section.insertBefore(io, about); else section.appendChild(io);
+
+        document.getElementById("st-export").addEventListener("click", exportSave);
+        document.getElementById("st-import").addEventListener("click", function () { document.getElementById("st-file").click(); });
+        document.getElementById("st-file").addEventListener("change", function (e) {
+            if (e.target.files && e.target.files[0]) importSave(e.target.files[0]);
+            e.target.value = "";
+        });
+
+        // Preferences : wiring
         document.getElementById("st-theme-dark").addEventListener("click", function () { setPref(LS_THEME, "dark"); applyTheme(); });
         document.getElementById("st-theme-light").addEventListener("click", function () { setPref(LS_THEME, "light"); applyTheme(); });
-
         var bSound = document.getElementById("st-sound");
         var bAnim = document.getElementById("st-anim");
         function refreshToggles() {
@@ -151,22 +312,9 @@
         });
         refreshToggles();
 
-        var io = document.createElement("div");
-        io.className = "settings-section";
-        io.innerHTML =
-            "<h3>\uD83D\uDCBE Sauvegarde</h3>" +
-            "<p>Exporte ta progression pour la transf\u00e9rer sur un autre appareil, ou importe un fichier de sauvegarde.</p>" +
-            '<div class="st-io-btns"><button type="button" id="st-export">\u2B07\uFE0F Exporter ma sauvegarde</button><button type="button" id="st-import">\u2B06\uFE0F Importer une sauvegarde</button></div>' +
-            '<input type="file" id="st-file" accept=".json,application/json" style="display:none" />';
-        var about = Array.prototype.find.call(section.querySelectorAll(".settings-section"), function (s) { return s.querySelector("h3") && s.querySelector("h3").textContent.indexOf("propos") !== -1; });
-        if (about) section.insertBefore(io, about); else section.appendChild(io);
-
-        document.getElementById("st-export").addEventListener("click", exportSave);
-        document.getElementById("st-import").addEventListener("click", function () { document.getElementById("st-file").click(); });
-        document.getElementById("st-file").addEventListener("change", function (e) {
-            if (e.target.files && e.target.files[0]) importSave(e.target.files[0]);
-            e.target.value = "";
-        });
+        renderAccount();
+        renderData();
+        buildFaq();
     }
 
     function init() {
