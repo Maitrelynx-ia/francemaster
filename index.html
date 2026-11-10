@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>France Masters - Le Jeu de Cartes Encyclopédique</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-dark.css">
 </head>
 <body>
     <div class="game-container">
@@ -44,7 +45,8 @@
             <button class="nav-tab" data-tab="collection">Collection</button>
             <button class="nav-tab" data-tab="duel">Duel</button>
             <button class="nav-tab" data-tab="friends">Amis</button>
-            <button class="nav-tab" data-tab="settings">Paramètres</button>
+            <button class="nav-tab" data-
+tab="settings">Paramètres</button>
             <a href="idees.html" class="nav-tab" style="text-decoration: none;">Idées</a>
         </nav>
 
@@ -82,7 +84,8 @@
                     </div>
                     <div class="home-stat-card">
                         <div class="home-stat-icon">💎</div>
-                        <div class="home-stat-info">
+                        <d
+iv class="home-stat-info">
                             <span class="home-stat-value" id="legendary-count">0</span>
                             <span class="home-stat-label">Légendaires</span>
                         </div>
@@ -120,7 +123,8 @@
                         <div class="pack-closed claim-pack-btn" onclick="claimPack()" id="packs-claim-btn">
                             <div class="pack-closed-inner">
                                 <span class="pack-closed-icon">🎁</span>
-                                <span class="pack-closed-text">Stockage automatique</span>
+                                <span class="pack-closed-text
+">Stockage automatique</span>
                                 <span class="pack-closed-cost">Un pack gratuit · toutes les 15 min</span>
                             </div>
                         </div>
@@ -154,7 +158,8 @@
                             <span class="rarity-count" id="rare-count">0</span>
                         </div>
                         <div class="rarity-stat">
-                            <span class="rarity-icon super-rare">SR</span>
+                            <
+span class="rarity-icon super-rare">SR</span>
                             <span class="rarity-count" id="sr-count">0</span>
                         </div>
                         <div class="rarity-stat">
@@ -193,7 +198,8 @@
 
                 <div class="market-section">
                     <h3>♻️ Vendre mes doublons</h3>
-                    <p class="market-hint">Mettez vos cartes en double (ou plus) aux enchères : les acheteurs IA enchérissent pendant 3 minutes en partant du prix de départ. Maximum 3 ventes simultanées.</p>
+                    <p class="market-hint">Mettez vos cartes en 
+double (ou plus) aux enchères : les acheteurs IA enchérissent pendant 3 minutes en partant du prix de départ. Maximum 3 ventes simultanées.</p>
                     <div class="market-grid" id="market-duplicates-grid"></div>
                 </div>
             </section>
@@ -223,7 +229,8 @@
                                 <option value="SR">Super Rare (SR)</option>
                                 <option value="UR">Ultra Rare (UR)</option>
                                 <option value="L">Légendaire (L)</option>
-                            </select>
+                   
+         </select>
                         </div>
                         <div class="sort-group">
                             <label>Trier par :</label>
@@ -266,7 +273,8 @@
                     <h3>Sélectionnez 3 cartes</h3>
                     <div class="mode-selector">
                         <button class="mode-btn active" data-mode="ai" onclick="setDuelMode('ai')">🤖 IA</button>
-                        <button class="mode-btn" data-mode="human" onclick="setDuelMode('human')">👤 Autre joueur</button>
+                        <b
+utton class="mode-btn" data-mode="human" onclick="setDuelMode('human')">👤 Autre joueur</button>
                     </div>
                     <div class="duel-p2" id="duel-p2" style="display: none;">
                         <input type="text" id="duel-p2-name" placeholder="Pseudo du joueur 2" maxlength="20">
@@ -293,7 +301,8 @@
                             <div class="duel-opponent-active" id="duel-opponent-active"></div>
                         </div>
                         
-                        <div class="duel-center">
+      
+                  <div class="duel-center">
                             <div class="duel-question" id="duel-question"></div>
                             <div class="duel-answers" id="duel-answers"></div>
                             <div class="duel-timer-wrap">
@@ -331,7 +340,8 @@
             </section>
 
             <!-- Friends Tab -->
-            <section id="friends" class="tab-content">
+         
+   <section id="friends" class="tab-content">
                 <div class="friends-header">
                     <h2>🤝 Mes Amis</h2>
                     <p>Ajoutez des joueurs inscrits et défiez-les en duel sur le même appareil !</p>
@@ -369,7 +379,8 @@
                             <span class="detailed-stat-value" id="coins-earned">0</span>
                         </div>
                         <div class="detailed-stat">
-                            <span class="detailed-stat-label">Duels joués :</span>
+                     
+       <span class="detailed-stat-label">Duels joués :</span>
                             <span class="detailed-stat-value" id="duels-played">0</span>
                         </div>
                         <div class="detailed-stat">
@@ -402,7 +413,8 @@
                     <h3>⚙️ Outils Administrateur</h3>
                     <p>Accès à l'éditeur de cartes pour modifier le contenu du jeu.</p>
                     <button class="btn btn-secondary" onclick="window.location.href='editor.html'">
-                        🎨 Éditeur de Cartes
+         
+               🎨 Éditeur de Cartes
                     </button>
                 </div>
             </section>
@@ -448,7 +460,8 @@
     <!-- Login/Register Modal -->
     <div class="modal" id="auth-modal" style="display: none;">
         <div class="modal-content auth-modal-content">
-            <div class="modal-close" onclick="closeAuthModal()">&times;</div>
+            <div
+ class="modal-close" onclick="closeAuthModal()">&times;</div>
             <div class="auth-tabs">
                 <button class="auth-tab active" onclick="showLoginTab()">Connexion</button>
                 <button class="auth-tab" onclick="showRegisterTab()">Inscription</button>
@@ -482,7 +495,8 @@
                         <input type="password" id="register-password" required placeholder="Choisissez un mot de passe" minlength="6">
                     </div>
                     <div class="auth-form-group">
-                        <label for="register-confirm">Confirmer mot de passe *</label>
+                 
+       <label for="register-confirm">Confirmer mot de passe *</label>
                         <input type="password" id="register-confirm" required placeholder="Confirmez le mot de passe">
                     </div>
                     <button type="submit" class="btn btn-primary">S'inscrire</button>
@@ -521,7 +535,8 @@
     </div>
 
     <!-- Admin Modal -->
-    <div class="modal" id="admin-modal" style="display: none;">
+    <div class="modal" id="admin-modal" style="display: no
+ne;">
         <div class="modal-content admin-modal-content">
             <div class="modal-close" onclick="closeAdminPanel()">&times;</div>
             <h2>🛡️ Espace Administrateur</h2>

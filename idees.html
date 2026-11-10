@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>France Masters - Propositions d'Idées</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-dark.css">
     <style>
         /* Specific styles for ideas page */
         .ideas-container {
@@ -70,7 +71,8 @@
         }
         
         .idea-card {
-            background: var(--surface);
+     
+       background: var(--surface);
             border-radius: var(--radius-md);
             padding: var(--spacing-lg);
             box-shadow: var(--shadow-sm);
@@ -140,7 +142,8 @@
         
         .idea-category.Sciences {
             background: var(--category-sciences);
-            color: white;
+       
+     color: white;
         }
         
         .idea-category.Sport {
@@ -220,7 +223,8 @@
         }
         
         .empty-state {
-            text-align: center;
+            text-a
+lign: center;
             padding: var(--spacing-xl);
             color: var(--text-secondary);
         }
@@ -277,7 +281,8 @@
                 <div class="form-group">
                     <label for="idea-category">Catégorie</label>
                     <select id="idea-category">
-                        <option value="Autre">Autre</option>
+                        <option value="Autre">Autre
+</option>
                         <option value="Histoire">Histoire & Personnages</option>
                         <option value="Monuments">Monuments & Lieux</option>
                         <option value="Gastronomie">Gastronomie</option>
@@ -311,7 +316,8 @@
                 <button class="filter-btn" data-filter="Technique" onclick="filterIdeas('Technique')">Technique</button>
             </div>
             
-            <div id="idea-list" class="idea-list">
+            <div id="idea-list" class="idea-l
+ist">
                 <!-- Les idées seront affichées ici -->
             </div>
         </section>
@@ -372,7 +378,8 @@
                     else idea.dislikes--;
                     delete idea.votedBy[username];
                 } else {
-                    // Change vote
+              
+      // Change vote
                     if (idea.votedBy[username] === 'like') idea.likes--;
                     else idea.dislikes--;
                     
@@ -430,7 +437,8 @@
             const listElement = document.getElementById('idea-list');
             
             if (ideas.length === 0) {
-                listElement.innerHTML = '<div class="empty-state">Aucune idée soumise pour le moment. Soyez le premier !</div>';
+     
+           listElement.innerHTML = '<div class="empty-state">Aucune idée soumise pour le moment. Soyez le premier !</div>';
                 return;
             }
             
@@ -467,7 +475,8 @@
                             </button>
                             <button class="${getVoteButtonClass('dislike')}" onclick="vote('${idea.id}', 'dislike', '${idea.author}')">
                                 👎 ${idea.dislikes || 0}
-                            </button>
+      
+                      </button>
                         </div>
                     </div>
                 `;
@@ -517,7 +526,8 @@
                     day: 'numeric',
                     month: 'short',
                     year: 'numeric'
-                });
+          
+      });
                 
                 return `
                     <div class="idea-card">
@@ -560,7 +570,8 @@
                 bottom: 20px;
                 right: 20px;
                 padding: 12px 20px;
-                background: ${type === 'error' ? '#f44336' : type === 'success' ? '#4caf50' : '#2196f3'};
+                background: ${type === 'error' ? '#f44336' : type === 'success' ? 
+'#4caf50' : '#2196f3'};
                 color: white;
                 border-radius: 4px;
                 box-shadow: 0 2px 10px rgba(0,0,0,0.2);
