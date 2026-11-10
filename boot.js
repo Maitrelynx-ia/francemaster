@@ -41,9 +41,10 @@
     }
 })();
 
-// Charge les modules complementaires : animation de pack, classement et liste de souhait.
+
+// Charge les modules complementaires : animation de pack, classement, liste de souhait et parametres.
 (function () {
-    ["pack-fx.js", "leaderboard.js", "wishlist.js"].forEach(function (src) {
+    ["pack-fx.js", "leaderboard.js", "wishlist.js", "settings.js"].forEach(function (src) {
         var s = document.createElement("script");
         s.src = src;
         document.body.appendChild(s);
