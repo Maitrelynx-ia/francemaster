@@ -44,7 +44,8 @@
             <button class="nav-tab" data-tab="market">Marché</button>
             <button class="nav-tab" data-tab="collection">Collection</button>
             <button class="nav-tab" data-tab="duel">Duel</button>
-            <button class="nav-tab" data-tab="friends">Amis</button>
+            <button class="nav-tab" data-tab="friends">Amis<
+/button>
             <button class="nav-tab" data-
 tab="settings">Paramètres</button>
             <a href="idees.html" class="nav-tab" style="text-decoration: none;">Idées</a>
@@ -83,7 +84,8 @@ tab="settings">Paramètres</button>
                         </div>
                     </div>
                     <div class="home-stat-card">
-                        <div class="home-stat-icon">💎</div>
+                        <div class=
+"home-stat-icon">💎</div>
                         <d
 iv class="home-stat-info">
                             <span class="home-stat-value" id="legendary-count">0</span>
@@ -123,7 +125,8 @@ iv class="home-stat-info">
                         <div class="pack-closed claim-pack-btn" onclick="claimPack()" id="packs-claim-btn">
                             <div class="pack-closed-inner">
                                 <span class="pack-closed-icon">🎁</span>
-                                <span class="pack-closed-text
+         
+                       <span class="pack-closed-text
 ">Stockage automatique</span>
                                 <span class="pack-closed-cost">Un pack gratuit · toutes les 15 min</span>
                             </div>
@@ -157,7 +160,8 @@ iv class="home-stat-info">
                             <span class="rarity-icon rare">R</span>
                             <span class="rarity-count" id="rare-count">0</span>
                         </div>
-                        <div class="rarity-stat">
+                        <d
+iv class="rarity-stat">
                             <
 span class="rarity-icon super-rare">SR</span>
                             <span class="rarity-count" id="sr-count">0</span>
@@ -198,7 +202,8 @@ span class="rarity-icon super-rare">SR</span>
 
                 <div class="market-section">
                     <h3>♻️ Vendre mes doublons</h3>
-                    <p class="market-hint">Mettez vos cartes en 
+          
+          <p class="market-hint">Mettez vos cartes en 
 double (ou plus) aux enchères : les acheteurs IA enchérissent pendant 3 minutes en partant du prix de départ. Maximum 3 ventes simultanées.</p>
                     <div class="market-grid" id="market-duplicates-grid"></div>
                 </div>
@@ -228,7 +233,8 @@ double (ou plus) aux enchères : les acheteurs IA enchérissent pendant 3 minute
                                 <option value="R">Rare (R)</option>
                                 <option value="SR">Super Rare (SR)</option>
                                 <option value="UR">Ultra Rare (UR)</option>
-                                <option value="L">Légendaire (L)</option>
+                                <optio
+n value="L">Légendaire (L)</option>
                    
          </select>
                         </div>
@@ -272,7 +278,8 @@ double (ou plus) aux enchères : les acheteurs IA enchérissent pendant 3 minute
                 <div class="duel-setup" id="duel-setup">
                     <h3>Sélectionnez 3 cartes</h3>
                     <div class="mode-selector">
-                        <button class="mode-btn active" data-mode="ai" onclick="setDuelMode('ai')">🤖 IA</button>
+                        <button class="mode-btn active" data-mode="ai" onclick="set
+DuelMode('ai')">🤖 IA</button>
                         <b
 utton class="mode-btn" data-mode="human" onclick="setDuelMode('human')">👤 Autre joueur</button>
                     </div>
@@ -299,7 +306,8 @@ utton class="mode-btn" data-mode="human" onclick="setDuelMode('human')">👤 Aut
                             <h3 id="duel-opponent-label">🤖 IA</h3>
                             <div class="duel-opponent-cards" id="duel-opponent-cards"></div>
                             <div class="duel-opponent-active" id="duel-opponent-active"></div>
-                        </div>
+     
+                   </div>
                         
       
                   <div class="duel-center">
@@ -337,7 +345,8 @@ utton class="mode-btn" data-mode="human" onclick="setDuelMode('human')">👤 Aut
                         Retour à la sélection
                     </button>
                 </div>
-            </section>
+        
+    </section>
 
             <!-- Friends Tab -->
          
@@ -378,7 +387,8 @@ utton class="mode-btn" data-mode="human" onclick="setDuelMode('human')">👤 Aut
                             <span class="detailed-stat-label">Pièces gagnées :</span>
                             <span class="detailed-stat-value" id="coins-earned">0</span>
                         </div>
-                        <div class="detailed-stat">
+              
+          <div class="detailed-stat">
                      
        <span class="detailed-stat-label">Duels joués :</span>
                             <span class="detailed-stat-value" id="duels-played">0</span>
@@ -416,7 +426,8 @@ utton class="mode-btn" data-mode="human" onclick="setDuelMode('human')">👤 Aut
         <div class="toast-container" id="toast-container"></div>
 
         <!-- Modal for reset confirmation -->
-        <div class="modal" id="reset-modal" style="display: none;">
+        <div class="modal" id="reset-modal" sty
+le="display: none;">
             <div class="modal-content">
                 <h3>⚠️ Réinitialiser la progression</h3>
                 <p>Êtes-vous sûr de vouloir réinitialiser toute votre progression ?</p>
@@ -459,7 +470,8 @@ utton class="mode-btn" data-mode="human" onclick="setDuelMode('human')">👤 Aut
                 <button class="auth-tab" onclick="showRegisterTab()">Inscription</button>
             </div>
             
-            <div id="login-tab" class="auth-tab-content active">
+           
+ <div id="login-tab" class="auth-tab-content active">
                 <h2>🔑 Connexion</h2>
                 <form id="login-form" onsubmit="login(event)">
                     <div class="auth-form-group">
@@ -492,7 +504,8 @@ utton class="mode-btn" data-mode="human" onclick="setDuelMode('human')">👤 Aut
                         <input type="password" id="register-confirm" required placeholder="Confirmez le mot de passe">
                     </div>
                     <button type="submit" class="btn btn-primary">S'inscrire</button>
-                </form>
+                </fo
+rm>
                 <p class="auth-error" id="register-error"></p>
             </div>
         </div>
@@ -540,7 +553,9 @@ utton class="mode-btn" data-mode="human" onclick="setDuelMode('human')">👤 Aut
     <script src="custom.js"></script>
     <script src="auth.js"></script>
     <script src="game.js"></script>
-    <script src="market.js"></script>
+    <script src="market.js"></
+script>
     <script src="friends.js"></script>
+    <script src="boot.js"></script>
 </body>
 </html>
