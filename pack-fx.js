@@ -2,7 +2,7 @@
 // Remplace la revelation des cartes par une version plus rythmee :
 // bouton "Tout reveler", aura pulsante sur les cartes rares, rayons de
 // lumiere pour UR/L, bandeau d'annonce anime, paquet qui flotte et
-// ouverture en PLEIN ECRAN.
+// ouverture en fenetre centree.
 
 (function () {
     "use strict";
@@ -14,12 +14,11 @@
         st.textContent = [
             /* ----- Plein ecran ----- */
             "#pack-modal { padding: 0; }",
-            "#pack-modal .pack-modal-content { width: 100vw; height: 100vh; height: 100dvh; max-width: none; max-height: none; margin: 0; border-radius: 0; border: none; overflow-y: auto; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; background: radial-gradient(ellipse at center, rgba(30, 34, 54, 0.97) 0%, rgba(10, 12, 22, 0.99) 75%); }",
-            "#pack-modal .modal-close { position: fixed; top: 14px; right: 20px; z-index: 10; font-size: 2rem; }",
+            "#pack-modal .pack-modal-content { width: min(96vw, 760px); height: min(90vh, 680px); margin: 0; border-radius: 18px; border: none; overflow-y: auto; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; background: radial-gradient(ellipse at center, rgba(30, 34, 54, 0.97) 0%, rgba(10, 12, 22, 0.99) 75%); }",
+            "#pack-modal .modal-close { position: absolute; top: 10px; right: 16px; z-index: 10; font-size: 1.7rem; }",
             "#pack-modal .pack-announcement { font-size: 1.35rem; min-height: 2.2em; }",
-            "#pack-modal .modal-pack-container { width: 100%; max-width: 1100px; flex: 1; display: flex; align-items: center; justify-content: center; gap: 18px; flex-wrap: wrap; padding: 10px 20px; }",
+            "#pack-modal .modal-pack-container { width: 100%; max-width: 700px; flex: 1; display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; padding: 10px 14px; }",
             "#pack-modal .pack-stage { width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; }",
-            "@media (min-width: 900px) { #pack-modal .modal-pack-container .pack-card-slot { transform: scale(1.15); } }",
             /* ----- Effets ----- */
             "@keyframes pkfx-float { 0%, 100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-9px) rotate(1.2deg); } }",
             "#booster-pack { animation: pkfx-float 2.8s ease-in-out infinite; }",
