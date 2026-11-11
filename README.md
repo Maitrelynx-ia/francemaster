@@ -8,36 +8,91 @@
 
 1. **Ouvrir le jeu** :
    - Ouvrez simplement le fichier `index.html` dans votre navigateur web
-   - Ou utilisez un serveur local :
+   - Ou jouez en ligne sur GitHub Pages, ou utilisez un serveur local :
      ```bash
      python3 -m http.server 8000
      # Puis ouvrez http://localhost:8000
      ```
 
 2. **Premiers pas** :
-   - Vous commencez avec **300 pièces**
+   - Créez un **compte** (pseudo + mot de passe) pour ouvrir des packs, avoir des amis et figurer au classement
    - Récoltez un **pack gratuit toutes les 15 minutes** (jusqu'à **10 packs non ouverts** stockés) et ouvrez-les quand vous voulez
    - Chaque pack contient **5 cartes** avec au moins 1 carte Rare ou mieux
-   - Collectionnez les 200 cartes disponibles
 
 3. **Mécaniques de jeu** :
-   - **Ouverture de packs** : Animation de retournement carte par carte
-   - **Réserve de packs** : Stockez jusqu'à 10 packs non ouverts, à ouvrir quand vous voulez
-   - **Collection** : Grille de toutes les cartes avec filtres et tri
-   - **Duel Quiz** : Affrontez l'IA avec 3 cartes, répondez à des questions QCM
-   - **Économie** : Gagnez des pièces en gagnant des duels
+   - **Ouverture de packs** : révélation plein écran, carte par carte, avec bouton « ⚡ Tout révéler »
+   - **Réserve de packs** : stockez jusqu'à 10 packs non ouverts, à ouvrir quand vous voulez
+   - **Collection** : grille de toutes les cartes avec filtres et tri
+   - **Liste de souhait** : épinglez les cartes rêvées, elles sortent automatiquement de la liste quand vous les obtenez
+   - **Duel Quiz** : affrontez l'IA avec 3 cartes, répondez à des questions QCM
+   - **Duels amicaux** : défiez vos amis (3, 5 ou 10 questions, revanche instantanée)
+   - **Économie** : gagnez des pièces en gagnant des duels
    - **Succès** : 8 succès à débloquer
+
+## 👤 Comptes utilisateurs
+
+- Inscription et connexion avec **pseudo + mot de passe** (tout reste dans le navigateur)
+- Chaque compte a **ses propres packs et sa liste d'amis**
+- **Changement de mot de passe** depuis les Paramètres
+- **Changement de pseudo** depuis les Paramètres → Compte : le pseudo change partout (compte, packs, amis) et **l'entrée du classement en ligne est renommée** (pas dupliquée)
+
+## 🤝 Amis et duels amicaux
+
+Onglet **Amis** :
+
+- Ajoutez un pseudo inscrit sur l'appareil, un joueur du **classement en ligne**, ou un pseudo non inscrit (mode hors ligne, pour jouer à deux sur le même appareil)
+- **🌍 Amis du monde** : recherchez les joueurs du classement mondial et ajoutez-les en un clic ; leurs stats (valeur, cartes, dernière activité) sont mises à jour automatiquement
+- Recherche, tri (nom, victoires, taux de victoire, ajouts récents) et **favoris épinglés**
+- **Podium** 🥇🥈🥉 des meilleurs amis et statistiques détaillées (V/D, taux de victoire, séries 🔥)
+- **Duels amicaux** au tour par tour sur le même appareil : mêmes questions pour les deux joueurs, meilleur score gagne
+
+## 🏆 Classement
+
+- **Classement local** : meilleurs scores enregistrés sur l'appareil
+- **Classement mondial** : synchronisé avec une base **Supabase** (table `players` : pseudo, cartes, cartes distinctes, valeur, dernière activité)
+  - Publication automatique de votre score, synchronisation toutes les 60 secondes
+  - Valeur d'une collection = somme des points de rareté (C 10 · R 25 · SR 60 · UR 150 · L 400)
+  - Podium 🥇🥈🥉 + liste, tri par valeur ou par nombre de cartes
+
+## ⚙️ Paramètres
+
+- **Thème** clair ☀️ / sombre 🌙
+- **Sons** on/off
+- **Animations réduites** pour plus de confort visuel
+- **Export / import de sauvegarde** en JSON (transfert de progression entre appareils)
+- Gestion des données (vider la liste de souhait, réinitialiser le score local)
+- **FAQ** intégrée
+
+## 🎨 Habillage graphique
+
+Le fichier `style-plus.css` (chargé en dernier) ajoute une couche premium qui habille les deux thèmes :
+
+- Fond vivant avec halos flottants et dégradés profonds
+- Onglets pilules collants en haut de page, boutons avec reflet balayé
+- Relief 3D sur les cartes, **effet holographique animé** sur les Légendaires
+- Packs flottants, arène de duel habillée, réponses correctes/fausses animées
+- Touche de pureté : ombres diffusées, bordures affinées, typographie limpide, étincelle sur le logo
+- Respect de l'option « animations réduites » et de `prefers-reduced-motion`
 
 ## 📁 Structure du projet
 
 ```
 francemaster/
 ├── index.html          # Page principale du jeu
-├── style.css           # Styles CSS du jeu
+├── style.css           # Styles de base (thème clair)
+├── style-dark.css      # Thème sombre doré
+├── style-plus.css      # Couche graphique premium (fond vivant, hologramme, pureté)
 ├── game.js             # Logique principale du jeu
-├── data.js             # Données des 200 cartes
-├── github-sync.js       # Système d'upload GitHub (cartes + images)
-├── images/              # Images de cartes uploadées via l'éditeur
+├── data.js             # Données des cartes
+├── auth.js             # Comptes utilisateurs (inscription, connexion, sessions)
+├── boot.js             # Amorçage : lance le jeu et charge les modules
+├── pack-fx.js          # Ouverture de packs plein écran (révélation, auras, rayons)
+├── leaderboard.js      # Classement local + classement mondial (Supabase)
+├── friends.js          # Amis, duels amicaux et amis du monde
+├── wishlist.js         # Liste de souhait
+├── settings.js         # Paramètres (thème, sons, sauvegarde, compte, FAQ)
+├── github-sync.js      # Système d'upload GitHub (cartes + images)
+├── images/             # Images de cartes uploadées via l'éditeur
 ├── editor.html         # Interface d'édition des cartes
 ├── editor.js           # Logique de l'éditeur
 ├── admin.css           # Styles CSS de l'éditeur
@@ -68,13 +123,13 @@ Le jeu comprend **200 cartes** réparties en 6 catégories :
 
 ## 🎨 Raretés
 
-| Rareté | Code | Pourcentage | Couleur |
-|--------|------|-------------|---------|
-| Légendaire | L | 3% | Arc-en-ciel animé |
-| Ultra Rare | UR | 7% | Or |
-| Super Rare | SR | 15% | Violet |
-| Rare | R | 30% | Bleu |
-| Commune | C | 45% | Gris |
+| Rareté | Code | Pourcentage | Valeur | Couleur |
+|--------|------|-------------|--------|---------|
+| Légendaire | L | 3% | 400 pts | Arc-en-ciel animé |
+| Ultra Rare | UR | 7% | 150 pts | Or |
+| Super Rare | SR | 15% | 60 pts | Violet |
+| Rare | R | 30% | 25 pts | Bleu |
+| Commune | C | 45% | 10 pts | Gris |
 
 ## 🛠️ Éditeur de Cartes (pour les administrateurs)
 
@@ -114,6 +169,7 @@ Ouvrez simplement le fichier `editor.html` dans votre navigateur.
 - Graphiques de répartition des stats
 
 #### 5. Exporter/Importer
+
 - **Exporter** : Télécharge les cartes au format JSON
 - **Importer** : Charge des cartes depuis un fichier JSON
 - **Sauvegarder** : Met à jour le fichier `data.js` (téléchargement automatique)
@@ -160,6 +216,15 @@ Les 200 cartes existantes utilisent les miniatures **Wikimedia Commons** (taille
 - Utilisez un token *fine-grained* limité au seul dépôt `francemaster`
 - Révoquez le token quand vous ne l'utilisez plus
 
+## 💾 Sauvegarde
+
+La progression est automatiquement sauvegardée dans le **localStorage** du navigateur :
+- Collection de cartes, pièces, statistiques de duel, succès débloqués
+- Packs en réserve et liste de souhait (par compte)
+- Comptes utilisateurs et amis (par compte)
+- Classement local, thème, sons et animations
+
+Un bouton **Exporter / Importer** dans les Paramètres permet de transférer toute la progression entre appareils.
 
 ## 📊 Statistiques du Jeu
 
@@ -169,6 +234,7 @@ Les 200 cartes existantes utilisent les miniatures **Wikimedia Commons** (taille
 - **Pièces de départ** : 300
 - **Coût d'un pack** : 100 pièces
 - **Cartes par pack** : 5
+- **Réserve** : 1 pack gratuit toutes les 15 min (10 max)
 - **Succès** : 8
 
 ## 🎯 Succès
@@ -181,15 +247,6 @@ Les 200 cartes existantes utilisent les miniatures **Wikimedia Commons** (taille
 6. **10 Victoires** : Gagner 10 duels
 7. **50 Cartes** : Posséder 50 cartes uniques
 8. **Collection Complète** : Posséder toutes les cartes
-
-## 💾 Sauvegarde
-
-La progression est automatiquement sauvegardée dans le **localStorage** du navigateur :
-- Collection de cartes
-- Nombre de pièces
-- Statistiques de duel
-- Succès débloqués
-- Dernières cartes obtenues
 
 ## 🔧 Personnalisation
 
@@ -232,6 +289,10 @@ Utilisez l'éditeur ou modifiez directement `data.js` :
     emoji: "🗼"
 }
 ```
+
+### Classement mondial (Supabase)
+
+Le classement en ligne utilise une table `players` (clé = pseudo encodé) sur Supabase, avec des règles RLS publiques en lecture/écriture. L'URL et la clé publique sont définies dans `leaderboard.js` (et réutilisées dans `friends.js` et `settings.js`). Pour brancher votre propre base : créez un projet Supabase, exécutez le SQL de création de table, puis remplacez `SUPABASE_URL` et la clé dans ces fichiers.
 
 ## 🌐 Déploiement
 
