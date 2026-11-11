@@ -1,6 +1,7 @@
 // France Masters - Rôle administrateur (réservé à maitre_lynx)
-// Badge 👑 dans l'en-tête, section Administration dans les Paramètres :
-// accès à l'éditeur de cartes et gestion des comptes (suppression).
+// Badge 👑 dans l'en-tête, onglet 🛠️ Admin dans la navigation :
+// éditeur de cartes, gestion des comptes (suppression, remise à zéro)
+// et statistiques du classement en ligne.
 
 const ADMIN_USERS = ['maitre_lynx'];
 
@@ -52,8 +53,15 @@ window.ADMIN_USERS = ADMIN_USERS;
             ".admin-acc-stats { opacity: 0.7; font-size: 0.85rem; white-space: nowrap; }",
             ".admin-acc-del { border: 1px solid rgba(220,80,80,0.5); background: transparent; color: inherit; border-radius: 8px; padding: 6px 10px; cursor: pointer; font: inherit; }",
             ".admin-acc-del:hover { background: rgba(220,80,80,0.15); }",
+            ".admin-acc-reset { border: 1px solid rgba(240,180,60,0.6); background: transparent; color: inherit; border-radius: 8px; padding: 6px 10px; cursor: pointer; font: inherit; }",
+            ".admin-acc-reset:hover { background: rgba(240,180,60,0.15); }",
             ".admin-acc-status { opacity: 0.7; font-size: 0.9rem; padding: 6px 0; }",
-            ".admin-acc-note { opacity: 0.65; font-size: 0.82rem; margin-top: 8px; }"
+            ".admin-acc-note { opacity: 0.65; font-size: 0.82rem; margin-top: 8px; }",
+            ".admin-stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }",
+            ".admin-stat-card { background: var(--surface, rgba(128,128,128,0.08)); border-radius: 12px; padding: 12px 14px; }",
+            ".admin-stat-value { font-size: 1.3rem; font-weight: 700; }",
+            ".admin-stat-label { opacity: 0.7; font-size: 0.82rem; }",
+            "#admin-nav-tab { position: relative; }"
         ].join("\n");
         document.head.appendChild(st);
     }
@@ -76,7 +84,7 @@ window.ADMIN_USERS = ADMIN_USERS;
         }
     }
 
-    // ----- Gestion des comptes -----
+    // ----- Outils d'administration -----
 
     function onlineKey(name) {
         return encodeURIComponent(name).replace(/[^\w\-]/g, "_");
@@ -122,7 +130,7 @@ window.ADMIN_USERS = ADMIN_USERS;
         } catch (e) { /* ignore */ }
     }
 
-    // Supprime l'entrée du classement en ligne (nécessite la règle DELETE dans Supabase)
+    // Supprime l'entrée du classement en ligne (règle DELETE requise dans Supabase)
     function deleteOnlineEntry(name) {
         var key = onlineKey(name);
         return fetch(SUPABASE_URL + "/rest/v1/players?key=eq." + encodeURIComponent(key), {
@@ -135,7 +143,22 @@ window.ADMIN_USERS = ADMIN_USERS;
         }).then(function (r) { return r.ok; }).catch(function () { return false; });
     }
 
-    function wireDeleteButtons(zone) {
+    // Remet à zéro le score en ligne d'un joueur (mise à jour, autorisée par RLS)
+    function resetPlayerScore(name) {
+        var key = onlineKey(name);
+        return fetch(SUPABASE_URL + "/rest/v1/players?key=eq." + encodeURIComponent(key), {
+            method: "PATCH",
+            headers: {
+                "apikey": SUPABASE_KEY,
+                "Authorization": "Bearer " + SUPABASE_KEY,
+                "Content-Type": "application/json",
+                "Prefer": "return=minimal"
+            },
+            body: JSON.stringify({ cards: 0, distinct_cards: 0, value: 0 })
+        }).then(function (r) { return r.ok; }).catch(function () { return false; });
+    }
+
+    function wireAdminButtons(zone) {
         zone.querySelectorAll("button[data-local]").forEach(function (b) {
             b.addEventListener("click", function () {
                 var n = b.getAttribute("data-local");
@@ -156,9 +179,23 @@ window.ADMIN_USERS = ADMIN_USERS;
                 if (!confirm("Supprimer \"" + n + "\" du classement en ligne ?")) return;
                 deleteOnlineEntry(n).then(function (ok) {
                     renderAccounts();
+                    renderAdminStats();
                     toastAdmin(ok
                         ? "🗑️ \"" + n + "\" retiré du classement en ligne"
                         : "⚠️ Suppression refusée : ajoute la règle DELETE sur la table players dans Supabase");
+                });
+            });
+        });
+        zone.querySelectorAll("button[data-reset]").forEach(function (b) {
+            b.addEventListener("click", function () {
+                var n = b.getAttribute("data-reset");
+                if (!confirm("Remettre le score de \"" + n + "\" à zéro dans le classement en ligne ?")) return;
+                resetPlayerScore(n).then(function (ok) {
+                    renderAccounts();
+                    renderAdminStats();
+                    toastAdmin(ok
+                        ? "♻️ Score de \"" + n + "\" remis à zéro"
+                        : "⚠️ Impossible de réinitialiser le score de \"" + n + "\"");
                 });
             });
         });
@@ -182,7 +219,9 @@ window.ADMIN_USERS = ADMIN_USERS;
                 return '<div class="admin-acc-row">' +
                     '<span class="admin-acc-avatar">' + escapeHtml(n.charAt(0).toUpperCase()) + '</span>' +
                     '<span class="admin-acc-name">' + escapeHtml(n) + (isMe ? ' <span class="admin-acc-you">(connecté)</span>' : '') + '</span>' +
-                    (isMe ? '' : '<button type="button" class="admin-acc-del" data-local="' + escapeHtml(n) + '" title="Supprimer ce compte">🗑️</button>') +
+                    (isMe ? '' :
+                        '<button type="button" class="admin-acc-reset" data-reset="' + escapeHtml(n) + '" title="Remettre son score en ligne à zéro">♻️</button>' +
+                        '<button type="button" class="admin-acc-del" data-local="' + escapeHtml(n) + '" title="Supprimer ce compte">🗑️</button>') +
                     '</div>';
             }).join("");
         }
@@ -202,48 +241,113 @@ window.ADMIN_USERS = ADMIN_USERS;
                         '<span class="admin-acc-avatar">🌍</span>' +
                         '<span class="admin-acc-name">' + escapeHtml(p.name) + '</span>' +
                         '<span class="admin-acc-stats">💎 ' + (p.value || 0) + ' pts · 🃏 ' + (p.cards || 0) + ' cartes</span>' +
+                        '<button type="button" class="admin-acc-reset" data-reset="' + escapeHtml(p.name) + '" title="Remettre son score à zéro">♻️</button>' +
                         '<button type="button" class="admin-acc-del" data-online="' + escapeHtml(p.name) + '" title="Retirer du classement">🗑️</button>' +
                         '</div>';
                 }).join("");
             }
-            html += '<div class="admin-acc-note">La suppression d\'un compte efface aussi son entrée du classement en ligne. Le compte connecté ne peut pas être supprimé depuis lui-même.</div>';
+            html += '<div class="admin-acc-note">♻️ remet le score en ligne à zéro · 🗑️ supprime le compte et son entrée du classement. Le compte connecté ne peut pas être supprimé depuis lui-même.</div>';
             zone.innerHTML = html;
-            wireDeleteButtons(zone);
+            wireAdminButtons(zone);
         });
     }
 
-    function ensureAdminSection() {
-        const section = document.getElementById('settings');
-        if (!section) return;
-        let s = document.getElementById('admin-section');
+    function renderAdminStats() {
+        var zone = document.getElementById("admin-stats");
+        if (!zone) return;
+        zone.innerHTML = '<div class="admin-acc-status">Chargement…</div>';
+        fetch(SUPABASE_URL + "/rest/v1/players?select=name,cards,distinct_cards,value,updated&order=value.desc&limit=200", {
+            headers: { "apikey": SUPABASE_KEY, "Authorization": "Bearer " + SUPABASE_KEY }
+        }).then(function (r) { return r.ok ? r.json() : []; }).catch(function () { return []; }).then(function (players) {
+            players = players || [];
+            if (players.length === 0) {
+                zone.innerHTML = '<div class="admin-acc-status">Aucun joueur en ligne pour le moment.</div>';
+                return;
+            }
+            var totalCards = 0, totalValue = 0, lastSeen = 0, last = null;
+            players.forEach(function (p) {
+                totalCards += p.cards || 0;
+                totalValue += p.value || 0;
+                if ((p.updated || 0) > lastSeen) { lastSeen = p.updated || 0; last = p; }
+            });
+            var lastTxt = last ? new Date(lastSeen).toLocaleString("fr-FR") : "—";
+            zone.innerHTML =
+                '<div class="admin-stat-grid">' +
+                '<div class="admin-stat-card"><div class="admin-stat-value">' + players.length + '</div><div class="admin-stat-label">Joueurs en ligne</div></div>' +
+                '<div class="admin-stat-card"><div class="admin-stat-value">' + totalCards + '</div><div class="admin-stat-label">Cartes en circulation</div></div>' +
+                '<div class="admin-stat-card"><div class="admin-stat-value">' + totalValue + '</div><div class="admin-stat-label">Valeur totale 💎</div></div>' +
+                '<div class="admin-stat-card"><div class="admin-stat-value">🥇 ' + escapeHtml(players[0].name) + '</div><div class="admin-stat-label">Meilleur score</div></div>' +
+                '<div class="admin-stat-card"><div class="admin-stat-value" style="font-size:0.95rem;">' + (last ? escapeHtml(last.name) : '—') + '</div><div class="admin-stat-label">Dernier actif · ' + lastTxt + '</div></div>' +
+                '</div>' +
+                '<button type="button" class="st-btn" id="admin-stats-refresh" style="margin-top:10px;">🔄 Actualiser les statistiques</button>';
+            var rb = document.getElementById("admin-stats-refresh");
+            if (rb) rb.addEventListener("click", renderAdminStats);
+        });
+    }
+
+    // ----- Onglet Admin -----
+
+    function ensureAdminTab() {
+        var nav = document.querySelector('.nav-tabs');
+        var main = document.querySelector('.main-content');
+        if (!nav || !main) return;
+        var btn = document.getElementById('admin-nav-tab');
+        var sec = document.getElementById('admin');
         if (isAdmin()) {
-            if (!s) {
-                s = document.createElement('div');
-                s.className = 'settings-section';
-                s.id = 'admin-section';
-                s.innerHTML =
-                    '<h3>🛠️ Administration</h3>' +
-                    '<p>Ouvre l’éditeur pour ajouter, modifier ou supprimer des cartes, et les publier sur GitHub.</p>' +
-                    '<a class="btn btn-primary" href="editor.html" style="text-decoration:none;display:inline-block;padding:10px 18px;">📝 Ouvrir l’éditeur de cartes</a>' +
-                    '<div style="margin-top:16px;">' +
-                    '<h4 style="margin:0 0 4px;">👥 Gestion des comptes</h4>' +
+            if (!btn) {
+                btn = document.createElement('button');
+                btn.className = 'nav-tab';
+                btn.id = 'admin-nav-tab';
+                btn.setAttribute('data-tab', 'admin');
+                btn.textContent = '🛠️ Admin';
+                btn.title = 'Outils d\'administration (maitre_lynx)';
+                var ideas = nav.querySelector('a.nav-tab');
+                if (ideas) nav.insertBefore(btn, ideas); else nav.appendChild(btn);
+                btn.addEventListener('click', function () {
+                    if (typeof switchTab === 'function') switchTab('admin');
+                });
+            }
+            if (!sec) {
+                sec = document.createElement('section');
+                sec.id = 'admin';
+                sec.className = 'tab-content';
+                sec.innerHTML =
+                    '<div class="settings-header"><h2>🛠️ Administration</h2><p>Outils réservés à l\'administrateur (maitre_lynx).</p></div>' +
+                    '<div class="settings-section">' +
+                    '<h3>📝 Éditeur de cartes</h3>' +
+                    '<p>Ajoute, modifie ou supprime des cartes, puis publie-les sur GitHub.</p>' +
+                    '<a class="btn btn-primary" href="editor.html" style="text-decoration:none;display:inline-block;padding:10px 18px;">📝 Ouvrir l\'éditeur de cartes</a>' +
+                    '</div>' +
+                    '<div class="settings-section">' +
+                    '<h3>👥 Gestion des comptes</h3>' +
                     '<div id="admin-accounts-list"></div>' +
                     '<button type="button" class="st-btn" id="admin-acc-refresh" style="margin-top:6px;">🔄 Actualiser la liste</button>' +
+                    '</div>' +
+                    '<div class="settings-section">' +
+                    '<h3>📊 Classement en ligne</h3>' +
+                    '<div id="admin-stats"></div>' +
                     '</div>';
-                const first = section.querySelector('.settings-section');
-                if (first) section.insertBefore(s, first); else section.appendChild(s);
+                main.appendChild(sec);
                 document.getElementById('admin-acc-refresh').addEventListener('click', renderAccounts);
                 renderAccounts();
+                renderAdminStats();
             }
-            s.style.display = '';
-        } else if (s) {
-            s.remove();
+            btn.style.display = '';
+        } else {
+            if (btn) btn.remove();
+            if (sec) {
+                var wasActive = sec.classList.contains('active');
+                sec.remove();
+                if (wasActive && typeof switchTab === 'function') {
+                    try { switchTab('home'); } catch (e) { /* ignore */ }
+                }
+            }
         }
     }
 
     function sync() {
         ensureBadge();
-        ensureAdminSection();
+        ensureAdminTab();
     }
 
     if (document.readyState === 'loading') {
