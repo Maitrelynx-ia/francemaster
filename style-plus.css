@@ -555,3 +555,12 @@ body.st-no-anim *::after {
         transition-duration: 0.01ms !important;
     }
 }
+
+/* ---------- Ouverture de pack : animation plus discrete ---------- */
+/* Le paquet a dechirer est reduit (190x264 -> 148x206) et ses textes
+   suivent la meme echelle ; la barre de progression s'aligne dessus. */
+.booster { width: 148px; height: 206px; }
+.booster-body { font-size: 0.8rem; gap: 4px; }
+.tear-progress { width: 150px; }
+/* Les cartes revelees ne sont plus agrandies sur grand ecran. */
+#pack-modal .pack-modal-content .modal-pack-container .pack-card-slot { transform: none; }
