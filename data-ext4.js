@@ -19,7 +19,6 @@
 
   // ========== PRIMAIRE ==========
   { id: 2197, name: "L'école primaire", description: "De la grande section au CM2, la base de tous les savoirs.", category: CATEGORIES.EDUCATION, rarity: RARITIES.RARE.code, attack: 60, defense: 72, views: 890000, emoji: "🏫" },
-  { id: 2198, name: "Jules Ferry", description: "Le père de l'école gratuite, laïque et obligatoire (lois de 1881-1882).", category: CATEGORIES.EDUCATION, rarity: RARITIES.LEGENDARY.code, attack: 90, defense: 95, views: 3400000, emoji: "🚸" },
   { id: 2199, name: "La dictée", description: "L'épreuve redoutée du vendredi, entre accords et homophones.", category: CATEGORIES.EDUCATION, rarity: RARITIES.SUPER_RARE.code, attack: 68, defense: 58, views: 1100000, emoji: "✍️" },
   { id: 2200, name: "Le calcul mental", description: "La table de multiplication récitée à voix haute, sans brouillon.", category: CATEGORIES.EDUCATION, rarity: RARITIES.COMMON.code, attack: 55, defense: 42, views: 500000, emoji: "➕" },
   { id: 2201, name: "Le tableau noir", description: "La craie, l'éponge et la règle d'or : ne pas parler quand le maître écrit.", category: CATEGORIES.EDUCATION, rarity: RARITIES.COMMON.code, attack: 42, defense: 66, views: 430000, emoji: "⬛" },
@@ -66,9 +65,6 @@
   { id: 2236, name: "Khâgne", description: "La prépa lettres : dissertations de philo, d'histoire et de littérature.", category: CATEGORIES.EDUCATION, rarity: RARITIES.SUPER_RARE.code, attack: 84, defense: 82, views: 420000, emoji: "📖" },
   { id: 2237, name: "Hypokhâgne", description: "La première année de khâgne, surnommée « la bac -2 ».", category: CATEGORIES.EDUCATION, rarity: RARITIES.RARE.code, attack: 70, defense: 68, views: 290000, emoji: "🖋️" },
   { id: 2238, name: "L'École polytechnique", description: "L'X, fondée en 1794 : l'école des ingénieurs au casoar légendaire.", category: CATEGORIES.EDUCATION, rarity: RARITIES.LEGENDARY.code, attack: 99, defense: 96, views: 1150000, emoji: "🎖️" },
-  { id: 2239, name: "L'ENS", description: "L'École normale supérieure, rue d'Ulm, fabrique des chercheurs et des agrégés.", category: CATEGORIES.EDUCATION, rarity: RARITIES.LEGENDARY.code, attack: 97, defense: 92, views: 690000, emoji: "🏛️" },
-  { id: 2240, name: "HEC", description: "La grande école de commerce de Jouy-en-Josas, vivier de dirigeants.", category: CATEGORIES.EDUCATION, rarity: RARITIES.ULTRA_RARE.code, attack: 93, defense: 88, views: 920000, emoji: "💼" },
-  { id: 2241, name: "Centrale", description: "CentraleSupélec et ses écoles, l'élite des ingénieurs généralistes.", category: CATEGORIES.EDUCATION, rarity: RARITIES.ULTRA_RARE.code, attack: 90, defense: 84, views: 640000, emoji: "⚙️" },
   { id: 2242, name: "Le 20/20", description: "La note parfaite, si rare en prépa qu'elle devient une légende.", category: CATEGORIES.EDUCATION, rarity: RARITIES.ULTRA_RARE.code, attack: 85, defense: 40, views: 260000, emoji: "⭐" },
 
   // ========== L'ÉDUCATION NATIONALE ==========
@@ -92,7 +88,6 @@
   { id: 2260, name: "Le CAPES", description: "Le certificat d'aptitude au professorat de l'enseignement du second degré.", category: CATEGORIES.EDUCATION, rarity: RARITIES.SUPER_RARE.code, attack: 84, defense: 80, views: 400000, emoji: "📜" },
   { id: 2261, name: "Pronote", description: "L'application où l'on vérifie notes, emploi du temps et devoirs.", category: CATEGORIES.EDUCATION, rarity: RARITIES.RARE.code, attack: 50, defense: 72, views: 480000, emoji: "📱" },
   { id: 2262, name: "L'ENT", description: "L'espace numérique de travail, portail de tout l'établissement.", category: CATEGORIES.EDUCATION, rarity: RARITIES.COMMON.code, attack: 45, defense: 70, views: 260000, emoji: "💻" },
-  { id: 2263, name: "La Sorbonne", description: "Fondée au XIIIe siècle, la plus ancienne et la plus célèbre université de France.", category: CATEGORIES.EDUCATION, rarity: RARITIES.LEGENDARY.code, attack: 96, defense: 94, views: 2400000, emoji: "🏛️" },
   { id: 2264, name: "L'université", description: "Des amphithéâtres de licence aux laboratoires de doctorat.", category: CATEGORIES.EDUCATION, rarity: RARITIES.RARE.code, attack: 65, defense: 80, views: 760000, emoji: "🎓" },
   { id: 2265, name: "L'école buissonnière", description: "L'absence mystérieuse signalée par SMS aux parents.", category: CATEGORIES.EDUCATION, rarity: RARITIES.COMMON.code, attack: 20, defense: 30, views: 340000, emoji: "🚪" },
   { id: 2266, name: "La punition collective", description: "La copie à recopier pour la faute d'un seul.", category: CATEGORIES.EDUCATION, rarity: RARITIES.COMMON.code, attack: 25, defense: 45, views: 230000, emoji: "📄" },
