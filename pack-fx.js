@@ -1,5 +1,5 @@
 // France Masters - Amelioration de l'animation d'ouverture de pack
-// Remplace la revelation des cartes par une version plus rythmee :
+// Revelation sans dos de carte : les cartes apparaissent directement en pop.
 // bouton "Tout reveler", aura pulsante sur les cartes rares, rayons de
 // lumiere pour UR/L, bandeau d'annonce anime, paquet qui flotte et
 // ouverture en fenetre centree.
@@ -28,7 +28,6 @@
             "@keyframes pkfx-aura-pulse { 0%, 100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 1; transform: scale(1.09); } }",
             ".pack-card-slot { position: relative; }",
             ".pack-card-slot.pkfx-aura::before { content: \"\"; position: absolute; inset: -16px; border-radius: 20px; background: radial-gradient(circle, var(--pkfx-c, #ffd700) 0%, transparent 70%); opacity: 0.7; animation: pkfx-aura-pulse 1.6s ease-in-out infinite; pointer-events: none; z-index: 0; }",
-            ".pack-card-slot .flip-wrap { position: relative; z-index: 1; }",
             "@keyframes pkfx-beam { 0% { opacity: 0; transform: translateY(40px) scaleY(0.4); } 30% { opacity: 0.9; } 100% { opacity: 0; transform: translateY(-70px) scaleY(1.5); } }",
             ".pkfx-beam { position: absolute; top: 15%; width: 3px; height: 75px; background: linear-gradient(to top, rgba(255, 215, 0, 0), #ffd700, rgba(255, 215, 0, 0)); animation: pkfx-beam 1.1s ease-out both; pointer-events: none; z-index: 2; }",
             ".pkfx-skip { margin-top: 14px; padding: 8px 20px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.3); background: rgba(255, 255, 255, 0.1); color: #fff; font: inherit; font-size: 0.95rem; cursor: pointer; transition: background 0.2s, transform 0.15s; }",
@@ -111,19 +110,14 @@
         for (var i = 0; i < cards.length; i++) {
             var slot = document.createElement("div");
             slot.className = "pack-card-slot";
-            var wrap = document.createElement("div");
-            wrap.className = "flip-wrap";
-            var back = document.createElement("div");
-            back.className = "card back fm-back";
-            back.innerHTML = '<span class="fm-crest">🇫🇷</span>';
             var front = document.createElement("div");
-            front.className = "card front flip-face";
-            wrap.appendChild(back);
-            wrap.appendChild(front);
-            slot.appendChild(wrap);
+            front.className = "card front " + cards[i].rarity;
+            front.innerHTML = createCardHTML(cards[i], true);
+            front.style.display = "none";
+            slot.appendChild(front);
             container.appendChild(slot);
             slots.push(slot);
-            flips.push({ wrap: wrap, front: front });
+            flips.push({ front: front });
         }
 
         var skipBtn = document.createElement("button");
@@ -147,16 +141,11 @@
             flipped[index] = true;
             var c = flips[index];
             PackSfx.whoosh();
-            c.wrap.classList.add("card-out");
             later(function () {
-                c.wrap.classList.remove("card-out");
-                c.wrap.classList.add("settled");
+                c.front.style.display = "flex";
+                c.front.classList.add("reveal-pop");
+                PackSfx.flip();
                 later(function () {
-                    c.front.innerHTML = createCardHTML(cards[index], true);
-                    c.front.classList.add(cards[index].rarity);
-                    c.wrap.classList.add("flipped");
-                    PackSfx.flip();
-                    later(function () {
                         var r = cards[index].rarity;
                         if (r === "SR" || r === "UR" || r === "L") {
                             c.front.classList.add("glow");
@@ -172,7 +161,6 @@
                         if (reste === 0) later(finish, fast ? 350 : 650);
                     }, fast ? 260 : 480);
                 }, fast ? 60 : 140);
-            }, fast ? 380 : 640);
         }
 
         function revealAll() {
