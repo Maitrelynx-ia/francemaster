@@ -7,7 +7,8 @@ const CATEGORIES = {
     GASTRONOMIE: "Gastronomie",
     GEOGRAPHIE: "Géographie & Régions",
     SCIENCES: "Sciences & Arts",
-    SPORT: "Sport & Culture"
+    SPORT: "Sport & Culture",
+    EDUCATION: "Éducation & École"
 };
 
 const RARITIES = {
