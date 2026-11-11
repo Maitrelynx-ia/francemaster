@@ -14,11 +14,12 @@
         st.textContent = [
             /* ----- Plein ecran ----- */
             "#pack-modal { padding: 0; }",
-            "#pack-modal .pack-modal-content { width: min(96vw, 760px); height: min(90vh, 680px); margin: 0; border-radius: 18px; border: none; overflow-y: auto; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; background: radial-gradient(ellipse at center, rgba(30, 34, 54, 0.97) 0%, rgba(10, 12, 22, 0.99) 75%); }",
+            "#pack-modal .pack-modal-content { width: min(96vw, 760px); height: min(90vh, 680px); margin: 0; border-radius: 18px; border: none; overflow-y: auto; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; background: radial-gradient(ellipse at center, rgba(30, 34, 54, 0.97) 0%, rgba(10, 12, 22, 0.99) 75%); }",
             "#pack-modal .modal-close { position: absolute; top: 10px; right: 16px; z-index: 10; font-size: 1.7rem; }",
             "#pack-modal .pack-announcement { font-size: 1.35rem; min-height: 2.2em; }",
-            "#pack-modal .modal-pack-container { width: 100%; max-width: 700px; flex: 1; display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; padding: 10px 14px; }",
-            "#pack-modal .pack-stage { width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; }",
+            "#pack-modal .modal-pack-container { width: 100%; max-width: 700px; flex: 1; display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; padding: 2px 14px 10px; }",
+            "#pack-modal .pack-stage { width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }",
+            "#pack-modal #booster-pack { margin-top: 0; margin-bottom: 0; }",
             /* ----- Effets ----- */
             "@keyframes pkfx-float { 0%, 100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-9px) rotate(1.2deg); } }",
             "#booster-pack { animation: pkfx-float 2.8s ease-in-out infinite; }",
