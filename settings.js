@@ -46,6 +46,12 @@
         document.head.appendChild(st);
     }
 
+    function escapeHtml(s) {
+        return String(s).replace(/[&<>"']/g, function (c) {
+            return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+        });
+    }
+
     function toast(msg) {
         var t = document.createElement("div");
         t.className = "st-toast";
