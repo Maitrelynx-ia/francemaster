@@ -48,3 +48,10 @@
         boot();
     }
 })();
+
+// Charge le module d'administration (badge et section reserves au role admin).
+(function () {
+    var s = document.createElement('script');
+    s.src = 'admin.js';
+    document.body.appendChild(s);
+})();

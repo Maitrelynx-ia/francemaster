@@ -1,3 +1,32 @@
+// France Masters - Garde d'accès administrateur
+// L'éditeur est réservé au joueur maitre_lynx (rôle administrateur).
+(function () {
+    var admin = false;
+    try {
+        var cu = JSON.parse(localStorage.getItem('franceMastersCurrentUser') || 'null');
+        var name = cu && cu.username ? String(cu.username).toLowerCase() : '';
+        admin = (name === 'maitre_lynx');
+    } catch (e) { admin = false; }
+
+    if (!admin) {
+        var lock = function () {
+            document.body.innerHTML =
+                '<div style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;font-family:system-ui,sans-serif;text-align:center;padding:24px;background:#0d1024;color:#e8eaf6;">' +
+                '<div style="font-size:3.4rem;">🔒</div>' +
+                '<h1 style="margin:0;">Accès réservé à l’administrateur</h1>' +
+                '<p style="margin:0;opacity:0.75;">Seul le joueur <strong style="color:#ffd700;">maitre_lynx</strong> peut ouvrir l’éditeur de cartes.<br>Connecte-toi au jeu avec ce compte puis reviens ici.</p>' +
+                '<a href="index.html" style="margin-top:8px;color:#7f8fff;text-decoration:none;font-weight:600;">← Retour au jeu</a>' +
+                '</div>';
+        };
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', lock);
+        } else {
+            lock();
+        }
+        throw new Error('Éditeur réservé à l’administrateur (maitre_lynx).');
+    }
+})();
+
 // France Masters - Éditeur de Cartes
 // Outil pour ajouter, modifier, supprimer des cartes
 
